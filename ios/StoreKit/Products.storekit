@@ -1,0 +1,38 @@
+{
+  "identifier" : "6F1A2B3C",
+  "nonRenewingSubscriptions" : [
+
+  ],
+  "products" : [
+    {
+      "displayPrice" : "3.99",
+      "familyShareable" : true,
+      "internalID" : "6739400001",
+      "localizations" : [
+        {
+          "description" : "Custom buttons, multiple wallets, ATM cycles, categories and full history. Once, forever.",
+          "displayName" : "PocketCash Pro",
+          "locale" : "en_US"
+        }
+      ],
+      "productID" : "pocketcash.pro.lifetime",
+      "referenceName" : "PocketCash Pro (lifetime)",
+      "type" : "NonConsumable"
+    }
+  ],
+  "settings" : {
+    "_failTransactionsEnabled" : false,
+    "_locale" : "en_US",
+    "_storefront" : "USA",
+    "_storeKitErrors" : [
+
+    ]
+  },
+  "subscriptionGroups" : [
+
+  ],
+  "version" : {
+    "major" : 4,
+    "minor" : 0
+  }
+}

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- The adaptive icon's background, behind tools/make_icon.js's foreground. -->
+    <color name="ic_launcher_background">#FF059669</color>
+    <!-- The window behind Compose, seen for a moment at launch. -->
+    <color name="window_background">#FFF3F4F6</color>
+</resources>

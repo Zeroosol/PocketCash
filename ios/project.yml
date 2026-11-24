@@ -1,0 +1,97 @@
+# XcodeGen project (https://github.com/yonaskolb/XcodeGen). On a Mac: `brew install xcodegen && xcodegen generate`,
+# then open PocketCash.xcodeproj. The TestFlight workflow (.github/workflows/ios.yml) runs the same two steps on
+# GitHub's Macs, so you don't need a Mac to ship.
+name: PocketCash
+options:
+  bundleIdPrefix: com.patternsystems
+  developmentLanguage: en
+  deploymentTarget:
+    iOS: "18.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.9"
+    MARKETING_VERSION: "1.0"
+    CURRENT_PROJECT_VERSION: "1"
+    TARGETED_DEVICE_FAMILY: "1"
+targets:
+  PocketCash:
+    type: application
+    platform: iOS
+    sources:
+      - PocketCash
+      - Shared
+    dependencies:
+      - target: PocketCashWidget
+    entitlements:
+      path: Config/PocketCash.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.patternsystems.pocketcash]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.patternsystems.pocketcash
+        PRODUCT_NAME: PocketCash
+        TARGETED_DEVICE_FAMILY: "1"   # iPhone only; XcodeGen's iOS default ("1,2") would add iPad
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+    # A shared scheme, so `xcodebuild -scheme PocketCash` works on CI, runs the tests, and uses the local
+    # StoreKit configuration when you run from Xcode (buy Pro in the simulator without App Store Connect).
+    scheme:
+      testTargets:
+        - PocketCashTests
+      storeKitConfiguration: StoreKit/Products.storekit
+    info:
+      path: Config/PocketCash-Info.plist
+      properties:
+        CFBundleDisplayName: PocketCash
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        UILaunchScreen:
+          UIColorName: AccentColor
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        UIRequiredDeviceCapabilities: [arm64]
+        # No encryption beyond Apple's own (HTTPS isn't even used): no export compliance paperwork.
+        ITSAppUsesNonExemptEncryption: false
+        CFBundleURLTypes:
+          - CFBundleURLName: com.patternsystems.pocketcash
+            CFBundleURLSchemes: [pocketcash]
+
+  PocketCashWidget:
+    type: app-extension
+    platform: iOS
+    sources:
+      - PocketCashWidget
+      - Shared
+    entitlements:
+      path: Config/PocketCashWidget.entitlements
+      properties:
+        com.apple.security.application-groups: [group.com.patternsystems.pocketcash]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.patternsystems.pocketcash.widget
+        PRODUCT_NAME: PocketCashWidget
+        TARGETED_DEVICE_FAMILY: "1"
+        SKIP_INSTALL: YES
+    info:
+      path: Config/PocketCashWidget-Info.plist
+      properties:
+        CFBundleDisplayName: PocketCash
+        CFBundleShortVersionString: $(MARKETING_VERSION)
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleDevelopmentRegion: en
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+
+  PocketCashTests:
+    type: bundle.unit-test
+    platform: iOS
+    sources:
+      - PocketCashTests
+    dependencies:
+      - target: PocketCash
+    settings:
+      base:
+        GENERATE_INFOPLIST_FILE: YES
+        TARGETED_DEVICE_FAMILY: "1"
+        PRODUCT_BUNDLE_IDENTIFIER: com.patternsystems.pocketcash.tests

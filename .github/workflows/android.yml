@@ -1,0 +1,221 @@
+# Builds PocketCash for Android on a GitHub-hosted Linux runner.
+# - Every push to main/master that touches android/, spec/ or the preset tool runs the core tests and lint and builds
+#   a debug APK, which you can download from the run's Artifacts and install on your phone.
+# - "Run workflow" with "Upload to Google Play" ticked also builds a signed release bundle and uploads it to Google
+#   Play's internal testing track.
+# Setup, secrets and installing on a phone: docs/release-android.md.
+name: Android
+
+on:
+  push:
+    branches: [main, master]
+    paths:
+      - 'android/**'
+      - 'spec/**'
+      - 'tools/build_presets.js'
+      - '.github/workflows/android.yml'
+  pull_request:
+    paths:
+      - 'android/**'
+      - 'spec/**'
+      - 'tools/build_presets.js'
+      - '.github/workflows/android.yml'
+  workflow_dispatch:
+    inputs:
+      play:
+        description: Upload to Google Play (internal testing)
+        type: boolean
+        default: false
+
+# A newer push replaces an older push's build; a manual run is never cancelled.
+concurrency:
+  group: android-${{ github.event_name }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name != 'workflow_dispatch' }}
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the generated presets are up to date
+        working-directory: .
+        run: node tools/build_presets.js --check
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Read the Gradle version
+        id: gradle
+        run: echo "version=$(sed -n 's/^distributionUrl=.*gradle-\(.*\)-bin\.zip$/\1/p' gradle/wrapper/gradle-wrapper.properties)" >> "$GITHUB_OUTPUT"
+
+      # The repository has no Gradle wrapper script, so install the version the wrapper properties name.
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: ${{ steps.gradle.outputs.version }}
+
+      # Debug builds are signed with ~/.android/debug.keystore. Keeping it between runs lets each new APK install
+      # over the last one. If the cache expires (7 days without a build), uninstall the old app once.
+      - name: Keep the same debug key between runs
+        uses: actions/cache@v4
+        with:
+          path: ~/.android/debug.keystore
+          key: android-debug-keystore-v1
+
+      - name: Version code
+        run: |
+          # Every install and upload needs a higher version code than the last; the run number only ever goes up.
+          echo "VERSION_CODE=$((100 + GITHUB_RUN_NUMBER))" >> "$GITHUB_ENV"
+          echo "Version code $((100 + GITHUB_RUN_NUMBER))"
+
+      - name: Core tests (shared vectors), debug app and lint
+        run: gradle :core:test :app:assembleDebug :app:lintDebug -PPOCKETCASH_VERSION_CODE="$VERSION_CODE"
+
+      - name: Save the debug APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: pocketcash-debug-${{ env.VERSION_CODE }}
+          path: android/app/build/outputs/apk/debug/app-debug.apk
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Save the test and lint reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-reports-${{ env.VERSION_CODE }}
+          path: |
+            android/*/build/reports/
+            android/*/build/test-results/
+          if-no-files-found: ignore
+          retention-days: 14
+
+      - name: Summary
+        run: |
+          {
+            echo "### PocketCash for Android, debug build $VERSION_CODE"
+            echo "Download **pocketcash-debug-$VERSION_CODE** under Artifacts, unzip it and install app-debug.apk on your phone (docs/release-android.md)."
+            echo "Debug builds have Settings → Debug → Unlock Pro, for testing Pro without Google Play."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  play:
+    needs: build
+    if: github.event_name == 'workflow_dispatch' && inputs.play
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    # One upload at a time, so version codes never collide.
+    concurrency:
+      group: google-play
+      cancel-in-progress: false
+    defaults:
+      run:
+        working-directory: android
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Check the secrets are set
+        env:
+          KEYSTORE: ${{ secrets.POCKETCASH_UPLOAD_KEYSTORE }}
+          STORE_PASSWORD: ${{ secrets.POCKETCASH_UPLOAD_STORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.POCKETCASH_UPLOAD_KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.POCKETCASH_UPLOAD_KEY_PASSWORD }}
+          PLAY_JSON: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+        run: |
+          missing=""
+          [ -n "$KEYSTORE" ] || missing="$missing POCKETCASH_UPLOAD_KEYSTORE"
+          [ -n "$STORE_PASSWORD" ] || missing="$missing POCKETCASH_UPLOAD_STORE_PASSWORD"
+          [ -n "$KEY_ALIAS" ] || missing="$missing POCKETCASH_UPLOAD_KEY_ALIAS"
+          [ -n "$KEY_PASSWORD" ] || missing="$missing POCKETCASH_UPLOAD_KEY_PASSWORD"
+          if [ -n "$missing" ]; then
+            echo "::error::Missing repository secrets:$missing. See docs/release-android.md, step 3."
+            exit 1
+          fi
+          # Without the Play key the signed bundle is still saved, for the first upload by hand.
+          if [ -n "$PLAY_JSON" ]; then
+            echo "HAS_PLAY_KEY=true" >> "$GITHUB_ENV"
+          else
+            echo "::notice::GOOGLE_PLAY_SERVICE_ACCOUNT_JSON isn't set, so the bundle is saved under Artifacts but not uploaded. See docs/release-android.md, step 5."
+          fi
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: 17
+
+      - name: Read the Gradle version
+        id: gradle
+        run: echo "version=$(sed -n 's/^distributionUrl=.*gradle-\(.*\)-bin\.zip$/\1/p' gradle/wrapper/gradle-wrapper.properties)" >> "$GITHUB_OUTPUT"
+
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: ${{ steps.gradle.outputs.version }}
+
+      - name: Write the upload key
+        env:
+          KEYSTORE: ${{ secrets.POCKETCASH_UPLOAD_KEYSTORE }}
+        run: |
+          printf '%s' "$KEYSTORE" | tr -d '[:space:]' | base64 -d > "$RUNNER_TEMP/upload.jks"
+          echo "VERSION_CODE=$((100 + GITHUB_RUN_NUMBER))" >> "$GITHUB_ENV"
+
+      - name: Build the signed release bundle
+        env:
+          POCKETCASH_UPLOAD_KEYSTORE: ${{ runner.temp }}/upload.jks
+          POCKETCASH_UPLOAD_STORE_PASSWORD: ${{ secrets.POCKETCASH_UPLOAD_STORE_PASSWORD }}
+          POCKETCASH_UPLOAD_KEY_ALIAS: ${{ secrets.POCKETCASH_UPLOAD_KEY_ALIAS }}
+          POCKETCASH_UPLOAD_KEY_PASSWORD: ${{ secrets.POCKETCASH_UPLOAD_KEY_PASSWORD }}
+        run: gradle :app:bundleRelease -PPOCKETCASH_VERSION_CODE="$VERSION_CODE"
+
+      - name: Check the bundle is signed
+        run: |
+          AAB=app/build/outputs/bundle/release/app-release.aab
+          if ! jarsigner -verify "$AAB" | grep -q "jar verified"; then
+            echo "::error::The release bundle isn't signed. Check the POCKETCASH_UPLOAD_* secrets (docs/release-android.md, step 3)."
+            exit 1
+          fi
+          echo "Signed: $AAB (version code $VERSION_CODE)"
+
+      - name: Save the release bundle
+        uses: actions/upload-artifact@v4
+        with:
+          name: pocketcash-release-${{ env.VERSION_CODE }}
+          path: |
+            android/app/build/outputs/bundle/release/app-release.aab
+            android/app/build/outputs/mapping/release/mapping.txt
+          if-no-files-found: error
+          retention-days: 30
+
+      - name: Upload to Google Play internal testing
+        if: env.HAS_PLAY_KEY == 'true'
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT_JSON }}
+          packageName: com.patternsystems.pocketcash
+          releaseFiles: android/app/build/outputs/bundle/release/app-release.aab
+          mappingFile: android/app/build/outputs/mapping/release/mapping.txt
+          track: internal
+          # Until a first release has been rolled out by hand, Play only accepts drafts (docs/release-android.md).
+          status: ${{ vars.PLAY_RELEASE_STATUS || 'completed' }}
+
+      - name: Summary
+        run: |
+          {
+            echo "### PocketCash for Android, release $VERSION_CODE"
+            if [ "$HAS_PLAY_KEY" = "true" ]; then
+              echo "Uploaded to Google Play internal testing. Testers get it from the Play Store within minutes."
+            else
+              echo "Signed bundle saved as **pocketcash-release-$VERSION_CODE** under Artifacts. Upload it in Play Console → Test and release → Internal testing."
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - name: Remove the key
+        if: always()
+        run: rm -f "$RUNNER_TEMP/upload.jks"

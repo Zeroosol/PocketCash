@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Strings Android itself shows (launcher, widget picker, Quick Settings, notifications). Screens are in Compose. -->
+<resources>
+    <string name="app_name" translatable="false">PocketCash</string>
+    <string name="widget_small_name">PocketCash</string>
+    <string name="widget_medium_name">PocketCash Wide</string>
+    <string name="widget_small_description">Your cash balance and two 1-tap spend buttons</string>
+    <string name="widget_medium_description">Balance, today\'s spending and four 1-tap buttons</string>
+    <string name="tile_label">Quick spend</string>
+    <string name="shortcut_spend_short">Spend</string>
+    <string name="shortcut_spend_long">Spend cash</string>
+    <string name="shortcut_add_short">Add cash</string>
+    <string name="shortcut_add_long">Add cash or ATM</string>
+    <string name="shortcut_count_short">Count my cash</string>
+    <string name="shortcut_count_long">Count the cash in my wallet</string>
+    <string name="channel_low_cash">Low cash</string>
+    <string name="channel_low_cash_description">A reminder when a wallet drops below the amount you set</string>
+</resources>

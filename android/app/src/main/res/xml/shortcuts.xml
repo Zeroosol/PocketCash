@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Long-press the app icon. Each opens a pocketcash:// deep link (docs/spec.md section 1). -->
+<shortcuts xmlns:android="http://schemas.android.com/apk/res/android">
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_spend"
+        android:shortcutId="spend"
+        android:shortcutLongLabel="@string/shortcut_spend_long"
+        android:shortcutShortLabel="@string/shortcut_spend_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketcash://keypad?mode=spend"
+            android:targetClass="com.patternsystems.pocketcash.MainActivity"
+            android:targetPackage="com.patternsystems.pocketcash" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_add"
+        android:shortcutId="add"
+        android:shortcutLongLabel="@string/shortcut_add_long"
+        android:shortcutShortLabel="@string/shortcut_add_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketcash://keypad?mode=add"
+            android:targetClass="com.patternsystems.pocketcash.MainActivity"
+            android:targetPackage="com.patternsystems.pocketcash" />
+    </shortcut>
+    <shortcut
+        android:enabled="true"
+        android:icon="@drawable/ic_shortcut_count"
+        android:shortcutId="count"
+        android:shortcutLongLabel="@string/shortcut_count_long"
+        android:shortcutShortLabel="@string/shortcut_count_short">
+        <intent
+            android:action="android.intent.action.VIEW"
+            android:data="pocketcash://count"
+            android:targetClass="com.patternsystems.pocketcash.MainActivity"
+            android:targetPackage="com.patternsystems.pocketcash" />
+    </shortcut>
+</shortcuts>

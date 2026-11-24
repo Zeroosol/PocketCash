@@ -1,0 +1,7 @@
+# Keep sources byte-identical on every OS, so `node tools/build_presets.js --check` passes on CI.
+*.xml text eol=lf
+*.kts text eol=lf
+*.kt text eol=lf
+*.toml text eol=lf
+*.properties text eol=lf
+*.png binary

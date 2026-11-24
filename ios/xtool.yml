@@ -1,0 +1,13 @@
+# xtool project settings (https://xtool.sh), for quick test builds on your own iPhone from Linux/WSL. From ios/:
+#   node ../tools/xtool_prepare.js
+#   xtool dev
+# Mirrors the PocketCash target in project.yml. Info.plists here use literal values: xtool doesn't expand $(...).
+version: 1
+bundleID: com.patternsystems.pocketcash
+product: PocketCash
+infoPath: xtool/PocketCash-Info.plist
+entitlementsPath: xtool/PocketCash.entitlements
+iconPath: PocketCash/Assets.xcassets/AppIcon.appiconset/icon-1024.png
+# The widget extension is switched off for xtool builds: xtool currently links extensions with -e _NSExtensionMain,
+# which dead-strips their code (https://github.com/xtool-org/xtool/issues/313). The widgets still build with Xcode
+# (project.yml / the TestFlight workflow). The app itself works fully without them.

@@ -1,0 +1,109 @@
+{
+  "about": "ATM cycles, balance, today spent, burn rate and runway (docs/spec.md sections 3 and 4). Amounts are decimal strings and must match exactly; fractional numbers (days, avgDaily, burnRatePerDay, runwayDays) must match within 0.01. Cycles are listed oldest first. Compute 'today' in the case's timeZone.",
+  "cases": [
+    {
+      "name": "php-two-atm-cycles-with-starting-cash",
+      "currency": "PHP",
+      "timeZone": "UTC",
+      "now": "2026-11-25T12:00:00Z",
+      "transactions": [
+        { "id": "t01", "amount": "500", "kind": "adjust", "timestamp": "2026-11-15T08:00:00Z", "tag": null },
+        { "id": "t02", "amount": "-50", "kind": "spend", "timestamp": "2026-11-15T12:00:00Z", "tag": "transit" },
+        { "id": "t03", "amount": "1000", "kind": "atm", "timestamp": "2026-11-16T09:00:00Z", "tag": null },
+        { "id": "t04", "amount": "-100", "kind": "spend", "timestamp": "2026-11-16T12:30:00Z", "tag": "food" },
+        { "id": "t05", "amount": "-50", "kind": "spend", "timestamp": "2026-11-17T08:00:00Z", "tag": "transit" },
+        { "id": "t06", "amount": "-50", "kind": "spend", "timestamp": "2026-11-17T18:00:00Z", "tag": "transit" },
+        { "id": "t07", "amount": "-20", "kind": "spend", "timestamp": "2026-11-18T13:00:00Z", "tag": "tip" },
+        { "id": "t08", "amount": "-80", "kind": "adjust", "timestamp": "2026-11-19T07:00:00Z", "tag": null },
+        { "id": "t09", "amount": "1000", "kind": "atm", "timestamp": "2026-11-20T21:00:00Z", "tag": null },
+        { "id": "t10", "amount": "-50", "kind": "spend", "timestamp": "2026-11-21T08:00:00Z", "tag": "transit" },
+        { "id": "t11", "amount": "-150", "kind": "spend", "timestamp": "2026-11-22T12:00:00Z", "tag": "food" },
+        { "id": "t12", "amount": "200", "kind": "in", "timestamp": "2026-11-23T10:00:00Z", "tag": null },
+        { "id": "t13", "amount": "-300", "kind": "transfer", "timestamp": "2026-11-24T08:00:00Z", "tag": null },
+        { "id": "t14", "amount": "-50", "kind": "spend", "timestamp": "2026-11-25T08:00:00Z", "tag": "transit" },
+        { "id": "t15", "amount": "-20", "kind": "spend", "timestamp": "2026-11-25T10:00:00Z", "tag": null }
+      ],
+      "expected": {
+        "balance": "1780",
+        "todaySpent": "70",
+        "burnRatePerDay": 60.98,
+        "runwayDays": 29.19,
+        "cycles": [
+          { "isATM": false, "start": "2026-11-15T08:00:00Z", "end": "2026-11-16T09:00:00Z", "isOpen": false,
+            "withdrawn": "0", "spent": "50", "inflow": "500", "days": 1.04, "avgDaily": 48.0,
+            "topAmount": "50", "topAmountCount": 1, "topAmountTotal": "50", "topTag": "transit" },
+          { "isATM": true, "start": "2026-11-16T09:00:00Z", "end": "2026-11-20T21:00:00Z", "isOpen": false,
+            "withdrawn": "1000", "spent": "300", "inflow": "0", "days": 4.5, "avgDaily": 66.67,
+            "topAmount": "50", "topAmountCount": 2, "topAmountTotal": "100", "topTag": "food" },
+          { "isATM": true, "start": "2026-11-20T21:00:00Z", "end": null, "isOpen": true,
+            "withdrawn": "1000", "spent": "270", "inflow": "200", "days": 4.63, "avgDaily": 58.38,
+            "topAmount": "150", "topAmountCount": 1, "topAmountTotal": "150", "topTag": "food" }
+        ]
+      }
+    },
+    {
+      "name": "usd-coins-and-fractions",
+      "currency": "USD",
+      "timeZone": "UTC",
+      "now": "2026-03-10T00:00:00Z",
+      "transactions": [
+        { "id": "u1", "amount": "100", "kind": "atm", "timestamp": "2026-03-01T00:00:00Z", "tag": null },
+        { "id": "u2", "amount": "-2.75", "kind": "spend", "timestamp": "2026-03-02T00:00:00Z", "tag": "transit" },
+        { "id": "u3", "amount": "-2.75", "kind": "spend", "timestamp": "2026-03-02T12:00:00Z", "tag": "transit" },
+        { "id": "u4", "amount": "-0.25", "kind": "spend", "timestamp": "2026-03-03T00:00:00Z", "tag": null },
+        { "id": "u5", "amount": "60", "kind": "atm", "timestamp": "2026-03-05T00:00:00Z", "tag": null },
+        { "id": "u6", "amount": "-12.5", "kind": "spend", "timestamp": "2026-03-06T00:00:00Z", "tag": "food" }
+      ],
+      "expected": {
+        "balance": "141.75",
+        "todaySpent": "0",
+        "burnRatePerDay": 2.03,
+        "runwayDays": 69.90,
+        "cycles": [
+          { "isATM": true, "start": "2026-03-01T00:00:00Z", "end": "2026-03-05T00:00:00Z", "isOpen": false,
+            "withdrawn": "100", "spent": "5.75", "inflow": "0", "days": 4.0, "avgDaily": 1.44,
+            "topAmount": "2.75", "topAmountCount": 2, "topAmountTotal": "5.5", "topTag": "transit" },
+          { "isATM": true, "start": "2026-03-05T00:00:00Z", "end": null, "isOpen": true,
+            "withdrawn": "60", "spent": "12.5", "inflow": "0", "days": 5.0, "avgDaily": 2.5,
+            "topAmount": "12.5", "topAmountCount": 1, "topAmountTotal": "12.5", "topTag": "food" }
+        ]
+      }
+    },
+    {
+      "name": "no-atm-yet",
+      "currency": "EUR",
+      "timeZone": "Europe/Berlin",
+      "now": "2026-01-03T00:00:00Z",
+      "transactions": [
+        { "id": "e1", "amount": "300", "kind": "adjust", "timestamp": "2026-01-01T00:00:00Z", "tag": null },
+        { "id": "e2", "amount": "-30", "kind": "spend", "timestamp": "2026-01-02T00:00:00Z", "tag": "groceries" },
+        { "id": "e3", "amount": "-4", "kind": "spend", "timestamp": "2026-01-02T23:30:00Z", "tag": null }
+      ],
+      "expected": {
+        "balance": "266",
+        "todaySpent": "4",
+        "burnRatePerDay": 17.0,
+        "runwayDays": 15.65,
+        "cycles": [
+          { "isATM": false, "start": "2026-01-01T00:00:00Z", "end": null, "isOpen": true,
+            "withdrawn": "0", "spent": "34", "inflow": "300", "days": 2.0, "avgDaily": 17.0,
+            "topAmount": "30", "topAmountCount": 1, "topAmountTotal": "30", "topTag": "groceries" }
+        ]
+      }
+    },
+    {
+      "name": "empty-wallet",
+      "currency": "PHP",
+      "timeZone": "UTC",
+      "now": "2026-11-25T12:00:00Z",
+      "transactions": [],
+      "expected": {
+        "balance": "0",
+        "todaySpent": "0",
+        "burnRatePerDay": null,
+        "runwayDays": null,
+        "cycles": []
+      }
+    }
+  ]
+}
