@@ -1,18 +1,345 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Strings Android itself shows (launcher, widget picker, Quick Settings, notifications). Screens are in Compose. -->
+<!--
+    Every user-facing string of PocketCash (docs/spec.md section 13). Translations: values-b+fil (Filipino),
+    values-es, values-in (Indonesian, the code Android looks up), values-pt (Brazilian wording), values-hi, values-vi.
+    Keep the glossary terms of section 13 the same everywhere. "PocketCash" is never translated.
+-->
 <resources>
     <string name="app_name" translatable="false">PocketCash</string>
-    <string name="widget_small_name">PocketCash</string>
+    <string name="pro_name" translatable="false">PocketCash Pro</string>
+    <string name="pro_badge" translatable="false">PRO</string>
+
+    <!-- Launcher, widget picker, Quick Settings, notifications -->
+    <string name="widget_small_name" translatable="false">PocketCash</string>
     <string name="widget_medium_name">PocketCash Wide</string>
     <string name="widget_small_description">Your cash balance and two 1-tap spend buttons</string>
     <string name="widget_medium_description">Balance, today\'s spending and four 1-tap buttons</string>
     <string name="tile_label">Quick spend</string>
+    <string name="tile_spend">Spend %1$s</string>
+    <string name="tile_left">%1$s left</string>
+    <string name="tile_open_app">Open PocketCash first</string>
     <string name="shortcut_spend_short">Spend</string>
     <string name="shortcut_spend_long">Spend cash</string>
     <string name="shortcut_add_short">Add cash</string>
-    <string name="shortcut_add_long">Add cash or ATM</string>
+    <string name="shortcut_add_long">Add cash or ATM withdrawal</string>
     <string name="shortcut_count_short">Count my cash</string>
     <string name="shortcut_count_long">Count the cash in my wallet</string>
     <string name="channel_low_cash">Low cash</string>
     <string name="channel_low_cash_description">A reminder when a wallet drops below the amount you set</string>
+    <string name="low_cash_title">Only %1$s left in %2$s</string>
+    <string name="low_cash_text">It\'s below your %1$s reminder. Time for an ATM run?</string>
+
+    <!-- Widgets -->
+    <string name="widget_setup">Open PocketCash to set up your wallet</string>
+    <string name="widget_undo">Undo %1$s</string>
+    <string name="widget_today">%1$s today</string>
+    <string name="widget_left">%1$s left</string>
+    <string name="widget_pick_wallet">Which wallet should this widget show?</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Save</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_close">Close</string>
+    <string name="action_done">Done</string>
+    <string name="action_ok">OK</string>
+    <string name="action_delete">Delete</string>
+    <string name="action_undo">Undo</string>
+    <string name="action_change">Change</string>
+    <string name="action_default">Default</string>
+    <string name="action_turn_off">Turn off</string>
+    <string name="action_remove">Remove</string>
+    <string name="value_off">Off</string>
+    <string name="value_not_set">Not set</string>
+    <string name="deleted">Deleted</string>
+    <string name="pro_feature">Pro feature</string>
+    <string name="pro_unlock">Unlock Pro</string>
+
+    <!-- Nav bar -->
+    <string name="nav_home">Home</string>
+    <string name="nav_insights">Insights</string>
+    <string name="nav_envelopes">Envelopes</string>
+    <string name="nav_settings">Settings</string>
+    <string name="nav_plus">Add an amount</string>
+
+    <!-- Home -->
+    <string name="home_switch_wallet">Switch wallet</string>
+    <string name="home_today">Today %1$s</string>
+    <string name="home_nothing_today">Nothing spent today</string>
+    <string name="home_left_today">%1$s left today</string>
+    <string name="home_over_by">Over by %1$s</string>
+    <string name="home_custom">Custom</string>
+    <string name="home_insight_empty">Spend a few times to see how long your cash lasts</string>
+    <string name="home_insight_rate">%1$s/day</string>
+    <string name="home_insight_runway">%1$s/day · lasts until about %2$s</string>
+    <string name="feed_last_7_days">Last 7 days</string>
+    <string name="feed_cycles">ATM cycles</string>
+    <string name="feed_empty">Nothing yet. Tap a button above when cash leaves your wallet.</string>
+    <string name="feed_older">Older entries · full history with Pro</string>
+    <string name="feed_collapse">Collapse</string>
+    <string name="feed_expand">Expand</string>
+    <string name="day_today">Today</string>
+    <string name="day_yesterday">Yesterday</string>
+    <string name="cycle_before_first_atm">Before first ATM</string>
+    <string name="cycle_header_open">Current cycle · since %1$s · %2$s · %3$s days so far</string>
+    <string name="cycle_header_closed">ATM cycle · %1$s – %2$s · %3$s lasted %4$s days</string>
+
+    <!-- What a transaction is -->
+    <string name="kind_spent">Spent</string>
+    <string name="kind_in">Cash in</string>
+    <string name="kind_atm">ATM withdrawal</string>
+    <string name="kind_unrecorded">Unrecorded spending</string>
+    <string name="kind_found">Found cash</string>
+    <string name="kind_moved_out">Moved out</string>
+    <string name="kind_moved_in">Moved in</string>
+    <string name="kind_transfer_to">To %1$s</string>
+    <string name="kind_transfer_from">From %1$s</string>
+    <string name="note_starting_cash">Starting cash</string>
+    <string name="added_spent">%1$s spent</string>
+    <string name="added_atm">%1$s from the ATM</string>
+    <string name="added_adjust">Balance updated · %1$s</string>
+    <string name="added_in">%1$s added</string>
+
+    <!-- Categories (docs/spec.md section 6) -->
+    <string name="category_food">Food &amp; drinks</string>
+    <string name="category_transit">Transit</string>
+    <string name="category_parking">Parking</string>
+    <string name="category_groceries">Groceries</string>
+    <string name="category_errand">Errands</string>
+    <string name="category_tip">Tips</string>
+    <string name="category_bills">Bills</string>
+    <string name="category_fun">Fun</string>
+    <string name="category_other">Other</string>
+    <string name="category_untagged">Untagged</string>
+    <string name="tag_add">Add a category</string>
+
+    <!-- Keypad and change calculator -->
+    <string name="keypad_spend">− Spend</string>
+    <string name="keypad_add">+ Add cash</string>
+    <string name="keypad_from_atm">From ATM</string>
+    <string name="keypad_from_atm_hint">Starts a new ATM cycle</string>
+    <string name="keypad_note">Note (optional)</string>
+    <string name="keypad_delete">Delete digit</string>
+    <string name="change_button">Got change?</string>
+    <string name="change_paid">Paid</string>
+    <string name="change_change">Change</string>
+    <string name="change_paid_chip">Paid %1$s</string>
+    <string name="change_equation">Paid %1$s − Change %2$s = %3$s</string>
+    <string name="change_hint">Type what you got back</string>
+    <string name="change_too_big">Change must be less than what you paid</string>
+
+    <!-- Count my cash -->
+    <string name="count_title">How much is in your wallet?</string>
+    <string name="count_title_short">Count my cash</string>
+    <string name="count_type_total">Type total</string>
+    <string name="count_bills">Count bills</string>
+    <string name="count_shows">PocketCash shows %1$s.</string>
+    <string name="count_spot_on">Spot on. Your balance is right.</string>
+    <string name="count_less">%1$s less than PocketCash shows. It\'s saved as unrecorded spending.</string>
+    <string name="count_more">%1$s more than PocketCash shows. It\'s saved as found cash.</string>
+    <string name="count_update">Update balance</string>
+    <string name="count_fewer">Fewer</string>
+    <string name="count_more_one">More</string>
+
+    <!-- Edit a transaction -->
+    <string name="edit_amount">Amount</string>
+    <string name="edit_note">Note</string>
+    <string name="edit_delete_both">Delete both sides of this move</string>
+
+    <!-- Insights -->
+    <string name="insights_locked_title">See how long your cash lasts</string>
+    <string name="insights_locked_text">Burn rate, runway, ATM cycles and spending by category come with Pro.</string>
+    <string name="insights_burn_rate">Burn rate</string>
+    <string name="insights_not_enough">Not enough spending yet</string>
+    <string name="insights_per_day">%1$s/day</string>
+    <string name="insights_runway">At this pace your %1$s lasts %2$s days, until about %3$s.</string>
+    <string name="insights_average">Average over the last 14 days.</string>
+    <string name="insights_no_cycles">Your first ATM withdrawal starts a cycle.</string>
+    <string name="insights_categories">Last 30 days by category</string>
+    <string name="insights_no_spending">No spending in the last 30 days.</string>
+    <string name="insights_cycle_open">Current cycle · since %1$s</string>
+    <string name="insights_cycle_range">%1$s – %2$s</string>
+    <string name="insights_days_so_far">%1$s days so far</string>
+    <string name="insights_lasted">Lasted %1$s days</string>
+    <string name="insights_withdrawn_so_far">%1$s · %2$s days so far</string>
+    <string name="insights_withdrawn_lasted">%1$s lasted %2$s days</string>
+    <string name="insights_spent">Spent</string>
+    <string name="insights_per_day_label">Per day</string>
+    <string name="insights_top_amount">Drained most by %1$s × %2$d (%3$s)</string>
+    <string name="insights_top_tag">Mostly %1$s</string>
+
+    <!-- Envelopes -->
+    <string name="envelopes_locked_title">Envelopes and savings goals</string>
+    <string name="envelopes_locked_text">Give wallets a target, watch them fill up, and split cash into envelopes in one step with Pro.</string>
+    <string name="envelopes_intro">Split cash into envelopes like Rent, Food and Savings. Give a wallet a target to track its progress.</string>
+    <string name="envelopes_new">New envelope</string>
+    <string name="envelopes_of_target">%1$s of %2$s</string>
+    <string name="envelopes_goal_reached">Goal reached</string>
+    <string name="envelopes_no_targets">No targets yet. Open a wallet in Settings and set an envelope target or savings goal.</string>
+    <string name="fill_title">Fill envelopes</string>
+    <string name="fill_from">From</string>
+    <string name="fill_source_has">%1$s in this wallet</string>
+    <string name="fill_none">No other wallet uses %1$s.</string>
+    <string name="fill_no_target">No target</string>
+    <string name="fill_short_by">Short by %1$s</string>
+    <string name="fill_footer">Moving %1$s · %2$s stays in %3$s</string>
+    <string name="fill_too_much">Only %1$s is in %2$s</string>
+    <string name="fill_save">Move cash</string>
+    <string name="fill_done">Envelopes filled · %1$s moved</string>
+
+    <!-- Settings -->
+    <string name="settings_pro_thanks">Unlocked. Thank you for supporting PocketCash!</string>
+    <string name="settings_pro_pitch">Envelopes, insights, more wallets, the change calculator, app lock and more. One payment, yours forever.</string>
+    <string name="settings_wallets">Wallets</string>
+    <string name="settings_buttons">Buttons</string>
+    <string name="settings_budget">Daily budget</string>
+    <string name="settings_budget_message">How much cash you plan to spend per day from %1$s.</string>
+    <string name="settings_threshold">Low-cash reminder below</string>
+    <string name="settings_threshold_title">Low-cash reminder</string>
+    <string name="settings_threshold_message">Remind me when %1$s drops below this amount. Switch on Low-cash reminders below.</string>
+    <string name="settings_quick_amount">Amount</string>
+    <string name="settings_quick_hint">The Quick Settings tile spends this in one tap. Add it from your Quick Settings edit screen.</string>
+    <string name="settings_quick_title">Quick spend amount</string>
+    <string name="settings_quick_message">Your most common cash expense, like a daily commute fare.</string>
+    <string name="settings_quick_wallet">Quick spend from</string>
+    <string name="settings_options">Options</string>
+    <string name="settings_low_cash">Low-cash reminders</string>
+    <string name="settings_low_cash_hint">A notification when a wallet drops below its reminder amount</string>
+    <string name="settings_plus_atm">Count + buttons as ATM withdrawals</string>
+    <string name="settings_plus_atm_hint">Each + tap starts a new ATM cycle</string>
+    <string name="settings_privacy">Privacy mode</string>
+    <string name="settings_privacy_hint">Hide amounts on widgets and Quick Settings</string>
+    <string name="settings_haptics">Haptics</string>
+    <string name="settings_haptics_hint">A short tap when a button saves</string>
+    <string name="settings_data">Your data</string>
+    <string name="settings_language">Language</string>
+    <string name="settings_language_hint">PocketCash follows your phone\'s language unless you pick another one</string>
+    <string name="settings_about">PocketCash %1$s\nEverything stays on this phone: no account, no internet access, no tracking.</string>
+    <string name="settings_debug" translatable="false">Debug</string>
+    <string name="settings_debug_pro" translatable="false">Unlock Pro (debug build)</string>
+    <string name="settings_debug_pro_hint" translatable="false">For testing without Google Play. Release builds ignore it.</string>
+
+    <!-- App lock -->
+    <string name="lock_section">App lock</string>
+    <string name="lock_with_fingerprint">Lock with fingerprint</string>
+    <string name="lock_with_face">Lock with face unlock</string>
+    <string name="lock_with_passcode">Lock with passcode</string>
+    <string name="lock_hint">Ask to unlock every time PocketCash opens</string>
+    <string name="lock_unavailable">Set up a screen lock or fingerprint on this phone first</string>
+    <string name="lock_widgets_note">Widgets still show your balance. Turn on Privacy mode to hide it.</string>
+    <string name="lock_title">PocketCash is locked</string>
+    <string name="lock_unlock">Unlock</string>
+    <string name="lock_prompt_title">Unlock PocketCash</string>
+    <string name="lock_enable_prompt_title">Turn on app lock</string>
+
+    <!-- Backup and restore (docs/spec.md section 11) -->
+    <string name="backup_export">Back up to a file</string>
+    <string name="backup_export_hint">Everything in one file you can restore on any iPhone or Android phone</string>
+    <string name="backup_restore">Restore from a file</string>
+    <string name="backup_restore_hint">Replaces all data on this phone</string>
+    <string name="backup_saved">Backup saved</string>
+    <string name="backup_save_failed">Couldn\'t save the backup. Try another place.</string>
+    <string name="backup_no_picker">This phone has no app for picking files</string>
+    <string name="restore_confirm_title">Restore this backup?</string>
+    <string name="restore_summary">Wallets: %1$s · Cash moves: %2$s · Backed up %3$s</string>
+    <string name="restore_warning">Everything on this phone is replaced by the backup. This can\'t be undone.</string>
+    <string name="restore_replace">Replace all data on this phone</string>
+    <string name="restore_done">Backup restored</string>
+    <string name="restore_failed_title">Can\'t restore this file</string>
+    <string name="restore_not_backup">This file isn\'t a PocketCash backup.</string>
+    <string name="restore_too_new">This backup is from a newer version of PocketCash. Update the app, then try again.</string>
+    <string name="restore_unreadable">Couldn\'t open this file.</string>
+    <string name="restore_damaged">This backup is damaged, so nothing was changed. %1$s</string>
+    <string name="restore_problem_malformed">Some of its data is missing or in the wrong form.</string>
+    <string name="restore_problem_no_wallets">It has no wallets.</string>
+    <string name="restore_problem_amount">An amount isn\'t a number: %1$s</string>
+    <string name="restore_problem_date">A date can\'t be read: %1$s</string>
+    <string name="restore_problem_id">An ID isn\'t valid: %1$s</string>
+    <string name="restore_problem_kind">Unknown kind of cash move: %1$s</string>
+    <string name="restore_problem_currency">Unknown currency code: %1$s</string>
+    <string name="restore_problem_duplicate">An ID appears twice: %1$s</string>
+    <string name="csv_export">Export CSV</string>
+    <string name="csv_export_hint">Every transaction, for a spreadsheet</string>
+    <string name="csv_subject">PocketCash export</string>
+
+    <!-- Wallets -->
+    <string name="wallet_main">Main Wallet</string>
+    <string name="wallet_default_name">Wallet</string>
+    <string name="wallet_new">New wallet</string>
+    <string name="wallet_edit">Edit wallet</string>
+    <string name="wallet_add">Add a wallet</string>
+    <string name="wallet_name">Name</string>
+    <string name="wallet_name_hint">Coin Pouch, Rent, Japan trip…</string>
+    <string name="wallet_symbol">Custom symbol (optional)</string>
+    <string name="wallet_cash_now">Cash in it now</string>
+    <string name="wallet_target">Target</string>
+    <string name="wallet_target_hint">Envelope target or savings goal</string>
+    <string name="wallet_delete">Delete wallet</string>
+    <string name="wallet_delete_title">Delete %1$s?</string>
+    <string name="wallet_delete_text">Its transactions are deleted too. This can\'t be undone.</string>
+    <string name="currency_title">Currency</string>
+    <string name="currency_search">Search</string>
+    <string name="transfer_title">Move cash</string>
+    <string name="transfer_title_long">Move cash between wallets</string>
+    <string name="transfer_from">From</string>
+    <string name="transfer_to">To</string>
+    <string name="transfer_amount">Amount (%1$s)</string>
+    <string name="transfer_arrives">Arrives as (%1$s)</string>
+    <string name="transfer_move">Move</string>
+    <string name="presets_title">Buttons for %1$s</string>
+    <string name="presets_hint">Match your real bills and fares. Leave a box empty to drop that button.</string>
+    <string name="presets_cash_in">Cash in</string>
+    <string name="presets_spend">Spend</string>
+    <string name="presets_reset">Reset to %1$s defaults</string>
+
+    <!-- Paywall: Pro's features in the order of docs/spec.md section 5 -->
+    <string name="paywall_subtitle">One payment. Yours forever. No subscription, no account.</string>
+    <string name="paywall_envelopes">Envelopes and savings goals</string>
+    <string name="paywall_envelopes_text">Give any wallet a target, watch the progress, and split cash into envelopes in one step.</string>
+    <string name="paywall_insights">Insights</string>
+    <string name="paywall_insights_text">How long each ATM withdrawal lasts, your daily burn, when cash runs out, and where it goes.</string>
+    <string name="paywall_wallets">More wallets</string>
+    <string name="paywall_wallets_text">Coin pouch, emergency stash, a travel wallet in its own currency, moves between them, and a wallet per widget.</string>
+    <string name="paywall_quick">Quick spend everywhere</string>
+    <string name="paywall_quick_text">The Quick Settings tile spends your daily fare in one tap.</string>
+    <string name="paywall_change">Change calculator</string>
+    <string name="paywall_change_text">Paid 500, got 130 back? Save one spend of 370.</string>
+    <string name="paywall_budget">Daily budget</string>
+    <string name="paywall_budget_text">See what\'s left for today in the app and on the widget.</string>
+    <string name="paywall_categories">Categories</string>
+    <string name="paywall_categories_text">Tag spending after the fact with one tap.</string>
+    <string name="paywall_buttons">Your own buttons</string>
+    <string name="paywall_buttons_text">Set each button to your real fares and bills.</string>
+    <string name="paywall_lock">App lock and privacy mode</string>
+    <string name="paywall_lock_text">Lock PocketCash with your fingerprint or screen lock, and hide amounts on widgets.</string>
+    <string name="paywall_low_cash">Low-cash reminder</string>
+    <string name="paywall_low_cash_text">A notification when a wallet runs low.</string>
+    <string name="paywall_history">Full history and CSV export</string>
+    <string name="paywall_history_text">Everything beyond 7 days, ready for a spreadsheet.</string>
+    <string name="paywall_buy">Unlock for %1$s</string>
+    <string name="paywall_connecting">Connecting to Google Play…</string>
+    <string name="paywall_restore">Restore purchase</string>
+    <string name="paywall_not_now">Not now</string>
+    <string name="paywall_thanks">You\'re Pro. Thank you!</string>
+    <string name="billing_unavailable">Google Play isn\'t available right now.</string>
+    <string name="billing_connecting">Still connecting to Google Play. Try again in a moment.</string>
+    <string name="billing_failed">The purchase didn\'t go through (%1$d).</string>
+    <string name="billing_pending">Purchase pending. Pro unlocks as soon as Google Play confirms it.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Your cash, on your Home Screen</string>
+    <string name="onboarding_text">Banking apps track every card tap. Nobody tracks the cash. PocketCash keeps your wallet\'s balance right with one tap.</string>
+    <string name="onboarding_point_tap">Tap %1$s on the widget when you pay. Done.</string>
+    <string name="onboarding_point_undo">Tapped by mistake? Undo for a few seconds.</string>
+    <string name="onboarding_point_count">Count your cash any time to fix the balance.</string>
+    <string name="onboarding_start">Get started</string>
+    <string name="onboarding_restore">Restore from a backup file</string>
+    <string name="onboarding_private">No account. Nothing leaves your phone.</string>
+    <string name="onboarding_cash_title">How much cash is in your wallet right now?</string>
+    <string name="onboarding_currency">Currency: %1$s</string>
+    <string name="onboarding_type_it">Type it</string>
+    <string name="onboarding_start_empty">Start with an empty wallet</string>
+    <string name="onboarding_start_tracking">Start tracking</string>
+    <string name="onboarding_widget_title">Put your wallet on the Home Screen</string>
+    <string name="onboarding_widget_text">Touch and hold an empty spot on your Home Screen, tap Widgets, then pick PocketCash. Every button saves instantly.</string>
+    <string name="onboarding_add_widget">Add the widget</string>
 </resources>

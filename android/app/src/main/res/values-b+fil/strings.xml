@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Filipino (fil). First drafts: a native speaker must review these before launch (docs/spec.md section 13). -->
+<resources>
+    <!-- Launcher, widget picker, Quick Settings, notifications -->
+    <string name="widget_medium_name">PocketCash Malapad</string>
+    <string name="widget_small_description">Ang balanse ng cash mo at dalawang 1-tap na button para sa gastos</string>
+    <string name="widget_medium_description">Balanse, gastos ngayon at apat na 1-tap na button</string>
+    <string name="tile_label">Mabilisang gastos</string>
+    <string name="tile_spend">Gastos %1$s</string>
+    <string name="tile_left">%1$s natitira</string>
+    <string name="tile_open_app">Buksan muna ang PocketCash</string>
+    <string name="shortcut_spend_short">Gastos</string>
+    <string name="shortcut_spend_long">Gumastos ng cash</string>
+    <string name="shortcut_add_short">Magdagdag ng cash</string>
+    <string name="shortcut_add_long">Magdagdag ng cash o withdraw sa ATM</string>
+    <string name="shortcut_count_short">Bilangin ang cash ko</string>
+    <string name="shortcut_count_long">Bilangin ang cash sa pitaka ko</string>
+    <string name="channel_low_cash">Paubos na cash</string>
+    <string name="channel_low_cash_description">Paalala kapag bumaba ang isang pitaka sa halagang itinakda mo</string>
+    <string name="low_cash_title">%1$s na lang ang natitira sa %2$s</string>
+    <string name="low_cash_text">Mas mababa na ito sa %1$s na paalala mo. Oras na para mag-ATM?</string>
+
+    <!-- Widgets -->
+    <string name="widget_setup">Buksan ang PocketCash para i-set up ang pitaka mo</string>
+    <string name="widget_undo">I-undo ang %1$s</string>
+    <string name="widget_today">%1$s ngayon</string>
+    <string name="widget_left">%1$s natitira</string>
+    <string name="widget_pick_wallet">Aling pitaka ang ipapakita ng widget na ito?</string>
+
+    <!-- Common actions -->
+    <string name="action_save">I-save</string>
+    <string name="action_cancel">Kanselahin</string>
+    <string name="action_close">Isara</string>
+    <string name="action_done">Tapos na</string>
+    <string name="action_ok">OK</string>
+    <string name="action_delete">Burahin</string>
+    <string name="action_undo">I-undo</string>
+    <string name="action_change">Palitan</string>
+    <string name="action_default">Default</string>
+    <string name="action_turn_off">I-off</string>
+    <string name="action_remove">Alisin</string>
+    <string name="value_off">Naka-off</string>
+    <string name="value_not_set">Hindi naka-set</string>
+    <string name="deleted">Nabura</string>
+    <string name="pro_feature">Feature ng Pro</string>
+    <string name="pro_unlock">I-unlock ang Pro</string>
+
+    <!-- Nav bar -->
+    <string name="nav_home">Home</string>
+    <string name="nav_insights">Insights</string>
+    <string name="nav_envelopes">Mga sobre</string>
+    <string name="nav_settings">Mga Setting</string>
+    <string name="nav_plus">Magdagdag ng halaga</string>
+
+    <!-- Home -->
+    <string name="home_switch_wallet">Lumipat ng pitaka</string>
+    <string name="home_today">Ngayon %1$s</string>
+    <string name="home_nothing_today">Wala pang nagastos ngayon</string>
+    <string name="home_left_today">%1$s natitira ngayon</string>
+    <string name="home_over_by">Lumampas ng %1$s</string>
+    <string name="home_custom">Custom</string>
+    <string name="home_insight_empty">Gumastos nang ilang beses para makita kung gaano katagal ang cash mo</string>
+    <string name="home_insight_rate">%1$s/araw</string>
+    <string name="home_insight_runway">%1$s/araw · tatagal hanggang mga %2$s</string>
+    <string name="feed_last_7_days">Huling 7 araw</string>
+    <string name="feed_cycles">Mga ATM cycle</string>
+    <string name="feed_empty">Wala pa. Mag-tap ng button sa itaas kapag may cash na lumabas sa pitaka mo.</string>
+    <string name="feed_older">Mas lumang entry · buong history sa Pro</string>
+    <string name="feed_collapse">I-collapse</string>
+    <string name="feed_expand">I-expand</string>
+    <string name="day_today">Ngayon</string>
+    <string name="day_yesterday">Kahapon</string>
+    <string name="cycle_before_first_atm">Bago ang unang ATM</string>
+    <string name="cycle_header_open">Kasalukuyang cycle · mula %1$s · %2$s · %3$s araw na</string>
+    <string name="cycle_header_closed">ATM cycle · %1$s – %2$s · tumagal ang %3$s nang %4$s araw</string>
+
+    <!-- What a transaction is -->
+    <string name="kind_spent">Nagastos</string>
+    <string name="kind_in">Cash in</string>
+    <string name="kind_atm">Withdraw sa ATM</string>
+    <string name="kind_unrecorded">Hindi naitalang gastos</string>
+    <string name="kind_found">Nahanap na cash</string>
+    <string name="kind_moved_out">Inilipat palabas</string>
+    <string name="kind_moved_in">Inilipat papasok</string>
+    <string name="kind_transfer_to">Papunta sa %1$s</string>
+    <string name="kind_transfer_from">Mula sa %1$s</string>
+    <string name="note_starting_cash">Panimulang cash</string>
+    <string name="added_spent">Nagastos ang %1$s</string>
+    <string name="added_atm">%1$s mula sa ATM</string>
+    <string name="added_adjust">Na-update ang balanse · %1$s</string>
+    <string name="added_in">Naidagdag ang %1$s</string>
+
+    <!-- Categories (docs/spec.md section 6) -->
+    <string name="category_food">Pagkain at inumin</string>
+    <string name="category_transit">Pamasahe</string>
+    <string name="category_parking">Parking</string>
+    <string name="category_groceries">Grocery</string>
+    <string name="category_errand">Mga lakad</string>
+    <string name="category_tip">Tip</string>
+    <string name="category_bills">Mga bayarin</string>
+    <string name="category_fun">Libangan</string>
+    <string name="category_other">Iba pa</string>
+    <string name="category_untagged">Walang kategorya</string>
+    <string name="tag_add">Magdagdag ng kategorya</string>
+
+    <!-- Keypad and change calculator -->
+    <string name="keypad_spend">− Gastos</string>
+    <string name="keypad_add">+ Magdagdag ng cash</string>
+    <string name="keypad_from_atm">Mula sa ATM</string>
+    <string name="keypad_from_atm_hint">Magsisimula ng bagong ATM cycle</string>
+    <string name="keypad_note">Tala (opsyonal)</string>
+    <string name="keypad_delete">Burahin ang digit</string>
+    <string name="change_button">May sukli?</string>
+    <string name="change_paid">Bayad</string>
+    <string name="change_change">Sukli</string>
+    <string name="change_paid_chip">Bayad %1$s</string>
+    <string name="change_equation">Bayad %1$s − Sukli %2$s = %3$s</string>
+    <string name="change_hint">I-type ang isinukli sa iyo</string>
+    <string name="change_too_big">Dapat mas maliit ang sukli kaysa sa ibinayad mo</string>
+
+    <!-- Count my cash -->
+    <string name="count_title">Magkano ang laman ng pitaka mo?</string>
+    <string name="count_title_short">Bilangin ang cash ko</string>
+    <string name="count_type_total">I-type ang kabuuan</string>
+    <string name="count_bills">Bilangin ang pera</string>
+    <string name="count_shows">%1$s ang nakalagay sa PocketCash.</string>
+    <string name="count_spot_on">Sakto! Tama ang balanse mo.</string>
+    <string name="count_less">Kulang ng %1$s sa nakalagay sa PocketCash. Ise-save ito bilang hindi naitalang gastos.</string>
+    <string name="count_more">Sobra ng %1$s sa nakalagay sa PocketCash. Ise-save ito bilang nahanap na cash.</string>
+    <string name="count_update">I-update ang balanse</string>
+    <string name="count_fewer">Bawasan</string>
+    <string name="count_more_one">Dagdagan</string>
+
+    <!-- Edit a transaction -->
+    <string name="edit_amount">Halaga</string>
+    <string name="edit_note">Tala</string>
+    <string name="edit_delete_both">Burahin ang magkabilang panig ng paglipat na ito</string>
+
+    <!-- Insights -->
+    <string name="insights_locked_title">Alamin kung gaano katagal ang cash mo</string>
+    <string name="insights_locked_text">Kasama sa Pro ang bilis ng gastos, kung hanggang kailan tatagal ang cash, mga ATM cycle at gastos kada kategorya.</string>
+    <string name="insights_burn_rate">Bilis ng gastos</string>
+    <string name="insights_not_enough">Wala pang sapat na gastos</string>
+    <string name="insights_per_day">%1$s/araw</string>
+    <string name="insights_runway">Sa ganitong bilis, tatagal ang %1$s mo nang %2$s araw, hanggang mga %3$s.</string>
+    <string name="insights_average">Average sa huling 14 na araw.</string>
+    <string name="insights_no_cycles">Magsisimula ang isang cycle sa una mong withdraw sa ATM.</string>
+    <string name="insights_categories">Huling 30 araw kada kategorya</string>
+    <string name="insights_no_spending">Walang gastos sa huling 30 araw.</string>
+    <string name="insights_cycle_open">Kasalukuyang cycle · mula %1$s</string>
+    <string name="insights_cycle_range">%1$s – %2$s</string>
+    <string name="insights_days_so_far">%1$s araw na</string>
+    <string name="insights_lasted">Tumagal nang %1$s araw</string>
+    <string name="insights_withdrawn_so_far">%1$s · %2$s araw na</string>
+    <string name="insights_withdrawn_lasted">Tumagal ang %1$s nang %2$s araw</string>
+    <string name="insights_spent">Nagastos</string>
+    <string name="insights_per_day_label">Kada araw</string>
+    <string name="insights_top_amount">Pinakamalaking bawas: %1$s × %2$d (%3$s)</string>
+    <string name="insights_top_tag">Karamihan sa %1$s</string>
+
+    <!-- Envelopes -->
+    <string name="envelopes_locked_title">Mga sobre at target sa ipon</string>
+    <string name="envelopes_locked_text">Sa Pro, bigyan ng target ang mga pitaka, panoorin silang mapuno, at hatiin ang cash sa mga sobre sa isang hakbang lang.</string>
+    <string name="envelopes_intro">Hatiin ang cash sa mga sobre gaya ng Upa, Pagkain at Ipon. Bigyan ng target ang isang pitaka para masubaybayan ang progreso nito.</string>
+    <string name="envelopes_new">Bagong sobre</string>
+    <string name="envelopes_of_target">%1$s sa %2$s</string>
+    <string name="envelopes_goal_reached">Naabot na ang target</string>
+    <string name="envelopes_no_targets">Wala pang target. Magbukas ng pitaka sa Mga Setting at mag-set ng target ng sobre o ipon.</string>
+    <string name="fill_title">Punuin ang mga sobre</string>
+    <string name="fill_from">Mula sa</string>
+    <string name="fill_source_has">%1$s sa pitakang ito</string>
+    <string name="fill_none">Walang ibang pitaka na gumagamit ng %1$s.</string>
+    <string name="fill_no_target">Walang target</string>
+    <string name="fill_short_by">Kulang ng %1$s</string>
+    <string name="fill_footer">Ililipat ang %1$s · Maiiwan ang %2$s sa %3$s</string>
+    <string name="fill_too_much">%1$s lang ang laman ng %2$s</string>
+    <string name="fill_save">Ilipat ang cash</string>
+    <string name="fill_done">Napuno ang mga sobre · %1$s ang nailipat</string>
+
+    <!-- Settings -->
+    <string name="settings_pro_thanks">Naka-unlock na. Salamat sa pagsuporta sa PocketCash!</string>
+    <string name="settings_pro_pitch">Mga sobre, insights, mas maraming pitaka, calculator ng sukli, lock ng app at iba pa. Isang bayad lang, sa iyo na habambuhay.</string>
+    <string name="settings_wallets">Mga pitaka</string>
+    <string name="settings_buttons">Mga button</string>
+    <string name="settings_budget">Budget kada araw</string>
+    <string name="settings_budget_message">Magkano ang balak mong gastusin kada araw mula sa %1$s.</string>
+    <string name="settings_threshold">Paalala kapag bumaba sa</string>
+    <string name="settings_threshold_title">Paalala sa paubos na cash</string>
+    <string name="settings_threshold_message">Paalalahanan ako kapag bumaba ang %1$s sa halagang ito. I-on ang Mga paalala sa paubos na cash sa ibaba.</string>
+    <string name="settings_quick_amount">Halaga</string>
+    <string name="settings_quick_hint">Ginagastos ng tile sa Quick Settings ang halagang ito sa isang tap. Idagdag ito mula sa screen ng pag-edit ng Quick Settings mo.</string>
+    <string name="settings_quick_title">Halaga ng mabilisang gastos</string>
+    <string name="settings_quick_message">Ang pinakamadalas mong gastos sa cash, gaya ng pamasahe araw-araw.</string>
+    <string name="settings_quick_wallet">Mabilisang gastos mula sa</string>
+    <string name="settings_options">Mga opsyon</string>
+    <string name="settings_low_cash">Mga paalala sa paubos na cash</string>
+    <string name="settings_low_cash_hint">Notification kapag bumaba ang isang pitaka sa halaga ng paalala nito</string>
+    <string name="settings_plus_atm">Ituring na withdraw sa ATM ang mga + button</string>
+    <string name="settings_plus_atm_hint">Bawat tap sa + ay magsisimula ng bagong ATM cycle</string>
+    <string name="settings_privacy">Privacy mode</string>
+    <string name="settings_privacy_hint">Itago ang mga halaga sa mga widget at Quick Settings</string>
+    <string name="settings_haptics">Pag-vibrate</string>
+    <string name="settings_haptics_hint">Maikling vibrate kapag nag-save ang isang button</string>
+    <string name="settings_data">Ang data mo</string>
+    <string name="settings_language">Wika</string>
+    <string name="settings_language_hint">Sinusunod ng PocketCash ang wika ng phone mo maliban kung pumili ka ng iba</string>
+    <string name="settings_about">PocketCash %1$s\nNananatili ang lahat sa phone na ito: walang account, walang internet access, walang tracking.</string>
+
+    <!-- App lock -->
+    <string name="lock_section">Lock ng app</string>
+    <string name="lock_with_fingerprint">I-lock gamit ang fingerprint</string>
+    <string name="lock_with_face">I-lock gamit ang face unlock</string>
+    <string name="lock_with_passcode">I-lock gamit ang passcode</string>
+    <string name="lock_hint">Hingin ang pag-unlock tuwing bubuksan ang PocketCash</string>
+    <string name="lock_unavailable">Mag-set up muna ng screen lock o fingerprint sa phone na ito</string>
+    <string name="lock_widgets_note">Ipinapakita pa rin ng mga widget ang balanse mo. I-on ang Privacy mode para itago ito.</string>
+    <string name="lock_title">Naka-lock ang PocketCash</string>
+    <string name="lock_unlock">I-unlock</string>
+    <string name="lock_prompt_title">I-unlock ang PocketCash</string>
+    <string name="lock_enable_prompt_title">I-on ang lock ng app</string>
+
+    <!-- Backup and restore (docs/spec.md section 11) -->
+    <string name="backup_export">Mag-backup sa file</string>
+    <string name="backup_export_hint">Lahat sa iisang file na mare-restore mo sa kahit anong iPhone o Android phone</string>
+    <string name="backup_restore">I-restore mula sa file</string>
+    <string name="backup_restore_hint">Papalitan ang lahat ng data sa phone na ito</string>
+    <string name="backup_saved">Na-save ang backup</string>
+    <string name="backup_save_failed">Hindi na-save ang backup. Subukan sa ibang lugar.</string>
+    <string name="backup_no_picker">Walang app sa phone na ito para pumili ng file</string>
+    <string name="restore_confirm_title">I-restore ang backup na ito?</string>
+    <string name="restore_summary">Mga pitaka: %1$s · Galaw ng cash: %2$s · Na-backup noong %3$s</string>
+    <string name="restore_warning">Papalitan ng backup ang lahat sa phone na ito. Hindi na ito maa-undo.</string>
+    <string name="restore_replace">Palitan ang lahat ng data sa phone na ito</string>
+    <string name="restore_done">Na-restore ang backup</string>
+    <string name="restore_failed_title">Hindi ma-restore ang file na ito</string>
+    <string name="restore_not_backup">Hindi PocketCash backup ang file na ito.</string>
+    <string name="restore_too_new">Galing ang backup na ito sa mas bagong bersyon ng PocketCash. I-update ang app, saka subukan ulit.</string>
+    <string name="restore_unreadable">Hindi mabuksan ang file na ito.</string>
+    <string name="restore_damaged">Sira ang backup na ito, kaya walang binago. %1$s</string>
+    <string name="restore_problem_malformed">May nawawalang data o mali ang format ng ilan dito.</string>
+    <string name="restore_problem_no_wallets">Wala itong pitaka.</string>
+    <string name="restore_problem_amount">May halagang hindi numero: %1$s</string>
+    <string name="restore_problem_date">May petsang hindi mabasa: %1$s</string>
+    <string name="restore_problem_id">May ID na hindi valid: %1$s</string>
+    <string name="restore_problem_kind">Hindi kilalang uri ng galaw ng cash: %1$s</string>
+    <string name="restore_problem_currency">Hindi kilalang currency code: %1$s</string>
+    <string name="restore_problem_duplicate">May ID na dalawang beses lumabas: %1$s</string>
+    <string name="csv_export">I-export ang CSV</string>
+    <string name="csv_export_hint">Lahat ng transaksyon, para sa spreadsheet</string>
+    <string name="csv_subject">Export ng PocketCash</string>
+
+    <!-- Wallets -->
+    <string name="wallet_main">Pangunahing Pitaka</string>
+    <string name="wallet_default_name">Pitaka</string>
+    <string name="wallet_new">Bagong pitaka</string>
+    <string name="wallet_edit">I-edit ang pitaka</string>
+    <string name="wallet_add">Magdagdag ng pitaka</string>
+    <string name="wallet_name">Pangalan</string>
+    <string name="wallet_name_hint">Barya, Upa, Biyahe sa Japan…</string>
+    <string name="wallet_symbol">Sariling simbolo (opsyonal)</string>
+    <string name="wallet_cash_now">Cash na laman nito ngayon</string>
+    <string name="wallet_target">Target</string>
+    <string name="wallet_target_hint">Target ng sobre o ipon</string>
+    <string name="wallet_delete">Burahin ang pitaka</string>
+    <string name="wallet_delete_title">Burahin ang %1$s?</string>
+    <string name="wallet_delete_text">Mabubura rin ang mga transaksyon nito. Hindi na ito maa-undo.</string>
+    <string name="currency_title">Currency</string>
+    <string name="currency_search">Maghanap</string>
+    <string name="transfer_title">Ilipat ang cash</string>
+    <string name="transfer_title_long">Ilipat ang cash sa pagitan ng mga pitaka</string>
+    <string name="transfer_from">Mula sa</string>
+    <string name="transfer_to">Papunta sa</string>
+    <string name="transfer_amount">Halaga (%1$s)</string>
+    <string name="transfer_arrives">Matatanggap bilang (%1$s)</string>
+    <string name="transfer_move">Ilipat</string>
+    <string name="presets_title">Mga button para sa %1$s</string>
+    <string name="presets_hint">Itugma sa totoong perang papel at pamasahe mo. Iwanang blangko ang isang kahon para alisin ang button na iyon.</string>
+    <string name="presets_cash_in">Cash in</string>
+    <string name="presets_spend">Gastos</string>
+    <string name="presets_reset">Ibalik sa default ng %1$s</string>
+
+    <!-- Paywall: Pro's features in the order of docs/spec.md section 5 -->
+    <string name="paywall_subtitle">Isang bayad. Sa iyo na habambuhay. Walang subscription, walang account.</string>
+    <string name="paywall_envelopes">Mga sobre at target sa ipon</string>
+    <string name="paywall_envelopes_text">Bigyan ng target ang kahit anong pitaka, subaybayan ang progreso, at hatiin ang cash sa mga sobre sa isang hakbang.</string>
+    <string name="paywall_insights">Insights</string>
+    <string name="paywall_insights_text">Gaano katagal ang bawat withdraw sa ATM, gastos mo kada araw, kailan mauubos ang cash, at saan ito napupunta.</string>
+    <string name="paywall_wallets">Mas maraming pitaka</string>
+    <string name="paywall_wallets_text">Pitaka ng barya, pang-emergency, pitaka sa biyahe na may sariling currency, paglipat sa pagitan nila, at isang pitaka kada widget.</string>
+    <string name="paywall_quick">Mabilisang gastos kahit saan</string>
+    <string name="paywall_quick_text">Ginagastos ng tile sa Quick Settings ang pamasahe mo araw-araw sa isang tap.</string>
+    <string name="paywall_change">Calculator ng sukli</string>
+    <string name="paywall_change_text">Nagbayad ng 500, sinuklian ng 130? I-save ang isang gastos na 370.</string>
+    <string name="paywall_budget">Budget kada araw</string>
+    <string name="paywall_budget_text">Tingnan ang natitira para ngayon sa app at sa widget.</string>
+    <string name="paywall_categories">Mga kategorya</string>
+    <string name="paywall_categories_text">Lagyan ng kategorya ang gastos pagkatapos, sa isang tap.</string>
+    <string name="paywall_buttons">Sarili mong mga button</string>
+    <string name="paywall_buttons_text">Itakda ang bawat button sa totoong pamasahe at perang papel mo.</string>
+    <string name="paywall_lock">Lock ng app at privacy mode</string>
+    <string name="paywall_lock_text">I-lock ang PocketCash gamit ang fingerprint o screen lock mo, at itago ang mga halaga sa mga widget.</string>
+    <string name="paywall_low_cash">Paalala sa paubos na cash</string>
+    <string name="paywall_low_cash_text">Notification kapag paubos na ang cash sa isang pitaka.</string>
+    <string name="paywall_history">Buong history at CSV export</string>
+    <string name="paywall_history_text">Lahat ng lampas sa 7 araw, handa para sa spreadsheet.</string>
+    <string name="paywall_buy">I-unlock sa halagang %1$s</string>
+    <string name="paywall_connecting">Kumokonekta sa Google Play…</string>
+    <string name="paywall_restore">I-restore ang binili</string>
+    <string name="paywall_not_now">Hindi muna</string>
+    <string name="paywall_thanks">Pro ka na. Salamat!</string>
+    <string name="billing_unavailable">Hindi available ang Google Play ngayon.</string>
+    <string name="billing_connecting">Kumokonekta pa sa Google Play. Subukan ulit mamaya-maya.</string>
+    <string name="billing_failed">Hindi natuloy ang pagbili (%1$d).</string>
+    <string name="billing_pending">Nakabinbin ang pagbili. Maa-unlock ang Pro kapag nakumpirma na ng Google Play.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Ang cash mo, nasa Home Screen mo</string>
+    <string name="onboarding_text">Sinusubaybayan ng mga banking app ang bawat tap ng card. Walang sumusubaybay sa cash. Pinapanatiling tama ng PocketCash ang balanse ng pitaka mo sa isang tap.</string>
+    <string name="onboarding_point_tap">I-tap ang %1$s sa widget kapag nagbayad ka. Tapos na.</string>
+    <string name="onboarding_point_undo">Napindot nang hindi sinasadya? Puwedeng i-undo sa loob ng ilang segundo.</string>
+    <string name="onboarding_point_count">Bilangin ang cash mo anumang oras para itama ang balanse.</string>
+    <string name="onboarding_start">Magsimula</string>
+    <string name="onboarding_restore">I-restore mula sa backup file</string>
+    <string name="onboarding_private">Walang account. Walang lumalabas sa phone mo.</string>
+    <string name="onboarding_cash_title">Magkano ang cash sa pitaka mo ngayon?</string>
+    <string name="onboarding_currency">Currency: %1$s</string>
+    <string name="onboarding_type_it">I-type ito</string>
+    <string name="onboarding_start_empty">Magsimula sa walang lamang pitaka</string>
+    <string name="onboarding_start_tracking">Simulan ang pag-track</string>
+    <string name="onboarding_widget_title">Ilagay ang pitaka mo sa Home Screen</string>
+    <string name="onboarding_widget_text">Pindutin nang matagal ang bakanteng puwesto sa Home Screen mo, i-tap ang Mga Widget, saka piliin ang PocketCash. Agad na nagse-save ang bawat button.</string>
+    <string name="onboarding_add_widget">Idagdag ang widget</string>
+</resources>

@@ -17,8 +17,11 @@ import Foundation
 let mode = ProcessInfo.processInfo.environment["POCKETCASH_SPM"] ?? "app"
 
 /// Everything under ios/ that isn't Swift source, so SwiftPM doesn't warn about unhandled files.
-/// (xtool can't compile asset catalogs; the icon is copied in through xtool.yml instead.)
-let notSources = ["PocketCash/Assets.xcassets", "PocketCashTests", "StoreKit", "xtool", "project.yml", "xtool.yml"]
+/// (xtool can't compile asset catalogs; the icon is copied in through xtool.yml instead. The translations in
+/// Shared/Localization are copied into the bundle as-is through xtool.yml's `resources`, so iOS finds them in the
+/// main bundle exactly like in the Xcode build.)
+let notSources = ["PocketCash/Assets.xcassets", "PocketCashTests", "StoreKit", "xtool", "project.yml", "xtool.yml",
+                  "Shared/Localization"]
 
 func makePackage() -> Package {
     switch mode {
@@ -38,7 +41,7 @@ func makePackage() -> Package {
             platforms: [.iOS(.v18)],
             products: [.library(name: "PocketCashWidget", targets: ["PocketCashWidget"])],
             targets: [
-                .target(name: "PocketCashWidget", path: ".", exclude: notSources,
+                .target(name: "PocketCashWidget", path: ".", exclude: notSources + ["PocketCash"],
                         sources: ["PocketCashWidget", "Shared"]),
             ],
             swiftLanguageModes: [.v5])
@@ -50,7 +53,7 @@ func makePackage() -> Package {
             products: [.library(name: "PocketCash", targets: ["PocketCash"])],
             targets: [
                 // xtool can't compile asset catalogs; the icon is copied in through xtool.yml instead.
-                .target(name: "PocketCash", path: ".", exclude: notSources,
+                .target(name: "PocketCash", path: ".", exclude: notSources + ["PocketCashWidget"],
                         sources: ["PocketCash", "Shared"]),
             ],
             swiftLanguageModes: [.v5])

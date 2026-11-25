@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- The languages Android 13+ offers under Settings → Apps → PocketCash → Language (docs/spec.md section 13).
+     Filipino's strings live in values-b+fil, which a phone set to Filipino ("fil") matches directly (Android also
+     treats the older "tl" as the same language). Indonesian lives in values-in, the code Android has always looked
+     up, so it's declared as "in" here too. -->
+<locale-config xmlns:android="http://schemas.android.com/apk/res/android">
+    <locale android:name="en" />
+    <locale android:name="fil" />
+    <locale android:name="es" />
+    <locale android:name="in" />
+    <locale android:name="pt-BR" />
+    <locale android:name="hi" />
+    <locale android:name="vi" />
+</locale-config>

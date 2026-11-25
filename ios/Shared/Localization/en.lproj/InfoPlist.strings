@@ -1,0 +1,2 @@
+/* Info.plist texts (English). */
+"NSFaceIDUsageDescription" = "PocketCash uses Face ID to unlock the app when App lock is on.";

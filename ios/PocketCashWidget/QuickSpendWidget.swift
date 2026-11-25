@@ -42,9 +42,19 @@ struct QuickSpendView: View {
     @Environment(\.widgetFamily) private var family
     let entry: QuickSpendEntry
 
+    /// "₱680 in Main Wallet", or just the name in privacy mode.
+    private func caption(_ wallet: WidgetSnapshot.WalletInfo) -> String {
+        if entry.snapshot?.privacyMode == true { return wallet.name }
+        let balance = wallet.format(wallet.balanceValue)
+        return String(localized: "\(balance) in \(wallet.name)")
+    }
+
     var body: some View {
         Group {
-            if let quick = entry.quick {
+            if entry.snapshot?.isPro == false {
+                // Quick spend is Pro (docs/spec.md section 5): no spending from here on a Free install.
+                ProLockedView(family: family)
+            } else if let quick = entry.quick {
                 Button(intent: QuickSpendIntent()) {
                     if family == .accessoryCircular {
                         ZStack {
@@ -69,8 +79,7 @@ struct QuickSpendView: View {
                                 .minimumScaleFactor(0.5)
                                 .lineLimit(1)
                                 .widgetAccentable()
-                            Text(entry.snapshot?.privacyMode == true ? quick.wallet.name
-                                 : "\(quick.wallet.format(quick.wallet.balanceValue)) in \(quick.wallet.name)")
+                            Text(verbatim: caption(quick.wallet))
                                 .font(.caption2)
                                 .foregroundStyle(.secondary)
                                 .lineLimit(1)
@@ -84,5 +93,6 @@ struct QuickSpendView: View {
             }
         }
         .containerBackground(for: .widget) { Color(uiColor: .systemBackground) }
+        .widgetURL(entry.snapshot?.isPro == false ? URL(string: "pocketcash://pro") : nil)
     }
 }

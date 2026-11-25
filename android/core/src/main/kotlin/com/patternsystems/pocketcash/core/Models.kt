@@ -49,6 +49,8 @@ data class Wallet(
     val spendPresets: List<Money>,
     val dailyBudget: Money? = null,
     val lowCashThreshold: Money? = null,
+    /** Envelope target or savings goal (Pro, docs/spec.md section 10); null = a plain wallet. Older files lack it. */
+    val target: Money? = null,
     val sortOrder: Int = 0,
     /** Epoch milliseconds. */
     val createdAt: Long = System.currentTimeMillis(),
@@ -96,6 +98,8 @@ data class Settings(
     val privacyMode: Boolean = false,
     val lowCashAlerts: Boolean = false,
     val haptics: Boolean = true,
+    /** Lock the app with biometrics or the phone's screen lock (docs/spec.md section 12). Never in a backup. */
+    val appLock: Boolean = false,
     val onboarded: Boolean = false,
     /** The wallet the app shows; null = the default wallet. */
     val selectedWalletId: String? = null,

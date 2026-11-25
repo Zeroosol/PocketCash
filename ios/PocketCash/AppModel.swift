@@ -5,25 +5,55 @@ enum KeypadMode: String, Hashable {
     case spend, add
 }
 
-/// Screens shown as sheets over Home.
+/// The four places in the bottom bar (docs/spec.md section 7).
+enum Destination: String, CaseIterable, Identifiable, Hashable {
+    case home, insights, envelopes, settings
+
+    var id: String { rawValue }
+
+    var title: LocalizedStringKey {
+        switch self {
+        case .home: return LocalizedStringKey("Home")
+        case .insights: return LocalizedStringKey("Insights")
+        case .envelopes: return LocalizedStringKey("Envelopes")
+        case .settings: return LocalizedStringKey("Settings")
+        }
+    }
+
+    var icon: String {
+        switch self {
+        case .home: return "house"
+        case .insights: return "chart.bar"
+        case .envelopes: return "envelope"
+        case .settings: return "gearshape"
+        }
+    }
+
+    /// Insights and Envelopes show a blurred preview without Pro.
+    var isPro: Bool { self == .insights || self == .envelopes }
+}
+
+/// Sheets shown over the current destination. The bottom bar hides while one is open.
 enum Route: Identifiable, Equatable {
     case keypad(KeypadMode)
     case count
-    case settings
     case paywall
-    case insights
     case edit(UUID)
     case transfer
+    case fill
+    case newWallet
+    case editButtons
 
     var id: String {
         switch self {
         case .keypad(let mode): return "keypad-\(mode.rawValue)"
         case .count: return "count"
-        case .settings: return "settings"
         case .paywall: return "paywall"
-        case .insights: return "insights"
         case .edit(let id): return "edit-\(id.uuidString)"
         case .transfer: return "transfer"
+        case .fill: return "fill"
+        case .newWallet: return "new-wallet"
+        case .editButtons: return "edit-buttons"
         }
     }
 }
@@ -34,13 +64,14 @@ struct UndoState: Equatable {
     let text: String
 }
 
-/// The app's state: the SwiftData context, the wallets, the selected wallet, sheets and the undo banner.
-/// Views never write to SwiftData themselves; everything goes through here and CashStore.
+/// The app's state: the SwiftData context, the wallets, the selected wallet and destination, sheets and the undo
+/// banner. Views never write to SwiftData themselves; everything goes through here and CashStore.
 @MainActor
 final class AppModel: ObservableObject {
     @Published private(set) var wallets: [Wallet] = []
     /// Bumped after every change, so views that read relationships recompute.
     @Published private(set) var revision = 0
+    @Published var destination: Destination = .home
     @Published var route: Route?
     @Published var undo: UndoState?
     @Published var successTick = 0
@@ -92,7 +123,7 @@ final class AppModel: ObservableObject {
             CashStore.refreshSnapshot(ctx)
             lastSnapshotSeen = WidgetSnapshot.load()?.updatedAt ?? .now
         } catch {
-            errorMessage = "PocketCash couldn't open its data: \(error.localizedDescription)"
+            errorMessage = String(localized: "PocketCash couldn't open its data: \(error.localizedDescription)")
         }
     }
 
@@ -137,7 +168,8 @@ final class AppModel: ObservableObject {
               AppSettings.lastOfferedActionID != action.transactionID.uuidString,
               let wallet = wallets.first(where: { $0.id == action.walletID }) else { return }
         AppSettings.lastOfferedActionID = action.transactionID.uuidString
-        showUndo(UndoState(transactionID: action.transactionID, text: undoText(action.value, wallet: wallet) + " from widget"))
+        let text = undoText(action.value, wallet: wallet)
+        showUndo(UndoState(transactionID: action.transactionID, text: String(localized: "Widget: \(text)")))
     }
 
     private func consumePendingRoute() {
@@ -146,6 +178,7 @@ final class AppModel: ObservableObject {
         switch pending {
         case "keypad": route = .keypad(.spend)
         case "count": route = .count
+        case "pro": route = .paywall
         default: break
         }
     }
@@ -158,7 +191,9 @@ final class AppModel: ObservableObject {
         route = .paywall
     }
 
+    /// Pro was bought, restored, refunded, or the debug switch moved.
     func proChanged() {
+        if !isPro { AppSettings.proWasLost() }
         guard let context else { return }
         CashStore.refreshSnapshot(context)
         reload()
@@ -168,6 +203,11 @@ final class AppModel: ObservableObject {
         guard let context else { return }
         CashStore.refreshSnapshot(context)
         reload()
+    }
+
+    /// Opens a Pro feature, or the paywall without Pro.
+    func requirePro(_ action: () -> Void) {
+        if isPro { action() } else { route = .paywall }
     }
 
     // MARK: Writing
@@ -185,7 +225,12 @@ final class AppModel: ObservableObject {
     }
 
     private func undoText(_ amount: Decimal, wallet: Wallet) -> String {
-        amount < 0 ? "\(wallet.format(amount)) spent" : "\(wallet.format(amount, signed: true)) added"
+        if amount < 0 {
+            let text = wallet.format(amount)
+            return String(localized: "\(text) spent")
+        }
+        let text = wallet.format(amount, signed: true)
+        return String(localized: "\(text) added")
     }
 
     private func showUndo(_ state: UndoState) {
@@ -249,12 +294,20 @@ final class AppModel: ObservableObject {
         success()
     }
 
+    /// Fill envelopes (Pro): every non-zero amount becomes one transfer pair, all in one store write.
+    func fill(from source: Wallet, moves: [(wallet: Wallet, amount: Decimal)]) {
+        guard isPro else { route = .paywall; return }
+        write { ctx in try CashStore.fill(from: source, moves: moves, in: ctx) }
+        success()
+    }
+
     @discardableResult
-    func createWallet(name: String, currencyCode: String, symbol: String?, startingCash: Decimal) -> Wallet? {
+    func createWallet(name: String, currencyCode: String, symbol: String?, startingCash: Decimal,
+                      target: Decimal? = nil) -> Wallet? {
         var created: Wallet?
         write { ctx in
             created = try CashStore.createWallet(name: name, currencyCode: currencyCode, symbol: symbol,
-                                                 startingCash: startingCash, in: ctx)
+                                                 startingCash: startingCash, target: target, in: ctx)
         }
         if let created, wallets.count > 1 { selectedWalletID = created.id }
         return created
@@ -281,6 +334,49 @@ final class AppModel: ObservableObject {
     func transaction(_ id: UUID) -> CashTransaction? {
         guard let context else { return nil }
         return CashStore.transaction(id, context)
+    }
+
+    // MARK: Backup file (docs/spec.md section 11)
+
+    /// Everything on this phone as a backup file.
+    func makeBackup(now: Date = .now) -> Backup {
+        let settings = Backup.Settings(
+            plusButtonsAreATM: AppSettings.plusButtonsAreATM, privacyMode: AppSettings.privacyMode,
+            lowCashAlerts: AppSettings.lowCashAlerts, quickSpendAmount: AppSettings.quickSpendAmount,
+            quickSpendWalletID: AppSettings.quickSpendWalletID)
+        let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0"
+        return Backup(exportedAt: now, platform: "ios", appVersion: version, settings: settings,
+                      wallets: wallets.map(\.backup))
+    }
+
+    /// Replaces every wallet, transaction and backed-up setting with the file's. Returns false when the write failed
+    /// (nothing changed then).
+    @discardableResult
+    func restore(_ backup: Backup) -> Bool {
+        guard let context else { return false }
+        writing = true
+        defer { writing = false }
+        do {
+            try CashStore.replaceAll(with: backup, in: context)
+        } catch {
+            errorMessage = String(localized: "The backup couldn't be restored: \(error.localizedDescription)")
+            context.rollback()
+            reload()
+            return false
+        }
+        undoTask?.cancel()
+        undo = nil
+        selectedWalletID = nil
+        destination = .home
+        AppSettings.onboarded = true
+        reload()
+        if AppSettings.lowCashAlerts {
+            Task {
+                if !(await LowCash.requestPermission()) { AppSettings.lowCashAlerts = false }
+            }
+        }
+        success()
+        return true
     }
 
     // MARK: Export and links
@@ -313,6 +409,8 @@ final class AppModel: ObservableObject {
         case "count": route = .count
         case "pro": route = .paywall
         case "wallet":
+            route = nil
+            destination = .home
             if let id = value("id").flatMap(UUID.init(uuidString:)), isPro { selectedWalletID = id }
         default: break
         }

@@ -8,6 +8,16 @@ product: PocketCash
 infoPath: xtool/PocketCash-Info.plist
 entitlementsPath: xtool/PocketCash.entitlements
 iconPath: PocketCash/Assets.xcassets/AppIcon.appiconset/icon-1024.png
+resources:
+  # Translations (docs/spec.md section 13), copied into the app bundle as-is so iOS finds <lang>.lproj in the main
+  # bundle, like the Xcode build. Package.swift excludes these folders from the SwiftPM target.
+  - Shared/Localization/en.lproj
+  - Shared/Localization/fil.lproj
+  - Shared/Localization/es.lproj
+  - Shared/Localization/id.lproj
+  - Shared/Localization/pt.lproj
+  - Shared/Localization/hi.lproj
+  - Shared/Localization/vi.lproj
 # The widget extension is switched off for xtool builds: xtool currently links extensions with -e _NSExtensionMain,
 # which dead-strips their code (https://github.com/xtool-org/xtool/issues/313). The widgets still build with Xcode
 # (project.yml / the TestFlight workflow). The app itself works fully without them.

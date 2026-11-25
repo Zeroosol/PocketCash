@@ -13,6 +13,7 @@ import androidx.datastore.preferences.core.Preferences
 import androidx.datastore.preferences.core.stringPreferencesKey
 import androidx.glance.GlanceId
 import androidx.glance.GlanceModifier
+import androidx.glance.LocalContext
 import androidx.glance.LocalSize
 import androidx.glance.action.ActionParameters
 import androidx.glance.action.actionParametersOf
@@ -43,13 +44,16 @@ import androidx.glance.text.Text
 import androidx.glance.text.TextAlign
 import androidx.glance.text.TextStyle
 import com.patternsystems.pocketcash.MainActivity
+import com.patternsystems.pocketcash.R
 import com.patternsystems.pocketcash.core.Analytics
 import com.patternsystems.pocketcash.core.AppData
 import com.patternsystems.pocketcash.core.MINUS
 import com.patternsystems.pocketcash.core.MoneyFormat
 import com.patternsystems.pocketcash.core.Wallet
 import com.patternsystems.pocketcash.data.CashStore
+import com.patternsystems.pocketcash.data.budgetOf
 import com.patternsystems.pocketcash.data.isPro
+import com.patternsystems.pocketcash.data.privacyOn
 import java.math.BigDecimal
 import java.time.Instant
 import java.time.ZoneId
@@ -96,16 +100,15 @@ internal val SignKey = ActionParameters.Key<String>("sign")
 internal val TransactionKey = ActionParameters.Key<String>("transactionId")
 
 private object W {
-    val background = ColorProvider(day = Color(0xFFFFFFFF), night = Color(0xFF161B19))
-    val text = ColorProvider(day = Color(0xFF111827), night = Color(0xFFF3F4F6))
-    val secondary = ColorProvider(day = Color(0xFF6B7280), night = Color(0xFF9CA3AF))
-    val accent = ColorProvider(day = Color(0xFF0E9F6E), night = Color(0xFF34D399))
+    val background = ColorProvider(day = Color(0xFFFAFAF9), night = Color(0xFF131414))
+    val text = ColorProvider(day = Color(0xFF151617), night = Color(0xFFF1F1F1))
+    val secondary = ColorProvider(day = Color(0xFF6B6F76), night = Color(0xFF9A9EA4))
     val over = ColorProvider(day = Color(0xFFDC2626), night = Color(0xFFF87171))
-    val cashIn = ColorProvider(day = Color(0xFFD1FAE5), night = Color(0xFF064E3B))
+    val cashIn = ColorProvider(day = Color(0xFFE3F3EC), night = Color(0xFF10291F))
     val onCashIn = ColorProvider(day = Color(0xFF065F46), night = Color(0xFFA7F3D0))
-    val spend = ColorProvider(day = Color(0xFFF1F2F4), night = Color(0xFF262B29))
-    val chip = ColorProvider(day = Color(0xFF111827), night = Color(0xFFF3F4F6))
-    val onChip = ColorProvider(day = Color(0xFFFFFFFF), night = Color(0xFF111827))
+    val spend = ColorProvider(day = Color(0xFFF0F0EF), night = Color(0xFF212222))
+    val chip = ColorProvider(day = Color(0xFF151617), night = Color(0xFFF1F1F1))
+    val onChip = ColorProvider(day = Color(0xFFFFFFFF), night = Color(0xFF151617))
 }
 
 private const val HIDDEN = "••••"
@@ -121,7 +124,7 @@ private fun WidgetBody(data: AppData, walletId: String?) {
     ) {
         if (wallet == null) {
             Box(GlanceModifier.fillMaxSize().clickable(actionStartActivity<MainActivity>()), contentAlignment = Alignment.Center) {
-                Text("Open PocketCash to set up your wallet", style = TextStyle(color = W.secondary, fontSize = 13.sp, textAlign = TextAlign.Center))
+                Text(LocalContext.current.getString(R.string.widget_setup), style = TextStyle(color = W.secondary, fontSize = 13.sp, textAlign = TextAlign.Center))
             }
             return@Column
         }
@@ -130,7 +133,8 @@ private fun WidgetBody(data: AppData, walletId: String?) {
         val balance = Analytics.balance(txs)
         val today = Analytics.todaySpent(txs, now, ZoneId.systemDefault())
         val (add, spend) = data.presetsOf(wallet, pro)
-        val privacy = data.settings.privacyMode
+        val privacy = data.privacyOn
+        val budget = data.budgetOf(wallet)
         val undo = data.widgetUndo?.takeIf { it.walletId == wallet.id && now.toEpochMilli() - it.at < 120_000 }
 
         // Top row: the Undo chip right after a tap, else the wallet name and today's spending.
@@ -141,7 +145,7 @@ private fun WidgetBody(data: AppData, walletId: String?) {
                         .clickable(actionRunCallback<UndoAction>(actionParametersOf(TransactionKey to undo.transactionId))),
                 ) {
                     val amount = if (privacy) HIDDEN else MoneyFormat.signed(undo.amount, wallet.currencyCode, wallet.symbol)
-                    Text("Undo $amount", style = TextStyle(color = W.onChip, fontSize = 12.sp, fontWeight = FontWeight.Medium), maxLines = 1)
+                    Text(LocalContext.current.getString(R.string.widget_undo, amount), style = TextStyle(color = W.onChip, fontSize = 12.sp, fontWeight = FontWeight.Medium), maxLines = 1)
                 }
             } else {
                 Text(
@@ -150,7 +154,7 @@ private fun WidgetBody(data: AppData, walletId: String?) {
                     style = TextStyle(color = W.secondary, fontSize = 12.sp, fontWeight = FontWeight.Medium),
                     maxLines = 1,
                 )
-                if (wide) TodayLabel(wallet, today, privacy)
+                if (wide) TodayLabel(wallet, today, budget, privacy)
             }
         }
 
@@ -161,7 +165,7 @@ private fun WidgetBody(data: AppData, walletId: String?) {
             style = TextStyle(
                 color = if (balance.signum() < 0) W.over else W.text,
                 fontSize = balanceSize(wide, balance, wallet),
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.Medium,
             ),
             maxLines = 1,
         )
@@ -183,17 +187,19 @@ private fun WidgetBody(data: AppData, walletId: String?) {
 }
 
 @Composable
-private fun TodayLabel(wallet: Wallet, today: BigDecimal, privacy: Boolean) {
-    val budget = wallet.dailyBudget
+private fun TodayLabel(wallet: Wallet, today: BigDecimal, budget: BigDecimal?, privacy: Boolean) {
+    val context = LocalContext.current
+    fun money(v: BigDecimal) = MoneyFormat.full(v, wallet.currencyCode, wallet.symbol)
+    // Free shows today's spending; a daily budget (Pro) shows what's left instead (docs/spec.md section 8).
     val (text, color) = when {
         privacy -> HIDDEN to W.secondary
-        budget != null && budget.signum() > 0 -> {
+        budget != null -> {
             val left = budget - today
-            if (left.signum() >= 0) "${MoneyFormat.full(left, wallet.currencyCode, wallet.symbol)} left" to W.accent
-            else "Over by ${MoneyFormat.full(left.negate(), wallet.currencyCode, wallet.symbol)}" to W.over
+            if (left.signum() >= 0) context.getString(R.string.widget_left, money(left)) to W.secondary
+            else context.getString(R.string.home_over_by, money(left.negate())) to W.over
         }
-        today.signum() == 0 -> "Nothing spent today" to W.secondary
-        else -> "$MINUS${MoneyFormat.full(today, wallet.currencyCode, wallet.symbol)} today" to W.secondary
+        today.signum() == 0 -> context.getString(R.string.home_nothing_today) to W.secondary
+        else -> context.getString(R.string.widget_today, "$MINUS${money(today)}") to W.secondary
     }
     Text(text, style = TextStyle(color = color, fontSize = 12.sp, fontWeight = FontWeight.Medium, textAlign = TextAlign.End), maxLines = 1)
 }
@@ -213,7 +219,7 @@ private fun androidx.glance.layout.RowScope.CashButton(wallet: Wallet, amount: B
     ) {
         Text(
             MoneyFormat.compact(amount, if (positive) '+' else MINUS),
-            style = TextStyle(color = if (positive) W.onCashIn else W.text, fontSize = 15.sp, fontWeight = FontWeight.Bold),
+            style = TextStyle(color = if (positive) W.onCashIn else W.text, fontSize = 15.sp, fontWeight = FontWeight.Medium),
             maxLines = 1,
         )
     }

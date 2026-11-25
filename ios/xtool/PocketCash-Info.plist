@@ -11,6 +11,18 @@
 	<string>1</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleLocalizations</key>
+	<array>
+		<string>en</string>
+		<string>fil</string>
+		<string>es</string>
+		<string>id</string>
+		<string>pt</string>
+		<string>hi</string>
+		<string>vi</string>
+	</array>
+	<key>NSFaceIDUsageDescription</key>
+	<string>PocketCash uses Face ID to unlock the app when App lock is on.</string>
 	<key>UILaunchScreen</key>
 	<dict/>
 	<key>UISupportedInterfaceOrientations</key>

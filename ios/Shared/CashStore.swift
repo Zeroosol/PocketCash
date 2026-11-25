@@ -116,27 +116,114 @@ enum CashStore {
     /// Moves cash between two wallets of the same currency (Pro).
     static func transfer(_ amount: Decimal, from source: Wallet, to target: Wallet, in ctx: ModelContext) throws {
         guard amount > 0, source.id != target.id else { return }
-        let pair = UUID(), now = Date()
-        let out = CashTransaction(amount: -amount, kindRaw: CashKind.transfer.rawValue, timestamp: now,
-                                  note: "To \(target.name)", transferID: pair)
-        let into = CashTransaction(amount: amount, kindRaw: CashKind.transfer.rawValue, timestamp: now,
-                                   note: "From \(source.name)", transferID: pair)
-        ctx.insert(out)
-        ctx.insert(into)
-        out.wallet = source
-        into.wallet = target
+        insertTransfer(amount, from: source, to: target, at: Date(), in: ctx)
         try ctx.save()
         didChange(ctx, lastAction: .keep)
     }
 
+    /// "Fill envelopes" (Pro, docs/spec.md section 10): one transfer pair per envelope with a non-zero amount, all
+    /// with the same timestamp, in one save.
+    static func fill(from source: Wallet, moves: [(wallet: Wallet, amount: Decimal)], in ctx: ModelContext) throws {
+        let now = Date()
+        var inserted = false
+        for move in moves where move.amount > 0 && move.wallet.id != source.id {
+            insertTransfer(move.amount, from: source, to: move.wallet, at: now, in: ctx)
+            inserted = true
+        }
+        guard inserted else { return }
+        try ctx.save()
+        didChange(ctx, lastAction: .keep)
+    }
+
+    /// The two halves of a transfer, linked by a shared transferID. The caller saves.
+    private static func insertTransfer(_ amount: Decimal, from source: Wallet, to target: Wallet, at date: Date,
+                                       in ctx: ModelContext) {
+        let pair = UUID()
+        let out = CashTransaction(amount: -amount, kindRaw: CashKind.transfer.rawValue, timestamp: date,
+                                  note: String(localized: "To \(target.name)"), transferID: pair)
+        let into = CashTransaction(amount: amount, kindRaw: CashKind.transfer.rawValue, timestamp: date,
+                                   note: String(localized: "From \(source.name)"), transferID: pair)
+        ctx.insert(out)
+        ctx.insert(into)
+        out.wallet = source
+        into.wallet = target
+    }
+
+    /// Restore from a backup file (docs/spec.md section 11): every wallet and transaction becomes the file's, in one
+    /// save, then the backed-up settings apply and the widgets refresh. Rows whose IDs already exist (restoring on the
+    /// same phone) are updated in place instead of deleted and re-inserted, so the unique IDs never collide.
+    static func replaceAll(with backup: Backup, in ctx: ModelContext) throws {
+        let oldWallets = wallets(ctx)
+        let oldTransactions = (try? ctx.fetch(FetchDescriptor<CashTransaction>())) ?? []
+        let walletByID = Dictionary(oldWallets.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        let transactionByID = Dictionary(oldTransactions.map { ($0.id, $0) }, uniquingKeysWith: { first, _ in first })
+        var keptWallets = Set<UUID>(), keptTransactions = Set<UUID>()
+
+        for item in backup.wallets {
+            let wallet: Wallet
+            if let existing = walletByID[item.id] {
+                wallet = existing
+            } else {
+                wallet = Wallet(id: item.id, name: item.name, currencyCode: item.currencyCode, addPresets: item.addPresets,
+                                spendPresets: item.spendPresets, sortOrder: item.sortOrder, createdAt: item.createdAt)
+                ctx.insert(wallet)
+            }
+            wallet.name = item.name
+            wallet.currencyCode = item.currencyCode
+            wallet.symbol = item.symbol
+            wallet.addPresets = item.addPresets
+            wallet.spendPresets = item.spendPresets
+            wallet.dailyBudget = item.dailyBudget
+            wallet.lowCashThreshold = item.lowCashThreshold
+            wallet.target = item.target
+            wallet.sortOrder = item.sortOrder
+            wallet.createdAt = item.createdAt
+            keptWallets.insert(item.id)
+
+            for t in item.transactions {
+                let tx: CashTransaction
+                if let existing = transactionByID[t.id] {
+                    tx = existing
+                } else {
+                    tx = CashTransaction(id: t.id, amount: t.amount, kindRaw: t.kind.rawValue, timestamp: t.timestamp)
+                    ctx.insert(tx)
+                }
+                tx.amount = t.amount
+                tx.kind = t.kind
+                tx.timestamp = t.timestamp
+                tx.tag = t.tag
+                tx.note = t.note
+                tx.transferID = t.transferID
+                tx.wallet = wallet
+                keptTransactions.insert(t.id)
+            }
+        }
+        // Transactions first: a kept transaction may have moved out of a wallet that's about to go (cascade).
+        for tx in oldTransactions where !keptTransactions.contains(tx.id) { ctx.delete(tx) }
+        for wallet in oldWallets where !keptWallets.contains(wallet.id) { ctx.delete(wallet) }
+        try ctx.save()
+
+        let s = backup.settings
+        AppSettings.plusButtonsAreATM = s.plusButtonsAreATM
+        AppSettings.privacyMode = s.privacyMode
+        AppSettings.lowCashAlerts = s.lowCashAlerts
+        AppSettings.quickSpendAmount = s.quickSpendAmount
+        AppSettings.quickSpendWalletID = s.quickSpendWalletID
+        AppSettings.selectedWalletID = nil
+        AppSettings.lastOfferedActionID = nil
+        didChange(ctx, lastAction: .clear)
+    }
+
     @discardableResult
     static func createWallet(name: String, currencyCode: String, symbol: String?, startingCash: Decimal,
-                             in ctx: ModelContext) throws -> Wallet {
+                             target: Decimal? = nil, in ctx: ModelContext) throws -> Wallet {
         let order = (wallets(ctx).map(\.sortOrder).max() ?? -1) + 1
         let wallet = Wallet.make(name: name, currencyCode: currencyCode, symbol: symbol, sortOrder: order)
+        wallet.target = target
         ctx.insert(wallet)
         if startingCash != 0 {
-            let tx = CashTransaction(amount: startingCash, kindRaw: CashKind.adjust.rawValue, note: "Starting cash")
+            let tx = CashTransaction(amount: startingCash, kindRaw: CashKind.adjust.rawValue,
+                                     note: String(localized: "Starting cash"))
             ctx.insert(tx)
             tx.wallet = wallet
         }
@@ -183,7 +270,7 @@ enum CashStore {
                 id: wallet.id, name: wallet.name, currencyCode: wallet.currencyCode, symbol: wallet.symbol,
                 balance: Money.string(Ledger.balance(items)),
                 todaySpent: Money.string(Ledger.todaySpent(items, now: now, calendar: calendar)),
-                dayStart: dayStart, dailyBudget: wallet.dailyBudget.map(Money.string),
+                dayStart: dayStart, dailyBudget: wallet.activeBudget(isPro: isPro).map(Money.string),
                 addPresets: wallet.addButtons(isPro: isPro).map(Money.string),
                 spendPresets: wallet.spendButtons(isPro: isPro).map(Money.string))
         }
@@ -193,7 +280,7 @@ enum CashStore {
         case .set(let action): lastAction = action
         case .clear: lastAction = nil
         }
-        return WidgetSnapshot(updatedAt: now, isPro: isPro, privacyMode: AppSettings.privacyMode,
+        return WidgetSnapshot(updatedAt: now, isPro: isPro, privacyMode: AppSettings.privacyModeActive,
                               plusButtonsAreATM: AppSettings.plusButtonsAreATM, defaultWalletID: list.first?.id,
                               quickSpend: quickSpend(list, isPro: isPro), lastAction: lastAction, wallets: infos)
     }
@@ -209,14 +296,14 @@ enum CashStore {
     }
 }
 
-/// The low-cash reminder (docs/spec.md section 5, Free 9).
+/// The low-cash reminder (Pro, docs/spec.md section 5).
 enum LowCash {
     static func notifyIfCrossed(wallet: Wallet, before: Decimal, after: Decimal) {
-        guard AppSettings.lowCashAlerts, let threshold = wallet.lowCashThreshold, threshold > 0,
+        guard AppSettings.lowCashAlertsActive, let threshold = wallet.lowCashThreshold, threshold > 0,
               before >= threshold, after < threshold else { return }
         let content = UNMutableNotificationContent()
-        content.title = "Running low on cash"
-        content.body = "Only \(wallet.format(after)) left in \(wallet.name)."
+        content.title = String(localized: "Running low on cash")
+        content.body = String(localized: "Only \(wallet.format(after)) left in \(wallet.name).")
         content.sound = .default
         let request = UNNotificationRequest(identifier: "lowcash-\(wallet.id.uuidString)", content: content, trigger: nil)
         UNUserNotificationCenter.current().add(request)

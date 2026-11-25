@@ -10,22 +10,28 @@ The full product and behavior spec, shared by both apps, is [docs/spec.md](docs/
 
 ## What's in it
 
-**Free**
+A minimal design with a dynamic bottom bar (Home, Insights, Envelopes, Settings, plus a + button for the keypad)
+that shrinks while you scroll. The whole app, widgets included, is in English, Filipino, Spanish, Indonesian,
+Portuguese, Hindi and Vietnamese.
+
+**Free**: the basics
+- One wallet in your currency
 - Home Screen widgets (small and medium) with live balance and 1-tap buttons, auto-scaled to your currency
   (`+1k −100 −50 −20` for pesos, `+100 −20 −10 −5` for dollars; 30 currencies tuned in `spec/presets.json`)
-- Quick spend for your most common expense: Control Center control and Lock Screen button (iPhone), Quick Settings
-  tile (Android), plus Siri / Shortcuts and launcher shortcuts
 - Undo after every tap (in the app for 5 seconds, and on the widget itself), with haptics
-- 7-day cash feed, custom amount keypad
+- 7-day cash feed, custom amount keypad, Siri / Shortcuts and launcher shortcuts
 - **Count my cash**: count bills and coins per denomination and save the difference as "unrecorded spending"
-- **Daily budget** ("₱230 left today" on the app and widget), **low-cash reminder**, **privacy mode** for widgets
+- **Backup file** that restores on any iPhone or Android phone (always free)
 
-**Pro** ($3.99 once, `pocketcash.pro.lifetime`)
-- Custom denomination buttons, multiple wallets (coin pouch, emergency stash, travel wallet with its own currency and
-  symbol), transfers between wallets, wallet picker per widget
-- ATM cycle analytics: "₱1,000 lasted 4.5 days", burn rate, runway forecast ("cash lasts until about Thu"), top
-  denomination and category per cycle
-- 1-tap categories after the fact, spending by category, full history and CSV export
+**Pro** ($3.99 once, `pocketcash.pro.lifetime`): the best features
+- **Envelopes and savings goals**: give wallets a target, see progress, and fill them from one wallet in one step
+- **Insights**: ATM cycles ("₱1,000 lasted 4.5 days"), burn rate, runway forecast, top denomination and category
+- **More wallets** (coin pouch, emergency stash, a travel wallet with its own currency), transfers, widget wallet picker
+- **Quick spend everywhere**: Lock Screen widgets and Control Center (iPhone), Quick Settings tile (Android)
+- **Change calculator**: "paid ₱500, got ₱130 back" saves one ₱370 spend
+- **Daily budget** ("₱230 left today" on the app and widget), **categories** after the fact, **custom buttons**
+- **App lock** (Face ID / Touch ID / fingerprint / passcode), **privacy mode**, **low-cash reminder**
+- Full history and CSV export
 
 ## Layout
 
@@ -34,11 +40,13 @@ The full product and behavior spec, shared by both apps, is [docs/spec.md](docs/
 | `docs/spec.md` | The contract both apps implement: data model, money rules, ATM cycles, Free/Pro, screens, widgets |
 | `spec/presets.json` | Default buttons and countable denominations per currency |
 | `spec/vectors/cycles.json` | Test vectors for balance, today spent, ATM cycles, burn rate and runway, checked by both apps' tests |
+| `spec/backup/example-v1.json` | A sample backup file; both apps' tests decode it, so an iPhone backup restores on Android and back |
 | `ios/` | SwiftUI + SwiftData app, WidgetKit extension (Home Screen, Lock Screen, Control Center), App Intents, StoreKit 2 |
 | `ios/Shared/Core` | Pure-Foundation money rules (`Ledger`, `Money`, CSV), testable on Linux |
 | `ios/Shared` | Code compiled into both the app and the widget: SwiftData models, `CashStore` (the one write path), widget snapshot, intents |
 | `android/` | Kotlin + Jetpack Compose app: `core` (plain Kotlin rules and tests) and `app` (UI, Glance widgets, Quick Settings tile, Play Billing) |
-| `tools/` | Node scripts, no dependencies: `build_presets.js` (presets → Swift + Kotlin), `make_icon.js` (app icons), `xtool_prepare.js` / `expand_models.js` (SwiftData expansion for xtool), `png.js` |
+| `site/` | Preview site: a landing page with a working, clickable demo of the app, its widgets and quick-spend buttons. Static files, no build: open `site/index.html`, or serve the folder. `ledger.js` follows the same money rules and matches `spec/vectors` |
+| `tools/` | Node scripts, no dependencies: `build_presets.js` (presets → Swift, Kotlin and `site/presets.js`), `make_icon.js` (app icons), `xtool_prepare.js` / `expand_models.js` (SwiftData expansion for xtool), `png.js` |
 | `.github/workflows` | `ios.yml` (test + TestFlight on GitHub's Macs) and `android.yml` (test, lint, APK, optional Play upload) |
 | `art/` | Store icons rendered by `tools/make_icon.js` |
 

@@ -1,6 +1,7 @@
 // Generates the default 1-tap buttons and countable denominations for both apps from spec/presets.json.
 //   -> ios/Shared/Core/DefaultPresets.swift
 //   -> android/core/src/main/kotlin/com/patternsystems/pocketcash/core/DefaultPresets.kt
+//   -> site/presets.js (the preview site's demo)
 // Usage: node tools/build_presets.js           (write the files)
 //        node tools/build_presets.js --check   (CI: fail when a generated file is out of date)
 // No dependencies.
@@ -104,9 +105,24 @@ function kotlin() {
   ].join('\n');
 }
 
+function site() {
+  const entry = p => JSON.stringify({ add: p.add, spend: p.spend, denominations: p.denominations });
+  return [
+    `// ${header}`,
+    'window.POCKETCASH_PRESETS = {',
+    `  default: ${entry(spec.default)},`,
+    '  currencies: {',
+    ...codes.map(c => `    ${c}: ${entry(spec.currencies[c])},`),
+    '  },',
+    '};',
+    '',
+  ].join('\n');
+}
+
 const outputs = [
   ['ios/Shared/Core/DefaultPresets.swift', swift()],
   ['android/core/src/main/kotlin/com/patternsystems/pocketcash/core/DefaultPresets.kt', kotlin()],
+  ['site/presets.js', site()],
 ];
 
 let stale = 0;

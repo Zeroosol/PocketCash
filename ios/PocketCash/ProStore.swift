@@ -64,12 +64,12 @@ final class ProStore: ObservableObject {
                 if case .verified(let transaction) = verification {
                     await transaction.finish()
                     setPurchased(true)
-                    message = "Pro unlocked. Thank you!"
+                    message = String(localized: "Pro unlocked. Thank you!")
                 } else {
-                    message = "The App Store couldn't verify that purchase."
+                    message = String(localized: "The App Store couldn't verify that purchase.")
                 }
             case .pending:
-                message = "Your purchase is waiting for approval."
+                message = String(localized: "Your purchase is waiting for approval.")
             case .userCancelled:
                 break
             @unknown default:
@@ -87,7 +87,7 @@ final class ProStore: ObservableObject {
             message = error.localizedDescription
         }
         await updateEntitlements()
-        message = purchased ? "Pro restored." : "No PocketCash Pro purchase found for this Apple Account."
+        message = purchased ? String(localized: "Pro restored.") : String(localized: "No PocketCash Pro purchase found for this Apple Account.")
     }
 
     private func handle(_ result: VerificationResult<StoreKit.Transaction>) async {

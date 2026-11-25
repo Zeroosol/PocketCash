@@ -20,13 +20,17 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.rounded.AccountBalanceWallet
-import androidx.compose.material.icons.rounded.Category
-import androidx.compose.material.icons.rounded.Dialpad
-import androidx.compose.material.icons.rounded.History
-import androidx.compose.material.icons.rounded.Insights
-import androidx.compose.material.icons.rounded.Widgets
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.outlined.AccountBalanceWallet
+import androidx.compose.material.icons.outlined.Calculate
+import androidx.compose.material.icons.outlined.Category
+import androidx.compose.material.icons.outlined.Dialpad
+import androidx.compose.material.icons.outlined.Email
+import androidx.compose.material.icons.outlined.History
+import androidx.compose.material.icons.outlined.Insights
+import androidx.compose.material.icons.outlined.Lock
+import androidx.compose.material.icons.outlined.NotificationsNone
+import androidx.compose.material.icons.outlined.Speed
+import androidx.compose.material.icons.outlined.TouchApp
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
@@ -44,12 +48,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.patternsystems.pocketcash.R
 import com.patternsystems.pocketcash.core.AppData
 import com.patternsystems.pocketcash.data.ProBilling
 import com.patternsystems.pocketcash.data.isPro
+import com.patternsystems.pocketcash.ui.PrimaryButton
 import com.patternsystems.pocketcash.ui.theme.Cash
 import kotlinx.coroutines.delay
 
@@ -76,27 +83,32 @@ fun PaywallSheet(data: AppData, onDismiss: () -> Unit) {
             Modifier.fillMaxWidth().verticalScroll(rememberScrollState()).padding(horizontal = 24.dp).navigationBarsPadding(),
             verticalArrangement = Arrangement.spacedBy(14.dp),
         ) {
-            Text("PocketCash Pro", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold)
-            Text("One payment. Yours forever. No subscription, no account.", color = Cash.colors.subtle)
-            Feature(Icons.Rounded.Dialpad, "Your own buttons", "Set each button to your real fares and bills.")
-            Feature(Icons.Rounded.AccountBalanceWallet, "More wallets", "Coin pouch, emergency stash, a travel wallet in its own currency, and moves between them.")
-            Feature(Icons.Rounded.Insights, "ATM cycle insights", "How long each withdrawal lasts, your daily burn and when cash runs out.")
-            Feature(Icons.Rounded.Category, "Categories", "Tag spending after the fact with one tap, and see where cash goes.")
-            Feature(Icons.Rounded.History, "Full history and CSV export", "Everything beyond 7 days, ready for a spreadsheet.")
-            Feature(Icons.Rounded.Widgets, "A wallet per widget", "Each widget can show a different wallet.")
+            Text(stringResource(R.string.pro_name), style = MaterialTheme.typography.headlineMedium)
+            Text(stringResource(R.string.paywall_subtitle), color = Cash.colors.subtle)
+            // Pro's features in the order of docs/spec.md section 5.
+            Feature(Icons.Outlined.Email, R.string.paywall_envelopes, R.string.paywall_envelopes_text)
+            Feature(Icons.Outlined.Insights, R.string.paywall_insights, R.string.paywall_insights_text)
+            Feature(Icons.Outlined.AccountBalanceWallet, R.string.paywall_wallets, R.string.paywall_wallets_text)
+            Feature(Icons.Outlined.TouchApp, R.string.paywall_quick, R.string.paywall_quick_text)
+            Feature(Icons.Outlined.Calculate, R.string.paywall_change, R.string.paywall_change_text)
+            Feature(Icons.Outlined.Speed, R.string.paywall_budget, R.string.paywall_budget_text)
+            Feature(Icons.Outlined.Category, R.string.paywall_categories, R.string.paywall_categories_text)
+            Feature(Icons.Outlined.Dialpad, R.string.paywall_buttons, R.string.paywall_buttons_text)
+            Feature(Icons.Outlined.Lock, R.string.paywall_lock, R.string.paywall_lock_text)
+            Feature(Icons.Outlined.NotificationsNone, R.string.paywall_low_cash, R.string.paywall_low_cash_text)
+            Feature(Icons.Outlined.History, R.string.paywall_history, R.string.paywall_history_text)
             if (pro) {
-                Text("You're Pro. Thank you!", color = Cash.colors.cashIn, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
+                Text(stringResource(R.string.paywall_thanks), color = Cash.colors.cashIn, fontWeight = FontWeight.SemiBold, fontSize = 18.sp)
             } else {
-                Button(
+                PrimaryButton(
+                    price?.let { stringResource(R.string.paywall_buy, it) } ?: stringResource(R.string.paywall_connecting),
                     onClick = { context.findActivity()?.let { billing.buy(it) } },
                     enabled = price != null,
-                    modifier = Modifier.fillMaxWidth().height(56.dp),
-                    shape = RoundedCornerShape(18.dp),
-                ) { Text(price?.let { "Unlock for $it" } ?: "Connecting to Google Play…", fontSize = 17.sp, fontWeight = FontWeight.SemiBold) }
+                )
                 message?.let { Text(it, color = Cash.colors.subtle, fontSize = 13.sp) }
                 Row(Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceBetween) {
-                    TextButton(onClick = { billing.restore() }) { Text("Restore purchase") }
-                    TextButton(onClick = onDismiss) { Text("Not now") }
+                    TextButton(onClick = { billing.restore() }) { Text(stringResource(R.string.paywall_restore)) }
+                    TextButton(onClick = onDismiss) { Text(stringResource(R.string.paywall_not_now)) }
                 }
             }
             Spacer(Modifier.height(8.dp))
@@ -105,15 +117,13 @@ fun PaywallSheet(data: AppData, onDismiss: () -> Unit) {
 }
 
 @Composable
-private fun Feature(icon: ImageVector, title: String, text: String) {
+private fun Feature(icon: ImageVector, title: Int, text: Int) {
     Row(verticalAlignment = Alignment.Top) {
-        Box(Modifier.size(36.dp).clip(CircleShape).background(Cash.colors.cashInContainer), contentAlignment = Alignment.Center) {
-            Icon(icon, contentDescription = null, tint = Cash.colors.onCashInContainer, modifier = Modifier.size(20.dp))
-        }
-        Spacer(Modifier.width(12.dp))
+        Icon(icon, contentDescription = null, tint = Cash.colors.subtle, modifier = Modifier.padding(top = 2.dp).size(22.dp))
+        Spacer(Modifier.width(16.dp))
         Column {
-            Text(title, fontWeight = FontWeight.SemiBold)
-            Text(text, color = Cash.colors.subtle, fontSize = 14.sp)
+            Text(stringResource(title), fontWeight = FontWeight.Medium)
+            Text(stringResource(text), color = Cash.colors.subtle, fontSize = 14.sp)
         }
     }
 }

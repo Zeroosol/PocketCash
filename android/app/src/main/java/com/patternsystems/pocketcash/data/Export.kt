@@ -3,6 +3,7 @@ package com.patternsystems.pocketcash.data
 import android.content.Context
 import android.content.Intent
 import androidx.core.content.FileProvider
+import com.patternsystems.pocketcash.R
 import com.patternsystems.pocketcash.core.AppData
 import com.patternsystems.pocketcash.core.Csv
 import java.io.File
@@ -20,8 +21,8 @@ object Export {
         val send = Intent(Intent.ACTION_SEND)
             .setType("text/csv")
             .putExtra(Intent.EXTRA_STREAM, uri)
-            .putExtra(Intent.EXTRA_SUBJECT, "PocketCash export")
+            .putExtra(Intent.EXTRA_SUBJECT, context.getString(R.string.csv_subject))
             .addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-        context.startActivity(Intent.createChooser(send, "Export CSV").addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
+        context.startActivity(Intent.createChooser(send, context.getString(R.string.csv_export)).addFlags(Intent.FLAG_ACTIVITY_NEW_TASK))
     }
 }

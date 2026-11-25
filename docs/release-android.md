@@ -58,8 +58,9 @@ In the GitHub repository, **Settings → Secrets and variables → Actions → N
    Signing when asked.
 3. **Create the Pro product**: **Monetize with Play → Products → In-app products → Create product**
    - Product ID: `pocketcash.pro.lifetime` (must match exactly; it can never be reused once deleted)
-   - Name: PocketCash Pro. Description: Custom buttons, more wallets, ATM cycle insights, categories, full history and
-     CSV export.
+   - Name: PocketCash Pro. Description: Envelopes and savings goals, insights, more wallets, the Quick spend tile, the
+     change calculator, daily budget, categories, custom buttons, app lock and privacy mode, low-cash reminders, full
+     history and CSV export.
    - Price: $3.99 (Play converts it per country). **Activate** it.
 4. **License testing**: Settings → License testing, add your Google account, so test purchases are free and can be
    refunded instantly. Install the app from the internal testing link to test buying and restoring.
@@ -87,3 +88,13 @@ code is 100 + the run number, so it always goes up.
 - The launcher icon comes from `tools/make_icon.js` (`ic_launcher_fg.png`, `ic_launcher_mono.png` on `#059669`); the
   default buttons per currency come from `spec/presets.json` via `tools/build_presets.js`. Don't edit the generated
   files by hand.
+- Languages: English plus Filipino (`res/values-b+fil`, which a phone set to Filipino matches), Spanish,
+  Indonesian (`res/values-in`, the code Android looks up), Brazilian Portuguese, Hindi and Vietnamese. Android 13+ lists
+  them under Settings → Apps → PocketCash → Language (`res/xml/locales_config.xml`). The translations are first drafts:
+  have a native speaker review them before a store launch. Lint fails the build on a missing translation, so add every
+  new string to all seven `strings.xml` files.
+- App lock uses androidx.biometric 1.1.0 (the newest stable release): fingerprint or face where the phone has them,
+  else the screen lock PIN, pattern or password. To try it, the test phone needs a screen lock; on an emulator set a PIN
+  in Settings → Security first.
+- Backup files (`PocketCash-backup-YYYY-MM-DD.json`) use the shared format of docs/spec.md section 11, so a backup
+  made on an iPhone restores on Android and the other way. The core tests decode `spec/backup/example-v1.json`.

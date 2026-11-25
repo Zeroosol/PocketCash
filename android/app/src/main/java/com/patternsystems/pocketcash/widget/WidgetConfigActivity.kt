@@ -22,9 +22,12 @@ import androidx.compose.ui.unit.dp
 import androidx.glance.appwidget.GlanceAppWidgetManager
 import androidx.glance.appwidget.state.updateAppWidgetState
 import androidx.lifecycle.lifecycleScope
+import com.patternsystems.pocketcash.R
 import com.patternsystems.pocketcash.core.MoneyFormat
 import com.patternsystems.pocketcash.data.CashStore
+import com.patternsystems.pocketcash.data.appLockOn
 import com.patternsystems.pocketcash.data.isPro
+import com.patternsystems.pocketcash.data.privacyOn
 import com.patternsystems.pocketcash.ui.theme.PocketCashTheme
 import kotlinx.coroutines.launch
 
@@ -57,7 +60,7 @@ class WidgetConfigActivity : ComponentActivity() {
                 Surface(Modifier.fillMaxSize(), color = MaterialTheme.colorScheme.background) {
                     Column(Modifier.safeDrawingPadding()) {
                         Text(
-                            "Which wallet should this widget show?",
+                            getString(R.string.widget_pick_wallet),
                             style = MaterialTheme.typography.titleLarge,
                             modifier = Modifier.padding(20.dp),
                         )
@@ -65,7 +68,10 @@ class WidgetConfigActivity : ComponentActivity() {
                             ListItem(
                                 headlineContent = { Text(wallet.name) },
                                 supportingContent = {
-                                    Text(MoneyFormat.full(data.balanceOf(wallet.id), wallet.currencyCode, wallet.symbol))
+                                    // Privacy mode and App lock keep balances off this screen too.
+                                    if (!data.privacyOn && !data.appLockOn) {
+                                        Text(MoneyFormat.full(data.balanceOf(wallet.id), wallet.currencyCode, wallet.symbol))
+                                    }
                                 },
                                 modifier = Modifier.clickable {
                                     lifecycleScope.launch {

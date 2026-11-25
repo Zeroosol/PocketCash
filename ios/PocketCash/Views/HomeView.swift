@@ -1,10 +1,12 @@
 import SwiftUI
 
-/// The single canvas (docs/spec.md section 7): wallet switcher, hero balance, action pad, insight card, feed.
+/// Home (docs/spec.md section 7.1): wallet switcher, hero balance, action pad, the Pro insight line and the feed.
+/// No title; once the hero balance scrolls under the top bar it appears small in the bar's center.
 struct HomeView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var pro: ProStore
     @State private var collapsed: Set<String> = []
+    @State private var showsTopBalance = false
 
     var body: some View {
         NavigationStack {
@@ -18,21 +20,22 @@ struct HomeView: View {
         let now = Date()
         let feed = pro.isPro ? Feed.byCycle(wallet, now: now) : Feed.byDay(wallet, now: now)
         return List {
-            Section {
+            Group {
                 HeroBalance(wallet: wallet)
                 ActionPad(wallet: wallet)
-                InsightCard(wallet: wallet)
+                if pro.isPro {
+                    InsightLine(wallet: wallet)
+                }
             }
             .listRowBackground(Color.clear)
             .listRowSeparator(.hidden)
-            .listRowInsets(EdgeInsets(top: 6, leading: 16, bottom: 6, trailing: 16))
+            .listRowInsets(EdgeInsets(top: 8, leading: 20, bottom: 8, trailing: 20))
 
             if feed.groups.isEmpty {
-                Section {
-                    ContentUnavailableView("No cash moves yet", systemImage: "banknote",
-                                           description: Text("Tap a button above when you pay or withdraw cash."))
-                }
-                .listRowBackground(Color.clear)
+                ContentUnavailableView("No cash moves yet", systemImage: "banknote",
+                                       description: Text("Tap a button above when you pay or withdraw cash."))
+                    .listRowBackground(Color.clear)
+                    .listRowSeparator(.hidden)
             }
 
             ForEach(feed.groups) { group in
@@ -40,10 +43,11 @@ struct HomeView: View {
                     if !collapsed.contains(group.id) {
                         ForEach(group.items) { tx in
                             TransactionRow(tx: tx, wallet: wallet)
+                                .listRowBackground(Color.clear)
                         }
                     }
                 } header: {
-                    FeedHeader(group: group, collapsed: collapsed.contains(group.id)) {
+                    FeedHeader(group: group, collapsible: pro.isPro, collapsed: collapsed.contains(group.id)) {
                         withAnimation(.snappy) {
                             if collapsed.contains(group.id) { collapsed.remove(group.id) } else { collapsed.insert(group.id) }
                         }
@@ -52,31 +56,38 @@ struct HomeView: View {
             }
 
             if feed.hasOlder {
-                Section {
-                    Button { model.route = .paywall } label: {
-                        Label("Older history and ATM cycles are in Pro", systemImage: "lock.fill")
-                            .font(.subheadline)
-                    }
+                Button { model.route = .paywall } label: {
+                    Label("Older history and ATM cycles are in Pro", systemImage: "lock")
+                        .font(.subheadline)
+                        .foregroundStyle(.secondary)
                 }
+                .listRowBackground(Color.clear)
+                .listRowSeparator(.hidden)
             }
         }
-        .listStyle(.insetGrouped)
+        .listStyle(.plain)
         .scrollContentBackground(.hidden)
         .background(Theme.background)
         .refreshable { await MainActor.run { model.route = .count } }
-        .safeAreaInset(edge: .bottom) {
-            if let undo = model.undo {
-                UndoBanner(state: undo) { model.undoLast() }
-            }
+        .tracksNavBar(.home)
+        .onScrollGeometryChange(for: Bool.self) { geometry in
+            geometry.contentOffset.y + geometry.contentInsets.top > 96
+        } action: { _, show in
+            withAnimation(.snappy(duration: 0.25)) { showsTopBalance = show }
         }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .topBarLeading) { WalletMenu(current: wallet) }
-            ToolbarItem(placement: .topBarTrailing) {
-                Button { model.route = .settings } label: { Image(systemName: "gearshape") }
-                    .accessibilityLabel("Settings")
+            ToolbarItem(placement: .principal) {
+                Text(wallet.format(wallet.balance))
+                    .font(.headline.monospacedDigit())
+                    .lineLimit(1)
+                    .opacity(showsTopBalance ? 1 : 0)
+                    .offset(y: showsTopBalance ? 0 : 8)
+                    .accessibilityHidden(!showsTopBalance)
             }
         }
+        .toolbarBackground(Theme.background, for: .navigationBar)
     }
 }
 
@@ -96,13 +107,13 @@ private struct WalletMenu: View {
                 }
             }
             Divider()
-            Button { model.route = pro.isPro ? .settings : .paywall } label: {
-                Label("Add a wallet", systemImage: pro.isPro ? "plus" : "lock.fill")
+            Button { model.route = pro.isPro ? .newWallet : .paywall } label: {
+                Label("Add a wallet", systemImage: pro.isPro ? "plus" : "lock")
             }
         } label: {
             HStack(spacing: 6) {
                 Text(current.name).font(.headline).lineLimit(1)
-                Image(systemName: "chevron.down").font(.caption.weight(.bold)).foregroundStyle(.secondary)
+                Image(systemName: "chevron.down").font(.caption.weight(.semibold)).foregroundStyle(.secondary)
                 if pro.isPro { ProBadge() }
             }
             .foregroundStyle(.primary)
@@ -110,60 +121,71 @@ private struct WalletMenu: View {
     }
 }
 
+/// A small monochrome "PRO" tag.
 struct ProBadge: View {
     var body: some View {
-        Text("PRO")
-            .font(.system(size: 10, weight: .heavy, design: .rounded))
-            .foregroundStyle(.white)
-            .padding(.horizontal, 6)
+        Text(verbatim: "PRO")
+            .font(.system(size: 9, weight: .bold, design: .rounded))
+            .tracking(0.5)
+            .foregroundStyle(.secondary)
+            .padding(.horizontal, 5)
             .padding(.vertical, 2)
-            .background(Theme.emerald, in: Capsule())
+            .overlay(Capsule().stroke(Theme.hairline, lineWidth: 1))
     }
 }
 
 /// The oversized balance. Tap it, or pull the screen down, to count your cash.
 struct HeroBalance: View {
     @EnvironmentObject private var model: AppModel
+    @EnvironmentObject private var pro: ProStore
     let wallet: Wallet
 
     var body: some View {
         let items = wallet.ledger
         let balance = Ledger.balance(items)
         let today = Ledger.todaySpent(items, now: .now)
-        VStack(spacing: 8) {
+        let spentText = wallet.format(-today)
+        VStack(spacing: 10) {
             Text(wallet.format(balance))
-                .font(Theme.balance(64))
+                .font(Theme.balance(68))
                 .lineLimit(1)
                 .minimumScaleFactor(0.35)
                 .foregroundStyle(balance < 0 ? Theme.danger : .primary)
                 .contentTransition(.numericText(value: Money.double(balance)))
                 .animation(.snappy, value: balance)
             HStack(spacing: 6) {
-                Text(today == 0 ? "Nothing spent today" : "Today \(wallet.format(-today))")
-                    .monospacedDigit()
-                if let budget = wallet.dailyBudget, budget > 0 {
+                if today == 0 {
+                    Text("Nothing spent today")
+                } else {
+                    Text("Today \(spentText)").monospacedDigit()
+                }
+                if let budget = wallet.activeBudget(isPro: pro.isPro) {
                     let left = budget - today
-                    Text("·")
-                    Text(left >= 0 ? "\(wallet.format(left)) left today" : "Over by \(wallet.format(-left))")
-                        .monospacedDigit()
-                        .foregroundStyle(left >= 0 ? Theme.emerald : Theme.danger)
+                    Text(verbatim: "·")
+                    if left >= 0 {
+                        let leftText = wallet.format(left)
+                        Text("\(leftText) left today").monospacedDigit()
+                    } else {
+                        let overText = wallet.format(-left)
+                        Text("Over by \(overText)").monospacedDigit().foregroundStyle(Theme.danger)
+                    }
                 }
             }
-            .font(.subheadline.weight(.medium))
+            .font(.subheadline)
             .foregroundStyle(.secondary)
         }
         .frame(maxWidth: .infinity)
-        .padding(.top, 8)
-        .padding(.bottom, 4)
+        .padding(.top, 12)
+        .padding(.bottom, 12)
         .contentShape(Rectangle())
         .onTapGesture { model.route = .count }
         .accessibilityElement(children: .combine)
-        .accessibilityHint("Count your cash")
+        .accessibilityHint(Text("Count your cash"))
         .accessibilityAddTraits(.isButton)
     }
 }
 
-/// Cash-in presets (emerald), spend presets (monochrome), and Custom.
+/// Cash-in presets (muted emerald), spend presets (monochrome), and Custom.
 struct ActionPad: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var pro: ProStore
@@ -173,32 +195,32 @@ struct ActionPad: View {
         VStack(spacing: 10) {
             HStack(spacing: 10) {
                 ForEach(Array(wallet.addButtons(isPro: pro.isPro).enumerated()), id: \.offset) { _, value in
-                    PadButton(label: Money.buttonLabel(value, cashIn: true), style: .cashIn) {
+                    PadButton(label: Text(verbatim: Money.buttonLabel(value, cashIn: true)), style: .cashIn) {
                         model.add(value, cashIn: true)
                     }
                 }
             }
             HStack(spacing: 10) {
                 ForEach(Array(wallet.spendButtons(isPro: pro.isPro).enumerated()), id: \.offset) { _, value in
-                    PadButton(label: Money.buttonLabel(value, cashIn: false), style: .spend) {
+                    PadButton(label: Text(verbatim: Money.buttonLabel(value, cashIn: false)), style: .spend) {
                         model.add(value, cashIn: false)
                     }
                 }
             }
             HStack(spacing: 10) {
-                PadButton(label: "Custom", systemImage: "number", style: .neutral) {
+                PadButton(label: Text("Custom"), systemImage: "number", style: .neutral) {
                     model.route = .keypad(.spend)
                 }
                 if pro.isPro && model.wallets.count > 1 {
-                    PadButton(label: "Move", systemImage: "arrow.left.arrow.right", style: .neutral) {
+                    PadButton(label: Text("Move"), systemImage: "arrow.left.arrow.right", style: .neutral) {
                         model.route = .transfer
                     }
                 }
             }
         }
         .contextMenu {
-            Button { model.route = pro.isPro ? .settings : .paywall } label: {
-                Label("Edit buttons…", systemImage: pro.isPro ? "slider.horizontal.3" : "lock.fill")
+            Button { model.route = pro.isPro ? .editButtons : .paywall } label: {
+                Label("Edit buttons…", systemImage: pro.isPro ? "slider.horizontal.3" : "lock")
             }
         }
     }
@@ -207,120 +229,103 @@ struct ActionPad: View {
 struct PadButton: View {
     enum Style { case cashIn, spend, neutral }
 
-    let label: String
+    let label: Text
     var systemImage: String?
     let style: Style
     let action: () -> Void
-
-    private var foreground: Color {
-        switch style {
-        case .cashIn: return Theme.emerald
-        case .spend, .neutral: return .primary
-        }
-    }
-
-    private var fill: Color {
-        switch style {
-        case .cashIn: return Theme.emerald.opacity(0.15)
-        case .spend: return Color.primary.opacity(0.07)
-        case .neutral: return Theme.surface
-        }
-    }
 
     var body: some View {
         Button(action: action) {
             HStack(spacing: 6) {
                 if let systemImage { Image(systemName: systemImage) }
-                Text(label)
+                label
             }
-            .font(.system(style == .neutral ? .body : .title3, design: .rounded, weight: .semibold))
+            .font(.system(style == .neutral ? .body : .title3, design: .rounded, weight: style == .neutral ? .medium : .semibold))
             .monospacedDigit()
             .lineLimit(1)
             .minimumScaleFactor(0.6)
-            .foregroundStyle(foreground)
-            .frame(maxWidth: .infinity, minHeight: style == .neutral ? 48 : 58)
-            .padSurface(fill)
+            .foregroundStyle(style == .cashIn ? Theme.emerald : Color.primary)
+            .frame(maxWidth: .infinity, minHeight: style == .neutral ? 46 : 56)
+            .background(fill, in: RoundedRectangle(cornerRadius: Theme.corner, style: .continuous))
+            .overlay {
+                if style == .neutral {
+                    RoundedRectangle(cornerRadius: Theme.corner, style: .continuous).stroke(Theme.hairline, lineWidth: 1)
+                }
+            }
         }
         .buttonStyle(PressableStyle())
+    }
+
+    private var fill: Color {
+        switch style {
+        case .cashIn: return Theme.emerald.opacity(0.12)
+        case .spend: return Theme.surface
+        case .neutral: return .clear
+        }
     }
 }
 
 struct PressableStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
-            .scaleEffect(configuration.isPressed ? 0.95 : 1)
-            .opacity(configuration.isPressed ? 0.85 : 1)
+            .scaleEffect(configuration.isPressed ? 0.96 : 1)
+            .opacity(configuration.isPressed ? 0.8 : 1)
             .animation(.snappy(duration: 0.15), value: configuration.isPressed)
     }
 }
 
-extension View {
-    /// Liquid Glass on iOS 26 and later, a soft rounded fill before that.
-    @ViewBuilder
-    func padSurface(_ color: Color) -> some View {
-        if #available(iOS 26.0, *) {
-            self.background(color, in: RoundedRectangle(cornerRadius: Theme.corner, style: .continuous))
-                .glassEffect(.regular.interactive(), in: RoundedRectangle(cornerRadius: Theme.corner, style: .continuous))
-        } else {
-            self.background(color, in: RoundedRectangle(cornerRadius: Theme.corner, style: .continuous))
-        }
-    }
-}
-
-/// Burn rate and runway with Pro, a teaser without.
-struct InsightCard: View {
+/// Pro: one quiet line with the burn rate and runway. Tapping it opens Insights.
+struct InsightLine: View {
     @EnvironmentObject private var model: AppModel
-    @EnvironmentObject private var pro: ProStore
     let wallet: Wallet
 
     var body: some View {
-        Button { model.route = pro.isPro ? .insights : .paywall } label: {
-            HStack(spacing: 12) {
-                Image(systemName: "flame.fill")
-                    .font(.title3)
-                    .foregroundStyle(.orange)
-                    .frame(width: 32)
-                VStack(alignment: .leading, spacing: 2) {
-                    if pro.isPro {
-                        let summary = BurnSummary(wallet: wallet, now: .now)
-                        Text(summary.headline).font(.subheadline.weight(.semibold))
-                        Text(summary.detail).font(.caption).foregroundStyle(.secondary)
-                    } else {
-                        Text("How fast does your cash burn?").font(.subheadline.weight(.semibold))
-                        Text("ATM cycles, burn rate and a runway forecast with Pro").font(.caption).foregroundStyle(.secondary)
-                    }
+        if let line = BurnSummary(wallet: wallet, now: .now).line {
+            Button { model.destination = .insights } label: {
+                HStack(spacing: 6) {
+                    Text(line).monospacedDigit()
+                    Image(systemName: "chevron.right").font(.caption2.weight(.semibold))
                 }
-                Spacer(minLength: 0)
-                Image(systemName: pro.isPro ? "chevron.right" : "lock.fill").foregroundStyle(.tertiary)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity)
             }
-            .padding(14)
-            .background(Theme.surface, in: RoundedRectangle(cornerRadius: Theme.corner, style: .continuous))
+            .buttonStyle(.plain)
         }
-        .buttonStyle(PressableStyle())
     }
 }
 
-/// Burn rate and runway in words.
+/// Burn rate and runway in words (docs/spec.md section 4).
 struct BurnSummary {
     let headline: String
     let detail: String
+    /// Home's insight line, "₱61/day · lasts until about Thu, Dec 24"; nil until there's spending to measure.
+    let line: String?
 
     init(wallet: Wallet, now: Date) {
         let items = wallet.ledger
         let balance = Ledger.balance(items)
         guard let rate = Ledger.burnRatePerDay(items, now: now), rate > 0 else {
-            headline = "Not enough spending yet"
-            detail = "Your burn rate shows up after a few cash moves."
+            headline = String(localized: "Not enough spending yet")
+            detail = String(localized: "Your burn rate shows up after a few cash moves.")
+            line = nil
             return
         }
-        let perDay = Money.rounded(Decimal(rate), scale: wallet.allowsFractions ? 2 : 0)
-        headline = "Burning \(wallet.format(perDay)) a day"
+        let perDay = wallet.format(Money.rounded(Decimal(rate), scale: wallet.allowsFractions ? 2 : 0))
+        headline = String(localized: "Burning \(perDay) a day")
         if let days = Ledger.runwayDays(balance: balance, burnRate: rate) {
             let date = now.addingTimeInterval(days * Ledger.secondsPerDay)
-            detail = days < 1 ? "Cash runs out today at this pace"
-                : "Cash lasts until about \(date.formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day()))"
+                .formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day())
+            if days < 1 {
+                detail = String(localized: "Cash runs out today at this pace")
+                line = String(localized: "\(perDay)/day · runs out today")
+            } else {
+                detail = String(localized: "Cash lasts until about \(date)")
+                line = String(localized: "\(perDay)/day · lasts until about \(date)")
+            }
         } else {
-            detail = "Time for an ATM run"
+            detail = String(localized: "Time for an ATM run")
+            line = String(localized: "\(perDay)/day")
         }
     }
 }
@@ -332,20 +337,19 @@ struct UndoBanner: View {
     var body: some View {
         HStack {
             Text(state.text)
-                .font(.subheadline.weight(.semibold))
+                .font(.subheadline.weight(.medium))
                 .monospacedDigit()
                 .lineLimit(1)
             Spacer()
             Button("Undo", action: onUndo)
-                .font(.subheadline.weight(.bold))
-                .foregroundStyle(Theme.emerald)
+                .font(.subheadline.weight(.semibold))
+                .foregroundStyle(.primary)
         }
         .padding(.horizontal, 18)
-        .padding(.vertical, 14)
-        .background(.regularMaterial, in: Capsule())
-        .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
+        .padding(.vertical, 13)
+        .barSurface(Capsule())
         .padding(.horizontal, 16)
-        .padding(.bottom, 8)
+        .padding(.bottom, 6)
         .transition(.move(edge: .bottom).combined(with: .opacity))
     }
 }

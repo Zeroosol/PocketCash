@@ -35,26 +35,28 @@ enum CategoryOption: String, AppEnum {
 
     static let typeDisplayRepresentation: TypeDisplayRepresentation = "Category"
     static let caseDisplayRepresentations: [CategoryOption: DisplayRepresentation] = [
-        .food: "Food & drinks",
-        .transit: "Transit",
-        .parking: "Parking",
-        .groceries: "Groceries",
-        .errand: "Errands",
-        .tip: "Tips",
-        .bills: "Bills",
-        .fun: "Fun",
-        .other: "Other",
+        .food: DisplayRepresentation(title: "Food & drinks"),
+        .transit: DisplayRepresentation(title: "Transit"),
+        .parking: DisplayRepresentation(title: "Parking"),
+        .groceries: DisplayRepresentation(title: "Groceries"),
+        .errand: DisplayRepresentation(title: "Errands"),
+        .tip: DisplayRepresentation(title: "Tips"),
+        .bills: DisplayRepresentation(title: "Bills"),
+        .fun: DisplayRepresentation(title: "Fun"),
+        .other: DisplayRepresentation(title: "Other"),
     ]
 }
 
 enum PocketCashIntentError: Error, CustomLocalizedStringResourceConvertible {
     case noWallet
     case badAmount
+    case needsPro
 
     var localizedStringResource: LocalizedStringResource {
         switch self {
-        case .noWallet: return "Open PocketCash once to set up your wallet."
-        case .badAmount: return "That amount doesn't look right."
+        case .noWallet: return LocalizedStringResource("Open PocketCash once to set up your wallet.")
+        case .badAmount: return LocalizedStringResource("That amount doesn't look right.")
+        case .needsPro: return LocalizedStringResource("Quick spend is part of PocketCash Pro. Open PocketCash to unlock it.")
         }
     }
 }
@@ -90,6 +92,12 @@ private enum IntentWriter {
     static func decimal(_ value: Double) throws -> Decimal {
         guard value.isFinite, value > 0, let d = Money.decimal(String(value)) else { throw PocketCashIntentError.badAmount }
         return Money.rounded(d, scale: 2)
+    }
+
+    /// Asks the app to show the paywall the next time it comes to the front.
+    static func requestPaywall() {
+        AppSettings.pendingRoute = "pro"
+        NotificationCenter.default.post(name: .pocketCashOpenRoute, object: nil)
     }
 }
 
@@ -149,13 +157,26 @@ struct UndoCashIntent: AppIntent {
 
 // MARK: Controls, Lock Screen and Siri
 
-/// Subtracts the quick-spend amount (Control Center, Lock Screen, Siri).
+/// Subtracts the quick-spend amount (Control Center, Lock Screen, Siri). Quick spend is Pro (docs/spec.md section
+/// 5): without Pro it spends nothing and sends the person to the paywall instead.
 struct QuickSpendIntent: AppIntent {
     static let title: LocalizedStringResource = "Quick Spend"
     static let description = IntentDescription("Subtracts your quick-spend amount, like your daily commute fare, from your cash.")
 
+    /// Runs in the background, and can bring the app forward (iOS 26) to show the paywall when Pro is missing.
+    @available(iOS 26.0, *)
+    static var supportedModes: IntentModes { [.background, .foreground(.dynamic)] }
+
     @MainActor
     func perform() async throws -> some IntentResult & ProvidesDialog {
+        guard AppSettings.isPro else {
+            IntentWriter.requestPaywall()
+            if #available(iOS 26.0, *) {
+                try await continueInForeground(nil, alwaysConfirm: false)
+                return .result(dialog: IntentDialog(LocalizedStringResource("Quick spend is part of PocketCash Pro.")))
+            }
+            throw PocketCashIntentError.needsPro
+        }
         let outcome: IntentWriter.Outcome = try CashStore.withFreshContext { ctx in
             let list = CashStore.wallets(ctx)
             guard let quick = CashStore.quickSpend(list, isPro: AppSettings.isPro) else { throw PocketCashIntentError.noWallet }
@@ -228,7 +249,7 @@ struct CashBalanceIntent: AppIntent {
     }
 }
 
-/// Opens the app on its keypad (the Control Center "Cash Keypad" control).
+/// Opens the app on its keypad (the Control Center "Cash Keypad" control, Pro). Without Pro it opens the paywall.
 struct OpenKeypadIntent: AppIntent {
     static let title: LocalizedStringResource = "Open Cash Keypad"
     static let description = IntentDescription("Opens PocketCash on its keypad to log a custom amount.")
@@ -236,7 +257,7 @@ struct OpenKeypadIntent: AppIntent {
 
     @MainActor
     func perform() async throws -> some IntentResult {
-        AppSettings.pendingRoute = "keypad"
+        AppSettings.pendingRoute = AppSettings.isPro ? "keypad" : "pro"
         NotificationCenter.default.post(name: .pocketCashOpenRoute, object: nil)
         return .result()
     }

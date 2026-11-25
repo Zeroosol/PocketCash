@@ -1,0 +1,896 @@
+/* Vietnamese (vi). First draft: needs a native speaker's review before a store launch.
+   Keys are the English text; keep %@ placeholders (or %1$@, %2$@ to reorder) and ${…} tokens. */
+
+/* PocketCash/AppModel.swift:233 */
+"%@ added" = "Đã thêm %@";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"%@ d" = "%@ ngày";
+
+/* PocketCashWidget/QuickSpendWidget.swift:49 */
+"%@ in %@" = "%@ trong %@";
+
+/* PocketCashWidget/WalletWidget.swift:132 */
+"%@ left" = "Còn %@";
+
+/* PocketCash/Views/HomeView.swift:172 */
+"%@ left today" = "Hôm nay còn %@";
+
+/* PocketCash/Views/CountCashSheet.swift:45 */
+"%@ more than PocketCash says" = "Dư %@ so với PocketCash";
+
+/* PocketCash/Views/EnvelopesView.swift:103 */
+"%@ of %@" = "%@ / %@";
+
+/* PocketCash/AppModel.swift:230 */
+"%@ spent" = "Đã chi %@";
+
+/* PocketCashWidget/WalletWidget.swift:139 */
+"%@ today" = "Hôm nay %@";
+
+/* PocketCash/Views/CountCashSheet.swift:42 */
+"%@ unrecorded spending" = "%@ chi tiêu chưa ghi";
+
+/* PocketCash/Views/HomeView.swift:333 */
+"%@/day" = "%@/ngày";
+
+/* PocketCash/Views/HomeView.swift:329 */
+"%@/day · lasts until about %@" = "%@/ngày · đủ đến khoảng %@";
+
+/* PocketCash/Views/HomeView.swift:326 */
+"%@/day · runs out today" = "%@/ngày · hết trong hôm nay";
+
+/* PocketCash/Views/SettingsView.swift:216 */
+"A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone." = "Tệp sao lưu chứa mọi ví, giao dịch và cài đặt, và khôi phục được trên mọi iPhone hoặc điện thoại Android.";
+
+/* PocketCash/Views/WalletEditorView.swift:33 */
+"A custom symbol is handy for a travel wallet." = "Ký hiệu tùy chỉnh rất tiện cho ví du lịch.";
+
+/* PocketCash/Views/PaywallView.swift:40 */
+"A nudge when a wallet drops below the amount you pick." = "Nhắc bạn khi một ví xuống dưới mức bạn chọn.";
+
+/* PocketCash/Views/SettingsView.swift:49 */
+"About" = "Giới thiệu";
+
+/* Shared/Intents.swift:223 */
+"Add ${amount} to ${wallet}" = "Thêm ${amount} vào ${wallet}";
+
+/* PocketCash/Views/WalletEditorView.swift:224 */
+"Add a cash-in button" = "Thêm nút tiền vào";
+
+/* PocketCash/Views/WalletEditorView.swift:236 */
+"Add a spend button" = "Thêm nút chi";
+
+/* PocketCash/Views/HomeView.swift:116 */
+"Add a wallet" = "Thêm ví";
+
+/* PocketCash/Views/EnvelopesView.swift:67 */
+"Add an envelope" = "Thêm phong bì";
+
+/* PocketCash/Views/TransactionEditor.swift:105 */
+"Add another wallet with the same currency in Settings." = "Hãy thêm một ví khác cùng loại tiền tệ trong Cài đặt.";
+
+/* PocketCash/Views/KeypadSheet.swift:35 */
+"Add cash" = "Thêm tiền";
+
+/* PocketCash/AppShortcuts.swift:11 */
+"Add Cash" = "Thêm tiền";
+
+/* Shared/Intents.swift:232 */
+"Added %@. You have %@ in %@." = "Đã thêm %@. Bạn có %@ trong %@.";
+
+/* Shared/Intents.swift:216 */
+"Adds cash to a PocketCash wallet, like an ATM withdrawal." = "Thêm tiền mặt vào một ví PocketCash, như khi rút tiền ATM.";
+
+/* Shared/Intents.swift:108 */
+"Adjust Cash" = "Điều chỉnh tiền mặt";
+
+/* PocketCash/Views/SettingsView.swift:144 */
+"Amount" = "Số tiền";
+
+/* PocketCash/Views/SettingsView.swift:186 */
+"App lock" = "Khóa ứng dụng";
+
+/* PocketCash/Views/PaywallView.swift:37 */
+"App lock and privacy mode" = "Khóa ứng dụng và chế độ riêng tư";
+
+/* PocketCash/Views/Feed.swift:51 */
+"ATM Cycle · %@ – %@ · %@ lasted %@ days" = "Chu kỳ ATM · %@ – %@ · %@ dùng được %@ ngày";
+
+/* PocketCash/Views/InsightsView.swift:87 */
+"ATM cycles" = "Chu kỳ ATM";
+
+/* Shared/Labels.swift:11 */
+"ATM withdrawal" = "Rút tiền ATM";
+
+/* PocketCash/Views/SettingsView.swift:31 */
+"ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls." = "Mỗi lần rút tiền ATM bắt đầu một chu kỳ ATM mới. Chế độ riêng tư ẩn số tiền trên tiện ích, Màn hình khóa và các điều khiển.";
+
+/* PocketCash/Views/EnvelopesView.swift:175 */
+"Available" = "Hiện có";
+
+/* PocketCash/Views/SettingsView.swift:202 */
+"Back up to a file" = "Sao lưu ra tệp";
+
+/* PocketCash/Views/SettingsView.swift:214 */
+"Backup" = "Bản sao lưu";
+
+/* PocketCash/Views/OnboardingView.swift:40 */
+"Banking apps log your cards. PocketCash puts your physical wallet on your Home Screen: tap −50 when you pay, and you're done." = "Ứng dụng ngân hàng ghi lại thẻ của bạn. PocketCash đưa chiếc ví thật lên Màn hình chính: chạm −50 khi trả tiền là xong.";
+
+/* PocketCash/Views/Feed.swift:48 */
+"Before first ATM" = "Trước lần rút ATM đầu";
+
+/* Shared/Intents.swift:44 */
+"Bills" = "Hóa đơn";
+
+/* PocketCash/Views/HomeView.swift:320 */
+"Burning %@ a day" = "Tiêu %@ mỗi ngày";
+
+/* PocketCash/Views/SettingsView.swift:117 */
+"Buttons" = "Nút";
+
+/* PocketCash/Views/BackupUI.swift:83 */
+"Can't restore this file" = "Không thể khôi phục tệp này";
+
+/* PocketCash/Views/BackupUI.swift:79 */
+"Cancel" = "Hủy";
+
+/* PocketCash/AppShortcuts.swift:17 */
+"Cash Balance" = "Số dư tiền mặt";
+
+/* Shared/Labels.swift:12 */
+"Cash count" = "Đếm tiền";
+
+/* PocketCash/Views/WalletEditorView.swift:226 */
+"Cash in" = "Tiền vào";
+
+/* PocketCash/Views/WalletEditorView.swift:44 */
+"Cash in it right now" = "Số tiền hiện có trong ví";
+
+/* PocketCashWidget/Controls.swift:37 */
+"Cash Keypad" = "Bàn phím tiền mặt";
+
+/* PocketCash/Views/HomeView.swift:328 */
+"Cash lasts until about %@" = "Tiền đủ dùng đến khoảng %@";
+
+/* PocketCash/Views/HomeView.swift:325 */
+"Cash runs out today at this pace" = "Với tốc độ này, hôm nay sẽ hết tiền";
+
+/* PocketCashWidget/WalletWidget.swift:65 */
+"Cash Wallet" = "Ví tiền mặt";
+
+/* PocketCash/Views/KeypadSheet.swift:296 */
+"Categories" = "Danh mục";
+
+/* PocketCash/Views/Feed.swift:138 */
+"Categories are in Pro" = "Danh mục là tính năng Pro";
+
+/* PocketCash/Views/Feed.swift:144 */
+"Category" = "Danh mục";
+
+/* PocketCash/Views/KeypadSheet.swift:146 */
+"Change" = "Tiền thừa";
+
+/* PocketCash/Views/PaywallView.swift:29 */
+"Change calculator" = "Tính tiền thừa";
+
+/* PocketCash/Views/KeypadSheet.swift:149 */
+"Change must be less than what you paid" = "Tiền thừa phải ít hơn số đã trả";
+
+/* PocketCashWidget/WalletWidget.swift:8 */
+"Choose the wallet this widget shows. Needs PocketCash Pro." = "Chọn ví hiển thị trên tiện ích này. Cần PocketCash Pro.";
+
+/* PocketCash/Views/CountCashSheet.swift:100 */
+"Clear" = "Xóa";
+
+/* PocketCash/Views/EnvelopesView.swift:202 */
+"Clear all" = "Xóa hết";
+
+/* PocketCash/Views/PaywallView.swift:93 */
+"Close" = "Đóng";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Coin Pouch" = "Ví tiền xu";
+
+/* PocketCash/Views/PaywallView.swift:26 */
+"Coin pouch, emergency stash, a travel wallet in any currency, with moves between them." = "Ví tiền xu, quỹ khẩn cấp, ví du lịch bằng bất kỳ tiền tệ nào, và chuyển tiền qua lại giữa các ví.";
+
+/* PocketCash/Views/OnboardingView.swift:60 */
+"Continue" = "Tiếp tục";
+
+/* PocketCash/Views/SettingsView.swift:26 */
+"Count + buttons as ATM withdrawals" = "Tính nút + là rút tiền ATM";
+
+/* PocketCash/Views/CountCashSheet.swift:55 */
+"Count bills & coins" = "Đếm tờ & xu";
+
+/* PocketCash/Views/OnboardingView.swift:79 */
+"Count it roughly. You can always fix it later by tapping the balance." = "Đếm ước chừng thôi. Bạn luôn có thể sửa sau bằng cách chạm vào số dư.";
+
+/* PocketCash/Views/CountCashSheet.swift:95 */
+"Count my cash" = "Đếm tiền của tôi";
+
+/* PocketCash/Views/HomeView.swift:188 */
+"Count your cash" = "Đếm tiền của bạn";
+
+/* PocketCash/Views/OnboardingView.swift:49 */
+"Currency" = "Tiền tệ";
+
+/* PocketCash/Views/InsightsView.swift:137 */
+"Current · since %@" = "Hiện tại · từ %@";
+
+/* PocketCash/Views/Feed.swift:53 */
+"Current cycle · since %@ · %@ · %@ days so far" = "Chu kỳ hiện tại · từ %@ · %@ · đã %@ ngày";
+
+/* PocketCash/Views/HomeView.swift:216 */
+"Custom" = "Tùy chỉnh";
+
+/* PocketCash/Views/PaywallView.swift:35 */
+"Custom buttons" = "Nút tùy chỉnh";
+
+/* PocketCash/Views/WalletEditorView.swift:29 */
+"Custom symbol (optional)" = "Ký hiệu tùy chỉnh (không bắt buộc)";
+
+/* PocketCash/Views/WalletEditorView.swift:35 */
+"Custom symbols are part of Pro." = "Ký hiệu tùy chỉnh là tính năng Pro.";
+
+/* PocketCash/Views/InsightsView.swift:90 */
+"Cycles appear after your first ATM withdrawal." = "Chu kỳ sẽ hiện sau lần rút tiền ATM đầu tiên.";
+
+/* PocketCash/Views/PaywallView.swift:31 */
+"Daily budget" = "Ngân sách mỗi ngày";
+
+/* PocketCash/Views/Feed.swift:116 */
+"Delete" = "Xóa";
+
+/* PocketCash/Views/WalletEditorView.swift:108 */
+"Delete %@?" = "Xóa %@?";
+
+/* PocketCash/Views/WalletEditorView.swift:90 */
+"Delete wallet" = "Xóa ví";
+
+/* PocketCash/Views/WalletEditorView.swift:109 */
+"Delete wallet and its history" = "Xóa ví và lịch sử của ví";
+
+/* PocketCash/Views/SettingsView.swift:54 */
+"Developer" = "Nhà phát triển";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Done" = "Xong";
+
+/* PocketCash/Views/HomeView.swift:228 */
+"Edit buttons…" = "Sửa nút…";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"Edit wallet" = "Sửa ví";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Emergency Stash" = "Quỹ khẩn cấp";
+
+/* PocketCash/Views/WalletEditorView.swift:61 */
+"Envelope target or savings goal. Its progress shows in Envelopes." = "Mục tiêu phong bì hoặc mục tiêu tiết kiệm. Tiến độ hiện trong Phong bì.";
+
+/* PocketCash/Views/WalletEditorView.swift:63 */
+"Envelope targets and savings goals are part of Pro." = "Mục tiêu phong bì và mục tiêu tiết kiệm là tính năng Pro.";
+
+/* PocketCash/AppModel.swift:18 */
+"Envelopes" = "Phong bì";
+
+/* PocketCash/Views/PaywallView.swift:21 */
+"Envelopes and savings goals" = "Phong bì và mục tiêu tiết kiệm";
+
+/* PocketCash/Views/EnvelopesView.swift:16 */
+"Envelopes are part of Pro" = "Phong bì là tính năng Pro";
+
+/* PocketCash/Views/SettingsView.swift:228 */
+"Envelopes, insights, more wallets, quick spend and more. One purchase." = "Phong bì, phân tích, nhiều ví, chi nhanh và hơn thế nữa. Mua một lần.";
+
+/* Shared/Intents.swift:42 */
+"Errands" = "Việc vặt";
+
+/* PocketCash/Views/PaywallView.swift:42 */
+"Every cash move beyond 7 days, exportable to any spreadsheet." = "Mọi giao dịch cũ hơn 7 ngày, xuất được sang bảng tính bất kỳ.";
+
+/* PocketCash/Views/BackupUI.swift:81 */
+"Everything on this phone is replaced by the backup. This can't be undone." = "Mọi dữ liệu trên máy này sẽ được thay bằng bản sao lưu. Không thể hoàn tác.";
+
+/* PocketCash/Views/SettingsView.swift:211 */
+"Export CSV" = "Xuất CSV";
+
+/* PocketCash/Views/CountCashSheet.swift:130 */
+"Fewer" = "Bớt";
+
+/* PocketCash/Views/EnvelopesView.swift:36 */
+"Fill envelopes" = "Chia vào phong bì";
+
+/* PocketCash/Views/EnvelopesView.swift:137 */
+"Food" = "Tiền ăn";
+
+/* Shared/Intents.swift:38 */
+"Food & drinks" = "Ăn uống";
+
+/* Shared/ModelHelpers.swift:24 */
+"Found cash" = "Tiền dư";
+
+/* PocketCash/Views/EnvelopesView.swift:170 */
+"From" = "Từ";
+
+/* Shared/CashStore.swift:145 */
+"From %@" = "Từ %@";
+
+/* PocketCash/Views/TransactionEditor.swift:112 */
+"From %@ · %@ available" = "Từ %@ · hiện có %@";
+
+/* PocketCash/Views/KeypadSheet.swift:71 */
+"From ATM" = "Rút từ ATM";
+
+/* PocketCash/Views/PaywallView.swift:41 */
+"Full history and CSV export" = "Toàn bộ lịch sử và xuất CSV";
+
+/* Shared/Intents.swift:45 */
+"Fun" = "Giải trí";
+
+/* PocketCash/Views/EnvelopesView.swift:62 */
+"Give a wallet a target in Settings → Wallets to see its progress here." = "Đặt mục tiêu cho ví trong Cài đặt → Ví để xem tiến độ tại đây.";
+
+/* PocketCash/Views/EnvelopesView.swift:17 */
+"Give a wallet a target, watch it fill up, and split cash into envelopes in one step." = "Đặt mục tiêu cho ví, xem ví đầy dần và chia tiền vào các phong bì chỉ trong một bước.";
+
+/* PocketCash/Views/PaywallView.swift:22 */
+"Give any wallet a target, watch it fill, and split cash into envelopes in one step." = "Đặt mục tiêu cho bất kỳ ví nào, xem ví đầy dần và chia tiền vào các phong bì chỉ trong một bước.";
+
+/* PocketCash/Views/EnvelopesView.swift:265 */
+"Goal of %@ reached" = "Đã đạt mục tiêu %@";
+
+/* PocketCash/Views/EnvelopesView.swift:97 */
+"Goal reached" = "Đã đạt mục tiêu";
+
+/* PocketCash/Views/KeypadSheet.swift:62 */
+"Got change?" = "Có tiền thừa?";
+
+/* Shared/Intents.swift:41 */
+"Groceries" = "Đi chợ";
+
+/* PocketCash/Views/SettingsView.swift:35 */
+"Haptics" = "Rung phản hồi";
+
+/* PocketCash/AppModel.swift:16 */
+"Home" = "Trang chủ";
+
+/* PocketCash/Views/PaywallView.swift:24 */
+"How long each ATM withdrawal lasts, your burn rate, when the cash runs out, and where it goes." = "Mỗi lần rút tiền ATM dùng được bao lâu, tốc độ tiêu tiền, khi nào hết tiền và tiền đi đâu.";
+
+/* PocketCash/Views/OnboardingView.swift:75 */
+"How much cash is in your wallet right now?" = "Lúc này trong ví bạn có bao nhiêu tiền mặt?";
+
+/* PocketCash/Views/CountCashSheet.swift:23 */
+"How much is in your wallet?" = "Trong ví bạn có bao nhiêu?";
+
+/* PocketCash/Views/WalletEditorView.swift:73 */
+"Ideas" = "Gợi ý";
+
+/* PocketCash/AppModel.swift:17 */
+"Insights" = "Phân tích";
+
+/* PocketCash/Views/InsightsView.swift:18 */
+"Insights are part of Pro" = "Phân tích là tính năng Pro";
+
+/* PocketCash/Views/SettingsView.swift:40 */
+"Language" = "Ngôn ngữ";
+
+/* PocketCash/Views/InsightsView.swift:69 */
+"Last 30 days by category" = "30 ngày qua theo danh mục";
+
+/* PocketCash/Views/InsightsView.swift:153 */
+"Lasted" = "Kéo dài";
+
+/* PocketCash/Views/PaywallView.swift:38 */
+"Lock PocketCash with Face ID or your passcode, and hide amounts on widgets." = "Khóa PocketCash bằng Face ID hoặc mật mã, và ẩn số tiền trên tiện ích.";
+
+/* PocketCash/Views/PaywallView.swift:28 */
+"Lock Screen widgets and Control Center buttons for the amount you spend most." = "Tiện ích Màn hình khóa và nút Trung tâm điều khiển cho số tiền bạn hay chi nhất.";
+
+/* PocketCash/AppLock.swift:16 */
+"Lock with Face ID" = "Khóa bằng Face ID";
+
+/* PocketCash/AppLock.swift:18 */
+"Lock with Optic ID" = "Khóa bằng Optic ID";
+
+/* PocketCash/AppLock.swift:19 */
+"Lock with passcode" = "Khóa bằng mật mã";
+
+/* PocketCash/AppLock.swift:17 */
+"Lock with Touch ID" = "Khóa bằng Touch ID";
+
+/* PocketCash/Views/PaywallView.swift:39 */
+"Low-cash reminder" = "Nhắc khi sắp hết tiền";
+
+/* PocketCash/Views/OnboardingView.swift:87 */
+"Main Wallet" = "Ví chính";
+
+/* PocketCash/Views/WalletEditorView.swift:80 */
+"Make this the default wallet" = "Đặt làm ví mặc định";
+
+/* PocketCash/Views/CountCashSheet.swift:38 */
+"Matches PocketCash exactly" = "Khớp chính xác với PocketCash";
+
+/* PocketCash/Views/CountCashSheet.swift:54 */
+"Method" = "Cách đếm";
+
+/* PocketCash/Views/CountCashSheet.swift:139 */
+"More" = "Thêm";
+
+/* PocketCash/Views/InsightsView.swift:168 */
+"Most went to %@" = "Chi nhiều nhất cho %@";
+
+/* PocketCash/Views/HomeView.swift:220 */
+"Move" = "Chuyển";
+
+/* PocketCash/Views/TransactionEditor.swift:123 */
+"Move cash" = "Chuyển tiền";
+
+/* PocketCash/Views/EnvelopesView.swift:197 */
+"Moving %@ · %@ stays in %@" = "Chuyển %@ · còn %@ trong %@";
+
+/* PocketCash/Views/PaywallView.swift:25 */
+"Multiple wallets" = "Nhiều ví";
+
+/* PocketCash/Views/WalletEditorView.swift:23 */
+"Name" = "Tên";
+
+/* PocketCash/Views/MainShell.swift:184 */
+"New cash move" = "Giao dịch mới";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"New wallet" = "Ví mới";
+
+/* PocketCash/Views/HomeView.swift:35 */
+"No cash moves yet" = "Chưa có giao dịch nào";
+
+/* PocketCash/Views/TransactionEditor.swift:103 */
+"No other %@ wallet" = "Không có ví %@ nào khác";
+
+/* PocketCash/Views/EnvelopesView.swift:180 */
+"No other %@ wallet to fill. Add one in Settings → Wallets." = "Không có ví %@ nào khác để chia. Hãy thêm ví trong Cài đặt → Ví.";
+
+/* PocketCash/ProStore.swift:90 */
+"No PocketCash Pro purchase found for this Apple Account." = "Không tìm thấy mục mua PocketCash Pro cho Tài khoản Apple này.";
+
+/* PocketCash/Views/WalletEditorView.swift:51 */
+"No target" = "Không có mục tiêu";
+
+/* PocketCash/Views/HomeView.swift:314 */
+"Not enough spending yet" = "Chưa đủ dữ liệu chi tiêu";
+
+/* PocketCash/Views/TransactionEditor.swift:31 */
+"Note" = "Ghi chú";
+
+/* PocketCash/Views/KeypadSheet.swift:76 */
+"Note (optional)" = "Ghi chú (không bắt buộc)";
+
+/* PocketCashWidget/WalletWidget.swift:137 */
+"Nothing spent today" = "Hôm nay chưa chi gì";
+
+/* PocketCash/Views/SettingsView.swift:145 */
+"Off" = "Tắt";
+
+/* PocketCash/PocketCashApp.swift:64 */
+"OK" = "OK";
+
+/* PocketCash/Views/HomeView.swift:60 */
+"Older history and ATM cycles are in Pro" = "Lịch sử cũ hơn và chu kỳ ATM là tính năng Pro";
+
+/* PocketCash/Views/PaywallView.swift:15 */
+"One purchase. Yours forever. No subscription." = "Mua một lần. Dùng mãi mãi. Không thuê bao.";
+
+/* PocketCashWidget/QuickSpendWidget.swift:36 */
+"One tap subtracts your most common cash expense, like your commute fare." = "Một chạm là trừ khoản chi tiền mặt thường gặp nhất, như tiền vé xe đi làm.";
+
+/* Shared/CashStore.swift:306 */
+"Only %@ left in %@." = "Chỉ còn %@ trong %@.";
+
+/* Shared/Intents.swift:254 */
+"Open Cash Keypad" = "Mở bàn phím tiền mặt";
+
+/* PocketCashWidget/WalletWidget.swift:361 */
+"Open PocketCash" = "Mở PocketCash";
+
+/* Shared/Intents.swift:57 */
+"Open PocketCash once to set up your wallet." = "Hãy mở PocketCash một lần để thiết lập ví.";
+
+/* PocketCashWidget/WalletWidget.swift:363 */
+"Open PocketCash to set up your wallet" = "Mở PocketCash để thiết lập ví";
+
+/* PocketCashWidget/Controls.swift:44 */
+"Opens PocketCash on its keypad to log a custom amount." = "Mở PocketCash ở bàn phím để ghi một số tiền bất kỳ.";
+
+/* PocketCash/Views/MainShell.swift:185 */
+"Opens the keypad. Touch and hold to count your cash." = "Mở bàn phím. Chạm và giữ để đếm tiền.";
+
+/* PocketCash/Views/SettingsView.swift:43 */
+"Opens this app's page in the iPhone's Settings, where you can pick its language." = "Mở trang của ứng dụng này trong Cài đặt của iPhone, nơi bạn có thể chọn ngôn ngữ.";
+
+/* Shared/Intents.swift:46 */
+"Other" = "Khác";
+
+/* PocketCashWidget/WalletWidget.swift:135 */
+"Over by %@" = "Vượt %@";
+
+/* PocketCash/Views/KeypadSheet.swift:126 */
+"Paid" = "Đã trả";
+
+/* PocketCash/Views/KeypadSheet.swift:155 */
+"Paid %@ − Change %@ = %@" = "Đã trả %@ − Tiền thừa %@ = %@";
+
+/* PocketCash/Views/PaywallView.swift:30 */
+"Paid with a big bill? Enter what you got back and PocketCash saves the difference." = "Trả bằng tờ tiền lớn? Nhập số tiền thừa nhận lại, PocketCash sẽ lưu phần chênh lệch.";
+
+/* Shared/Intents.swift:40 */
+"Parking" = "Gửi xe";
+
+/* PocketCash/Views/InsightsView.swift:156 */
+"Per day" = "Mỗi ngày";
+
+/* PocketCash/AppModel.swift:126 */
+"PocketCash couldn't open its data: %@" = "PocketCash không mở được dữ liệu: %@";
+
+/* PocketCash/AppLock.swift:158 */
+"PocketCash is locked" = "PocketCash đã khóa";
+
+/* PocketCash/Views/SettingsView.swift:51 */
+"PocketCash keeps everything on this iPhone. No account, no ads, no tracking." = "PocketCash lưu mọi thứ trên iPhone này. Không tài khoản, không quảng cáo, không theo dõi.";
+
+/* PocketCashWidget/Controls.swift:13 */
+"PocketCash Pro" = "PocketCash Pro";
+
+/* PocketCash/Views/SettingsView.swift:223 */
+"PocketCash Pro is unlocked" = "Đã mở khóa PocketCash Pro";
+
+/* PocketCash/Views/CountCashSheet.swift:35 */
+"PocketCash says %@" = "Theo PocketCash: %@";
+
+/* PocketCash/Views/SettingsView.swift:27 */
+"Privacy mode" = "Chế độ riêng tư";
+
+/* PocketCash/Views/SettingsView.swift:236 */
+"Pro" = "Pro";
+
+/* PocketCash/Views/PaywallView.swift:47 */
+"Pro is unlocked. Thank you!" = "Đã mở khóa Pro. Cảm ơn bạn!";
+
+/* PocketCash/ProStore.swift:90 */
+"Pro restored." = "Đã khôi phục Pro.";
+
+/* PocketCash/ProStore.swift:67 */
+"Pro unlocked. Thank you!" = "Đã mở khóa Pro. Cảm ơn bạn!";
+
+/* PocketCash/Views/OnboardingView.swift:109 */
+"Put your wallet on your Home Screen" = "Đưa ví lên Màn hình chính";
+
+/* PocketCashWidget/QuickSpendWidget.swift:73 */
+"Quick spend" = "Chi nhanh";
+
+/* PocketCashWidget/Controls.swift:17 */
+"Quick Spend" = "Chi nhanh";
+
+/* PocketCash/Views/SettingsView.swift:158 */
+"Quick spend amount" = "Số tiền chi nhanh";
+
+/* PocketCash/Views/PaywallView.swift:27 */
+"Quick spend everywhere" = "Chi nhanh ở mọi nơi";
+
+/* Shared/Intents.swift:176 */
+"Quick spend is part of PocketCash Pro." = "Chi nhanh là tính năng của PocketCash Pro.";
+
+/* Shared/Intents.swift:59 */
+"Quick spend is part of PocketCash Pro. Open PocketCash to unlock it." = "Chi nhanh là tính năng của PocketCash Pro. Mở PocketCash để mở khóa.";
+
+/* PocketCash/Views/SettingsView.swift:128 */
+"Remind me below" = "Nhắc khi còn dưới";
+
+/* PocketCash/Views/Feed.swift:135 */
+"Remove category" = "Bỏ danh mục";
+
+/* PocketCash/Views/KeypadSheet.swift:164 */
+"Remove change" = "Bỏ tiền thừa";
+
+/* PocketCash/Views/EnvelopesView.swift:136 */
+"Rent" = "Tiền nhà";
+
+/* PocketCash/Views/BackupUI.swift:78 */
+"Replace all data on this phone" = "Thay toàn bộ dữ liệu trên máy này";
+
+/* PocketCash/Views/WalletEditorView.swift:243 */
+"Reset to %@ defaults" = "Đặt lại mặc định %@";
+
+/* PocketCash/Views/OnboardingView.swift:65 */
+"Restore from a backup file" = "Khôi phục từ tệp sao lưu";
+
+/* PocketCash/Views/SettingsView.swift:205 */
+"Restore from a file" = "Khôi phục từ tệp";
+
+/* PocketCash/Views/PaywallView.swift:76 */
+"Restore purchase" = "Khôi phục mục mua";
+
+/* PocketCash/Views/BackupUI.swift:76 */
+"Restore this backup?" = "Khôi phục bản sao lưu này?";
+
+/* Shared/CashStore.swift:305 */
+"Running low on cash" = "Sắp hết tiền mặt";
+
+/* PocketCash/Views/EnvelopesView.swift:213 */
+"Save" = "Lưu";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Save count" = "Lưu kết quả";
+
+/* PocketCash/Views/EnvelopesView.swift:138 */
+"Savings" = "Tiết kiệm";
+
+/* PocketCash/Views/WalletEditorView.swift:194 */
+"Search currencies" = "Tìm tiền tệ";
+
+/* PocketCash/Views/OnboardingView.swift:116 */
+"Search PocketCash and pick the medium size." = "Tìm PocketCash và chọn cỡ vừa.";
+
+/* PocketCash/Views/InsightsView.swift:19 */
+"See how long each ATM withdrawal lasts, your daily burn rate, when the cash runs out, and where it goes." = "Xem mỗi lần rút tiền ATM dùng được bao lâu, mức tiêu mỗi ngày, khi nào hết tiền và tiền đi đâu.";
+
+/* PocketCash/Views/PaywallView.swift:32 */
+"See what's left today in the app and on the medium widget." = "Xem số tiền còn lại hôm nay trong ứng dụng và trên tiện ích cỡ vừa.";
+
+/* PocketCash/Views/SettingsView.swift:189 */
+"Set up a passcode on this iPhone to use App lock." = "Hãy đặt mật mã cho iPhone này để dùng Khóa ứng dụng.";
+
+/* PocketCash/AppModel.swift:19 */
+"Settings" = "Cài đặt";
+
+/* PocketCash/Views/EnvelopesView.swift:262 */
+"Short by %@" = "Còn thiếu %@";
+
+/* PocketCash/Views/MainShell.swift:110 */
+"Shows all destinations" = "Hiện tất cả các mục";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"So far" = "Đến nay";
+
+/* PocketCash/Views/InsightsView.swift:58 */
+"So far: %@ in %@ days" = "Đến nay: %@ trong %@ ngày";
+
+/* PocketCash/PocketCashApp.swift:63 */
+"Something went wrong" = "Đã xảy ra lỗi";
+
+/* PocketCash/Views/KeypadSheet.swift:34 */
+"Spend" = "Chi";
+
+/* PocketCashWidget/Controls.swift:27 */
+"Spend %@" = "Chi %@";
+
+/* Shared/Intents.swift:199 */
+"Spend ${amount} from ${wallet}" = "Chi ${amount} từ ${wallet}";
+
+/* PocketCash/AppShortcuts.swift:8 */
+"Spend Cash" = "Chi tiền mặt";
+
+/* PocketCash/Views/InsightsView.swift:155 */
+"Spent" = "Đã chi";
+
+/* Shared/Intents.swift:185 */
+"Spent %@. %@ left in %@." = "Đã chi %@. Còn %@ trong %@.";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start at zero" = "Bắt đầu từ 0";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start tracking" = "Bắt đầu theo dõi";
+
+/* Shared/CashStore.swift:226 */
+"Starting cash" = "Tiền ban đầu";
+
+/* Shared/Intents.swift:191 */
+"Subtracts cash you spent from a PocketCash wallet." = "Trừ số tiền mặt bạn đã chi khỏi một ví PocketCash.";
+
+/* PocketCashWidget/Controls.swift:18 */
+"Subtracts your most common cash expense, like your commute fare." = "Trừ khoản chi tiền mặt thường gặp nhất của bạn, như tiền vé xe đi làm.";
+
+/* Shared/Intents.swift:164 */
+"Subtracts your quick-spend amount, like your daily commute fare, from your cash." = "Trừ số tiền chi nhanh, như tiền vé xe đi làm hằng ngày, khỏi tiền mặt của bạn.";
+
+/* PocketCash/Views/EnvelopesView.swift:201 */
+"Suggested amounts" = "Số tiền gợi ý";
+
+/* PocketCash/Views/PaywallView.swift:34 */
+"Tag spending after the fact with one tap, without slowing down the first tap." = "Gắn danh mục cho khoản chi sau đó chỉ với một chạm, không làm chậm lần chạm đầu.";
+
+/* PocketCash/Views/HomeView.swift:36 */
+"Tap a button above when you pay or withdraw cash." = "Chạm một nút ở trên khi bạn trả tiền hoặc rút tiền.";
+
+/* PocketCash/Views/OnboardingView.swift:115 */
+"Tap Edit, then Add Widget." = "Chạm Sửa, rồi Thêm tiện ích.";
+
+/* PocketCashWidget/WalletWidget.swift:335 */
+"Tap to unlock" = "Chạm để mở khóa";
+
+/* PocketCash/Views/WalletEditorView.swift:58 */
+"Target" = "Mục tiêu";
+
+/* Shared/Intents.swift:238 */
+"Tells you how much cash is in your wallet." = "Cho bạn biết trong ví có bao nhiêu tiền mặt.";
+
+/* Shared/Intents.swift:58 */
+"That amount doesn't look right." = "Số tiền này có vẻ không đúng.";
+
+/* PocketCash/Views/EnvelopesView.swift:195 */
+"That's more than %@ has." = "Vượt quá số tiền trong %@.";
+
+/* PocketCash/ProStore.swift:69 */
+"The App Store couldn't verify that purchase." = "App Store không xác minh được mục mua này.";
+
+/* PocketCash/Views/PaywallView.swift:71 */
+"The App Store isn't reachable right now. Try again later." = "Hiện không kết nối được App Store. Hãy thử lại sau.";
+
+/* PocketCash/AppModel.swift:362 */
+"The backup couldn't be restored: %@" = "Không khôi phục được bản sao lưu: %@";
+
+/* PocketCash/Views/SettingsView.swift:135 */
+"The budget shows what's left today on the app and the medium widget." = "Ngân sách cho biết số tiền còn lại hôm nay trong ứng dụng và trên tiện ích cỡ vừa.";
+
+/* PocketCash/Views/WalletEditorView.swift:228 */
+"The first one is the widget's + button." = "Nút đầu tiên là nút + của tiện ích.";
+
+/* PocketCash/Views/WalletEditorView.swift:240 */
+"The small widget shows the first two, the medium widget the first three." = "Tiện ích nhỏ hiện hai nút đầu, tiện ích vừa hiện ba nút đầu.";
+
+/* PocketCash/Views/InsightsView.swift:56 */
+"This ATM cycle: %@ in %@ days" = "Chu kỳ ATM này: %@ trong %@ ngày";
+
+/* PocketCash/Views/BackupUI.swift:38 */
+"This backup file is damaged, so nothing was changed." = "Tệp sao lưu này bị hỏng nên chưa có gì thay đổi.";
+
+/* PocketCash/Views/BackupUI.swift:35 */
+"This backup is from a newer version of PocketCash. Update the app, then try again." = "Bản sao lưu này từ phiên bản PocketCash mới hơn. Hãy cập nhật ứng dụng rồi thử lại.";
+
+/* PocketCash/Views/WalletEditorView.swift:114 */
+"This can't be undone." = "Không thể hoàn tác.";
+
+/* PocketCash/Views/TransactionEditor.swift:68 */
+"This entry was deleted" = "Mục này đã bị xóa";
+
+/* PocketCash/Views/BackupUI.swift:33 */
+"This file isn't a PocketCash backup." = "Tệp này không phải bản sao lưu PocketCash.";
+
+/* PocketCash/Views/HomeView.swift:332 */
+"Time for an ATM run" = "Đến lúc ghé ATM rồi";
+
+/* Shared/Intents.swift:43 */
+"Tips" = "Tiền tip";
+
+/* PocketCash/Views/TransactionEditor.swift:107 */
+"To" = "Đến";
+
+/* Shared/CashStore.swift:143 */
+"To %@" = "Sang %@";
+
+/* PocketCash/Views/Feed.swift:22 */
+"Today" = "Hôm nay";
+
+/* PocketCash/Views/HomeView.swift:165 */
+"Today %@" = "Hôm nay %@";
+
+/* PocketCash/Views/InsightsView.swift:162 */
+"Top denomination: %@ × %@" = "Mệnh giá dùng nhiều nhất: %@ × %@";
+
+/* PocketCash/Views/SettingsView.swift:109 */
+"Touch and hold a wallet to reorder. The first one is the default." = "Chạm và giữ một ví để sắp xếp lại. Ví đầu tiên là ví mặc định.";
+
+/* PocketCash/Views/OnboardingView.swift:114 */
+"Touch and hold an empty spot on your Home Screen." = "Chạm và giữ một chỗ trống trên Màn hình chính.";
+
+/* Shared/Intents.swift:136 */
+"Transaction" = "Giao dịch";
+
+/* Shared/Labels.swift:13 */
+"Transfer" = "Chuyển tiền";
+
+/* Shared/Intents.swift:39 */
+"Transit" = "Đi lại";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Travel Wallet" = "Ví du lịch";
+
+/* PocketCash/AppLock.swift:70 */
+"Turn on app lock" = "Bật khóa ứng dụng";
+
+/* PocketCash/Views/KeypadSheet.swift:33 */
+"Type" = "Loại";
+
+/* PocketCash/Views/CountCashSheet.swift:56 */
+"Type the total" = "Nhập tổng số";
+
+/* PocketCash/Views/HomeView.swift:349 */
+"Undo" = "Hoàn tác";
+
+/* PocketCashWidget/WalletWidget.swift:185 */
+"Undo %@" = "Hoàn tác %@";
+
+/* Shared/Intents.swift:133 */
+"Undo Cash Tap" = "Hoàn tác lần chạm";
+
+/* PocketCash/AppLock.swift:164 */
+"Unlock" = "Mở khóa";
+
+/* PocketCash/Views/PaywallView.swift:58 */
+"Unlock for %@" = "Mở khóa với giá %@";
+
+/* PocketCash/AppLock.swift:80 */
+"Unlock PocketCash" = "Mở khóa PocketCash";
+
+/* PocketCash/Views/PaywallView.swift:60 */
+"Unlock Pro" = "Mở khóa Pro";
+
+/* PocketCash/Views/SettingsView.swift:55 */
+"Unlock Pro (debug build)" = "Mở khóa Pro (bản debug)";
+
+/* Shared/ModelHelpers.swift:24 */
+"Unrecorded spending" = "Chi tiêu chưa ghi";
+
+/* PocketCash/Views/InsightsView.swift:107 */
+"Untagged" = "Chưa phân loại";
+
+/* PocketCash/Views/SettingsView.swift:47 */
+"Version" = "Phiên bản";
+
+/* PocketCashWidget/WalletWidget.swift:7 */
+"Wallet" = "Ví";
+
+/* PocketCash/Views/SettingsView.swift:106 */
+"Wallets" = "Ví";
+
+/* PocketCash/Views/BackupUI.swift:48 */
+"Wallets: %@ · Cash moves: %@" = "Ví: %@ · Giao dịch: %@";
+
+/* PocketCash/Views/BackupUI.swift:50 */
+"Wallets: %@ · Cash moves: %@ · Backed up %@" = "Ví: %@ · Giao dịch: %@ · Sao lưu ngày %@";
+
+/* PocketCash/Views/TransactionEditor.swift:29 */
+"When" = "Thời gian";
+
+/* PocketCash/AppModel.swift:172 */
+"Widget: %@" = "Tiện ích: %@";
+
+/* PocketCash/Views/SettingsView.swift:29 */
+"Widgets" = "Tiện ích";
+
+/* PocketCash/Views/SettingsView.swift:191 */
+"Widgets still show your balance. Turn on Privacy mode to hide it." = "Tiện ích vẫn hiện số dư. Bật Chế độ riêng tư để ẩn đi.";
+
+/* PocketCash/Views/WalletEditorView.swift:85 */
+"Widgets, the free version and Siri use the default wallet unless you pick another." = "Tiện ích, bản miễn phí và Siri dùng ví mặc định trừ khi bạn chọn ví khác.";
+
+/* PocketCash/Views/OnboardingView.swift:117 */
+"With Pro, add the Quick Spend control to Control Center or your Lock Screen for your commute fare." = "Với Pro, hãy thêm điều khiển Chi nhanh vào Trung tâm điều khiển hoặc Màn hình khóa để trả tiền vé xe đi làm.";
+
+/* PocketCash/Views/Feed.swift:23 */
+"Yesterday" = "Hôm qua";
+
+/* Shared/Intents.swift:248 */
+"You have %@ in %@." = "Bạn có %@ trong %@.";
+
+/* PocketCash/Views/HomeView.swift:315 */
+"Your burn rate shows up after a few cash moves." = "Tốc độ tiêu tiền sẽ hiện sau vài giao dịch.";
+
+/* PocketCashWidget/WalletWidget.swift:66 */
+"Your cash balance with 1-tap buttons. Tap −50 when you pay, no app needed." = "Số dư tiền mặt với các nút một chạm. Chạm −50 khi trả tiền, không cần mở ứng dụng.";
+
+/* PocketCash/Views/OnboardingView.swift:37 */
+"Your cash, finally tracked" = "Cuối cùng cũng theo dõi được tiền mặt";
+
+/* PocketCash/Views/PaywallView.swift:36 */
+"Your exact amounts, like −45 for your commute or −15 for parking." = "Đúng số tiền của bạn, như −45 cho vé xe đi làm hoặc −15 cho gửi xe.";
+
+/* PocketCash/Views/SettingsView.swift:163 */
+"Your most common cash expense, like your commute fare. Add the Quick Spend control to Control Center or the Lock Screen, or say \"Quick spend in PocketCash\"." = "Khoản chi tiền mặt thường gặp nhất, như tiền vé xe đi làm. Thêm điều khiển Chi nhanh vào Trung tâm điều khiển hoặc Màn hình khóa, hoặc nói \"Chi nhanh trong PocketCash\".";
+
+/* PocketCash/ProStore.swift:72 */
+"Your purchase is waiting for approval." = "Mục mua của bạn đang chờ phê duyệt.";

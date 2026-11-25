@@ -16,6 +16,8 @@ final class Wallet {
     var spendPresets: [Decimal]
     var dailyBudget: Decimal?
     var lowCashThreshold: Decimal?
+    /// Envelope target or savings goal (Pro, docs/spec.md section 10). Optional, so older stores migrate on their own.
+    var target: Decimal?
     var sortOrder: Int
     var createdAt: Date
     @Relationship(deleteRule: .cascade, inverse: \CashTransaction.wallet) var transactions: [CashTransaction] = []
@@ -30,6 +32,7 @@ final class Wallet {
         self.spendPresets = spendPresets
         self.dailyBudget = nil
         self.lowCashThreshold = nil
+        self.target = nil
         self.sortOrder = sortOrder
         self.createdAt = createdAt
     }

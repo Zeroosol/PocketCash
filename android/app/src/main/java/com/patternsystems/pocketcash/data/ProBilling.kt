@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.util.Log
 import com.android.billingclient.api.AcknowledgePurchaseParams
+import com.patternsystems.pocketcash.R
 import com.android.billingclient.api.BillingClient
 import com.android.billingclient.api.BillingClientStateListener
 import com.android.billingclient.api.BillingFlowParams
@@ -55,7 +56,7 @@ class ProBilling private constructor(context: Context) : PurchasesUpdatedListene
                     _message.value = null
                     refresh()
                 } else {
-                    _message.value = "Google Play isn't available right now."
+                    _message.value = app.getString(R.string.billing_unavailable)
                     Log.w(TAG, "Billing setup: ${result.responseCode} ${result.debugMessage}")
                 }
             }
@@ -103,7 +104,7 @@ class ProBilling private constructor(context: Context) : PurchasesUpdatedListene
     /** Opens Play's purchase sheet. Returns false when the product hasn't loaded yet. */
     fun buy(activity: Activity): Boolean {
         val details = product ?: run {
-            _message.value = "Still connecting to Google Play. Try again in a moment."
+            _message.value = app.getString(R.string.billing_connecting)
             connect()
             return false
         }
@@ -120,7 +121,7 @@ class ProBilling private constructor(context: Context) : PurchasesUpdatedListene
             BillingClient.BillingResponseCode.OK -> handle(purchases.orEmpty(), authoritative = false)
             BillingClient.BillingResponseCode.ITEM_ALREADY_OWNED -> queryPurchases()
             BillingClient.BillingResponseCode.USER_CANCELED -> Unit
-            else -> _message.value = "The purchase didn't go through (${result.responseCode})."
+            else -> _message.value = app.getString(R.string.billing_failed, result.responseCode)
         }
     }
 
@@ -128,7 +129,7 @@ class ProBilling private constructor(context: Context) : PurchasesUpdatedListene
         val ours = purchases.filter { PRODUCT_ID in it.products }
         val owned = ours.any { it.purchaseState == Purchase.PurchaseState.PURCHASED }
         if (ours.any { it.purchaseState == Purchase.PurchaseState.PENDING } && !owned) {
-            _message.value = "Purchase pending. Pro unlocks as soon as Google Play confirms it."
+            _message.value = app.getString(R.string.billing_pending)
         }
         // Unacknowledged purchases are refunded by Play after three days.
         ours.filter { it.purchaseState == Purchase.PurchaseState.PURCHASED && !it.isAcknowledged }.forEach { purchase ->

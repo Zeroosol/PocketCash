@@ -20,7 +20,9 @@ extension CashTransaction {
     var title: String {
         if let note, !note.isEmpty { return note }
         if let category { return category.label }
-        if kind == .adjust { return amount < 0 ? "Unrecorded spending" : "Found cash" }
+        if kind == .adjust {
+            return amount < 0 ? String(localized: "Unrecorded spending") : String(localized: "Found cash")
+        }
         return kind.label
     }
 
@@ -48,6 +50,31 @@ extension Wallet {
     }
 
     var allowsFractions: Bool { Money.fractionDigits(for: currencyCode) > 0 }
+
+    /// The daily budget is Pro; a Free wallet keeps a stored budget but doesn't show it (docs/spec.md section 5).
+    func activeBudget(isPro: Bool) -> Decimal? {
+        guard isPro, let dailyBudget, dailyBudget > 0 else { return nil }
+        return dailyBudget
+    }
+
+    // MARK: Envelopes (docs/spec.md section 10)
+
+    var hasTarget: Bool { (target ?? 0) > 0 }
+    var progress: Decimal? { Envelope.progress(balance: balance, target: target) }
+    var shortBy: Decimal { Envelope.shortBy(balance: balance, target: target) }
+
+    // MARK: Backup (docs/spec.md section 11)
+
+    var backup: Backup.Wallet {
+        Backup.Wallet(
+            id: id, name: name, currencyCode: currencyCode, symbol: symbol, addPresets: addPresets,
+            spendPresets: spendPresets, dailyBudget: dailyBudget, lowCashThreshold: lowCashThreshold, target: target,
+            sortOrder: sortOrder, createdAt: createdAt,
+            transactions: transactions.sorted { $0.timestamp < $1.timestamp }.map {
+                Backup.Transaction(id: $0.id, amount: $0.amount, kind: $0.kind, timestamp: $0.timestamp, tag: $0.tag,
+                                   note: $0.note, transferID: $0.transferID)
+            })
+    }
 
     static func make(name: String, currencyCode: String, symbol: String? = nil, sortOrder: Int) -> Wallet {
         let p = DefaultPresets.forCurrency(currencyCode)

@@ -1,0 +1,896 @@
+/* Filipino (fil). First draft: needs a native speaker's review before a store launch.
+   Keys are the English text; keep %@ placeholders (or %1$@, %2$@ to reorder) and ${…} tokens. */
+
+/* PocketCash/AppModel.swift:233 */
+"%@ added" = "Naidagdag: %@";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"%@ d" = "%@ araw";
+
+/* PocketCashWidget/QuickSpendWidget.swift:49 */
+"%@ in %@" = "%@ sa %@";
+
+/* PocketCashWidget/WalletWidget.swift:132 */
+"%@ left" = "%@ ang natitira";
+
+/* PocketCash/Views/HomeView.swift:172 */
+"%@ left today" = "%@ ang natitira ngayon";
+
+/* PocketCash/Views/CountCashSheet.swift:45 */
+"%@ more than PocketCash says" = "Sobra ng %@ sa sabi ng PocketCash";
+
+/* PocketCash/Views/EnvelopesView.swift:103 */
+"%@ of %@" = "%@ ng %@";
+
+/* PocketCash/AppModel.swift:230 */
+"%@ spent" = "Nagastos: %@";
+
+/* PocketCashWidget/WalletWidget.swift:139 */
+"%@ today" = "%@ ngayon";
+
+/* PocketCash/Views/CountCashSheet.swift:42 */
+"%@ unrecorded spending" = "%@ na hindi naitalang gastos";
+
+/* PocketCash/Views/HomeView.swift:333 */
+"%@/day" = "%@/araw";
+
+/* PocketCash/Views/HomeView.swift:329 */
+"%@/day · lasts until about %@" = "%@/araw · tatagal hanggang mga %@";
+
+/* PocketCash/Views/HomeView.swift:326 */
+"%@/day · runs out today" = "%@/araw · mauubos ngayon";
+
+/* PocketCash/Views/SettingsView.swift:216 */
+"A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone." = "Nasa backup file ang bawat pitaka, galaw ng cash at setting, at maire-restore ito sa kahit anong iPhone o Android phone.";
+
+/* PocketCash/Views/WalletEditorView.swift:33 */
+"A custom symbol is handy for a travel wallet." = "Magagamit ang sariling simbolo para sa pitaka sa biyahe.";
+
+/* PocketCash/Views/PaywallView.swift:40 */
+"A nudge when a wallet drops below the amount you pick." = "Paalala kapag bumaba ang isang pitaka sa halagang pinili mo.";
+
+/* PocketCash/Views/SettingsView.swift:49 */
+"About" = "Tungkol sa app";
+
+/* Shared/Intents.swift:223 */
+"Add ${amount} to ${wallet}" = "Magdagdag ng ${amount} sa ${wallet}";
+
+/* PocketCash/Views/WalletEditorView.swift:224 */
+"Add a cash-in button" = "Magdagdag ng cash-in na button";
+
+/* PocketCash/Views/WalletEditorView.swift:236 */
+"Add a spend button" = "Magdagdag ng gastos na button";
+
+/* PocketCash/Views/HomeView.swift:116 */
+"Add a wallet" = "Magdagdag ng pitaka";
+
+/* PocketCash/Views/EnvelopesView.swift:67 */
+"Add an envelope" = "Magdagdag ng sobre";
+
+/* PocketCash/Views/TransactionEditor.swift:105 */
+"Add another wallet with the same currency in Settings." = "Magdagdag ng isa pang pitaka na pareho ang currency sa Mga setting.";
+
+/* PocketCash/Views/KeypadSheet.swift:35 */
+"Add cash" = "Magdagdag ng cash";
+
+/* PocketCash/AppShortcuts.swift:11 */
+"Add Cash" = "Magdagdag ng Cash";
+
+/* Shared/Intents.swift:232 */
+"Added %@. You have %@ in %@." = "Naidagdag ang %@. May %@ ka na sa %@.";
+
+/* Shared/Intents.swift:216 */
+"Adds cash to a PocketCash wallet, like an ATM withdrawal." = "Nagdadagdag ng cash sa isang pitaka ng PocketCash, gaya ng withdraw sa ATM.";
+
+/* Shared/Intents.swift:108 */
+"Adjust Cash" = "I-adjust ang Cash";
+
+/* PocketCash/Views/SettingsView.swift:144 */
+"Amount" = "Halaga";
+
+/* PocketCash/Views/SettingsView.swift:186 */
+"App lock" = "Lock ng app";
+
+/* PocketCash/Views/PaywallView.swift:37 */
+"App lock and privacy mode" = "Lock ng app at privacy mode";
+
+/* PocketCash/Views/Feed.swift:51 */
+"ATM Cycle · %@ – %@ · %@ lasted %@ days" = "ATM cycle · %@ – %@ · tumagal ang %@ nang %@ araw";
+
+/* PocketCash/Views/InsightsView.swift:87 */
+"ATM cycles" = "Mga ATM cycle";
+
+/* Shared/Labels.swift:11 */
+"ATM withdrawal" = "Withdraw sa ATM";
+
+/* PocketCash/Views/SettingsView.swift:31 */
+"ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls." = "Nagsisimula ng bagong ATM cycle ang bawat withdraw sa ATM. Itinatago ng privacy mode ang mga halaga sa widget, Lock Screen at mga control.";
+
+/* PocketCash/Views/EnvelopesView.swift:175 */
+"Available" = "Available";
+
+/* PocketCash/Views/SettingsView.swift:202 */
+"Back up to a file" = "Mag-backup sa file";
+
+/* PocketCash/Views/SettingsView.swift:214 */
+"Backup" = "Backup";
+
+/* PocketCash/Views/OnboardingView.swift:40 */
+"Banking apps log your cards. PocketCash puts your physical wallet on your Home Screen: tap −50 when you pay, and you're done." = "Card mo ang tinatala ng mga banking app. Inilalagay naman ng PocketCash ang totoong pitaka mo sa Home Screen: i-tap ang −50 kapag nagbayad ka, tapos na.";
+
+/* PocketCash/Views/Feed.swift:48 */
+"Before first ATM" = "Bago ang unang ATM";
+
+/* Shared/Intents.swift:44 */
+"Bills" = "Mga bayarin";
+
+/* PocketCash/Views/HomeView.swift:320 */
+"Burning %@ a day" = "Gumagastos ng %@ kada araw";
+
+/* PocketCash/Views/SettingsView.swift:117 */
+"Buttons" = "Mga button";
+
+/* PocketCash/Views/BackupUI.swift:83 */
+"Can't restore this file" = "Hindi ma-restore ang file na ito";
+
+/* PocketCash/Views/BackupUI.swift:79 */
+"Cancel" = "Kanselahin";
+
+/* PocketCash/AppShortcuts.swift:17 */
+"Cash Balance" = "Balanse ng Cash";
+
+/* Shared/Labels.swift:12 */
+"Cash count" = "Bilang ng cash";
+
+/* PocketCash/Views/WalletEditorView.swift:226 */
+"Cash in" = "Cash in";
+
+/* PocketCash/Views/WalletEditorView.swift:44 */
+"Cash in it right now" = "Cash na laman nito ngayon";
+
+/* PocketCashWidget/Controls.swift:37 */
+"Cash Keypad" = "Keypad ng Cash";
+
+/* PocketCash/Views/HomeView.swift:328 */
+"Cash lasts until about %@" = "Tatagal ang cash hanggang mga %@";
+
+/* PocketCash/Views/HomeView.swift:325 */
+"Cash runs out today at this pace" = "Mauubos ang cash ngayon sa ganitong bilis";
+
+/* PocketCashWidget/WalletWidget.swift:65 */
+"Cash Wallet" = "Pitaka ng Cash";
+
+/* PocketCash/Views/KeypadSheet.swift:296 */
+"Categories" = "Mga kategorya";
+
+/* PocketCash/Views/Feed.swift:138 */
+"Categories are in Pro" = "Nasa Pro ang mga kategorya";
+
+/* PocketCash/Views/Feed.swift:144 */
+"Category" = "Kategorya";
+
+/* PocketCash/Views/KeypadSheet.swift:146 */
+"Change" = "Sukli";
+
+/* PocketCash/Views/PaywallView.swift:29 */
+"Change calculator" = "Calculator ng sukli";
+
+/* PocketCash/Views/KeypadSheet.swift:149 */
+"Change must be less than what you paid" = "Dapat mas maliit ang sukli sa ibinayad mo";
+
+/* PocketCashWidget/WalletWidget.swift:8 */
+"Choose the wallet this widget shows. Needs PocketCash Pro." = "Piliin ang pitakang ipapakita ng widget na ito. Kailangan ng PocketCash Pro.";
+
+/* PocketCash/Views/CountCashSheet.swift:100 */
+"Clear" = "I-clear";
+
+/* PocketCash/Views/EnvelopesView.swift:202 */
+"Clear all" = "I-clear lahat";
+
+/* PocketCash/Views/PaywallView.swift:93 */
+"Close" = "Isara";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Coin Pouch" = "Lalagyan ng Barya";
+
+/* PocketCash/Views/PaywallView.swift:26 */
+"Coin pouch, emergency stash, a travel wallet in any currency, with moves between them." = "Lalagyan ng barya, pang-emergency, pitaka sa biyahe sa kahit anong currency, at puwedeng maglipat sa pagitan nila.";
+
+/* PocketCash/Views/OnboardingView.swift:60 */
+"Continue" = "Magpatuloy";
+
+/* PocketCash/Views/SettingsView.swift:26 */
+"Count + buttons as ATM withdrawals" = "Ituring na withdraw sa ATM ang mga + button";
+
+/* PocketCash/Views/CountCashSheet.swift:55 */
+"Count bills & coins" = "Bilangin isa-isa";
+
+/* PocketCash/Views/OnboardingView.swift:79 */
+"Count it roughly. You can always fix it later by tapping the balance." = "Kahit tantya lang. Puwede mo itong ayusin mamaya sa pag-tap sa balanse.";
+
+/* PocketCash/Views/CountCashSheet.swift:95 */
+"Count my cash" = "Bilangin ang cash ko";
+
+/* PocketCash/Views/HomeView.swift:188 */
+"Count your cash" = "Bilangin ang cash mo";
+
+/* PocketCash/Views/OnboardingView.swift:49 */
+"Currency" = "Currency";
+
+/* PocketCash/Views/InsightsView.swift:137 */
+"Current · since %@" = "Kasalukuyan · mula %@";
+
+/* PocketCash/Views/Feed.swift:53 */
+"Current cycle · since %@ · %@ · %@ days so far" = "Kasalukuyang cycle · mula %@ · %@ · %@ araw na";
+
+/* PocketCash/Views/HomeView.swift:216 */
+"Custom" = "Custom";
+
+/* PocketCash/Views/PaywallView.swift:35 */
+"Custom buttons" = "Mga custom na button";
+
+/* PocketCash/Views/WalletEditorView.swift:29 */
+"Custom symbol (optional)" = "Sariling simbolo (opsyonal)";
+
+/* PocketCash/Views/WalletEditorView.swift:35 */
+"Custom symbols are part of Pro." = "Kasama sa Pro ang sariling simbolo.";
+
+/* PocketCash/Views/InsightsView.swift:90 */
+"Cycles appear after your first ATM withdrawal." = "Lalabas ang mga cycle pagkatapos ng una mong withdraw sa ATM.";
+
+/* PocketCash/Views/PaywallView.swift:31 */
+"Daily budget" = "Budget kada araw";
+
+/* PocketCash/Views/Feed.swift:116 */
+"Delete" = "Burahin";
+
+/* PocketCash/Views/WalletEditorView.swift:108 */
+"Delete %@?" = "Burahin ang %@?";
+
+/* PocketCash/Views/WalletEditorView.swift:90 */
+"Delete wallet" = "Burahin ang pitaka";
+
+/* PocketCash/Views/WalletEditorView.swift:109 */
+"Delete wallet and its history" = "Burahin ang pitaka at ang history nito";
+
+/* PocketCash/Views/SettingsView.swift:54 */
+"Developer" = "Developer";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Done" = "Tapos na";
+
+/* PocketCash/Views/HomeView.swift:228 */
+"Edit buttons…" = "I-edit ang mga button…";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"Edit wallet" = "I-edit ang pitaka";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Emergency Stash" = "Pang-emergency";
+
+/* PocketCash/Views/WalletEditorView.swift:61 */
+"Envelope target or savings goal. Its progress shows in Envelopes." = "Target ng sobre o ng ipon. Makikita ang progreso nito sa Mga sobre.";
+
+/* PocketCash/Views/WalletEditorView.swift:63 */
+"Envelope targets and savings goals are part of Pro." = "Kasama sa Pro ang mga target ng sobre at ipon.";
+
+/* PocketCash/AppModel.swift:18 */
+"Envelopes" = "Mga sobre";
+
+/* PocketCash/Views/PaywallView.swift:21 */
+"Envelopes and savings goals" = "Mga sobre at target sa ipon";
+
+/* PocketCash/Views/EnvelopesView.swift:16 */
+"Envelopes are part of Pro" = "Kasama sa Pro ang mga sobre";
+
+/* PocketCash/Views/SettingsView.swift:228 */
+"Envelopes, insights, more wallets, quick spend and more. One purchase." = "Mga sobre, insight, mas maraming pitaka, mabilisang gastos at iba pa. Isang bayad lang.";
+
+/* Shared/Intents.swift:42 */
+"Errands" = "Mga lakad";
+
+/* PocketCash/Views/PaywallView.swift:42 */
+"Every cash move beyond 7 days, exportable to any spreadsheet." = "Lahat ng galaw ng cash, kahit lampas 7 araw na, at puwedeng i-export sa kahit anong spreadsheet.";
+
+/* PocketCash/Views/BackupUI.swift:81 */
+"Everything on this phone is replaced by the backup. This can't be undone." = "Papalitan ng backup ang lahat ng nasa phone na ito. Hindi na ito maibabalik.";
+
+/* PocketCash/Views/SettingsView.swift:211 */
+"Export CSV" = "I-export ang CSV";
+
+/* PocketCash/Views/CountCashSheet.swift:130 */
+"Fewer" = "Bawasan";
+
+/* PocketCash/Views/EnvelopesView.swift:36 */
+"Fill envelopes" = "Punuin ang mga sobre";
+
+/* PocketCash/Views/EnvelopesView.swift:137 */
+"Food" = "Pagkain";
+
+/* Shared/Intents.swift:38 */
+"Food & drinks" = "Pagkain at inumin";
+
+/* Shared/ModelHelpers.swift:24 */
+"Found cash" = "Sobrang cash";
+
+/* PocketCash/Views/EnvelopesView.swift:170 */
+"From" = "Mula sa";
+
+/* Shared/CashStore.swift:145 */
+"From %@" = "Mula sa %@";
+
+/* PocketCash/Views/TransactionEditor.swift:112 */
+"From %@ · %@ available" = "Mula sa %@ · %@ ang available";
+
+/* PocketCash/Views/KeypadSheet.swift:71 */
+"From ATM" = "Mula sa ATM";
+
+/* PocketCash/Views/PaywallView.swift:41 */
+"Full history and CSV export" = "Buong history at CSV export";
+
+/* Shared/Intents.swift:45 */
+"Fun" = "Libangan";
+
+/* PocketCash/Views/EnvelopesView.swift:62 */
+"Give a wallet a target in Settings → Wallets to see its progress here." = "Bigyan ng target ang isang pitaka sa Mga setting → Mga pitaka para makita rito ang progreso nito.";
+
+/* PocketCash/Views/EnvelopesView.swift:17 */
+"Give a wallet a target, watch it fill up, and split cash into envelopes in one step." = "Bigyan ng target ang isang pitaka, panoorin itong mapuno, at hatiin ang cash sa mga sobre nang isang hakbang lang.";
+
+/* PocketCash/Views/PaywallView.swift:22 */
+"Give any wallet a target, watch it fill, and split cash into envelopes in one step." = "Bigyan ng target ang kahit anong pitaka, panoorin itong mapuno, at hatiin ang cash sa mga sobre nang isang hakbang lang.";
+
+/* PocketCash/Views/EnvelopesView.swift:265 */
+"Goal of %@ reached" = "Naabot na ang target na %@";
+
+/* PocketCash/Views/EnvelopesView.swift:97 */
+"Goal reached" = "Naabot na ang target";
+
+/* PocketCash/Views/KeypadSheet.swift:62 */
+"Got change?" = "May sukli?";
+
+/* Shared/Intents.swift:41 */
+"Groceries" = "Grocery";
+
+/* PocketCash/Views/SettingsView.swift:35 */
+"Haptics" = "Pag-vibrate";
+
+/* PocketCash/AppModel.swift:16 */
+"Home" = "Home";
+
+/* PocketCash/Views/PaywallView.swift:24 */
+"How long each ATM withdrawal lasts, your burn rate, when the cash runs out, and where it goes." = "Gaano katagal ang bawat withdraw sa ATM, ang bilis ng paggastos mo, kailan mauubos ang cash, at saan ito napupunta.";
+
+/* PocketCash/Views/OnboardingView.swift:75 */
+"How much cash is in your wallet right now?" = "Magkano ang cash sa pitaka mo ngayon?";
+
+/* PocketCash/Views/CountCashSheet.swift:23 */
+"How much is in your wallet?" = "Magkano ang laman ng pitaka mo?";
+
+/* PocketCash/Views/WalletEditorView.swift:73 */
+"Ideas" = "Mga ideya";
+
+/* PocketCash/AppModel.swift:17 */
+"Insights" = "Mga insight";
+
+/* PocketCash/Views/InsightsView.swift:18 */
+"Insights are part of Pro" = "Kasama sa Pro ang mga insight";
+
+/* PocketCash/Views/SettingsView.swift:40 */
+"Language" = "Wika";
+
+/* PocketCash/Views/InsightsView.swift:69 */
+"Last 30 days by category" = "Huling 30 araw ayon sa kategorya";
+
+/* PocketCash/Views/InsightsView.swift:153 */
+"Lasted" = "Tumagal";
+
+/* PocketCash/Views/PaywallView.swift:38 */
+"Lock PocketCash with Face ID or your passcode, and hide amounts on widgets." = "I-lock ang PocketCash gamit ang Face ID o passcode, at itago ang mga halaga sa widget.";
+
+/* PocketCash/Views/PaywallView.swift:28 */
+"Lock Screen widgets and Control Center buttons for the amount you spend most." = "Mga widget sa Lock Screen at button sa Control Center para sa pinakamadalas mong gastos.";
+
+/* PocketCash/AppLock.swift:16 */
+"Lock with Face ID" = "I-lock gamit ang Face ID";
+
+/* PocketCash/AppLock.swift:18 */
+"Lock with Optic ID" = "I-lock gamit ang Optic ID";
+
+/* PocketCash/AppLock.swift:19 */
+"Lock with passcode" = "I-lock gamit ang passcode";
+
+/* PocketCash/AppLock.swift:17 */
+"Lock with Touch ID" = "I-lock gamit ang Touch ID";
+
+/* PocketCash/Views/PaywallView.swift:39 */
+"Low-cash reminder" = "Paalala sa mababang cash";
+
+/* PocketCash/Views/OnboardingView.swift:87 */
+"Main Wallet" = "Pangunahing Pitaka";
+
+/* PocketCash/Views/WalletEditorView.swift:80 */
+"Make this the default wallet" = "Gawin itong default na pitaka";
+
+/* PocketCash/Views/CountCashSheet.swift:38 */
+"Matches PocketCash exactly" = "Eksaktong tugma sa PocketCash";
+
+/* PocketCash/Views/CountCashSheet.swift:54 */
+"Method" = "Paraan";
+
+/* PocketCash/Views/CountCashSheet.swift:139 */
+"More" = "Dagdagan";
+
+/* PocketCash/Views/InsightsView.swift:168 */
+"Most went to %@" = "Karamihan ay napunta sa %@";
+
+/* PocketCash/Views/HomeView.swift:220 */
+"Move" = "Ilipat";
+
+/* PocketCash/Views/TransactionEditor.swift:123 */
+"Move cash" = "Ilipat ang cash";
+
+/* PocketCash/Views/EnvelopesView.swift:197 */
+"Moving %@ · %@ stays in %@" = "Ililipat: %@ · %@ ang maiiwan sa %@";
+
+/* PocketCash/Views/PaywallView.swift:25 */
+"Multiple wallets" = "Maraming pitaka";
+
+/* PocketCash/Views/WalletEditorView.swift:23 */
+"Name" = "Pangalan";
+
+/* PocketCash/Views/MainShell.swift:184 */
+"New cash move" = "Bagong galaw ng cash";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"New wallet" = "Bagong pitaka";
+
+/* PocketCash/Views/HomeView.swift:35 */
+"No cash moves yet" = "Wala pang galaw ng cash";
+
+/* PocketCash/Views/TransactionEditor.swift:103 */
+"No other %@ wallet" = "Walang ibang pitakang %@";
+
+/* PocketCash/Views/EnvelopesView.swift:180 */
+"No other %@ wallet to fill. Add one in Settings → Wallets." = "Walang ibang pitakang %@ na mapupuno. Magdagdag sa Mga setting → Mga pitaka.";
+
+/* PocketCash/ProStore.swift:90 */
+"No PocketCash Pro purchase found for this Apple Account." = "Walang nakitang biniling PocketCash Pro sa Apple Account na ito.";
+
+/* PocketCash/Views/WalletEditorView.swift:51 */
+"No target" = "Walang target";
+
+/* PocketCash/Views/HomeView.swift:314 */
+"Not enough spending yet" = "Wala pang sapat na gastos";
+
+/* PocketCash/Views/TransactionEditor.swift:31 */
+"Note" = "Tala";
+
+/* PocketCash/Views/KeypadSheet.swift:76 */
+"Note (optional)" = "Tala (opsyonal)";
+
+/* PocketCashWidget/WalletWidget.swift:137 */
+"Nothing spent today" = "Walang nagastos ngayon";
+
+/* PocketCash/Views/SettingsView.swift:145 */
+"Off" = "Naka-off";
+
+/* PocketCash/PocketCashApp.swift:64 */
+"OK" = "OK";
+
+/* PocketCash/Views/HomeView.swift:60 */
+"Older history and ATM cycles are in Pro" = "Nasa Pro ang mas lumang history at mga ATM cycle";
+
+/* PocketCash/Views/PaywallView.swift:15 */
+"One purchase. Yours forever. No subscription." = "Isang bayad lang. Sa iyo na habambuhay. Walang subscription.";
+
+/* PocketCashWidget/QuickSpendWidget.swift:36 */
+"One tap subtracts your most common cash expense, like your commute fare." = "Isang tap lang, bawas na ang pinakamadalas mong gastos sa cash, gaya ng pamasahe mo.";
+
+/* Shared/CashStore.swift:306 */
+"Only %@ left in %@." = "%@ na lang ang natitira sa %@.";
+
+/* Shared/Intents.swift:254 */
+"Open Cash Keypad" = "Buksan ang Keypad ng Cash";
+
+/* PocketCashWidget/WalletWidget.swift:361 */
+"Open PocketCash" = "Buksan ang PocketCash";
+
+/* Shared/Intents.swift:57 */
+"Open PocketCash once to set up your wallet." = "Buksan muna ang PocketCash para i-set up ang pitaka mo.";
+
+/* PocketCashWidget/WalletWidget.swift:363 */
+"Open PocketCash to set up your wallet" = "Buksan ang PocketCash para i-set up ang pitaka mo";
+
+/* PocketCashWidget/Controls.swift:44 */
+"Opens PocketCash on its keypad to log a custom amount." = "Binubuksan ang PocketCash sa keypad para mag-log ng ibang halaga.";
+
+/* PocketCash/Views/MainShell.swift:185 */
+"Opens the keypad. Touch and hold to count your cash." = "Binubuksan ang keypad. Pindutin nang matagal para bilangin ang cash mo.";
+
+/* PocketCash/Views/SettingsView.swift:43 */
+"Opens this app's page in the iPhone's Settings, where you can pick its language." = "Binubuksan ang page ng app na ito sa Settings ng iPhone, kung saan mapipili mo ang wika nito.";
+
+/* Shared/Intents.swift:46 */
+"Other" = "Iba pa";
+
+/* PocketCashWidget/WalletWidget.swift:135 */
+"Over by %@" = "Lampas ng %@";
+
+/* PocketCash/Views/KeypadSheet.swift:126 */
+"Paid" = "Ibinayad";
+
+/* PocketCash/Views/KeypadSheet.swift:155 */
+"Paid %@ − Change %@ = %@" = "Ibinayad %@ − Sukli %@ = %@";
+
+/* PocketCash/Views/PaywallView.swift:30 */
+"Paid with a big bill? Enter what you got back and PocketCash saves the difference." = "Buo ang ibinayad mo? Ilagay ang sukli at itatala ng PocketCash ang diperensya.";
+
+/* Shared/Intents.swift:40 */
+"Parking" = "Parking";
+
+/* PocketCash/Views/InsightsView.swift:156 */
+"Per day" = "Kada araw";
+
+/* PocketCash/AppModel.swift:126 */
+"PocketCash couldn't open its data: %@" = "Hindi mabuksan ng PocketCash ang data nito: %@";
+
+/* PocketCash/AppLock.swift:158 */
+"PocketCash is locked" = "Naka-lock ang PocketCash";
+
+/* PocketCash/Views/SettingsView.swift:51 */
+"PocketCash keeps everything on this iPhone. No account, no ads, no tracking." = "Nasa iPhone na ito lang ang lahat ng data ng PocketCash. Walang account, walang ads, walang tracking.";
+
+/* PocketCashWidget/Controls.swift:13 */
+"PocketCash Pro" = "PocketCash Pro";
+
+/* PocketCash/Views/SettingsView.swift:223 */
+"PocketCash Pro is unlocked" = "Naka-unlock na ang PocketCash Pro";
+
+/* PocketCash/Views/CountCashSheet.swift:35 */
+"PocketCash says %@" = "Sabi ng PocketCash: %@";
+
+/* PocketCash/Views/SettingsView.swift:27 */
+"Privacy mode" = "Privacy mode";
+
+/* PocketCash/Views/SettingsView.swift:236 */
+"Pro" = "Pro";
+
+/* PocketCash/Views/PaywallView.swift:47 */
+"Pro is unlocked. Thank you!" = "Naka-unlock na ang Pro. Salamat!";
+
+/* PocketCash/ProStore.swift:90 */
+"Pro restored." = "Na-restore ang Pro.";
+
+/* PocketCash/ProStore.swift:67 */
+"Pro unlocked. Thank you!" = "Na-unlock na ang Pro. Salamat!";
+
+/* PocketCash/Views/OnboardingView.swift:109 */
+"Put your wallet on your Home Screen" = "Ilagay ang pitaka mo sa Home Screen";
+
+/* PocketCashWidget/QuickSpendWidget.swift:73 */
+"Quick spend" = "Mabilisang gastos";
+
+/* PocketCashWidget/Controls.swift:17 */
+"Quick Spend" = "Mabilisang Gastos";
+
+/* PocketCash/Views/SettingsView.swift:158 */
+"Quick spend amount" = "Halaga ng mabilisang gastos";
+
+/* PocketCash/Views/PaywallView.swift:27 */
+"Quick spend everywhere" = "Mabilisang gastos kahit saan";
+
+/* Shared/Intents.swift:176 */
+"Quick spend is part of PocketCash Pro." = "Kasama sa PocketCash Pro ang mabilisang gastos.";
+
+/* Shared/Intents.swift:59 */
+"Quick spend is part of PocketCash Pro. Open PocketCash to unlock it." = "Kasama sa PocketCash Pro ang mabilisang gastos. Buksan ang PocketCash para i-unlock ito.";
+
+/* PocketCash/Views/SettingsView.swift:128 */
+"Remind me below" = "Ipaalala kung bumaba sa";
+
+/* PocketCash/Views/Feed.swift:135 */
+"Remove category" = "Alisin ang kategorya";
+
+/* PocketCash/Views/KeypadSheet.swift:164 */
+"Remove change" = "Alisin ang sukli";
+
+/* PocketCash/Views/EnvelopesView.swift:136 */
+"Rent" = "Upa";
+
+/* PocketCash/Views/BackupUI.swift:78 */
+"Replace all data on this phone" = "Palitan ang lahat ng data sa phone na ito";
+
+/* PocketCash/Views/WalletEditorView.swift:243 */
+"Reset to %@ defaults" = "Ibalik sa default ng %@";
+
+/* PocketCash/Views/OnboardingView.swift:65 */
+"Restore from a backup file" = "I-restore mula sa backup file";
+
+/* PocketCash/Views/SettingsView.swift:205 */
+"Restore from a file" = "I-restore mula sa file";
+
+/* PocketCash/Views/PaywallView.swift:76 */
+"Restore purchase" = "I-restore ang binili";
+
+/* PocketCash/Views/BackupUI.swift:76 */
+"Restore this backup?" = "I-restore ang backup na ito?";
+
+/* Shared/CashStore.swift:305 */
+"Running low on cash" = "Paubos na ang cash";
+
+/* PocketCash/Views/EnvelopesView.swift:213 */
+"Save" = "I-save";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Save count" = "I-save ang bilang";
+
+/* PocketCash/Views/EnvelopesView.swift:138 */
+"Savings" = "Ipon";
+
+/* PocketCash/Views/WalletEditorView.swift:194 */
+"Search currencies" = "Maghanap ng currency";
+
+/* PocketCash/Views/OnboardingView.swift:116 */
+"Search PocketCash and pick the medium size." = "Hanapin ang PocketCash at piliin ang medium na laki.";
+
+/* PocketCash/Views/InsightsView.swift:19 */
+"See how long each ATM withdrawal lasts, your daily burn rate, when the cash runs out, and where it goes." = "Alamin kung gaano katagal ang bawat withdraw sa ATM, ang bilis ng paggastos mo kada araw, kailan mauubos ang cash, at saan ito napupunta.";
+
+/* PocketCash/Views/PaywallView.swift:32 */
+"See what's left today in the app and on the medium widget." = "Tingnan ang natitira ngayon sa app at sa medium na widget.";
+
+/* PocketCash/Views/SettingsView.swift:189 */
+"Set up a passcode on this iPhone to use App lock." = "Mag-set up ng passcode sa iPhone na ito para magamit ang Lock ng app.";
+
+/* PocketCash/AppModel.swift:19 */
+"Settings" = "Mga setting";
+
+/* PocketCash/Views/EnvelopesView.swift:262 */
+"Short by %@" = "Kulang ng %@";
+
+/* PocketCash/Views/MainShell.swift:110 */
+"Shows all destinations" = "Ipinapakita ang lahat ng seksyon";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"So far" = "Sa ngayon";
+
+/* PocketCash/Views/InsightsView.swift:58 */
+"So far: %@ in %@ days" = "Sa ngayon: %@ sa %@ araw";
+
+/* PocketCash/PocketCashApp.swift:63 */
+"Something went wrong" = "May nangyaring mali";
+
+/* PocketCash/Views/KeypadSheet.swift:34 */
+"Spend" = "Gastos";
+
+/* PocketCashWidget/Controls.swift:27 */
+"Spend %@" = "Gumastos ng %@";
+
+/* Shared/Intents.swift:199 */
+"Spend ${amount} from ${wallet}" = "Gumastos ng ${amount} mula sa ${wallet}";
+
+/* PocketCash/AppShortcuts.swift:8 */
+"Spend Cash" = "Gumastos ng Cash";
+
+/* PocketCash/Views/InsightsView.swift:155 */
+"Spent" = "Nagastos";
+
+/* Shared/Intents.swift:185 */
+"Spent %@. %@ left in %@." = "Nagastos ang %@. %@ pa ang natitira sa %@.";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start at zero" = "Magsimula sa zero";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start tracking" = "Simulan na";
+
+/* Shared/CashStore.swift:226 */
+"Starting cash" = "Panimulang cash";
+
+/* Shared/Intents.swift:191 */
+"Subtracts cash you spent from a PocketCash wallet." = "Ibinabawas ang nagastos mong cash mula sa isang pitaka ng PocketCash.";
+
+/* PocketCashWidget/Controls.swift:18 */
+"Subtracts your most common cash expense, like your commute fare." = "Ibinabawas ang pinakamadalas mong gastos sa cash, gaya ng pamasahe mo.";
+
+/* Shared/Intents.swift:164 */
+"Subtracts your quick-spend amount, like your daily commute fare, from your cash." = "Ibinabawas sa cash mo ang halaga ng mabilisang gastos, gaya ng araw-araw mong pamasahe.";
+
+/* PocketCash/Views/EnvelopesView.swift:201 */
+"Suggested amounts" = "Mga mungkahing halaga";
+
+/* PocketCash/Views/PaywallView.swift:34 */
+"Tag spending after the fact with one tap, without slowing down the first tap." = "Lagyan ng kategorya ang gastos pagkatapos, sa isang tap, nang hindi binabagalan ang unang tap.";
+
+/* PocketCash/Views/HomeView.swift:36 */
+"Tap a button above when you pay or withdraw cash." = "Mag-tap ng button sa itaas kapag nagbayad o nag-withdraw ka ng cash.";
+
+/* PocketCash/Views/OnboardingView.swift:115 */
+"Tap Edit, then Add Widget." = "I-tap ang Edit, tapos ang Add Widget.";
+
+/* PocketCashWidget/WalletWidget.swift:335 */
+"Tap to unlock" = "I-tap para i-unlock";
+
+/* PocketCash/Views/WalletEditorView.swift:58 */
+"Target" = "Target";
+
+/* Shared/Intents.swift:238 */
+"Tells you how much cash is in your wallet." = "Sinasabi kung magkano ang cash sa pitaka mo.";
+
+/* Shared/Intents.swift:58 */
+"That amount doesn't look right." = "Mukhang mali ang halagang iyan.";
+
+/* PocketCash/Views/EnvelopesView.swift:195 */
+"That's more than %@ has." = "Higit iyan sa laman ng %@.";
+
+/* PocketCash/ProStore.swift:69 */
+"The App Store couldn't verify that purchase." = "Hindi na-verify ng App Store ang binili mo.";
+
+/* PocketCash/Views/PaywallView.swift:71 */
+"The App Store isn't reachable right now. Try again later." = "Hindi maabot ang App Store ngayon. Subukan ulit mamaya.";
+
+/* PocketCash/AppModel.swift:362 */
+"The backup couldn't be restored: %@" = "Hindi ma-restore ang backup: %@";
+
+/* PocketCash/Views/SettingsView.swift:135 */
+"The budget shows what's left today on the app and the medium widget." = "Ipinapakita ng budget ang natitira ngayon sa app at sa medium na widget.";
+
+/* PocketCash/Views/WalletEditorView.swift:228 */
+"The first one is the widget's + button." = "Ang una ang magiging + button ng widget.";
+
+/* PocketCash/Views/WalletEditorView.swift:240 */
+"The small widget shows the first two, the medium widget the first three." = "Ipinapakita ng maliit na widget ang unang dalawa, at ng medium na widget ang unang tatlo.";
+
+/* PocketCash/Views/InsightsView.swift:56 */
+"This ATM cycle: %@ in %@ days" = "Ngayong ATM cycle: %@ sa %@ araw";
+
+/* PocketCash/Views/BackupUI.swift:38 */
+"This backup file is damaged, so nothing was changed." = "Sira ang backup file na ito, kaya walang binago.";
+
+/* PocketCash/Views/BackupUI.swift:35 */
+"This backup is from a newer version of PocketCash. Update the app, then try again." = "Galing ang backup na ito sa mas bagong bersyon ng PocketCash. I-update ang app, saka subukan ulit.";
+
+/* PocketCash/Views/WalletEditorView.swift:114 */
+"This can't be undone." = "Hindi na ito maibabalik.";
+
+/* PocketCash/Views/TransactionEditor.swift:68 */
+"This entry was deleted" = "Nabura na ang entry na ito";
+
+/* PocketCash/Views/BackupUI.swift:33 */
+"This file isn't a PocketCash backup." = "Hindi PocketCash backup ang file na ito.";
+
+/* PocketCash/Views/HomeView.swift:332 */
+"Time for an ATM run" = "Oras na para mag-ATM";
+
+/* Shared/Intents.swift:43 */
+"Tips" = "Tip";
+
+/* PocketCash/Views/TransactionEditor.swift:107 */
+"To" = "Papunta sa";
+
+/* Shared/CashStore.swift:143 */
+"To %@" = "Papunta sa %@";
+
+/* PocketCash/Views/Feed.swift:22 */
+"Today" = "Ngayon";
+
+/* PocketCash/Views/HomeView.swift:165 */
+"Today %@" = "Ngayon %@";
+
+/* PocketCash/Views/InsightsView.swift:162 */
+"Top denomination: %@ × %@" = "Pinakamadalas na halaga: %@ × %@";
+
+/* PocketCash/Views/SettingsView.swift:109 */
+"Touch and hold a wallet to reorder. The first one is the default." = "Pindutin nang matagal ang isang pitaka para ayusin ang pagkakasunod. Ang una ang default.";
+
+/* PocketCash/Views/OnboardingView.swift:114 */
+"Touch and hold an empty spot on your Home Screen." = "Pindutin nang matagal ang bakanteng puwesto sa Home Screen.";
+
+/* Shared/Intents.swift:136 */
+"Transaction" = "Transaksyon";
+
+/* Shared/Labels.swift:13 */
+"Transfer" = "Paglipat";
+
+/* Shared/Intents.swift:39 */
+"Transit" = "Pamasahe";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Travel Wallet" = "Pitaka sa Biyahe";
+
+/* PocketCash/AppLock.swift:70 */
+"Turn on app lock" = "I-on ang lock ng app";
+
+/* PocketCash/Views/KeypadSheet.swift:33 */
+"Type" = "Uri";
+
+/* PocketCash/Views/CountCashSheet.swift:56 */
+"Type the total" = "I-type ang total";
+
+/* PocketCash/Views/HomeView.swift:349 */
+"Undo" = "I-undo";
+
+/* PocketCashWidget/WalletWidget.swift:185 */
+"Undo %@" = "I-undo ang %@";
+
+/* Shared/Intents.swift:133 */
+"Undo Cash Tap" = "I-undo ang Tap sa Cash";
+
+/* PocketCash/AppLock.swift:164 */
+"Unlock" = "I-unlock";
+
+/* PocketCash/Views/PaywallView.swift:58 */
+"Unlock for %@" = "I-unlock sa %@";
+
+/* PocketCash/AppLock.swift:80 */
+"Unlock PocketCash" = "I-unlock ang PocketCash";
+
+/* PocketCash/Views/PaywallView.swift:60 */
+"Unlock Pro" = "I-unlock ang Pro";
+
+/* PocketCash/Views/SettingsView.swift:55 */
+"Unlock Pro (debug build)" = "I-unlock ang Pro (debug build)";
+
+/* Shared/ModelHelpers.swift:24 */
+"Unrecorded spending" = "Hindi naitalang gastos";
+
+/* PocketCash/Views/InsightsView.swift:107 */
+"Untagged" = "Walang kategorya";
+
+/* PocketCash/Views/SettingsView.swift:47 */
+"Version" = "Bersyon";
+
+/* PocketCashWidget/WalletWidget.swift:7 */
+"Wallet" = "Pitaka";
+
+/* PocketCash/Views/SettingsView.swift:106 */
+"Wallets" = "Mga pitaka";
+
+/* PocketCash/Views/BackupUI.swift:48 */
+"Wallets: %@ · Cash moves: %@" = "Mga pitaka: %@ · Galaw ng cash: %@";
+
+/* PocketCash/Views/BackupUI.swift:50 */
+"Wallets: %@ · Cash moves: %@ · Backed up %@" = "Mga pitaka: %@ · Galaw ng cash: %@ · Na-backup noong %@";
+
+/* PocketCash/Views/TransactionEditor.swift:29 */
+"When" = "Kailan";
+
+/* PocketCash/AppModel.swift:172 */
+"Widget: %@" = "Widget: %@";
+
+/* PocketCash/Views/SettingsView.swift:29 */
+"Widgets" = "Mga widget";
+
+/* PocketCash/Views/SettingsView.swift:191 */
+"Widgets still show your balance. Turn on Privacy mode to hide it." = "Ipinapakita pa rin ng mga widget ang balanse mo. I-on ang Privacy mode para itago ito.";
+
+/* PocketCash/Views/WalletEditorView.swift:85 */
+"Widgets, the free version and Siri use the default wallet unless you pick another." = "Ang default na pitaka ang ginagamit ng mga widget, ng libreng bersyon at ng Siri, maliban kung pumili ka ng iba.";
+
+/* PocketCash/Views/OnboardingView.swift:117 */
+"With Pro, add the Quick Spend control to Control Center or your Lock Screen for your commute fare." = "Sa Pro, idagdag ang control na Mabilisang Gastos sa Control Center o sa Lock Screen para sa pamasahe mo.";
+
+/* PocketCash/Views/Feed.swift:23 */
+"Yesterday" = "Kahapon";
+
+/* Shared/Intents.swift:248 */
+"You have %@ in %@." = "May %@ ka sa %@.";
+
+/* PocketCash/Views/HomeView.swift:315 */
+"Your burn rate shows up after a few cash moves." = "Lalabas ang bilis ng paggastos mo pagkatapos ng ilang galaw ng cash.";
+
+/* PocketCashWidget/WalletWidget.swift:66 */
+"Your cash balance with 1-tap buttons. Tap −50 when you pay, no app needed." = "Ang balanse ng cash mo, may 1-tap na mga button. I-tap ang −50 kapag nagbayad ka, hindi na kailangang buksan ang app.";
+
+/* PocketCash/Views/OnboardingView.swift:37 */
+"Your cash, finally tracked" = "Sa wakas, bantay na ang cash mo";
+
+/* PocketCash/Views/PaywallView.swift:36 */
+"Your exact amounts, like −45 for your commute or −15 for parking." = "Ang eksaktong halaga mo, gaya ng −45 sa pamasahe o −15 sa parking.";
+
+/* PocketCash/Views/SettingsView.swift:163 */
+"Your most common cash expense, like your commute fare. Add the Quick Spend control to Control Center or the Lock Screen, or say \"Quick spend in PocketCash\"." = "Ang pinakamadalas mong gastos sa cash, gaya ng pamasahe mo. Idagdag ang control na Mabilisang Gastos sa Control Center o sa Lock Screen, o sabihing \"Quick spend in PocketCash\".";
+
+/* PocketCash/ProStore.swift:72 */
+"Your purchase is waiting for approval." = "Hinihintay pa ang pag-apruba sa binili mo.";

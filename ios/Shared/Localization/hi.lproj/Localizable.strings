@@ -1,0 +1,896 @@
+/* Hindi (hi). First draft: needs a native speaker's review before a store launch.
+   Keys are the English text; keep %@ placeholders (or %1$@, %2$@ to reorder) and ${…} tokens. */
+
+/* PocketCash/AppModel.swift:233 */
+"%@ added" = "%@ जोड़ा गया";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"%@ d" = "%@ दिन";
+
+/* PocketCashWidget/QuickSpendWidget.swift:49 */
+"%@ in %@" = "%2$@ में %1$@";
+
+/* PocketCashWidget/WalletWidget.swift:132 */
+"%@ left" = "%@ बचे";
+
+/* PocketCash/Views/HomeView.swift:172 */
+"%@ left today" = "आज %@ बचे";
+
+/* PocketCash/Views/CountCashSheet.swift:45 */
+"%@ more than PocketCash says" = "PocketCash से %@ ज़्यादा";
+
+/* PocketCash/Views/EnvelopesView.swift:103 */
+"%@ of %@" = "%2$@ में से %1$@";
+
+/* PocketCash/AppModel.swift:230 */
+"%@ spent" = "%@ खर्च हुआ";
+
+/* PocketCashWidget/WalletWidget.swift:139 */
+"%@ today" = "आज %@";
+
+/* PocketCash/Views/CountCashSheet.swift:42 */
+"%@ unrecorded spending" = "%@ का बिना दर्ज खर्च";
+
+/* PocketCash/Views/HomeView.swift:333 */
+"%@/day" = "%@/दिन";
+
+/* PocketCash/Views/HomeView.swift:329 */
+"%@/day · lasts until about %@" = "%1$@/दिन · लगभग %2$@ तक चलेगा";
+
+/* PocketCash/Views/HomeView.swift:326 */
+"%@/day · runs out today" = "%@/दिन · आज खत्म होगा";
+
+/* PocketCash/Views/SettingsView.swift:216 */
+"A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone." = "बैकअप फ़ाइल में हर बटुआ, नकद लेन-देन और सेटिंग रहती है, और इसे किसी भी iPhone या Android फ़ोन पर रीस्टोर किया जा सकता है।";
+
+/* PocketCash/Views/WalletEditorView.swift:33 */
+"A custom symbol is handy for a travel wallet." = "ट्रैवल बटुए के लिए कस्टम चिह्न काम आता है।";
+
+/* PocketCash/Views/PaywallView.swift:40 */
+"A nudge when a wallet drops below the amount you pick." = "किसी बटुए में नकद आपकी चुनी रकम से नीचे जाए, तो रिमाइंडर।";
+
+/* PocketCash/Views/SettingsView.swift:49 */
+"About" = "परिचय";
+
+/* Shared/Intents.swift:223 */
+"Add ${amount} to ${wallet}" = "${wallet} में ${amount} जोड़ें";
+
+/* PocketCash/Views/WalletEditorView.swift:224 */
+"Add a cash-in button" = "नकद आने का बटन जोड़ें";
+
+/* PocketCash/Views/WalletEditorView.swift:236 */
+"Add a spend button" = "खर्च बटन जोड़ें";
+
+/* PocketCash/Views/HomeView.swift:116 */
+"Add a wallet" = "बटुआ जोड़ें";
+
+/* PocketCash/Views/EnvelopesView.swift:67 */
+"Add an envelope" = "लिफ़ाफ़ा जोड़ें";
+
+/* PocketCash/Views/TransactionEditor.swift:105 */
+"Add another wallet with the same currency in Settings." = "सेटिंग्ज़ में इसी मुद्रा वाला दूसरा बटुआ जोड़ें।";
+
+/* PocketCash/Views/KeypadSheet.swift:35 */
+"Add cash" = "नकद जोड़ें";
+
+/* PocketCash/AppShortcuts.swift:11 */
+"Add Cash" = "नकद जोड़ें";
+
+/* Shared/Intents.swift:232 */
+"Added %@. You have %@ in %@." = "%1$@ जोड़ा गया। %3$@ में अब %2$@ है।";
+
+/* Shared/Intents.swift:216 */
+"Adds cash to a PocketCash wallet, like an ATM withdrawal." = "PocketCash बटुए में नकद जोड़ता है, जैसे एटीएम निकासी।";
+
+/* Shared/Intents.swift:108 */
+"Adjust Cash" = "नकद एडजस्ट करें";
+
+/* PocketCash/Views/SettingsView.swift:144 */
+"Amount" = "रकम";
+
+/* PocketCash/Views/SettingsView.swift:186 */
+"App lock" = "ऐप लॉक";
+
+/* PocketCash/Views/PaywallView.swift:37 */
+"App lock and privacy mode" = "ऐप लॉक और प्राइवेसी मोड";
+
+/* PocketCash/Views/Feed.swift:51 */
+"ATM Cycle · %@ – %@ · %@ lasted %@ days" = "एटीएम चक्र · %1$@ – %2$@ · %3$@, %4$@ दिन चले";
+
+/* PocketCash/Views/InsightsView.swift:87 */
+"ATM cycles" = "एटीएम चक्र";
+
+/* Shared/Labels.swift:11 */
+"ATM withdrawal" = "एटीएम निकासी";
+
+/* PocketCash/Views/SettingsView.swift:31 */
+"ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls." = "एटीएम निकासी से नया एटीएम चक्र शुरू होता है। प्राइवेसी मोड विजेट, लॉक स्क्रीन और कंट्रोल पर रकम छिपाता है।";
+
+/* PocketCash/Views/EnvelopesView.swift:175 */
+"Available" = "उपलब्ध";
+
+/* PocketCash/Views/SettingsView.swift:202 */
+"Back up to a file" = "फ़ाइल में बैकअप लें";
+
+/* PocketCash/Views/SettingsView.swift:214 */
+"Backup" = "बैकअप";
+
+/* PocketCash/Views/OnboardingView.swift:40 */
+"Banking apps log your cards. PocketCash puts your physical wallet on your Home Screen: tap −50 when you pay, and you're done." = "बैंकिंग ऐप आपके कार्ड का हिसाब रखते हैं। PocketCash आपके असली बटुए को होम स्क्रीन पर ले आता है: पैसे देते समय −50 टैप करें, बस हो गया।";
+
+/* PocketCash/Views/Feed.swift:48 */
+"Before first ATM" = "पहली एटीएम निकासी से पहले";
+
+/* Shared/Intents.swift:44 */
+"Bills" = "बिल";
+
+/* PocketCash/Views/HomeView.swift:320 */
+"Burning %@ a day" = "रोज़ %@ का खर्च";
+
+/* PocketCash/Views/SettingsView.swift:117 */
+"Buttons" = "बटन";
+
+/* PocketCash/Views/BackupUI.swift:83 */
+"Can't restore this file" = "यह फ़ाइल रीस्टोर नहीं हो सकती";
+
+/* PocketCash/Views/BackupUI.swift:79 */
+"Cancel" = "रद्द करें";
+
+/* PocketCash/AppShortcuts.swift:17 */
+"Cash Balance" = "नकद शेष राशि";
+
+/* Shared/Labels.swift:12 */
+"Cash count" = "नकद गिनती";
+
+/* PocketCash/Views/WalletEditorView.swift:226 */
+"Cash in" = "नकद आया";
+
+/* PocketCash/Views/WalletEditorView.swift:44 */
+"Cash in it right now" = "अभी इसमें नकद";
+
+/* PocketCashWidget/Controls.swift:37 */
+"Cash Keypad" = "नकद कीपैड";
+
+/* PocketCash/Views/HomeView.swift:328 */
+"Cash lasts until about %@" = "नकद लगभग %@ तक चलेगा";
+
+/* PocketCash/Views/HomeView.swift:325 */
+"Cash runs out today at this pace" = "इस रफ़्तार से नकद आज खत्म हो जाएगा";
+
+/* PocketCashWidget/WalletWidget.swift:65 */
+"Cash Wallet" = "नकद बटुआ";
+
+/* PocketCash/Views/KeypadSheet.swift:296 */
+"Categories" = "कैटेगरी";
+
+/* PocketCash/Views/Feed.swift:138 */
+"Categories are in Pro" = "कैटेगरी Pro में मिलती हैं";
+
+/* PocketCash/Views/Feed.swift:144 */
+"Category" = "कैटेगरी";
+
+/* PocketCash/Views/KeypadSheet.swift:146 */
+"Change" = "बाकी पैसे";
+
+/* PocketCash/Views/PaywallView.swift:29 */
+"Change calculator" = "बाकी पैसे का कैलकुलेटर";
+
+/* PocketCash/Views/KeypadSheet.swift:149 */
+"Change must be less than what you paid" = "बाकी पैसे दी गई रकम से कम होने चाहिए";
+
+/* PocketCashWidget/WalletWidget.swift:8 */
+"Choose the wallet this widget shows. Needs PocketCash Pro." = "चुनें कि यह विजेट कौन-सा बटुआ दिखाए। इसके लिए PocketCash Pro चाहिए।";
+
+/* PocketCash/Views/CountCashSheet.swift:100 */
+"Clear" = "साफ़ करें";
+
+/* PocketCash/Views/EnvelopesView.swift:202 */
+"Clear all" = "सब साफ़ करें";
+
+/* PocketCash/Views/PaywallView.swift:93 */
+"Close" = "बंद करें";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Coin Pouch" = "सिक्कों की थैली";
+
+/* PocketCash/Views/PaywallView.swift:26 */
+"Coin pouch, emergency stash, a travel wallet in any currency, with moves between them." = "सिक्कों की थैली, इमरजेंसी फ़ंड, किसी भी मुद्रा में ट्रैवल बटुआ, और उनके बीच ट्रांसफ़र।";
+
+/* PocketCash/Views/OnboardingView.swift:60 */
+"Continue" = "जारी रखें";
+
+/* PocketCash/Views/SettingsView.swift:26 */
+"Count + buttons as ATM withdrawals" = "+ बटनों को एटीएम निकासी गिनें";
+
+/* PocketCash/Views/CountCashSheet.swift:55 */
+"Count bills & coins" = "नोट और सिक्के गिनें";
+
+/* PocketCash/Views/OnboardingView.swift:79 */
+"Count it roughly. You can always fix it later by tapping the balance." = "मोटा-मोटा गिन लें। बाद में शेष राशि पर टैप करके आप इसे कभी भी ठीक कर सकते हैं।";
+
+/* PocketCash/Views/CountCashSheet.swift:95 */
+"Count my cash" = "मेरा नकद गिनें";
+
+/* PocketCash/Views/HomeView.swift:188 */
+"Count your cash" = "अपना नकद गिनें";
+
+/* PocketCash/Views/OnboardingView.swift:49 */
+"Currency" = "मुद्रा";
+
+/* PocketCash/Views/InsightsView.swift:137 */
+"Current · since %@" = "मौजूदा · %@ से";
+
+/* PocketCash/Views/Feed.swift:53 */
+"Current cycle · since %@ · %@ · %@ days so far" = "मौजूदा चक्र · %1$@ से · %2$@ · अब तक %3$@ दिन";
+
+/* PocketCash/Views/HomeView.swift:216 */
+"Custom" = "कस्टम";
+
+/* PocketCash/Views/PaywallView.swift:35 */
+"Custom buttons" = "कस्टम बटन";
+
+/* PocketCash/Views/WalletEditorView.swift:29 */
+"Custom symbol (optional)" = "कस्टम चिह्न (वैकल्पिक)";
+
+/* PocketCash/Views/WalletEditorView.swift:35 */
+"Custom symbols are part of Pro." = "कस्टम चिह्न Pro में मिलते हैं।";
+
+/* PocketCash/Views/InsightsView.swift:90 */
+"Cycles appear after your first ATM withdrawal." = "आपकी पहली एटीएम निकासी के बाद चक्र दिखेंगे।";
+
+/* PocketCash/Views/PaywallView.swift:31 */
+"Daily budget" = "दैनिक बजट";
+
+/* PocketCash/Views/Feed.swift:116 */
+"Delete" = "मिटाएं";
+
+/* PocketCash/Views/WalletEditorView.swift:108 */
+"Delete %@?" = "%@ मिटाएं?";
+
+/* PocketCash/Views/WalletEditorView.swift:90 */
+"Delete wallet" = "बटुआ मिटाएं";
+
+/* PocketCash/Views/WalletEditorView.swift:109 */
+"Delete wallet and its history" = "बटुआ और उसका इतिहास मिटाएं";
+
+/* PocketCash/Views/SettingsView.swift:54 */
+"Developer" = "डेवलपर";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Done" = "हो गया";
+
+/* PocketCash/Views/HomeView.swift:228 */
+"Edit buttons…" = "बटन एडिट करें…";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"Edit wallet" = "बटुआ एडिट करें";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Emergency Stash" = "इमरजेंसी फ़ंड";
+
+/* PocketCash/Views/WalletEditorView.swift:61 */
+"Envelope target or savings goal. Its progress shows in Envelopes." = "लिफ़ाफ़े का लक्ष्य या बचत लक्ष्य। इसकी प्रगति लिफ़ाफ़े टैब में दिखती है।";
+
+/* PocketCash/Views/WalletEditorView.swift:63 */
+"Envelope targets and savings goals are part of Pro." = "लिफ़ाफ़े के लक्ष्य और बचत लक्ष्य Pro में मिलते हैं।";
+
+/* PocketCash/AppModel.swift:18 */
+"Envelopes" = "लिफ़ाफ़े";
+
+/* PocketCash/Views/PaywallView.swift:21 */
+"Envelopes and savings goals" = "लिफ़ाफ़े और बचत लक्ष्य";
+
+/* PocketCash/Views/EnvelopesView.swift:16 */
+"Envelopes are part of Pro" = "लिफ़ाफ़े Pro में मिलते हैं";
+
+/* PocketCash/Views/SettingsView.swift:228 */
+"Envelopes, insights, more wallets, quick spend and more. One purchase." = "लिफ़ाफ़े, इनसाइट्स, ज़्यादा बटुए, झटपट खर्च और भी बहुत कुछ। एक बार खरीदें।";
+
+/* Shared/Intents.swift:42 */
+"Errands" = "छोटे-मोटे काम";
+
+/* PocketCash/Views/PaywallView.swift:42 */
+"Every cash move beyond 7 days, exportable to any spreadsheet." = "7 दिनों से पुराना हर नकद लेन-देन, किसी भी स्प्रेडशीट में एक्सपोर्ट के लिए तैयार।";
+
+/* PocketCash/Views/BackupUI.swift:81 */
+"Everything on this phone is replaced by the backup. This can't be undone." = "इस फ़ोन का सब कुछ बैकअप से बदल दिया जाएगा। इसे वापस नहीं किया जा सकता।";
+
+/* PocketCash/Views/SettingsView.swift:211 */
+"Export CSV" = "CSV एक्सपोर्ट करें";
+
+/* PocketCash/Views/CountCashSheet.swift:130 */
+"Fewer" = "कम करें";
+
+/* PocketCash/Views/EnvelopesView.swift:36 */
+"Fill envelopes" = "लिफ़ाफ़े भरें";
+
+/* PocketCash/Views/EnvelopesView.swift:137 */
+"Food" = "खाना";
+
+/* Shared/Intents.swift:38 */
+"Food & drinks" = "खाना-पीना";
+
+/* Shared/ModelHelpers.swift:24 */
+"Found cash" = "मिला नकद";
+
+/* PocketCash/Views/EnvelopesView.swift:170 */
+"From" = "कहां से";
+
+/* Shared/CashStore.swift:145 */
+"From %@" = "%@ से";
+
+/* PocketCash/Views/TransactionEditor.swift:112 */
+"From %@ · %@ available" = "%1$@ से · %2$@ उपलब्ध";
+
+/* PocketCash/Views/KeypadSheet.swift:71 */
+"From ATM" = "एटीएम से";
+
+/* PocketCash/Views/PaywallView.swift:41 */
+"Full history and CSV export" = "पूरा इतिहास और CSV एक्सपोर्ट";
+
+/* Shared/Intents.swift:45 */
+"Fun" = "मनोरंजन";
+
+/* PocketCash/Views/EnvelopesView.swift:62 */
+"Give a wallet a target in Settings → Wallets to see its progress here." = "यहां प्रगति देखने के लिए सेटिंग्ज़ → बटुए में किसी बटुए को लक्ष्य दें।";
+
+/* PocketCash/Views/EnvelopesView.swift:17 */
+"Give a wallet a target, watch it fill up, and split cash into envelopes in one step." = "किसी बटुए को लक्ष्य दें, उसे भरते देखें और एक ही बार में नकद को लिफ़ाफ़ों में बांटें।";
+
+/* PocketCash/Views/PaywallView.swift:22 */
+"Give any wallet a target, watch it fill, and split cash into envelopes in one step." = "किसी भी बटुए को लक्ष्य दें, उसे भरते देखें और एक ही बार में नकद को लिफ़ाफ़ों में बांटें।";
+
+/* PocketCash/Views/EnvelopesView.swift:265 */
+"Goal of %@ reached" = "%@ का लक्ष्य पूरा";
+
+/* PocketCash/Views/EnvelopesView.swift:97 */
+"Goal reached" = "लक्ष्य पूरा";
+
+/* PocketCash/Views/KeypadSheet.swift:62 */
+"Got change?" = "बाकी पैसे मिले?";
+
+/* Shared/Intents.swift:41 */
+"Groceries" = "किराना";
+
+/* PocketCash/Views/SettingsView.swift:35 */
+"Haptics" = "हैप्टिक्स";
+
+/* PocketCash/AppModel.swift:16 */
+"Home" = "होम";
+
+/* PocketCash/Views/PaywallView.swift:24 */
+"How long each ATM withdrawal lasts, your burn rate, when the cash runs out, and where it goes." = "हर एटीएम निकासी कितने दिन चलती है, खर्च की रफ़्तार, नकद कब खत्म होगा और कहां जाता है।";
+
+/* PocketCash/Views/OnboardingView.swift:75 */
+"How much cash is in your wallet right now?" = "अभी आपके बटुए में कितना नकद है?";
+
+/* PocketCash/Views/CountCashSheet.swift:23 */
+"How much is in your wallet?" = "आपके बटुए में कितना है?";
+
+/* PocketCash/Views/WalletEditorView.swift:73 */
+"Ideas" = "सुझाव";
+
+/* PocketCash/AppModel.swift:17 */
+"Insights" = "इनसाइट्स";
+
+/* PocketCash/Views/InsightsView.swift:18 */
+"Insights are part of Pro" = "इनसाइट्स Pro में मिलती हैं";
+
+/* PocketCash/Views/SettingsView.swift:40 */
+"Language" = "भाषा";
+
+/* PocketCash/Views/InsightsView.swift:69 */
+"Last 30 days by category" = "पिछले 30 दिन, कैटेगरी के हिसाब से";
+
+/* PocketCash/Views/InsightsView.swift:153 */
+"Lasted" = "अवधि";
+
+/* PocketCash/Views/PaywallView.swift:38 */
+"Lock PocketCash with Face ID or your passcode, and hide amounts on widgets." = "PocketCash को Face ID या पासकोड से लॉक करें और विजेट पर रकम छिपाएं।";
+
+/* PocketCash/Views/PaywallView.swift:28 */
+"Lock Screen widgets and Control Center buttons for the amount you spend most." = "जो रकम आप सबसे ज़्यादा खर्च करते हैं, उसके लिए लॉक स्क्रीन विजेट और कंट्रोल सेंटर बटन।";
+
+/* PocketCash/AppLock.swift:16 */
+"Lock with Face ID" = "Face ID से लॉक करें";
+
+/* PocketCash/AppLock.swift:18 */
+"Lock with Optic ID" = "Optic ID से लॉक करें";
+
+/* PocketCash/AppLock.swift:19 */
+"Lock with passcode" = "पासकोड से लॉक करें";
+
+/* PocketCash/AppLock.swift:17 */
+"Lock with Touch ID" = "Touch ID से लॉक करें";
+
+/* PocketCash/Views/PaywallView.swift:39 */
+"Low-cash reminder" = "कम नकद रिमाइंडर";
+
+/* PocketCash/Views/OnboardingView.swift:87 */
+"Main Wallet" = "मुख्य बटुआ";
+
+/* PocketCash/Views/WalletEditorView.swift:80 */
+"Make this the default wallet" = "इसे डिफ़ॉल्ट बटुआ बनाएं";
+
+/* PocketCash/Views/CountCashSheet.swift:38 */
+"Matches PocketCash exactly" = "PocketCash से बिल्कुल मेल खाता है";
+
+/* PocketCash/Views/CountCashSheet.swift:54 */
+"Method" = "तरीका";
+
+/* PocketCash/Views/CountCashSheet.swift:139 */
+"More" = "बढ़ाएं";
+
+/* PocketCash/Views/InsightsView.swift:168 */
+"Most went to %@" = "ज़्यादातर खर्च %@ पर";
+
+/* PocketCash/Views/HomeView.swift:220 */
+"Move" = "भेजें";
+
+/* PocketCash/Views/TransactionEditor.swift:123 */
+"Move cash" = "नकद भेजें";
+
+/* PocketCash/Views/EnvelopesView.swift:197 */
+"Moving %@ · %@ stays in %@" = "%1$@ भेजे जा रहे हैं · %3$@ में %2$@ रहेंगे";
+
+/* PocketCash/Views/PaywallView.swift:25 */
+"Multiple wallets" = "कई बटुए";
+
+/* PocketCash/Views/WalletEditorView.swift:23 */
+"Name" = "नाम";
+
+/* PocketCash/Views/MainShell.swift:184 */
+"New cash move" = "नया नकद लेन-देन";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"New wallet" = "नया बटुआ";
+
+/* PocketCash/Views/HomeView.swift:35 */
+"No cash moves yet" = "अभी कोई नकद लेन-देन नहीं";
+
+/* PocketCash/Views/TransactionEditor.swift:103 */
+"No other %@ wallet" = "%@ का कोई दूसरा बटुआ नहीं";
+
+/* PocketCash/Views/EnvelopesView.swift:180 */
+"No other %@ wallet to fill. Add one in Settings → Wallets." = "भरने के लिए %@ का कोई दूसरा बटुआ नहीं है। सेटिंग्ज़ → बटुए में जोड़ें।";
+
+/* PocketCash/ProStore.swift:90 */
+"No PocketCash Pro purchase found for this Apple Account." = "इस Apple खाते पर PocketCash Pro की कोई खरीदारी नहीं मिली।";
+
+/* PocketCash/Views/WalletEditorView.swift:51 */
+"No target" = "कोई लक्ष्य नहीं";
+
+/* PocketCash/Views/HomeView.swift:314 */
+"Not enough spending yet" = "अभी काफ़ी खर्च दर्ज नहीं है";
+
+/* PocketCash/Views/TransactionEditor.swift:31 */
+"Note" = "नोट";
+
+/* PocketCash/Views/KeypadSheet.swift:76 */
+"Note (optional)" = "नोट (वैकल्पिक)";
+
+/* PocketCashWidget/WalletWidget.swift:137 */
+"Nothing spent today" = "आज कुछ खर्च नहीं हुआ";
+
+/* PocketCash/Views/SettingsView.swift:145 */
+"Off" = "बंद";
+
+/* PocketCash/PocketCashApp.swift:64 */
+"OK" = "ठीक है";
+
+/* PocketCash/Views/HomeView.swift:60 */
+"Older history and ATM cycles are in Pro" = "पुराना इतिहास और एटीएम चक्र Pro में हैं";
+
+/* PocketCash/Views/PaywallView.swift:15 */
+"One purchase. Yours forever. No subscription." = "एक बार खरीदें। हमेशा के लिए आपका। कोई सब्सक्रिप्शन नहीं।";
+
+/* PocketCashWidget/QuickSpendWidget.swift:36 */
+"One tap subtracts your most common cash expense, like your commute fare." = "एक टैप में आपका सबसे आम नकद खर्च घटाता है, जैसे आने-जाने का किराया।";
+
+/* Shared/CashStore.swift:306 */
+"Only %@ left in %@." = "%2$@ में सिर्फ़ %1$@ बचे।";
+
+/* Shared/Intents.swift:254 */
+"Open Cash Keypad" = "नकद कीपैड खोलें";
+
+/* PocketCashWidget/WalletWidget.swift:361 */
+"Open PocketCash" = "PocketCash खोलें";
+
+/* Shared/Intents.swift:57 */
+"Open PocketCash once to set up your wallet." = "अपना बटुआ सेट करने के लिए एक बार PocketCash खोलें।";
+
+/* PocketCashWidget/WalletWidget.swift:363 */
+"Open PocketCash to set up your wallet" = "अपना बटुआ सेट करने के लिए PocketCash खोलें";
+
+/* PocketCashWidget/Controls.swift:44 */
+"Opens PocketCash on its keypad to log a custom amount." = "कोई भी रकम दर्ज करने के लिए PocketCash को कीपैड पर खोलता है।";
+
+/* PocketCash/Views/MainShell.swift:185 */
+"Opens the keypad. Touch and hold to count your cash." = "कीपैड खोलता है। अपना नकद गिनने के लिए दबाकर रखें।";
+
+/* PocketCash/Views/SettingsView.swift:43 */
+"Opens this app's page in the iPhone's Settings, where you can pick its language." = "iPhone की सेटिंग्ज़ में इस ऐप का पेज खोलता है, जहां आप इसकी भाषा चुन सकते हैं।";
+
+/* Shared/Intents.swift:46 */
+"Other" = "अन्य";
+
+/* PocketCashWidget/WalletWidget.swift:135 */
+"Over by %@" = "%@ ज़्यादा खर्च";
+
+/* PocketCash/Views/KeypadSheet.swift:126 */
+"Paid" = "दिए";
+
+/* PocketCash/Views/KeypadSheet.swift:155 */
+"Paid %@ − Change %@ = %@" = "दिए %1$@ − बाकी पैसे %2$@ = %3$@";
+
+/* PocketCash/Views/PaywallView.swift:30 */
+"Paid with a big bill? Enter what you got back and PocketCash saves the difference." = "बड़ा नोट दिया? जितने वापस मिले, वह डालें और PocketCash अंतर सेव कर लेगा।";
+
+/* Shared/Intents.swift:40 */
+"Parking" = "पार्किंग";
+
+/* PocketCash/Views/InsightsView.swift:156 */
+"Per day" = "प्रति दिन";
+
+/* PocketCash/AppModel.swift:126 */
+"PocketCash couldn't open its data: %@" = "PocketCash अपना डेटा नहीं खोल सका: %@";
+
+/* PocketCash/AppLock.swift:158 */
+"PocketCash is locked" = "PocketCash लॉक है";
+
+/* PocketCash/Views/SettingsView.swift:51 */
+"PocketCash keeps everything on this iPhone. No account, no ads, no tracking." = "PocketCash सब कुछ इसी iPhone पर रखता है। न अकाउंट, न विज्ञापन, न ट्रैकिंग।";
+
+/* PocketCashWidget/Controls.swift:13 */
+"PocketCash Pro" = "PocketCash Pro";
+
+/* PocketCash/Views/SettingsView.swift:223 */
+"PocketCash Pro is unlocked" = "PocketCash Pro अनलॉक है";
+
+/* PocketCash/Views/CountCashSheet.swift:35 */
+"PocketCash says %@" = "PocketCash के हिसाब से %@";
+
+/* PocketCash/Views/SettingsView.swift:27 */
+"Privacy mode" = "प्राइवेसी मोड";
+
+/* PocketCash/Views/SettingsView.swift:236 */
+"Pro" = "Pro";
+
+/* PocketCash/Views/PaywallView.swift:47 */
+"Pro is unlocked. Thank you!" = "Pro अनलॉक है। धन्यवाद!";
+
+/* PocketCash/ProStore.swift:90 */
+"Pro restored." = "Pro रीस्टोर हो गया।";
+
+/* PocketCash/ProStore.swift:67 */
+"Pro unlocked. Thank you!" = "Pro अनलॉक हो गया। धन्यवाद!";
+
+/* PocketCash/Views/OnboardingView.swift:109 */
+"Put your wallet on your Home Screen" = "अपना बटुआ होम स्क्रीन पर रखें";
+
+/* PocketCashWidget/QuickSpendWidget.swift:73 */
+"Quick spend" = "झटपट खर्च";
+
+/* PocketCashWidget/Controls.swift:17 */
+"Quick Spend" = "झटपट खर्च";
+
+/* PocketCash/Views/SettingsView.swift:158 */
+"Quick spend amount" = "झटपट खर्च की रकम";
+
+/* PocketCash/Views/PaywallView.swift:27 */
+"Quick spend everywhere" = "हर जगह झटपट खर्च";
+
+/* Shared/Intents.swift:176 */
+"Quick spend is part of PocketCash Pro." = "झटपट खर्च PocketCash Pro में मिलता है।";
+
+/* Shared/Intents.swift:59 */
+"Quick spend is part of PocketCash Pro. Open PocketCash to unlock it." = "झटपट खर्च PocketCash Pro में मिलता है। अनलॉक करने के लिए PocketCash खोलें।";
+
+/* PocketCash/Views/SettingsView.swift:128 */
+"Remind me below" = "इससे कम होने पर याद दिलाएं";
+
+/* PocketCash/Views/Feed.swift:135 */
+"Remove category" = "कैटेगरी हटाएं";
+
+/* PocketCash/Views/KeypadSheet.swift:164 */
+"Remove change" = "बाकी पैसे हटाएं";
+
+/* PocketCash/Views/EnvelopesView.swift:136 */
+"Rent" = "किराया";
+
+/* PocketCash/Views/BackupUI.swift:78 */
+"Replace all data on this phone" = "इस फ़ोन का सारा डेटा बदलें";
+
+/* PocketCash/Views/WalletEditorView.swift:243 */
+"Reset to %@ defaults" = "%@ के डिफ़ॉल्ट पर रीसेट करें";
+
+/* PocketCash/Views/OnboardingView.swift:65 */
+"Restore from a backup file" = "बैकअप फ़ाइल से रीस्टोर करें";
+
+/* PocketCash/Views/SettingsView.swift:205 */
+"Restore from a file" = "फ़ाइल से रीस्टोर करें";
+
+/* PocketCash/Views/PaywallView.swift:76 */
+"Restore purchase" = "खरीदारी रीस्टोर करें";
+
+/* PocketCash/Views/BackupUI.swift:76 */
+"Restore this backup?" = "यह बैकअप रीस्टोर करें?";
+
+/* Shared/CashStore.swift:305 */
+"Running low on cash" = "नकद कम हो रहा है";
+
+/* PocketCash/Views/EnvelopesView.swift:213 */
+"Save" = "सेव करें";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Save count" = "गिनती सेव करें";
+
+/* PocketCash/Views/EnvelopesView.swift:138 */
+"Savings" = "बचत";
+
+/* PocketCash/Views/WalletEditorView.swift:194 */
+"Search currencies" = "मुद्राएं खोजें";
+
+/* PocketCash/Views/OnboardingView.swift:116 */
+"Search PocketCash and pick the medium size." = "PocketCash खोजें और मीडियम साइज़ चुनें।";
+
+/* PocketCash/Views/InsightsView.swift:19 */
+"See how long each ATM withdrawal lasts, your daily burn rate, when the cash runs out, and where it goes." = "देखें कि हर एटीएम निकासी कितने दिन चलती है, रोज़ के खर्च की रफ़्तार क्या है, नकद कब खत्म होगा और कहां जाता है।";
+
+/* PocketCash/Views/PaywallView.swift:32 */
+"See what's left today in the app and on the medium widget." = "ऐप और मीडियम विजेट पर देखें कि आज कितना बचा है।";
+
+/* PocketCash/Views/SettingsView.swift:189 */
+"Set up a passcode on this iPhone to use App lock." = "ऐप लॉक इस्तेमाल करने के लिए इस iPhone पर पासकोड सेट करें।";
+
+/* PocketCash/AppModel.swift:19 */
+"Settings" = "सेटिंग्ज़";
+
+/* PocketCash/Views/EnvelopesView.swift:262 */
+"Short by %@" = "%@ कम";
+
+/* PocketCash/Views/MainShell.swift:110 */
+"Shows all destinations" = "सभी सेक्शन दिखाता है";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"So far" = "अब तक";
+
+/* PocketCash/Views/InsightsView.swift:58 */
+"So far: %@ in %@ days" = "अब तक: %2$@ दिन में %1$@ खर्च";
+
+/* PocketCash/PocketCashApp.swift:63 */
+"Something went wrong" = "कुछ गड़बड़ हो गई";
+
+/* PocketCash/Views/KeypadSheet.swift:34 */
+"Spend" = "खर्च";
+
+/* PocketCashWidget/Controls.swift:27 */
+"Spend %@" = "%@ खर्च करें";
+
+/* Shared/Intents.swift:199 */
+"Spend ${amount} from ${wallet}" = "${wallet} से ${amount} खर्च करें";
+
+/* PocketCash/AppShortcuts.swift:8 */
+"Spend Cash" = "नकद खर्च करें";
+
+/* PocketCash/Views/InsightsView.swift:155 */
+"Spent" = "खर्च हुआ";
+
+/* Shared/Intents.swift:185 */
+"Spent %@. %@ left in %@." = "%1$@ खर्च हुआ। %3$@ में %2$@ बचे।";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start at zero" = "शून्य से शुरू करें";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start tracking" = "हिसाब रखना शुरू करें";
+
+/* Shared/CashStore.swift:226 */
+"Starting cash" = "शुरुआती नकद";
+
+/* Shared/Intents.swift:191 */
+"Subtracts cash you spent from a PocketCash wallet." = "PocketCash बटुए से खर्च किया गया नकद घटाता है।";
+
+/* PocketCashWidget/Controls.swift:18 */
+"Subtracts your most common cash expense, like your commute fare." = "आपका सबसे आम नकद खर्च घटाता है, जैसे आने-जाने का किराया।";
+
+/* Shared/Intents.swift:164 */
+"Subtracts your quick-spend amount, like your daily commute fare, from your cash." = "आपके नकद से झटपट खर्च की रकम घटाता है, जैसे रोज़ आने-जाने का किराया।";
+
+/* PocketCash/Views/EnvelopesView.swift:201 */
+"Suggested amounts" = "सुझाई गई रकम";
+
+/* PocketCash/Views/PaywallView.swift:34 */
+"Tag spending after the fact with one tap, without slowing down the first tap." = "बाद में एक टैप से खर्च को कैटेगरी दें, पहला टैप धीमा किए बिना।";
+
+/* PocketCash/Views/HomeView.swift:36 */
+"Tap a button above when you pay or withdraw cash." = "पैसे देते या नकद निकालते समय ऊपर का कोई बटन टैप करें।";
+
+/* PocketCash/Views/OnboardingView.swift:115 */
+"Tap Edit, then Add Widget." = "संपादित करें पर टैप करें, फिर विजेट जोड़ें पर।";
+
+/* PocketCashWidget/WalletWidget.swift:335 */
+"Tap to unlock" = "अनलॉक के लिए टैप करें";
+
+/* PocketCash/Views/WalletEditorView.swift:58 */
+"Target" = "लक्ष्य";
+
+/* Shared/Intents.swift:238 */
+"Tells you how much cash is in your wallet." = "बताता है कि आपके बटुए में कितना नकद है।";
+
+/* Shared/Intents.swift:58 */
+"That amount doesn't look right." = "यह रकम सही नहीं लग रही।";
+
+/* PocketCash/Views/EnvelopesView.swift:195 */
+"That's more than %@ has." = "%@ में इतना नहीं है।";
+
+/* PocketCash/ProStore.swift:69 */
+"The App Store couldn't verify that purchase." = "App Store इस खरीदारी की पुष्टि नहीं कर सका।";
+
+/* PocketCash/Views/PaywallView.swift:71 */
+"The App Store isn't reachable right now. Try again later." = "अभी App Store से कनेक्ट नहीं हो पा रहा। बाद में फिर कोशिश करें।";
+
+/* PocketCash/AppModel.swift:362 */
+"The backup couldn't be restored: %@" = "बैकअप रीस्टोर नहीं हो सका: %@";
+
+/* PocketCash/Views/SettingsView.swift:135 */
+"The budget shows what's left today on the app and the medium widget." = "बजट ऐप और मीडियम विजेट पर दिखाता है कि आज कितना बचा है।";
+
+/* PocketCash/Views/WalletEditorView.swift:228 */
+"The first one is the widget's + button." = "पहला बटन विजेट का + बटन है।";
+
+/* PocketCash/Views/WalletEditorView.swift:240 */
+"The small widget shows the first two, the medium widget the first three." = "छोटा विजेट पहले दो बटन दिखाता है, मीडियम विजेट पहले तीन।";
+
+/* PocketCash/Views/InsightsView.swift:56 */
+"This ATM cycle: %@ in %@ days" = "यह एटीएम चक्र: %2$@ दिन में %1$@ खर्च";
+
+/* PocketCash/Views/BackupUI.swift:38 */
+"This backup file is damaged, so nothing was changed." = "यह बैकअप फ़ाइल खराब है, इसलिए कुछ नहीं बदला गया।";
+
+/* PocketCash/Views/BackupUI.swift:35 */
+"This backup is from a newer version of PocketCash. Update the app, then try again." = "यह बैकअप PocketCash के नए वर्शन का है। ऐप अपडेट करें, फिर दोबारा कोशिश करें।";
+
+/* PocketCash/Views/WalletEditorView.swift:114 */
+"This can't be undone." = "इसे वापस नहीं किया जा सकता।";
+
+/* PocketCash/Views/TransactionEditor.swift:68 */
+"This entry was deleted" = "यह एंट्री मिटा दी गई";
+
+/* PocketCash/Views/BackupUI.swift:33 */
+"This file isn't a PocketCash backup." = "यह फ़ाइल PocketCash बैकअप नहीं है।";
+
+/* PocketCash/Views/HomeView.swift:332 */
+"Time for an ATM run" = "एटीएम जाने का समय हो गया";
+
+/* Shared/Intents.swift:43 */
+"Tips" = "टिप";
+
+/* PocketCash/Views/TransactionEditor.swift:107 */
+"To" = "किसमें";
+
+/* Shared/CashStore.swift:143 */
+"To %@" = "%@ को";
+
+/* PocketCash/Views/Feed.swift:22 */
+"Today" = "आज";
+
+/* PocketCash/Views/HomeView.swift:165 */
+"Today %@" = "आज %@";
+
+/* PocketCash/Views/InsightsView.swift:162 */
+"Top denomination: %@ × %@" = "सबसे आम नोट: %1$@ × %2$@";
+
+/* PocketCash/Views/SettingsView.swift:109 */
+"Touch and hold a wallet to reorder. The first one is the default." = "क्रम बदलने के लिए किसी बटुए को दबाकर रखें। पहला बटुआ डिफ़ॉल्ट है।";
+
+/* PocketCash/Views/OnboardingView.swift:114 */
+"Touch and hold an empty spot on your Home Screen." = "होम स्क्रीन पर किसी खाली जगह को दबाकर रखें।";
+
+/* Shared/Intents.swift:136 */
+"Transaction" = "लेन-देन";
+
+/* Shared/Labels.swift:13 */
+"Transfer" = "ट्रांसफ़र";
+
+/* Shared/Intents.swift:39 */
+"Transit" = "आना-जाना";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Travel Wallet" = "ट्रैवल बटुआ";
+
+/* PocketCash/AppLock.swift:70 */
+"Turn on app lock" = "ऐप लॉक चालू करें";
+
+/* PocketCash/Views/KeypadSheet.swift:33 */
+"Type" = "प्रकार";
+
+/* PocketCash/Views/CountCashSheet.swift:56 */
+"Type the total" = "कुल रकम टाइप करें";
+
+/* PocketCash/Views/HomeView.swift:349 */
+"Undo" = "पूर्ववत करें";
+
+/* PocketCashWidget/WalletWidget.swift:185 */
+"Undo %@" = "%@ पूर्ववत करें";
+
+/* Shared/Intents.swift:133 */
+"Undo Cash Tap" = "नकद टैप पूर्ववत करें";
+
+/* PocketCash/AppLock.swift:164 */
+"Unlock" = "अनलॉक करें";
+
+/* PocketCash/Views/PaywallView.swift:58 */
+"Unlock for %@" = "%@ में अनलॉक करें";
+
+/* PocketCash/AppLock.swift:80 */
+"Unlock PocketCash" = "PocketCash अनलॉक करें";
+
+/* PocketCash/Views/PaywallView.swift:60 */
+"Unlock Pro" = "Pro अनलॉक करें";
+
+/* PocketCash/Views/SettingsView.swift:55 */
+"Unlock Pro (debug build)" = "Pro अनलॉक करें (डीबग बिल्ड)";
+
+/* Shared/ModelHelpers.swift:24 */
+"Unrecorded spending" = "बिना दर्ज खर्च";
+
+/* PocketCash/Views/InsightsView.swift:107 */
+"Untagged" = "बिना कैटेगरी";
+
+/* PocketCash/Views/SettingsView.swift:47 */
+"Version" = "वर्शन";
+
+/* PocketCashWidget/WalletWidget.swift:7 */
+"Wallet" = "बटुआ";
+
+/* PocketCash/Views/SettingsView.swift:106 */
+"Wallets" = "बटुए";
+
+/* PocketCash/Views/BackupUI.swift:48 */
+"Wallets: %@ · Cash moves: %@" = "बटुए: %1$@ · नकद लेन-देन: %2$@";
+
+/* PocketCash/Views/BackupUI.swift:50 */
+"Wallets: %@ · Cash moves: %@ · Backed up %@" = "बटुए: %1$@ · नकद लेन-देन: %2$@ · बैकअप: %3$@";
+
+/* PocketCash/Views/TransactionEditor.swift:29 */
+"When" = "कब";
+
+/* PocketCash/AppModel.swift:172 */
+"Widget: %@" = "विजेट: %@";
+
+/* PocketCash/Views/SettingsView.swift:29 */
+"Widgets" = "विजेट";
+
+/* PocketCash/Views/SettingsView.swift:191 */
+"Widgets still show your balance. Turn on Privacy mode to hide it." = "विजेट अब भी आपकी शेष राशि दिखाते हैं। इसे छिपाने के लिए प्राइवेसी मोड चालू करें।";
+
+/* PocketCash/Views/WalletEditorView.swift:85 */
+"Widgets, the free version and Siri use the default wallet unless you pick another." = "जब तक आप कोई दूसरा न चुनें, विजेट, फ़्री वर्शन और Siri डिफ़ॉल्ट बटुआ इस्तेमाल करते हैं।";
+
+/* PocketCash/Views/OnboardingView.swift:117 */
+"With Pro, add the Quick Spend control to Control Center or your Lock Screen for your commute fare." = "Pro के साथ, आने-जाने के किराए के लिए झटपट खर्च कंट्रोल को कंट्रोल सेंटर या लॉक स्क्रीन पर जोड़ें।";
+
+/* PocketCash/Views/Feed.swift:23 */
+"Yesterday" = "कल";
+
+/* Shared/Intents.swift:248 */
+"You have %@ in %@." = "आपके %2$@ में %1$@ है।";
+
+/* PocketCash/Views/HomeView.swift:315 */
+"Your burn rate shows up after a few cash moves." = "कुछ नकद लेन-देन के बाद आपके खर्च की रफ़्तार दिखेगी।";
+
+/* PocketCashWidget/WalletWidget.swift:66 */
+"Your cash balance with 1-tap buttons. Tap −50 when you pay, no app needed." = "1-टैप बटनों के साथ आपकी नकद शेष राशि। पैसे देते समय −50 टैप करें, ऐप खोलने की ज़रूरत नहीं।";
+
+/* PocketCash/Views/OnboardingView.swift:37 */
+"Your cash, finally tracked" = "आखिरकार, आपके नकद का हिसाब";
+
+/* PocketCash/Views/PaywallView.swift:36 */
+"Your exact amounts, like −45 for your commute or −15 for parking." = "आपकी सटीक रकम, जैसे किराए के लिए −45 या पार्किंग के लिए −15।";
+
+/* PocketCash/Views/SettingsView.swift:163 */
+"Your most common cash expense, like your commute fare. Add the Quick Spend control to Control Center or the Lock Screen, or say \"Quick spend in PocketCash\"." = "आपका सबसे आम नकद खर्च, जैसे आने-जाने का किराया। झटपट खर्च कंट्रोल को कंट्रोल सेंटर या लॉक स्क्रीन पर जोड़ें, या Siri से कहें \"Quick spend in PocketCash\"।";
+
+/* PocketCash/ProStore.swift:72 */
+"Your purchase is waiting for approval." = "आपकी खरीदारी मंज़ूरी का इंतज़ार कर रही है।";

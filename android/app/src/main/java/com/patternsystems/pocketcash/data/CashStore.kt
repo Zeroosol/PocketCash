@@ -5,7 +5,9 @@ import android.content.Context
 import android.util.Log
 import androidx.core.util.AtomicFile
 import com.patternsystems.pocketcash.BuildConfig
+import com.patternsystems.pocketcash.R
 import com.patternsystems.pocketcash.core.AppData
+import com.patternsystems.pocketcash.core.BackupContents
 import com.patternsystems.pocketcash.core.CashTransaction
 import com.patternsystems.pocketcash.core.Kind
 import com.patternsystems.pocketcash.core.Ledger
@@ -29,6 +31,15 @@ import java.math.BigDecimal
 
 /** Pro is owned, or switched on with the debug-build switch. */
 val AppData.isPro: Boolean get() = proPurchased || (BuildConfig.DEBUG && settings.debugPro)
+
+/** Privacy mode is Pro (docs/spec.md section 5): widgets and the tile hide amounts only while Pro is on. */
+val AppData.privacyOn: Boolean get() = settings.privacyMode && isPro
+
+/** App lock is Pro (docs/spec.md section 12). */
+val AppData.appLockOn: Boolean get() = settings.appLock && isPro
+
+/** The daily budget shows only with Pro; Free keeps it stored but shows today's spending instead. */
+fun AppData.budgetOf(wallet: Wallet): BigDecimal? = if (isPro) wallet.dailyBudget?.takeIf { it.signum() > 0 } else null
 
 /**
  * The one place PocketCash's data lives: a JSON file in app storage. Every writer (the screens, widget buttons, the
@@ -59,9 +70,14 @@ class CashStore private constructor(context: Context) {
     /** Applies [change], saves, and refreshes widgets, the tile and reminders. Returns the new data. */
     suspend fun update(change: (AppData) -> AppData): AppData = mutex.withLock {
         val before = _data.value
-        val changed = change(before)
+        var changed = change(before)
         if (changed == before) return@withLock before
-        val (next, lowCash) = Ledger.lowCash(changed)
+        // Pro lost (a refund, or the debug switch off): app lock and privacy mode switch off. Pro data stays.
+        if (!changed.isPro && (changed.settings.appLock || changed.settings.privacyMode)) {
+            changed = changed.copy(settings = changed.settings.copy(appLock = false, privacyMode = false))
+        }
+        // Low-cash reminders are Pro.
+        val (next, lowCash) = if (changed.isPro) Ledger.lowCash(changed) else changed to emptyList()
         withContext(Dispatchers.IO) { save(next) }
         _data.value = next
         LowCashNotifier.notify(app, next, lowCash)
@@ -139,10 +155,23 @@ class CashStore private constructor(context: Context) {
     suspend fun transfer(fromId: String, toId: String, sent: BigDecimal, received: BigDecimal) =
         update { Ledger.transfer(it, fromId, toId, sent, received, now()) }
 
-    suspend fun createWallet(name: String, currencyCode: String, symbol: String?, startingCash: BigDecimal): Wallet? {
+    suspend fun createWallet(name: String, currencyCode: String, symbol: String?, startingCash: BigDecimal, target: BigDecimal? = null): Wallet? {
         var created: Wallet? = null
-        update { data -> Ledger.createWallet(data, name, currencyCode, symbol, startingCash, now()).also { created = it.second }.first }
+        val note = app.getString(R.string.note_starting_cash)
+        update { data -> Ledger.createWallet(data, name, currencyCode, symbol, startingCash, now(), note, target).also { created = it.second }.first }
         return created
+    }
+
+    /** "Fill envelopes": every transfer pair in one save (docs/spec.md section 10). */
+    suspend fun fill(sourceId: String, amounts: Map<String, BigDecimal>) = update { Ledger.fill(it, sourceId, amounts, now()) }
+
+    /**
+     * "Replace all data on this phone" with a backup (docs/spec.md section 11), in one save. The widgets and the tile
+     * redraw afterwards like after any save. Low-cash reminders stay off when Android won't let PocketCash notify.
+     */
+    suspend fun replaceAll(contents: BackupContents) = update { data ->
+        val next = contents.applyTo(data)
+        if (next.settings.lowCashAlerts && !LowCashNotifier.canNotify(app)) next.copy(settings = next.settings.copy(lowCashAlerts = false)) else next
     }
 
     suspend fun updateWallet(wallet: Wallet) = update { Ledger.updateWallet(it, wallet) }

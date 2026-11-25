@@ -1,0 +1,896 @@
+/* Portuguese (Brazilian wording) (pt). First draft: needs a native speaker's review before a store launch.
+   Keys are the English text; keep %@ placeholders (or %1$@, %2$@ to reorder) and ${…} tokens. */
+
+/* PocketCash/AppModel.swift:233 */
+"%@ added" = "Adicionado: %@";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"%@ d" = "%@ d";
+
+/* PocketCashWidget/QuickSpendWidget.swift:49 */
+"%@ in %@" = "%@ em %@";
+
+/* PocketCashWidget/WalletWidget.swift:132 */
+"%@ left" = "Restante: %@";
+
+/* PocketCash/Views/HomeView.swift:172 */
+"%@ left today" = "Restante hoje: %@";
+
+/* PocketCash/Views/CountCashSheet.swift:45 */
+"%@ more than PocketCash says" = "%@ a mais do que o PocketCash mostra";
+
+/* PocketCash/Views/EnvelopesView.swift:103 */
+"%@ of %@" = "%@ de %@";
+
+/* PocketCash/AppModel.swift:230 */
+"%@ spent" = "Gasto: %@";
+
+/* PocketCashWidget/WalletWidget.swift:139 */
+"%@ today" = "%@ hoje";
+
+/* PocketCash/Views/CountCashSheet.swift:42 */
+"%@ unrecorded spending" = "%@ em gastos não registrados";
+
+/* PocketCash/Views/HomeView.swift:333 */
+"%@/day" = "%@/dia";
+
+/* PocketCash/Views/HomeView.swift:329 */
+"%@/day · lasts until about %@" = "%@/dia · dura até cerca de %@";
+
+/* PocketCash/Views/HomeView.swift:326 */
+"%@/day · runs out today" = "%@/dia · acaba hoje";
+
+/* PocketCash/Views/SettingsView.swift:216 */
+"A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone." = "Um arquivo de backup guarda todas as carteiras, movimentações e ajustes, e pode ser restaurado em qualquer iPhone ou Android.";
+
+/* PocketCash/Views/WalletEditorView.swift:33 */
+"A custom symbol is handy for a travel wallet." = "Um símbolo personalizado é útil para uma carteira de viagem.";
+
+/* PocketCash/Views/PaywallView.swift:40 */
+"A nudge when a wallet drops below the amount you pick." = "Um aviso quando uma carteira fica abaixo do valor que você escolher.";
+
+/* PocketCash/Views/SettingsView.swift:49 */
+"About" = "Sobre";
+
+/* Shared/Intents.swift:223 */
+"Add ${amount} to ${wallet}" = "Adicionar ${amount} a ${wallet}";
+
+/* PocketCash/Views/WalletEditorView.swift:224 */
+"Add a cash-in button" = "Adicionar botão de entrada";
+
+/* PocketCash/Views/WalletEditorView.swift:236 */
+"Add a spend button" = "Adicionar botão de gasto";
+
+/* PocketCash/Views/HomeView.swift:116 */
+"Add a wallet" = "Adicionar carteira";
+
+/* PocketCash/Views/EnvelopesView.swift:67 */
+"Add an envelope" = "Adicionar envelope";
+
+/* PocketCash/Views/TransactionEditor.swift:105 */
+"Add another wallet with the same currency in Settings." = "Adicione outra carteira com a mesma moeda em Ajustes.";
+
+/* PocketCash/Views/KeypadSheet.swift:35 */
+"Add cash" = "Adicionar dinheiro";
+
+/* PocketCash/AppShortcuts.swift:11 */
+"Add Cash" = "Adicionar dinheiro";
+
+/* Shared/Intents.swift:232 */
+"Added %@. You have %@ in %@." = "Você adicionou %@. Agora você tem %@ em %@.";
+
+/* Shared/Intents.swift:216 */
+"Adds cash to a PocketCash wallet, like an ATM withdrawal." = "Adiciona dinheiro a uma carteira do PocketCash, como um saque no caixa eletrônico.";
+
+/* Shared/Intents.swift:108 */
+"Adjust Cash" = "Ajustar dinheiro";
+
+/* PocketCash/Views/SettingsView.swift:144 */
+"Amount" = "Valor";
+
+/* PocketCash/Views/SettingsView.swift:186 */
+"App lock" = "Bloqueio do app";
+
+/* PocketCash/Views/PaywallView.swift:37 */
+"App lock and privacy mode" = "Bloqueio do app e modo de privacidade";
+
+/* PocketCash/Views/Feed.swift:51 */
+"ATM Cycle · %@ – %@ · %@ lasted %@ days" = "Ciclo de saque · %@ – %@ · %@ durou %@ dias";
+
+/* PocketCash/Views/InsightsView.swift:87 */
+"ATM cycles" = "Ciclos de saque";
+
+/* Shared/Labels.swift:11 */
+"ATM withdrawal" = "Saque no caixa eletrônico";
+
+/* PocketCash/Views/SettingsView.swift:31 */
+"ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls." = "Saques no caixa eletrônico iniciam um novo ciclo de saque. O modo de privacidade oculta valores nos widgets, na Tela Bloqueada e nos controles.";
+
+/* PocketCash/Views/EnvelopesView.swift:175 */
+"Available" = "Disponível";
+
+/* PocketCash/Views/SettingsView.swift:202 */
+"Back up to a file" = "Fazer backup em arquivo";
+
+/* PocketCash/Views/SettingsView.swift:214 */
+"Backup" = "Backup";
+
+/* PocketCash/Views/OnboardingView.swift:40 */
+"Banking apps log your cards. PocketCash puts your physical wallet on your Home Screen: tap −50 when you pay, and you're done." = "Apps de banco registram seus cartões. O PocketCash coloca sua carteira física na Tela de Início: toque em −50 ao pagar e pronto.";
+
+/* PocketCash/Views/Feed.swift:48 */
+"Before first ATM" = "Antes do primeiro saque";
+
+/* Shared/Intents.swift:44 */
+"Bills" = "Contas";
+
+/* PocketCash/Views/HomeView.swift:320 */
+"Burning %@ a day" = "Gastando %@ por dia";
+
+/* PocketCash/Views/SettingsView.swift:117 */
+"Buttons" = "Botões";
+
+/* PocketCash/Views/BackupUI.swift:83 */
+"Can't restore this file" = "Não é possível restaurar este arquivo";
+
+/* PocketCash/Views/BackupUI.swift:79 */
+"Cancel" = "Cancelar";
+
+/* PocketCash/AppShortcuts.swift:17 */
+"Cash Balance" = "Saldo em dinheiro";
+
+/* Shared/Labels.swift:12 */
+"Cash count" = "Contagem";
+
+/* PocketCash/Views/WalletEditorView.swift:226 */
+"Cash in" = "Entrada";
+
+/* PocketCash/Views/WalletEditorView.swift:44 */
+"Cash in it right now" = "Dinheiro nela agora";
+
+/* PocketCashWidget/Controls.swift:37 */
+"Cash Keypad" = "Teclado de valores";
+
+/* PocketCash/Views/HomeView.swift:328 */
+"Cash lasts until about %@" = "O dinheiro dura até cerca de %@";
+
+/* PocketCash/Views/HomeView.swift:325 */
+"Cash runs out today at this pace" = "Nesse ritmo, o dinheiro acaba hoje";
+
+/* PocketCashWidget/WalletWidget.swift:65 */
+"Cash Wallet" = "Carteira de dinheiro";
+
+/* PocketCash/Views/KeypadSheet.swift:296 */
+"Categories" = "Categorias";
+
+/* PocketCash/Views/Feed.swift:138 */
+"Categories are in Pro" = "Categorias fazem parte do Pro";
+
+/* PocketCash/Views/Feed.swift:144 */
+"Category" = "Categoria";
+
+/* PocketCash/Views/KeypadSheet.swift:146 */
+"Change" = "Troco";
+
+/* PocketCash/Views/PaywallView.swift:29 */
+"Change calculator" = "Calculadora de troco";
+
+/* PocketCash/Views/KeypadSheet.swift:149 */
+"Change must be less than what you paid" = "O troco deve ser menor que o valor pago";
+
+/* PocketCashWidget/WalletWidget.swift:8 */
+"Choose the wallet this widget shows. Needs PocketCash Pro." = "Escolha a carteira exibida neste widget. Requer o PocketCash Pro.";
+
+/* PocketCash/Views/CountCashSheet.swift:100 */
+"Clear" = "Limpar";
+
+/* PocketCash/Views/EnvelopesView.swift:202 */
+"Clear all" = "Limpar tudo";
+
+/* PocketCash/Views/PaywallView.swift:93 */
+"Close" = "Fechar";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Coin Pouch" = "Porta-moedas";
+
+/* PocketCash/Views/PaywallView.swift:26 */
+"Coin pouch, emergency stash, a travel wallet in any currency, with moves between them." = "Porta-moedas, reserva de emergência, carteira de viagem em qualquer moeda, com transferências entre elas.";
+
+/* PocketCash/Views/OnboardingView.swift:60 */
+"Continue" = "Continuar";
+
+/* PocketCash/Views/SettingsView.swift:26 */
+"Count + buttons as ATM withdrawals" = "Botões + contam como saques";
+
+/* PocketCash/Views/CountCashSheet.swift:55 */
+"Count bills & coins" = "Contar notas e moedas";
+
+/* PocketCash/Views/OnboardingView.swift:79 */
+"Count it roughly. You can always fix it later by tapping the balance." = "Pode ser uma estimativa. Você pode corrigir depois tocando no saldo.";
+
+/* PocketCash/Views/CountCashSheet.swift:95 */
+"Count my cash" = "Contar meu dinheiro";
+
+/* PocketCash/Views/HomeView.swift:188 */
+"Count your cash" = "Contar seu dinheiro";
+
+/* PocketCash/Views/OnboardingView.swift:49 */
+"Currency" = "Moeda";
+
+/* PocketCash/Views/InsightsView.swift:137 */
+"Current · since %@" = "Atual · desde %@";
+
+/* PocketCash/Views/Feed.swift:53 */
+"Current cycle · since %@ · %@ · %@ days so far" = "Ciclo atual · desde %@ · %@ · %@ dias até agora";
+
+/* PocketCash/Views/HomeView.swift:216 */
+"Custom" = "Outro valor";
+
+/* PocketCash/Views/PaywallView.swift:35 */
+"Custom buttons" = "Botões personalizados";
+
+/* PocketCash/Views/WalletEditorView.swift:29 */
+"Custom symbol (optional)" = "Símbolo personalizado (opcional)";
+
+/* PocketCash/Views/WalletEditorView.swift:35 */
+"Custom symbols are part of Pro." = "Símbolos personalizados fazem parte do Pro.";
+
+/* PocketCash/Views/InsightsView.swift:90 */
+"Cycles appear after your first ATM withdrawal." = "Os ciclos aparecem depois do seu primeiro saque no caixa eletrônico.";
+
+/* PocketCash/Views/PaywallView.swift:31 */
+"Daily budget" = "Orçamento diário";
+
+/* PocketCash/Views/Feed.swift:116 */
+"Delete" = "Apagar";
+
+/* PocketCash/Views/WalletEditorView.swift:108 */
+"Delete %@?" = "Apagar %@?";
+
+/* PocketCash/Views/WalletEditorView.swift:90 */
+"Delete wallet" = "Apagar carteira";
+
+/* PocketCash/Views/WalletEditorView.swift:109 */
+"Delete wallet and its history" = "Apagar carteira e histórico";
+
+/* PocketCash/Views/SettingsView.swift:54 */
+"Developer" = "Desenvolvedor";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Done" = "OK";
+
+/* PocketCash/Views/HomeView.swift:228 */
+"Edit buttons…" = "Editar botões…";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"Edit wallet" = "Editar carteira";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Emergency Stash" = "Reserva de emergência";
+
+/* PocketCash/Views/WalletEditorView.swift:61 */
+"Envelope target or savings goal. Its progress shows in Envelopes." = "Meta de envelope ou de economia. O progresso aparece em Envelopes.";
+
+/* PocketCash/Views/WalletEditorView.swift:63 */
+"Envelope targets and savings goals are part of Pro." = "Metas de envelope e de economia fazem parte do Pro.";
+
+/* PocketCash/AppModel.swift:18 */
+"Envelopes" = "Envelopes";
+
+/* PocketCash/Views/PaywallView.swift:21 */
+"Envelopes and savings goals" = "Envelopes e metas de economia";
+
+/* PocketCash/Views/EnvelopesView.swift:16 */
+"Envelopes are part of Pro" = "Envelopes fazem parte do Pro";
+
+/* PocketCash/Views/SettingsView.swift:228 */
+"Envelopes, insights, more wallets, quick spend and more. One purchase." = "Envelopes, análises, mais carteiras, gasto rápido e mais. Uma única compra.";
+
+/* Shared/Intents.swift:42 */
+"Errands" = "Afazeres";
+
+/* PocketCash/Views/PaywallView.swift:42 */
+"Every cash move beyond 7 days, exportable to any spreadsheet." = "Todas as movimentações além de 7 dias, exportáveis para qualquer planilha.";
+
+/* PocketCash/Views/BackupUI.swift:81 */
+"Everything on this phone is replaced by the backup. This can't be undone." = "Tudo neste celular será substituído pelo backup. Isso não pode ser desfeito.";
+
+/* PocketCash/Views/SettingsView.swift:211 */
+"Export CSV" = "Exportar CSV";
+
+/* PocketCash/Views/CountCashSheet.swift:130 */
+"Fewer" = "Menos";
+
+/* PocketCash/Views/EnvelopesView.swift:36 */
+"Fill envelopes" = "Encher envelopes";
+
+/* PocketCash/Views/EnvelopesView.swift:137 */
+"Food" = "Comida";
+
+/* Shared/Intents.swift:38 */
+"Food & drinks" = "Comida e bebida";
+
+/* Shared/ModelHelpers.swift:24 */
+"Found cash" = "Dinheiro encontrado";
+
+/* PocketCash/Views/EnvelopesView.swift:170 */
+"From" = "De";
+
+/* Shared/CashStore.swift:145 */
+"From %@" = "De %@";
+
+/* PocketCash/Views/TransactionEditor.swift:112 */
+"From %@ · %@ available" = "De %@ · Disponível: %@";
+
+/* PocketCash/Views/KeypadSheet.swift:71 */
+"From ATM" = "Do caixa eletrônico";
+
+/* PocketCash/Views/PaywallView.swift:41 */
+"Full history and CSV export" = "Histórico completo e exportação CSV";
+
+/* Shared/Intents.swift:45 */
+"Fun" = "Lazer";
+
+/* PocketCash/Views/EnvelopesView.swift:62 */
+"Give a wallet a target in Settings → Wallets to see its progress here." = "Defina uma meta para uma carteira em Ajustes → Carteiras para ver o progresso aqui.";
+
+/* PocketCash/Views/EnvelopesView.swift:17 */
+"Give a wallet a target, watch it fill up, and split cash into envelopes in one step." = "Defina uma meta para uma carteira, veja-a encher e divida o dinheiro em envelopes de uma só vez.";
+
+/* PocketCash/Views/PaywallView.swift:22 */
+"Give any wallet a target, watch it fill, and split cash into envelopes in one step." = "Defina uma meta para qualquer carteira, veja-a encher e divida o dinheiro em envelopes de uma só vez.";
+
+/* PocketCash/Views/EnvelopesView.swift:265 */
+"Goal of %@ reached" = "Meta de %@ atingida";
+
+/* PocketCash/Views/EnvelopesView.swift:97 */
+"Goal reached" = "Meta atingida";
+
+/* PocketCash/Views/KeypadSheet.swift:62 */
+"Got change?" = "Teve troco?";
+
+/* Shared/Intents.swift:41 */
+"Groceries" = "Mercado";
+
+/* PocketCash/Views/SettingsView.swift:35 */
+"Haptics" = "Vibração";
+
+/* PocketCash/AppModel.swift:16 */
+"Home" = "Início";
+
+/* PocketCash/Views/PaywallView.swift:24 */
+"How long each ATM withdrawal lasts, your burn rate, when the cash runs out, and where it goes." = "Quanto dura cada saque no caixa eletrônico, seu ritmo de gastos, quando o dinheiro acaba e para onde vai.";
+
+/* PocketCash/Views/OnboardingView.swift:75 */
+"How much cash is in your wallet right now?" = "Quanto dinheiro você tem na carteira agora?";
+
+/* PocketCash/Views/CountCashSheet.swift:23 */
+"How much is in your wallet?" = "Quanto você tem na carteira?";
+
+/* PocketCash/Views/WalletEditorView.swift:73 */
+"Ideas" = "Ideias";
+
+/* PocketCash/AppModel.swift:17 */
+"Insights" = "Análises";
+
+/* PocketCash/Views/InsightsView.swift:18 */
+"Insights are part of Pro" = "Análises fazem parte do Pro";
+
+/* PocketCash/Views/SettingsView.swift:40 */
+"Language" = "Idioma";
+
+/* PocketCash/Views/InsightsView.swift:69 */
+"Last 30 days by category" = "Últimos 30 dias por categoria";
+
+/* PocketCash/Views/InsightsView.swift:153 */
+"Lasted" = "Durou";
+
+/* PocketCash/Views/PaywallView.swift:38 */
+"Lock PocketCash with Face ID or your passcode, and hide amounts on widgets." = "Bloqueie o PocketCash com Face ID ou código e oculte valores nos widgets.";
+
+/* PocketCash/Views/PaywallView.swift:28 */
+"Lock Screen widgets and Control Center buttons for the amount you spend most." = "Widgets na Tela Bloqueada e botões na Central de Controle para o valor que você mais gasta.";
+
+/* PocketCash/AppLock.swift:16 */
+"Lock with Face ID" = "Bloquear com Face ID";
+
+/* PocketCash/AppLock.swift:18 */
+"Lock with Optic ID" = "Bloquear com Optic ID";
+
+/* PocketCash/AppLock.swift:19 */
+"Lock with passcode" = "Bloquear com código";
+
+/* PocketCash/AppLock.swift:17 */
+"Lock with Touch ID" = "Bloquear com Touch ID";
+
+/* PocketCash/Views/PaywallView.swift:39 */
+"Low-cash reminder" = "Aviso de saldo baixo";
+
+/* PocketCash/Views/OnboardingView.swift:87 */
+"Main Wallet" = "Carteira principal";
+
+/* PocketCash/Views/WalletEditorView.swift:80 */
+"Make this the default wallet" = "Tornar esta a carteira padrão";
+
+/* PocketCash/Views/CountCashSheet.swift:38 */
+"Matches PocketCash exactly" = "Bate exatamente com o PocketCash";
+
+/* PocketCash/Views/CountCashSheet.swift:54 */
+"Method" = "Método";
+
+/* PocketCash/Views/CountCashSheet.swift:139 */
+"More" = "Mais";
+
+/* PocketCash/Views/InsightsView.swift:168 */
+"Most went to %@" = "A maior parte foi para %@";
+
+/* PocketCash/Views/HomeView.swift:220 */
+"Move" = "Mover";
+
+/* PocketCash/Views/TransactionEditor.swift:123 */
+"Move cash" = "Mover dinheiro";
+
+/* PocketCash/Views/EnvelopesView.swift:197 */
+"Moving %@ · %@ stays in %@" = "Movendo %@ · Saldo de %@ em %@";
+
+/* PocketCash/Views/PaywallView.swift:25 */
+"Multiple wallets" = "Várias carteiras";
+
+/* PocketCash/Views/WalletEditorView.swift:23 */
+"Name" = "Nome";
+
+/* PocketCash/Views/MainShell.swift:184 */
+"New cash move" = "Nova movimentação";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"New wallet" = "Nova carteira";
+
+/* PocketCash/Views/HomeView.swift:35 */
+"No cash moves yet" = "Nenhuma movimentação ainda";
+
+/* PocketCash/Views/TransactionEditor.swift:103 */
+"No other %@ wallet" = "Nenhuma outra carteira em %@";
+
+/* PocketCash/Views/EnvelopesView.swift:180 */
+"No other %@ wallet to fill. Add one in Settings → Wallets." = "Nenhuma outra carteira em %@ para encher. Adicione uma em Ajustes → Carteiras.";
+
+/* PocketCash/ProStore.swift:90 */
+"No PocketCash Pro purchase found for this Apple Account." = "Nenhuma compra do PocketCash Pro encontrada nesta Conta Apple.";
+
+/* PocketCash/Views/WalletEditorView.swift:51 */
+"No target" = "Sem meta";
+
+/* PocketCash/Views/HomeView.swift:314 */
+"Not enough spending yet" = "Ainda há poucos gastos";
+
+/* PocketCash/Views/TransactionEditor.swift:31 */
+"Note" = "Observação";
+
+/* PocketCash/Views/KeypadSheet.swift:76 */
+"Note (optional)" = "Observação (opcional)";
+
+/* PocketCashWidget/WalletWidget.swift:137 */
+"Nothing spent today" = "Nada gasto hoje";
+
+/* PocketCash/Views/SettingsView.swift:145 */
+"Off" = "Desativado";
+
+/* PocketCash/PocketCashApp.swift:64 */
+"OK" = "OK";
+
+/* PocketCash/Views/HomeView.swift:60 */
+"Older history and ATM cycles are in Pro" = "Histórico antigo e ciclos de saque fazem parte do Pro";
+
+/* PocketCash/Views/PaywallView.swift:15 */
+"One purchase. Yours forever. No subscription." = "Uma compra. Seu para sempre. Sem assinatura.";
+
+/* PocketCashWidget/QuickSpendWidget.swift:36 */
+"One tap subtracts your most common cash expense, like your commute fare." = "Um toque desconta seu gasto em dinheiro mais comum, como a passagem.";
+
+/* Shared/CashStore.swift:306 */
+"Only %@ left in %@." = "Você só tem %@ em %@.";
+
+/* Shared/Intents.swift:254 */
+"Open Cash Keypad" = "Abrir teclado de valores";
+
+/* PocketCashWidget/WalletWidget.swift:361 */
+"Open PocketCash" = "Abra o PocketCash";
+
+/* Shared/Intents.swift:57 */
+"Open PocketCash once to set up your wallet." = "Abra o PocketCash uma vez para configurar sua carteira.";
+
+/* PocketCashWidget/WalletWidget.swift:363 */
+"Open PocketCash to set up your wallet" = "Abra o PocketCash para configurar sua carteira";
+
+/* PocketCashWidget/Controls.swift:44 */
+"Opens PocketCash on its keypad to log a custom amount." = "Abre o PocketCash no teclado para registrar outro valor.";
+
+/* PocketCash/Views/MainShell.swift:185 */
+"Opens the keypad. Touch and hold to count your cash." = "Abre o teclado. Toque e segure para contar seu dinheiro.";
+
+/* PocketCash/Views/SettingsView.swift:43 */
+"Opens this app's page in the iPhone's Settings, where you can pick its language." = "Abre a página deste app nos Ajustes do iPhone, onde você pode escolher o idioma.";
+
+/* Shared/Intents.swift:46 */
+"Other" = "Outros";
+
+/* PocketCashWidget/WalletWidget.swift:135 */
+"Over by %@" = "Excedeu %@";
+
+/* PocketCash/Views/KeypadSheet.swift:126 */
+"Paid" = "Pago";
+
+/* PocketCash/Views/KeypadSheet.swift:155 */
+"Paid %@ − Change %@ = %@" = "Pago %@ − Troco %@ = %@";
+
+/* PocketCash/Views/PaywallView.swift:30 */
+"Paid with a big bill? Enter what you got back and PocketCash saves the difference." = "Pagou com uma nota alta? Digite o troco e o PocketCash registra a diferença.";
+
+/* Shared/Intents.swift:40 */
+"Parking" = "Estacionamento";
+
+/* PocketCash/Views/InsightsView.swift:156 */
+"Per day" = "Por dia";
+
+/* PocketCash/AppModel.swift:126 */
+"PocketCash couldn't open its data: %@" = "O PocketCash não conseguiu abrir os dados: %@";
+
+/* PocketCash/AppLock.swift:158 */
+"PocketCash is locked" = "O PocketCash está bloqueado";
+
+/* PocketCash/Views/SettingsView.swift:51 */
+"PocketCash keeps everything on this iPhone. No account, no ads, no tracking." = "O PocketCash guarda tudo neste iPhone. Sem conta, sem anúncios, sem rastreamento.";
+
+/* PocketCashWidget/Controls.swift:13 */
+"PocketCash Pro" = "PocketCash Pro";
+
+/* PocketCash/Views/SettingsView.swift:223 */
+"PocketCash Pro is unlocked" = "PocketCash Pro desbloqueado";
+
+/* PocketCash/Views/CountCashSheet.swift:35 */
+"PocketCash says %@" = "O PocketCash mostra %@";
+
+/* PocketCash/Views/SettingsView.swift:27 */
+"Privacy mode" = "Modo de privacidade";
+
+/* PocketCash/Views/SettingsView.swift:236 */
+"Pro" = "Pro";
+
+/* PocketCash/Views/PaywallView.swift:47 */
+"Pro is unlocked. Thank you!" = "O Pro está desbloqueado. Obrigado!";
+
+/* PocketCash/ProStore.swift:90 */
+"Pro restored." = "Pro restaurado.";
+
+/* PocketCash/ProStore.swift:67 */
+"Pro unlocked. Thank you!" = "Pro desbloqueado. Obrigado!";
+
+/* PocketCash/Views/OnboardingView.swift:109 */
+"Put your wallet on your Home Screen" = "Coloque sua carteira na Tela de Início";
+
+/* PocketCashWidget/QuickSpendWidget.swift:73 */
+"Quick spend" = "Gasto rápido";
+
+/* PocketCashWidget/Controls.swift:17 */
+"Quick Spend" = "Gasto rápido";
+
+/* PocketCash/Views/SettingsView.swift:158 */
+"Quick spend amount" = "Valor do gasto rápido";
+
+/* PocketCash/Views/PaywallView.swift:27 */
+"Quick spend everywhere" = "Gasto rápido em todo lugar";
+
+/* Shared/Intents.swift:176 */
+"Quick spend is part of PocketCash Pro." = "O Gasto rápido faz parte do PocketCash Pro.";
+
+/* Shared/Intents.swift:59 */
+"Quick spend is part of PocketCash Pro. Open PocketCash to unlock it." = "O Gasto rápido faz parte do PocketCash Pro. Abra o PocketCash para desbloquear.";
+
+/* PocketCash/Views/SettingsView.swift:128 */
+"Remind me below" = "Avisar abaixo de";
+
+/* PocketCash/Views/Feed.swift:135 */
+"Remove category" = "Remover categoria";
+
+/* PocketCash/Views/KeypadSheet.swift:164 */
+"Remove change" = "Remover troco";
+
+/* PocketCash/Views/EnvelopesView.swift:136 */
+"Rent" = "Aluguel";
+
+/* PocketCash/Views/BackupUI.swift:78 */
+"Replace all data on this phone" = "Substituir todos os dados deste celular";
+
+/* PocketCash/Views/WalletEditorView.swift:243 */
+"Reset to %@ defaults" = "Restaurar padrões de %@";
+
+/* PocketCash/Views/OnboardingView.swift:65 */
+"Restore from a backup file" = "Restaurar de um arquivo de backup";
+
+/* PocketCash/Views/SettingsView.swift:205 */
+"Restore from a file" = "Restaurar de um arquivo";
+
+/* PocketCash/Views/PaywallView.swift:76 */
+"Restore purchase" = "Restaurar compra";
+
+/* PocketCash/Views/BackupUI.swift:76 */
+"Restore this backup?" = "Restaurar este backup?";
+
+/* Shared/CashStore.swift:305 */
+"Running low on cash" = "Seu dinheiro está acabando";
+
+/* PocketCash/Views/EnvelopesView.swift:213 */
+"Save" = "Salvar";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Save count" = "Salvar contagem";
+
+/* PocketCash/Views/EnvelopesView.swift:138 */
+"Savings" = "Poupança";
+
+/* PocketCash/Views/WalletEditorView.swift:194 */
+"Search currencies" = "Buscar moedas";
+
+/* PocketCash/Views/OnboardingView.swift:116 */
+"Search PocketCash and pick the medium size." = "Busque PocketCash e escolha o tamanho médio.";
+
+/* PocketCash/Views/InsightsView.swift:19 */
+"See how long each ATM withdrawal lasts, your daily burn rate, when the cash runs out, and where it goes." = "Veja quanto dura cada saque no caixa eletrônico, seu ritmo de gastos diário, quando o dinheiro acaba e para onde ele vai.";
+
+/* PocketCash/Views/PaywallView.swift:32 */
+"See what's left today in the app and on the medium widget." = "Veja quanto resta hoje no app e no widget médio.";
+
+/* PocketCash/Views/SettingsView.swift:189 */
+"Set up a passcode on this iPhone to use App lock." = "Configure um código neste iPhone para usar o Bloqueio do app.";
+
+/* PocketCash/AppModel.swift:19 */
+"Settings" = "Ajustes";
+
+/* PocketCash/Views/EnvelopesView.swift:262 */
+"Short by %@" = "Faltam %@";
+
+/* PocketCash/Views/MainShell.swift:110 */
+"Shows all destinations" = "Mostra todas as seções";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"So far" = "Até agora";
+
+/* PocketCash/Views/InsightsView.swift:58 */
+"So far: %@ in %@ days" = "Até agora: %@ em %@ dias";
+
+/* PocketCash/PocketCashApp.swift:63 */
+"Something went wrong" = "Algo deu errado";
+
+/* PocketCash/Views/KeypadSheet.swift:34 */
+"Spend" = "Gastar";
+
+/* PocketCashWidget/Controls.swift:27 */
+"Spend %@" = "Gastar %@";
+
+/* Shared/Intents.swift:199 */
+"Spend ${amount} from ${wallet}" = "Gastar ${amount} de ${wallet}";
+
+/* PocketCash/AppShortcuts.swift:8 */
+"Spend Cash" = "Gastar dinheiro";
+
+/* PocketCash/Views/InsightsView.swift:155 */
+"Spent" = "Gasto";
+
+/* Shared/Intents.swift:185 */
+"Spent %@. %@ left in %@." = "Você gastou %@. Agora você tem %@ em %@.";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start at zero" = "Começar do zero";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start tracking" = "Começar";
+
+/* Shared/CashStore.swift:226 */
+"Starting cash" = "Saldo inicial";
+
+/* Shared/Intents.swift:191 */
+"Subtracts cash you spent from a PocketCash wallet." = "Desconta de uma carteira do PocketCash o dinheiro que você gastou.";
+
+/* PocketCashWidget/Controls.swift:18 */
+"Subtracts your most common cash expense, like your commute fare." = "Desconta seu gasto em dinheiro mais comum, como a passagem.";
+
+/* Shared/Intents.swift:164 */
+"Subtracts your quick-spend amount, like your daily commute fare, from your cash." = "Desconta do seu dinheiro o valor do gasto rápido, como a passagem do dia a dia.";
+
+/* PocketCash/Views/EnvelopesView.swift:201 */
+"Suggested amounts" = "Valores sugeridos";
+
+/* PocketCash/Views/PaywallView.swift:34 */
+"Tag spending after the fact with one tap, without slowing down the first tap." = "Classifique gastos depois, com um toque, sem atrasar o primeiro toque.";
+
+/* PocketCash/Views/HomeView.swift:36 */
+"Tap a button above when you pay or withdraw cash." = "Toque em um botão acima quando pagar ou sacar dinheiro.";
+
+/* PocketCash/Views/OnboardingView.swift:115 */
+"Tap Edit, then Add Widget." = "Toque em Editar e depois em Adicionar Widget.";
+
+/* PocketCashWidget/WalletWidget.swift:335 */
+"Tap to unlock" = "Toque para desbloquear";
+
+/* PocketCash/Views/WalletEditorView.swift:58 */
+"Target" = "Meta";
+
+/* Shared/Intents.swift:238 */
+"Tells you how much cash is in your wallet." = "Informa quanto dinheiro há na sua carteira.";
+
+/* Shared/Intents.swift:58 */
+"That amount doesn't look right." = "Esse valor não parece certo.";
+
+/* PocketCash/Views/EnvelopesView.swift:195 */
+"That's more than %@ has." = "Isso é mais do que há em %@.";
+
+/* PocketCash/ProStore.swift:69 */
+"The App Store couldn't verify that purchase." = "A App Store não conseguiu verificar essa compra.";
+
+/* PocketCash/Views/PaywallView.swift:71 */
+"The App Store isn't reachable right now. Try again later." = "Não foi possível acessar a App Store agora. Tente mais tarde.";
+
+/* PocketCash/AppModel.swift:362 */
+"The backup couldn't be restored: %@" = "Não foi possível restaurar o backup: %@";
+
+/* PocketCash/Views/SettingsView.swift:135 */
+"The budget shows what's left today on the app and the medium widget." = "O orçamento mostra quanto resta hoje no app e no widget médio.";
+
+/* PocketCash/Views/WalletEditorView.swift:228 */
+"The first one is the widget's + button." = "O primeiro é o botão + do widget.";
+
+/* PocketCash/Views/WalletEditorView.swift:240 */
+"The small widget shows the first two, the medium widget the first three." = "O widget pequeno mostra os dois primeiros; o médio, os três primeiros.";
+
+/* PocketCash/Views/InsightsView.swift:56 */
+"This ATM cycle: %@ in %@ days" = "Este ciclo de saque: %@ em %@ dias";
+
+/* PocketCash/Views/BackupUI.swift:38 */
+"This backup file is damaged, so nothing was changed." = "Este arquivo de backup está danificado, então nada foi alterado.";
+
+/* PocketCash/Views/BackupUI.swift:35 */
+"This backup is from a newer version of PocketCash. Update the app, then try again." = "Este backup é de uma versão mais recente do PocketCash. Atualize o app e tente de novo.";
+
+/* PocketCash/Views/WalletEditorView.swift:114 */
+"This can't be undone." = "Isso não pode ser desfeito.";
+
+/* PocketCash/Views/TransactionEditor.swift:68 */
+"This entry was deleted" = "Este registro foi apagado";
+
+/* PocketCash/Views/BackupUI.swift:33 */
+"This file isn't a PocketCash backup." = "Este arquivo não é um backup do PocketCash.";
+
+/* PocketCash/Views/HomeView.swift:332 */
+"Time for an ATM run" = "Hora de ir ao caixa eletrônico";
+
+/* Shared/Intents.swift:43 */
+"Tips" = "Gorjetas";
+
+/* PocketCash/Views/TransactionEditor.swift:107 */
+"To" = "Para";
+
+/* Shared/CashStore.swift:143 */
+"To %@" = "Para %@";
+
+/* PocketCash/Views/Feed.swift:22 */
+"Today" = "Hoje";
+
+/* PocketCash/Views/HomeView.swift:165 */
+"Today %@" = "Hoje %@";
+
+/* PocketCash/Views/InsightsView.swift:162 */
+"Top denomination: %@ × %@" = "Valor mais comum: %@ × %@";
+
+/* PocketCash/Views/SettingsView.swift:109 */
+"Touch and hold a wallet to reorder. The first one is the default." = "Toque e segure uma carteira para reordenar. A primeira é a padrão.";
+
+/* PocketCash/Views/OnboardingView.swift:114 */
+"Touch and hold an empty spot on your Home Screen." = "Toque e segure um espaço vazio da Tela de Início.";
+
+/* Shared/Intents.swift:136 */
+"Transaction" = "Transação";
+
+/* Shared/Labels.swift:13 */
+"Transfer" = "Transferência";
+
+/* Shared/Intents.swift:39 */
+"Transit" = "Transporte";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Travel Wallet" = "Carteira de viagem";
+
+/* PocketCash/AppLock.swift:70 */
+"Turn on app lock" = "Ativar o Bloqueio do app";
+
+/* PocketCash/Views/KeypadSheet.swift:33 */
+"Type" = "Tipo";
+
+/* PocketCash/Views/CountCashSheet.swift:56 */
+"Type the total" = "Digitar o total";
+
+/* PocketCash/Views/HomeView.swift:349 */
+"Undo" = "Desfazer";
+
+/* PocketCashWidget/WalletWidget.swift:185 */
+"Undo %@" = "Desfazer %@";
+
+/* Shared/Intents.swift:133 */
+"Undo Cash Tap" = "Desfazer toque";
+
+/* PocketCash/AppLock.swift:164 */
+"Unlock" = "Desbloquear";
+
+/* PocketCash/Views/PaywallView.swift:58 */
+"Unlock for %@" = "Desbloquear por %@";
+
+/* PocketCash/AppLock.swift:80 */
+"Unlock PocketCash" = "Desbloquear o PocketCash";
+
+/* PocketCash/Views/PaywallView.swift:60 */
+"Unlock Pro" = "Desbloquear Pro";
+
+/* PocketCash/Views/SettingsView.swift:55 */
+"Unlock Pro (debug build)" = "Desbloquear Pro (build de debug)";
+
+/* Shared/ModelHelpers.swift:24 */
+"Unrecorded spending" = "Gastos não registrados";
+
+/* PocketCash/Views/InsightsView.swift:107 */
+"Untagged" = "Sem categoria";
+
+/* PocketCash/Views/SettingsView.swift:47 */
+"Version" = "Versão";
+
+/* PocketCashWidget/WalletWidget.swift:7 */
+"Wallet" = "Carteira";
+
+/* PocketCash/Views/SettingsView.swift:106 */
+"Wallets" = "Carteiras";
+
+/* PocketCash/Views/BackupUI.swift:48 */
+"Wallets: %@ · Cash moves: %@" = "Carteiras: %@ · Movimentações: %@";
+
+/* PocketCash/Views/BackupUI.swift:50 */
+"Wallets: %@ · Cash moves: %@ · Backed up %@" = "Carteiras: %@ · Movimentações: %@ · Backup em %@";
+
+/* PocketCash/Views/TransactionEditor.swift:29 */
+"When" = "Quando";
+
+/* PocketCash/AppModel.swift:172 */
+"Widget: %@" = "Widget: %@";
+
+/* PocketCash/Views/SettingsView.swift:29 */
+"Widgets" = "Widgets";
+
+/* PocketCash/Views/SettingsView.swift:191 */
+"Widgets still show your balance. Turn on Privacy mode to hide it." = "Os widgets continuam mostrando seu saldo. Ative o modo de privacidade para ocultá-lo.";
+
+/* PocketCash/Views/WalletEditorView.swift:85 */
+"Widgets, the free version and Siri use the default wallet unless you pick another." = "Os widgets, a versão gratuita e a Siri usam a carteira padrão, a menos que você escolha outra.";
+
+/* PocketCash/Views/OnboardingView.swift:117 */
+"With Pro, add the Quick Spend control to Control Center or your Lock Screen for your commute fare." = "Com o Pro, adicione o controle Gasto rápido à Central de Controle ou à Tela Bloqueada para pagar a passagem.";
+
+/* PocketCash/Views/Feed.swift:23 */
+"Yesterday" = "Ontem";
+
+/* Shared/Intents.swift:248 */
+"You have %@ in %@." = "Você tem %@ em %@.";
+
+/* PocketCash/Views/HomeView.swift:315 */
+"Your burn rate shows up after a few cash moves." = "Seu ritmo de gastos aparece depois de algumas movimentações.";
+
+/* PocketCashWidget/WalletWidget.swift:66 */
+"Your cash balance with 1-tap buttons. Tap −50 when you pay, no app needed." = "Seu saldo em dinheiro com botões de um toque. Toque em −50 ao pagar, sem abrir o app.";
+
+/* PocketCash/Views/OnboardingView.swift:37 */
+"Your cash, finally tracked" = "Seu dinheiro, finalmente sob controle";
+
+/* PocketCash/Views/PaywallView.swift:36 */
+"Your exact amounts, like −45 for your commute or −15 for parking." = "Seus valores exatos, como −45 para o transporte ou −15 para o estacionamento.";
+
+/* PocketCash/Views/SettingsView.swift:163 */
+"Your most common cash expense, like your commute fare. Add the Quick Spend control to Control Center or the Lock Screen, or say \"Quick spend in PocketCash\"." = "Seu gasto em dinheiro mais comum, como a passagem. Adicione o controle Gasto rápido à Central de Controle ou à Tela Bloqueada, ou diga \"Gasto rápido no PocketCash\".";
+
+/* PocketCash/ProStore.swift:72 */
+"Your purchase is waiting for approval." = "Sua compra está aguardando aprovação.";

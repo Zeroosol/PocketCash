@@ -1,22 +1,13 @@
 import Foundation
 
-/// Transaction kinds (docs/spec.md section 2).
+/// Transaction kinds (docs/spec.md section 2). Translated labels live in Shared/Labels.swift (they need the app's
+/// string tables, which Core, built and tested on Linux too, doesn't have).
 enum CashKind: String, Codable, CaseIterable, Sendable {
     case spend
     case `in`
     case atm
     case adjust
     case transfer
-
-    var label: String {
-        switch self {
-        case .spend: return "Spent"
-        case .in: return "Cash in"
-        case .atm: return "ATM withdrawal"
-        case .adjust: return "Cash count"
-        case .transfer: return "Transfer"
-        }
-    }
 
     var symbol: String {
         switch self {
@@ -34,20 +25,6 @@ enum CashCategory: String, CaseIterable, Identifiable, Sendable {
     case food, transit, parking, groceries, errand, tip, bills, fun, other
 
     var id: String { rawValue }
-
-    var label: String {
-        switch self {
-        case .food: return "Food & drinks"
-        case .transit: return "Transit"
-        case .parking: return "Parking"
-        case .groceries: return "Groceries"
-        case .errand: return "Errands"
-        case .tip: return "Tips"
-        case .bills: return "Bills"
-        case .fun: return "Fun"
-        case .other: return "Other"
-        }
-    }
 
     var symbol: String {
         switch self {

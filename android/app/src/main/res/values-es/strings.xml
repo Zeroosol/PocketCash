@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Spanish (es): first drafts, need a native speaker's review before launch (docs/spec.md section 13). -->
+<resources>
+    <!-- Launcher, widget picker, Quick Settings, notifications -->
+    <string name="widget_medium_name">PocketCash Ancho</string>
+    <string name="widget_small_description">Tu saldo en efectivo y dos botones para gastar con un toque</string>
+    <string name="widget_medium_description">Saldo, gastos de hoy y cuatro botones de un toque</string>
+    <string name="tile_label">Gasto rápido</string>
+    <string name="tile_spend">Gastar %1$s</string>
+    <string name="tile_left">Quedan %1$s</string>
+    <string name="tile_open_app">Abre PocketCash primero</string>
+    <string name="shortcut_spend_short">Gastar</string>
+    <string name="shortcut_spend_long">Gastar efectivo</string>
+    <string name="shortcut_add_short">Añadir efectivo</string>
+    <string name="shortcut_add_long">Añadir efectivo o retiro en cajero</string>
+    <string name="shortcut_count_short">Contar mi efectivo</string>
+    <string name="shortcut_count_long">Contar el efectivo de mi cartera</string>
+    <string name="channel_low_cash">Poco efectivo</string>
+    <string name="channel_low_cash_description">Un recordatorio cuando una cartera baja del monto que elegiste</string>
+    <string name="low_cash_title">Solo quedan %1$s en %2$s</string>
+    <string name="low_cash_text">Está por debajo de tu recordatorio de %1$s. ¿Hora de ir al cajero?</string>
+
+    <!-- Widgets -->
+    <string name="widget_setup">Abre PocketCash para configurar tu cartera</string>
+    <string name="widget_undo">Deshacer %1$s</string>
+    <string name="widget_today">%1$s hoy</string>
+    <string name="widget_left">Quedan %1$s</string>
+    <string name="widget_pick_wallet">¿Qué cartera debe mostrar este widget?</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Guardar</string>
+    <string name="action_cancel">Cancelar</string>
+    <string name="action_close">Cerrar</string>
+    <string name="action_done">Listo</string>
+    <string name="action_ok">Aceptar</string>
+    <string name="action_delete">Eliminar</string>
+    <string name="action_undo">Deshacer</string>
+    <string name="action_change">Cambiar</string>
+    <string name="action_default">Predeterminado</string>
+    <string name="action_turn_off">Desactivar</string>
+    <string name="action_remove">Quitar</string>
+    <string name="value_off">Desactivado</string>
+    <string name="value_not_set">Sin definir</string>
+    <string name="deleted">Eliminado</string>
+    <string name="pro_feature">Función Pro</string>
+    <string name="pro_unlock">Desbloquear Pro</string>
+
+    <!-- Nav bar -->
+    <string name="nav_home">Inicio</string>
+    <string name="nav_insights">Análisis</string>
+    <string name="nav_envelopes">Sobres</string>
+    <string name="nav_settings">Ajustes</string>
+    <string name="nav_plus">Añadir un monto</string>
+
+    <!-- Home -->
+    <string name="home_switch_wallet">Cambiar de cartera</string>
+    <string name="home_today">Hoy %1$s</string>
+    <string name="home_nothing_today">Sin gastos hoy</string>
+    <string name="home_left_today">Quedan %1$s hoy</string>
+    <string name="home_over_by">Excedido en %1$s</string>
+    <string name="home_custom">Otro monto</string>
+    <string name="home_insight_empty">Registra algunos gastos para ver cuánto te dura el efectivo</string>
+    <string name="home_insight_rate">%1$s/día</string>
+    <string name="home_insight_runway">%1$s/día · dura hasta alrededor del %2$s</string>
+    <string name="feed_last_7_days">Últimos 7 días</string>
+    <string name="feed_cycles">Ciclos de retiro</string>
+    <string name="feed_empty">Aún no hay nada. Toca un botón de arriba cuando salga efectivo de tu cartera.</string>
+    <string name="feed_older">Movimientos anteriores · historial completo con Pro</string>
+    <string name="feed_collapse">Contraer</string>
+    <string name="feed_expand">Expandir</string>
+    <string name="day_today">Hoy</string>
+    <string name="day_yesterday">Ayer</string>
+    <string name="cycle_before_first_atm">Antes del primer retiro</string>
+    <string name="cycle_header_open">Ciclo actual · desde el %1$s · %2$s · %3$s días hasta ahora</string>
+    <string name="cycle_header_closed">Ciclo de retiro · %1$s – %2$s · %3$s duraron %4$s días</string>
+
+    <!-- What a transaction is -->
+    <string name="kind_spent">Gastado</string>
+    <string name="kind_in">Entrada de efectivo</string>
+    <string name="kind_atm">Retiro en cajero</string>
+    <string name="kind_unrecorded">Gasto no registrado</string>
+    <string name="kind_found">Efectivo encontrado</string>
+    <string name="kind_moved_out">Movido a otra cartera</string>
+    <string name="kind_moved_in">Recibido de otra cartera</string>
+    <string name="kind_transfer_to">A %1$s</string>
+    <string name="kind_transfer_from">De %1$s</string>
+    <string name="note_starting_cash">Efectivo inicial</string>
+    <string name="added_spent">Gastado: %1$s</string>
+    <string name="added_atm">%1$s del cajero</string>
+    <string name="added_adjust">Saldo actualizado · %1$s</string>
+    <string name="added_in">Añadido: %1$s</string>
+
+    <!-- Categories (docs/spec.md section 6) -->
+    <string name="category_food">Comida y bebida</string>
+    <string name="category_transit">Transporte</string>
+    <string name="category_parking">Estacionamiento</string>
+    <string name="category_groceries">Supermercado</string>
+    <string name="category_errand">Compras</string>
+    <string name="category_tip">Propinas</string>
+    <string name="category_bills">Cuentas</string>
+    <string name="category_fun">Diversión</string>
+    <string name="category_other">Otros</string>
+    <string name="category_untagged">Sin categoría</string>
+    <string name="tag_add">Añadir categoría</string>
+
+    <!-- Keypad and change calculator -->
+    <string name="keypad_spend">− Gastar</string>
+    <string name="keypad_add">+ Añadir efectivo</string>
+    <string name="keypad_from_atm">Del cajero</string>
+    <string name="keypad_from_atm_hint">Inicia un nuevo ciclo de retiro</string>
+    <string name="keypad_note">Nota (opcional)</string>
+    <string name="keypad_delete">Borrar dígito</string>
+    <string name="change_button">¿Te dieron cambio?</string>
+    <string name="change_paid">Pagado</string>
+    <string name="change_change">Cambio</string>
+    <string name="change_paid_chip">Pagado %1$s</string>
+    <string name="change_equation">Pagado %1$s − Cambio %2$s = %3$s</string>
+    <string name="change_hint">Escribe lo que te devolvieron</string>
+    <string name="change_too_big">El cambio debe ser menor que lo que pagaste</string>
+
+    <!-- Count my cash -->
+    <string name="count_title">¿Cuánto hay en tu cartera?</string>
+    <string name="count_title_short">Contar mi efectivo</string>
+    <string name="count_type_total">Escribir total</string>
+    <string name="count_bills">Contar billetes</string>
+    <string name="count_shows">PocketCash muestra %1$s.</string>
+    <string name="count_spot_on">Exacto. Tu saldo está correcto.</string>
+    <string name="count_less">%1$s menos de lo que muestra PocketCash. Se guarda como gasto no registrado.</string>
+    <string name="count_more">%1$s más de lo que muestra PocketCash. Se guarda como efectivo encontrado.</string>
+    <string name="count_update">Actualizar saldo</string>
+    <string name="count_fewer">Menos</string>
+    <string name="count_more_one">Más</string>
+
+    <!-- Edit a transaction -->
+    <string name="edit_amount">Monto</string>
+    <string name="edit_note">Nota</string>
+    <string name="edit_delete_both">Eliminar ambos lados de este movimiento</string>
+
+    <!-- Insights -->
+    <string name="insights_locked_title">Mira cuánto te dura el efectivo</string>
+    <string name="insights_locked_text">Ritmo de gasto, duración estimada, ciclos de retiro y gastos por categoría vienen con Pro.</string>
+    <string name="insights_burn_rate">Ritmo de gasto</string>
+    <string name="insights_not_enough">Aún no hay suficientes gastos</string>
+    <string name="insights_per_day">%1$s/día</string>
+    <string name="insights_runway">A este ritmo, tu saldo de %1$s dura %2$s días, hasta alrededor del %3$s.</string>
+    <string name="insights_average">Promedio de los últimos 14 días.</string>
+    <string name="insights_no_cycles">Tu primer retiro en cajero inicia un ciclo.</string>
+    <string name="insights_categories">Últimos 30 días por categoría</string>
+    <string name="insights_no_spending">Sin gastos en los últimos 30 días.</string>
+    <string name="insights_cycle_open">Ciclo actual · desde el %1$s</string>
+    <string name="insights_cycle_range">%1$s – %2$s</string>
+    <string name="insights_days_so_far">%1$s días hasta ahora</string>
+    <string name="insights_lasted">Duró %1$s días</string>
+    <string name="insights_withdrawn_so_far">%1$s · %2$s días hasta ahora</string>
+    <string name="insights_withdrawn_lasted">%1$s duraron %2$s días</string>
+    <string name="insights_spent">Gastado</string>
+    <string name="insights_per_day_label">Por día</string>
+    <string name="insights_top_amount">Lo que más pesó: %1$s × %2$d (%3$s)</string>
+    <string name="insights_top_tag">Principalmente %1$s</string>
+
+    <!-- Envelopes -->
+    <string name="envelopes_locked_title">Sobres y metas de ahorro</string>
+    <string name="envelopes_locked_text">Ponles metas a tus carteras, mira cómo se llenan y reparte el efectivo en sobres en un solo paso con Pro.</string>
+    <string name="envelopes_intro">Reparte el efectivo en sobres como Alquiler, Comida y Ahorros. Ponle una meta a una cartera para seguir su progreso.</string>
+    <string name="envelopes_new">Nuevo sobre</string>
+    <string name="envelopes_of_target">%1$s de %2$s</string>
+    <string name="envelopes_goal_reached">Meta alcanzada</string>
+    <string name="envelopes_no_targets">Aún no hay metas. Abre una cartera en Ajustes y ponle una meta de sobre o de ahorro.</string>
+    <string name="fill_title">Llenar sobres</string>
+    <string name="fill_from">Desde</string>
+    <string name="fill_source_has">%1$s en esta cartera</string>
+    <string name="fill_none">Ninguna otra cartera usa %1$s.</string>
+    <string name="fill_no_target">Sin meta</string>
+    <string name="fill_short_by">Faltan %1$s</string>
+    <string name="fill_footer">Moviendo %1$s · %2$s se queda en %3$s</string>
+    <string name="fill_too_much">Solo hay %1$s en %2$s</string>
+    <string name="fill_save">Mover efectivo</string>
+    <string name="fill_done">Sobres llenos · Movido: %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_pro_thanks">Desbloqueado. ¡Gracias por apoyar a PocketCash!</string>
+    <string name="settings_pro_pitch">Sobres, análisis, más carteras, la calculadora de cambio, bloqueo de la app y más. Un solo pago, tuyo para siempre.</string>
+    <string name="settings_wallets">Carteras</string>
+    <string name="settings_buttons">Botones</string>
+    <string name="settings_budget">Presupuesto diario</string>
+    <string name="settings_budget_message">Cuánto efectivo planeas gastar por día de %1$s.</string>
+    <string name="settings_threshold">Recordatorio de poco efectivo por debajo de</string>
+    <string name="settings_threshold_title">Recordatorio de poco efectivo</string>
+    <string name="settings_threshold_message">Avisar cuando %1$s baje de este monto. Activa Recordatorios de poco efectivo más abajo.</string>
+    <string name="settings_quick_amount">Monto</string>
+    <string name="settings_quick_hint">El botón de Ajustes rápidos gasta este monto con un toque. Añádelo desde la pantalla para editar Ajustes rápidos.</string>
+    <string name="settings_quick_title">Monto de gasto rápido</string>
+    <string name="settings_quick_message">Tu gasto en efectivo más común, como el pasaje diario al trabajo.</string>
+    <string name="settings_quick_wallet">Gasto rápido desde</string>
+    <string name="settings_options">Opciones</string>
+    <string name="settings_low_cash">Recordatorios de poco efectivo</string>
+    <string name="settings_low_cash_hint">Una notificación cuando una cartera baja de su monto de recordatorio</string>
+    <string name="settings_plus_atm">Registrar los botones + como retiros en cajero</string>
+    <string name="settings_plus_atm_hint">Cada toque en + inicia un nuevo ciclo de retiro</string>
+    <string name="settings_privacy">Modo de privacidad</string>
+    <string name="settings_privacy_hint">Oculta los montos en widgets y Ajustes rápidos</string>
+    <string name="settings_haptics">Vibración</string>
+    <string name="settings_haptics_hint">Una vibración breve al guardar con un botón</string>
+    <string name="settings_data">Tus datos</string>
+    <string name="settings_language">Idioma</string>
+    <string name="settings_language_hint">PocketCash usa el idioma de tu teléfono, a menos que elijas otro</string>
+    <string name="settings_about">PocketCash %1$s\nTodo se queda en este teléfono: sin cuenta, sin acceso a internet, sin rastreo.</string>
+
+    <!-- App lock -->
+    <string name="lock_section">Bloqueo de la app</string>
+    <string name="lock_with_fingerprint">Bloquear con huella digital</string>
+    <string name="lock_with_face">Bloquear con desbloqueo facial</string>
+    <string name="lock_with_passcode">Bloquear con código de acceso</string>
+    <string name="lock_hint">Pedir desbloqueo cada vez que se abra PocketCash</string>
+    <string name="lock_unavailable">Primero configura un bloqueo de pantalla o una huella digital en este teléfono</string>
+    <string name="lock_widgets_note">Los widgets siguen mostrando tu saldo. Activa el Modo de privacidad para ocultarlo.</string>
+    <string name="lock_title">PocketCash está bloqueado</string>
+    <string name="lock_unlock">Desbloquear</string>
+    <string name="lock_prompt_title">Desbloquear PocketCash</string>
+    <string name="lock_enable_prompt_title">Activar bloqueo de la app</string>
+
+    <!-- Backup and restore (docs/spec.md section 11) -->
+    <string name="backup_export">Hacer copia de seguridad en un archivo</string>
+    <string name="backup_export_hint">Todo en un archivo que puedes restaurar en cualquier iPhone o teléfono Android</string>
+    <string name="backup_restore">Restaurar desde un archivo</string>
+    <string name="backup_restore_hint">Reemplaza todos los datos de este teléfono</string>
+    <string name="backup_saved">Copia de seguridad guardada</string>
+    <string name="backup_save_failed">No se pudo guardar la copia de seguridad. Prueba en otro lugar.</string>
+    <string name="backup_no_picker">Este teléfono no tiene una app para elegir archivos</string>
+    <string name="restore_confirm_title">¿Restaurar esta copia de seguridad?</string>
+    <string name="restore_summary">Carteras: %1$s · Movimientos: %2$s · Copia del %3$s</string>
+    <string name="restore_warning">Todo lo que hay en este teléfono se reemplaza por la copia de seguridad. No se puede deshacer.</string>
+    <string name="restore_replace">Reemplazar todos los datos de este teléfono</string>
+    <string name="restore_done">Copia de seguridad restaurada</string>
+    <string name="restore_failed_title">No se puede restaurar este archivo</string>
+    <string name="restore_not_backup">Este archivo no es una copia de seguridad de PocketCash.</string>
+    <string name="restore_too_new">Esta copia de seguridad es de una versión más reciente de PocketCash. Actualiza la app y vuelve a intentarlo.</string>
+    <string name="restore_unreadable">No se pudo abrir este archivo.</string>
+    <string name="restore_damaged">Esta copia de seguridad está dañada, así que no se cambió nada. %1$s</string>
+    <string name="restore_problem_malformed">Faltan algunos datos o tienen un formato incorrecto.</string>
+    <string name="restore_problem_no_wallets">No tiene carteras.</string>
+    <string name="restore_problem_amount">Un monto no es un número: %1$s</string>
+    <string name="restore_problem_date">No se puede leer una fecha: %1$s</string>
+    <string name="restore_problem_id">Un ID no es válido: %1$s</string>
+    <string name="restore_problem_kind">Tipo de movimiento desconocido: %1$s</string>
+    <string name="restore_problem_currency">Código de moneda desconocido: %1$s</string>
+    <string name="restore_problem_duplicate">Un ID aparece dos veces: %1$s</string>
+    <string name="csv_export">Exportar CSV</string>
+    <string name="csv_export_hint">Todos los movimientos, para una hoja de cálculo</string>
+    <string name="csv_subject">Exportación de PocketCash</string>
+
+    <!-- Wallets -->
+    <string name="wallet_main">Cartera principal</string>
+    <string name="wallet_default_name">Cartera</string>
+    <string name="wallet_new">Nueva cartera</string>
+    <string name="wallet_edit">Editar cartera</string>
+    <string name="wallet_add">Añadir cartera</string>
+    <string name="wallet_name">Nombre</string>
+    <string name="wallet_name_hint">Monedero, Alquiler, Viaje a Japón…</string>
+    <string name="wallet_symbol">Símbolo personalizado (opcional)</string>
+    <string name="wallet_cash_now">Efectivo que tiene ahora</string>
+    <string name="wallet_target">Meta</string>
+    <string name="wallet_target_hint">Meta de sobre o meta de ahorro</string>
+    <string name="wallet_delete">Eliminar cartera</string>
+    <string name="wallet_delete_title">¿Eliminar %1$s?</string>
+    <string name="wallet_delete_text">También se eliminan sus movimientos. No se puede deshacer.</string>
+    <string name="currency_title">Moneda</string>
+    <string name="currency_search">Buscar</string>
+    <string name="transfer_title">Mover efectivo</string>
+    <string name="transfer_title_long">Mover efectivo entre carteras</string>
+    <string name="transfer_from">Desde</string>
+    <string name="transfer_to">Hacia</string>
+    <string name="transfer_amount">Monto (%1$s)</string>
+    <string name="transfer_arrives">Llega como (%1$s)</string>
+    <string name="transfer_move">Mover</string>
+    <string name="presets_title">Botones de %1$s</string>
+    <string name="presets_hint">Ajústalos a tus billetes y pasajes reales. Deja una casilla vacía para quitar ese botón.</string>
+    <string name="presets_cash_in">Entrada de efectivo</string>
+    <string name="presets_spend">Gastar</string>
+    <string name="presets_reset">Restablecer valores predeterminados de %1$s</string>
+
+    <!-- Paywall: Pro's features in the order of docs/spec.md section 5 -->
+    <string name="paywall_subtitle">Un solo pago. Tuyo para siempre. Sin suscripción ni cuenta.</string>
+    <string name="paywall_envelopes">Sobres y metas de ahorro</string>
+    <string name="paywall_envelopes_text">Ponle una meta a cualquier cartera, sigue el progreso y reparte el efectivo en sobres en un solo paso.</string>
+    <string name="paywall_insights">Análisis</string>
+    <string name="paywall_insights_text">Cuánto dura cada retiro en cajero, tu gasto diario, cuándo se acaba el efectivo y en qué se va.</string>
+    <string name="paywall_wallets">Más carteras</string>
+    <string name="paywall_wallets_text">Monedero, reserva para emergencias, una cartera de viaje en su propia moneda, movimientos entre ellas y una cartera por widget.</string>
+    <string name="paywall_quick">Gasto rápido en todas partes</string>
+    <string name="paywall_quick_text">El botón de Ajustes rápidos gasta tu pasaje diario con un toque.</string>
+    <string name="paywall_change">Calculadora de cambio</string>
+    <string name="paywall_change_text">¿Pagaste 500 y te devolvieron 130? Guarda un solo gasto de 370.</string>
+    <string name="paywall_budget">Presupuesto diario</string>
+    <string name="paywall_budget_text">Mira cuánto te queda para hoy en la app y en el widget.</string>
+    <string name="paywall_categories">Categorías</string>
+    <string name="paywall_categories_text">Clasifica tus gastos después con un toque.</string>
+    <string name="paywall_buttons">Tus propios botones</string>
+    <string name="paywall_buttons_text">Ajusta cada botón a tus pasajes y billetes reales.</string>
+    <string name="paywall_lock">Bloqueo de la app y modo de privacidad</string>
+    <string name="paywall_lock_text">Bloquea PocketCash con tu huella digital o el bloqueo de pantalla, y oculta los montos en los widgets.</string>
+    <string name="paywall_low_cash">Recordatorio de poco efectivo</string>
+    <string name="paywall_low_cash_text">Una notificación cuando una cartera se está quedando sin efectivo.</string>
+    <string name="paywall_history">Historial completo y exportación CSV</string>
+    <string name="paywall_history_text">Todo lo anterior a 7 días, listo para una hoja de cálculo.</string>
+    <string name="paywall_buy">Desbloquear por %1$s</string>
+    <string name="paywall_connecting">Conectando con Google Play…</string>
+    <string name="paywall_restore">Restaurar compra</string>
+    <string name="paywall_not_now">Ahora no</string>
+    <string name="paywall_thanks">Ya eres Pro. ¡Gracias!</string>
+    <string name="billing_unavailable">Google Play no está disponible en este momento.</string>
+    <string name="billing_connecting">Aún conectando con Google Play. Vuelve a intentarlo en un momento.</string>
+    <string name="billing_failed">La compra no se completó (%1$d).</string>
+    <string name="billing_pending">Compra pendiente. Pro se desbloquea en cuanto Google Play la confirme.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Tu efectivo, en tu pantalla de inicio</string>
+    <string name="onboarding_text">Las apps de banco registran cada pago con tarjeta. Nadie registra el efectivo. PocketCash mantiene al día el saldo de tu cartera con un toque.</string>
+    <string name="onboarding_point_tap">Toca %1$s en el widget cuando pagues. Listo.</string>
+    <string name="onboarding_point_undo">¿Lo tocaste por error? Puedes deshacerlo durante unos segundos.</string>
+    <string name="onboarding_point_count">Cuenta tu efectivo cuando quieras para corregir el saldo.</string>
+    <string name="onboarding_start">Empezar</string>
+    <string name="onboarding_restore">Restaurar desde una copia de seguridad</string>
+    <string name="onboarding_private">Sin cuenta. Nada sale de tu teléfono.</string>
+    <string name="onboarding_cash_title">¿Cuánto efectivo tienes en tu cartera ahora mismo?</string>
+    <string name="onboarding_currency">Moneda: %1$s</string>
+    <string name="onboarding_type_it">Escribirlo</string>
+    <string name="onboarding_start_empty">Empezar con la cartera vacía</string>
+    <string name="onboarding_start_tracking">Empezar a registrar</string>
+    <string name="onboarding_widget_title">Pon tu cartera en la pantalla de inicio</string>
+    <string name="onboarding_widget_text">Mantén presionado un espacio vacío de la pantalla de inicio, toca Widgets y elige PocketCash. Cada botón guarda al instante.</string>
+    <string name="onboarding_add_widget">Añadir el widget</string>
+</resources>

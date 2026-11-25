@@ -22,12 +22,11 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.automirrored.rounded.Undo
+import androidx.compose.material.icons.automirrored.outlined.Undo
 import androidx.compose.material.icons.rounded.Add
 import androidx.compose.material.icons.rounded.Remove
-import androidx.compose.material.icons.rounded.TouchApp
-import androidx.compose.material.icons.rounded.Tune
-import androidx.compose.material3.Button
+import androidx.compose.material.icons.outlined.TouchApp
+import androidx.compose.material.icons.outlined.Tune
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedButton
@@ -50,6 +49,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
@@ -62,6 +62,7 @@ import com.patternsystems.pocketcash.core.MoneyFormat
 import com.patternsystems.pocketcash.ui.AmountKeypad
 import com.patternsystems.pocketcash.ui.CurrencyPickerDialog
 import com.patternsystems.pocketcash.ui.KeypadInput
+import com.patternsystems.pocketcash.ui.PrimaryButton
 import com.patternsystems.pocketcash.ui.theme.Cash
 import com.patternsystems.pocketcash.ui.theme.HeroStyle
 import com.patternsystems.pocketcash.ui.theme.Tabular
@@ -73,9 +74,10 @@ import java.math.BigDecimal
 @Composable
 fun OnboardingScreen(app: AppScope, data: AppData) {
     var step by rememberSaveable { mutableIntStateOf(if (data.wallets.isEmpty()) 0 else 2) }
+    val restore = rememberRestore(app)
     Column(Modifier.fillMaxSize().safeDrawingPadding().padding(horizontal = 24.dp, vertical = 16.dp)) {
         when (step) {
-            0 -> Welcome { step = 1 }
+            0 -> Welcome(onRestore = restore) { step = 1 }
             1 -> StartingCash(app) { step = 2 }
             else -> WidgetHint(app)
         }
@@ -83,41 +85,38 @@ fun OnboardingScreen(app: AppScope, data: AppData) {
 }
 
 @Composable
-private fun Welcome(onNext: () -> Unit) {
+private fun Welcome(onRestore: () -> Unit, onNext: () -> Unit) {
     Column(Modifier.fillMaxSize(), horizontalAlignment = Alignment.CenterHorizontally) {
         Spacer(Modifier.weight(1f))
         Box(Modifier.size(132.dp).clip(RoundedCornerShape(32.dp)).background(Cash.colors.cashIn), contentAlignment = Alignment.Center) {
             Image(painterResource(R.drawable.ic_launcher_fg), contentDescription = null, modifier = Modifier.size(132.dp))
         }
         Spacer(Modifier.height(28.dp))
-        Text("Your cash, on your Home Screen", style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text(stringResource(R.string.onboarding_title), style = MaterialTheme.typography.headlineMedium, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
         Spacer(Modifier.height(10.dp))
         Text(
-            "Banking apps track every card tap. Nobody tracks the cash. PocketCash keeps your wallet's balance right with one tap.",
+            stringResource(R.string.onboarding_text),
             color = Cash.colors.subtle,
             textAlign = TextAlign.Center,
         )
         Spacer(Modifier.height(28.dp))
         Column(verticalArrangement = Arrangement.spacedBy(14.dp)) {
-            Point(Icons.Rounded.TouchApp, "Tap $MINUS" + "50 on the widget when you pay. Done.")
-            Point(Icons.AutoMirrored.Rounded.Undo, "Tapped by mistake? Undo for a few seconds.")
-            Point(Icons.Rounded.Tune, "Count your cash any time to fix the balance.")
+            Point(Icons.Outlined.TouchApp, stringResource(R.string.onboarding_point_tap, "${MINUS}50"))
+            Point(Icons.AutoMirrored.Outlined.Undo, stringResource(R.string.onboarding_point_undo))
+            Point(Icons.Outlined.Tune, stringResource(R.string.onboarding_point_count))
         }
         Spacer(Modifier.weight(1f))
-        Button(onClick = onNext, modifier = Modifier.fillMaxWidth().height(56.dp), shape = RoundedCornerShape(18.dp)) {
-            Text("Get started", fontSize = 17.sp, fontWeight = FontWeight.SemiBold)
-        }
-        Text("No account. Nothing leaves your phone.", fontSize = 13.sp, color = Cash.colors.subtle, modifier = Modifier.padding(top = 10.dp))
+        PrimaryButton(stringResource(R.string.onboarding_start), onClick = onNext)
+        TextButton(onClick = onRestore, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.onboarding_restore)) }
+        Text(stringResource(R.string.onboarding_private), fontSize = 13.sp, color = Cash.colors.subtle, modifier = Modifier.padding(top = 2.dp))
     }
 }
 
 @Composable
 private fun Point(icon: ImageVector, text: String) {
     Row(verticalAlignment = Alignment.CenterVertically) {
-        Box(Modifier.size(36.dp).clip(CircleShape).background(Cash.colors.cashInContainer), contentAlignment = Alignment.Center) {
-            Icon(icon, contentDescription = null, tint = Cash.colors.onCashInContainer, modifier = Modifier.size(20.dp))
-        }
-        Spacer(Modifier.width(12.dp))
+        Icon(icon, contentDescription = null, tint = Cash.colors.subtle, modifier = Modifier.size(22.dp))
+        Spacer(Modifier.width(16.dp))
         Text(text)
     }
 }
@@ -133,16 +132,17 @@ private fun StartingCash(app: AppScope, onNext: () -> Unit) {
     val denominations = DefaultPresets.forCurrency(currency).denominations
     val amount = if (byBills) counts.entries.fold(BigDecimal.ZERO) { s, (d, n) -> s + d.multiply(BigDecimal(n)) } else KeypadInput.value(entry)
 
+    val mainWallet = stringResource(R.string.wallet_main)
     Column(Modifier.fillMaxSize(), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-        Text("How much cash is in your wallet right now?", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold)
+        Text(stringResource(R.string.onboarding_cash_title), style = MaterialTheme.typography.headlineSmall)
         Row(verticalAlignment = Alignment.CenterVertically) {
-            Text("Currency: $currency", color = Cash.colors.subtle, modifier = Modifier.weight(1f))
-            TextButton(onClick = { picking = true }) { Text("Change") }
+            Text(stringResource(R.string.onboarding_currency, currency), color = Cash.colors.subtle, modifier = Modifier.weight(1f))
+            TextButton(onClick = { picking = true }) { Text(stringResource(R.string.action_change)) }
         }
         Text(MoneyFormat.full(amount, currency), style = HeroStyle.copy(fontSize = 48.sp), maxLines = 1)
         SingleChoiceSegmentedButtonRow(Modifier.fillMaxWidth()) {
-            SegmentedButton(selected = !byBills, onClick = { byBills = false }, shape = SegmentedButtonDefaults.itemShape(0, 2)) { Text("Type it") }
-            SegmentedButton(selected = byBills, onClick = { byBills = true }, shape = SegmentedButtonDefaults.itemShape(1, 2)) { Text("Count bills") }
+            SegmentedButton(selected = !byBills, onClick = { byBills = false }, shape = SegmentedButtonDefaults.itemShape(0, 2)) { Text(stringResource(R.string.onboarding_type_it)) }
+            SegmentedButton(selected = byBills, onClick = { byBills = true }, shape = SegmentedButtonDefaults.itemShape(1, 2)) { Text(stringResource(R.string.count_bills)) }
         }
         Box(Modifier.weight(1f)) {
             if (byBills) {
@@ -151,9 +151,9 @@ private fun StartingCash(app: AppScope, onNext: () -> Unit) {
                         val n = counts[d] ?: 0
                         Row(Modifier.fillMaxWidth().padding(vertical = 4.dp), verticalAlignment = Alignment.CenterVertically) {
                             Text(MoneyFormat.full(d, currency), style = Tabular, modifier = Modifier.weight(1f))
-                            OutlinedButton(onClick = { counts[d] = (n - 1).coerceAtLeast(0) }, enabled = n > 0) { Icon(Icons.Rounded.Remove, contentDescription = "Fewer") }
+                            OutlinedButton(onClick = { counts[d] = (n - 1).coerceAtLeast(0) }, enabled = n > 0) { Icon(Icons.Rounded.Remove, contentDescription = stringResource(R.string.count_fewer)) }
                             Text("$n", style = Tabular, modifier = Modifier.width(40.dp), textAlign = TextAlign.Center)
-                            OutlinedButton(onClick = { counts[d] = n + 1 }) { Icon(Icons.Rounded.Add, contentDescription = "More") }
+                            OutlinedButton(onClick = { counts[d] = n + 1 }) { Icon(Icons.Rounded.Add, contentDescription = stringResource(R.string.count_more_one)) }
                         }
                     }
                 }
@@ -161,16 +161,15 @@ private fun StartingCash(app: AppScope, onNext: () -> Unit) {
                 AmountKeypad(decimals = decimals, onKey = { entry = KeypadInput.press(entry, it, decimals) }, modifier = Modifier.align(Alignment.BottomCenter))
             }
         }
-        Button(
+        PrimaryButton(
+            stringResource(if (amount.signum() == 0) R.string.onboarding_start_empty else R.string.onboarding_start_tracking),
             onClick = {
                 app.scope.launch {
-                    app.store.createWallet("Main Wallet", currency, null, amount)
+                    app.store.createWallet(mainWallet, currency, null, amount)
                     onNext()
                 }
             },
-            modifier = Modifier.fillMaxWidth().height(56.dp),
-            shape = RoundedCornerShape(18.dp),
-        ) { Text(if (amount.signum() == 0) "Start with an empty wallet" else "Start tracking", fontSize = 17.sp, fontWeight = FontWeight.SemiBold) }
+        )
     }
     if (picking) CurrencyPickerDialog(current = currency, onDismiss = { picking = false }, onPick = { currency = it; entry = ""; counts.clear(); picking = false })
 }
@@ -185,26 +184,24 @@ private fun WidgetHint(app: AppScope) {
         Spacer(Modifier.weight(1f))
         WidgetMock()
         Spacer(Modifier.height(28.dp))
-        Text("Put your wallet on the Home Screen", style = MaterialTheme.typography.headlineSmall, fontWeight = FontWeight.Bold, textAlign = TextAlign.Center)
+        Text(stringResource(R.string.onboarding_widget_title), style = MaterialTheme.typography.headlineSmall, textAlign = TextAlign.Center)
         Spacer(Modifier.height(10.dp))
         Text(
-            "Touch and hold an empty spot on your Home Screen, tap Widgets, then pick PocketCash. Every button saves instantly. " +
-                "You can also add the Quick spend tile to Quick Settings.",
+            stringResource(R.string.onboarding_widget_text),
             color = Cash.colors.subtle,
             textAlign = TextAlign.Center,
         )
         Spacer(Modifier.weight(1f))
         if (manager.isRequestPinAppWidgetSupported) {
-            Button(
+            PrimaryButton(
+                stringResource(R.string.onboarding_add_widget),
                 onClick = {
                     manager.requestPinAppWidget(ComponentName(context, MediumWidgetReceiver::class.java), null, null)
                     finish()
                 },
-                modifier = Modifier.fillMaxWidth().height(56.dp),
-                shape = RoundedCornerShape(18.dp),
-            ) { Text("Add the widget", fontSize = 17.sp, fontWeight = FontWeight.SemiBold) }
+            )
         }
-        TextButton(onClick = { finish() }, modifier = Modifier.fillMaxWidth()) { Text("Done") }
+        TextButton(onClick = { finish() }, modifier = Modifier.fillMaxWidth()) { Text(stringResource(R.string.action_done)) }
     }
 }
 
@@ -216,8 +213,8 @@ private fun WidgetMock() {
         verticalArrangement = Arrangement.spacedBy(10.dp),
     ) {
         Row {
-            Text("Main Wallet", fontSize = 13.sp, color = Cash.colors.subtle, modifier = Modifier.weight(1f))
-            Text("${MINUS}170 today", fontSize = 13.sp, color = Cash.colors.subtle)
+            Text(stringResource(R.string.wallet_main), fontSize = 13.sp, color = Cash.colors.subtle, modifier = Modifier.weight(1f))
+            Text(stringResource(R.string.widget_today, "${MINUS}170"), fontSize = 13.sp, color = Cash.colors.subtle)
         }
         Text("680", style = HeroStyle.copy(fontSize = 34.sp))
         Row(horizontalArrangement = Arrangement.spacedBy(6.dp)) {
@@ -227,7 +224,7 @@ private fun WidgetMock() {
                         .background(if (plus) Cash.colors.cashInContainer else Cash.colors.spendContainer),
                     contentAlignment = Alignment.Center,
                 ) {
-                    Text(label, fontWeight = FontWeight.Bold, color = if (plus) Cash.colors.onCashInContainer else Cash.colors.onSpendContainer)
+                    Text(label, fontWeight = FontWeight.Medium, color = if (plus) Cash.colors.onCashInContainer else Cash.colors.onSpendContainer)
                 }
             }
         }

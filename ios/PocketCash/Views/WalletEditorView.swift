@@ -1,16 +1,19 @@
 import SwiftUI
 
-/// Create a wallet (Pro) or edit one: name, currency, custom symbol, starting cash, default, delete.
+/// Create a wallet (Pro) or edit one: name, currency, custom symbol, starting cash, target, default, delete.
 struct WalletEditorView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var pro: ProStore
     @Environment(\.dismiss) private var dismiss
     let wallet: Wallet?
+    /// Shown as a sheet (from Home or Envelopes) rather than pushed from Settings.
+    var showsCancel = false
 
     @State private var name = ""
     @State private var currency = CurrencyDefaults.localCode
     @State private var symbol = ""
     @State private var startingCash = ""
+    @State private var target = ""
     @State private var loaded = false
     @State private var confirmDelete = false
 
@@ -26,7 +29,11 @@ struct WalletEditorView: View {
                 TextField("Custom symbol (optional)", text: $symbol)
                     .disabled(!pro.isPro)
             } footer: {
-                Text(pro.isPro ? "A custom symbol is handy for a travel wallet." : "Custom symbols are part of Pro.")
+                if pro.isPro {
+                    Text("A custom symbol is handy for a travel wallet.")
+                } else {
+                    Text("Custom symbols are part of Pro.")
+                }
             }
 
             if wallet == nil {
@@ -36,8 +43,30 @@ struct WalletEditorView: View {
                 } header: {
                     Text("Cash in it right now")
                 }
+            }
+
+            Section {
+                HStack {
+                    Text(verbatim: Money.symbol(for: currency, custom: symbol.nilIfEmpty)).foregroundStyle(.secondary)
+                    TextField("No target", text: $target)
+                        .keyboardType(Money.fractionDigits(for: currency) > 0 ? .decimalPad : .numberPad)
+                        .monospacedDigit()
+                        .disabled(!pro.isPro)
+                    if !pro.isPro { Image(systemName: "lock").font(.footnote).foregroundStyle(.secondary) }
+                }
+            } header: {
+                Text("Target")
+            } footer: {
+                if pro.isPro {
+                    Text("Envelope target or savings goal. Its progress shows in Envelopes.")
+                } else {
+                    Text("Envelope targets and savings goals are part of Pro.")
+                }
+            }
+
+            if wallet == nil {
                 Section {
-                    ForEach(["Coin Pouch", "Emergency Stash", "Travel Wallet"], id: \.self) { suggestion in
+                    ForEach(suggestions, id: \.self) { suggestion in
                         Button(suggestion) { name = suggestion }
                     }
                 } header: {
@@ -63,9 +92,14 @@ struct WalletEditorView: View {
                 }
             }
         }
-        .navigationTitle(wallet == nil ? "New wallet" : "Edit wallet")
+        .scrollContentBackground(.hidden)
+        .background(Theme.background)
+        .navigationTitle(wallet == nil ? Text("New wallet") : Text("Edit wallet"))
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if showsCancel {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+            }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") { save() }
                     .disabled(name.trimmingCharacters(in: .whitespaces).isEmpty)
@@ -86,6 +120,7 @@ struct WalletEditorView: View {
                 name = wallet.name
                 currency = wallet.currencyCode
                 symbol = wallet.symbol ?? ""
+                target = wallet.target.map(Money.string) ?? ""
             } else {
                 name = ""
                 currency = model.wallet?.currencyCode ?? CurrencyDefaults.localCode
@@ -93,9 +128,19 @@ struct WalletEditorView: View {
         }
     }
 
+    private var suggestions: [String] {
+        [String(localized: "Coin Pouch"), String(localized: "Emergency Stash"), String(localized: "Travel Wallet"),
+         String(localized: "Rent"), String(localized: "Savings")]
+    }
+
+    private func decimal(_ text: String) -> Decimal? {
+        Money.decimal(text.replacingOccurrences(of: ",", with: "."))
+    }
+
     private func save() {
         let trimmed = name.trimmingCharacters(in: .whitespaces)
         let customSymbol = symbol.trimmingCharacters(in: .whitespaces).nilIfEmpty
+        let newTarget = decimal(target).flatMap { $0 > 0 ? $0 : nil }
         if let wallet {
             if wallet.currencyCode != currency {
                 // New currency, new sensible buttons.
@@ -105,11 +150,15 @@ struct WalletEditorView: View {
                 wallet.spendPresets = presets.spend
             }
             wallet.name = trimmed
-            if pro.isPro { wallet.symbol = customSymbol }
+            if pro.isPro {
+                wallet.symbol = customSymbol
+                wallet.target = newTarget
+            }
             model.saveEdits()
         } else {
-            let cash = Money.decimal(startingCash.replacingOccurrences(of: ",", with: ".")) ?? 0
-            model.createWallet(name: trimmed, currencyCode: currency, symbol: pro.isPro ? customSymbol : nil, startingCash: max(cash, 0))
+            let cash = decimal(startingCash) ?? 0
+            model.createWallet(name: trimmed, currencyCode: currency, symbol: pro.isPro ? customSymbol : nil,
+                               startingCash: max(cash, 0), target: pro.isPro ? newTarget : nil)
         }
         dismiss()
     }
@@ -133,14 +182,15 @@ struct CurrencyPicker: View {
                 dismiss()
             } label: {
                 HStack {
-                    Text(code).font(.body.monospaced().weight(.semibold)).frame(width: 52, alignment: .leading)
-                    Text(CurrencyDefaults.name(code)).lineLimit(1)
+                    Text(verbatim: code).font(.body.monospaced().weight(.medium)).frame(width: 52, alignment: .leading)
+                    Text(verbatim: CurrencyDefaults.name(code)).lineLimit(1)
                     Spacer()
-                    if code == selection { Image(systemName: "checkmark").foregroundStyle(Theme.emerald) }
+                    if code == selection { Image(systemName: "checkmark") }
                 }
             }
             .foregroundStyle(.primary)
         }
+        .listStyle(.plain)
         .searchable(text: $query, prompt: "Search currencies")
         .navigationTitle("Currency")
         .navigationBarTitleDisplayMode(.inline)
@@ -152,6 +202,8 @@ struct PresetEditorView: View {
     @EnvironmentObject private var model: AppModel
     @Environment(\.dismiss) private var dismiss
     let wallet: Wallet
+    /// Shown as a sheet from Home or Settings.
+    var showsCancel = false
 
     struct Row: Identifiable {
         let id = UUID()
@@ -194,9 +246,14 @@ struct PresetEditorView: View {
                 }
             }
         }
+        .scrollContentBackground(.hidden)
+        .background(Theme.background)
         .navigationTitle("Buttons")
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
+            if showsCancel {
+                ToolbarItem(placement: .cancellationAction) { Button("Cancel") { dismiss() } }
+            }
             ToolbarItem(placement: .confirmationAction) {
                 Button("Save") { save() }.disabled(parsed(adds).isEmpty || parsed(spends).isEmpty)
             }
@@ -211,16 +268,16 @@ struct PresetEditorView: View {
 
     private func presetField(sign: String, text: Binding<String>) -> some View {
         HStack {
-            Text(sign).font(.headline).foregroundStyle(.secondary)
+            Text(verbatim: sign).font(.headline).foregroundStyle(.secondary)
             TextField("Amount", text: text)
                 .keyboardType(wallet.allowsFractions ? .decimalPad : .numberPad)
                 .monospacedDigit()
             if let value = Money.decimal(text.wrappedValue.replacingOccurrences(of: ",", with: ".")), value > 0 {
-                Text(Money.buttonLabel(value, cashIn: sign == "+"))
-                    .font(.caption.weight(.semibold).monospacedDigit())
+                Text(verbatim: Money.buttonLabel(value, cashIn: sign == "+"))
+                    .font(.caption.weight(.medium).monospacedDigit())
                     .padding(.horizontal, 8)
                     .padding(.vertical, 4)
-                    .background(Color.primary.opacity(0.07), in: Capsule())
+                    .background(Theme.surface, in: Capsule())
             }
         }
     }

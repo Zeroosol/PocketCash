@@ -46,6 +46,8 @@ struct TransactionEditor: View {
                         }
                     }
                 }
+                .scrollContentBackground(.hidden)
+                .background(Theme.background)
                 .navigationTitle(tx.title)
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {

@@ -16,6 +16,7 @@ on:
     paths:
       - 'ios/**'
       - 'spec/**'
+      - 'tools/check_ios_strings.js'
       - '.github/workflows/ios.yml'
 
 concurrency:
@@ -41,6 +42,10 @@ jobs:
       - name: Check the generated presets are up to date
         working-directory: .
         run: node tools/build_presets.js --check
+
+      - name: Check every language has every string
+        working-directory: .
+        run: node tools/check_ios_strings.js --check
 
       - name: Use the newest release Xcode on the runner
         run: |

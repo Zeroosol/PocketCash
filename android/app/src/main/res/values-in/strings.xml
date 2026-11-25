@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Indonesian (id; Android looks it up in values-in). First drafts: a native speaker must review these before launch (docs/spec.md section 13). -->
+<resources>
+    <!-- Launcher, widget picker, Quick Settings, notifications -->
+    <string name="widget_medium_name">PocketCash Lebar</string>
+    <string name="widget_small_description">Saldo uang tunaimu dan dua tombol keluar sekali ketuk</string>
+    <string name="widget_medium_description">Saldo, pengeluaran hari ini, dan empat tombol sekali ketuk</string>
+    <string name="tile_label">Keluar cepat</string>
+    <string name="tile_spend">Keluar %1$s</string>
+    <string name="tile_left">Sisa %1$s</string>
+    <string name="tile_open_app">Buka PocketCash dulu</string>
+    <string name="shortcut_spend_short">Keluar</string>
+    <string name="shortcut_spend_long">Catat uang keluar</string>
+    <string name="shortcut_add_short">Tambah uang</string>
+    <string name="shortcut_add_long">Tambah uang atau tarik tunai ATM</string>
+    <string name="shortcut_count_short">Hitung uangku</string>
+    <string name="shortcut_count_long">Hitung uang tunai di dompetku</string>
+    <string name="channel_low_cash">Uang menipis</string>
+    <string name="channel_low_cash_description">Pengingat saat saldo dompet turun di bawah jumlah yang kamu atur</string>
+    <string name="low_cash_title">Tinggal %1$s di %2$s</string>
+    <string name="low_cash_text">Sudah di bawah batas pengingat %1$s. Saatnya ke ATM?</string>
+
+    <!-- Widgets -->
+    <string name="widget_setup">Buka PocketCash untuk menyiapkan dompetmu</string>
+    <string name="widget_undo">Urungkan %1$s</string>
+    <string name="widget_today">%1$s hari ini</string>
+    <string name="widget_left">Sisa %1$s</string>
+    <string name="widget_pick_wallet">Dompet mana yang ditampilkan widget ini?</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Simpan</string>
+    <string name="action_cancel">Batal</string>
+    <string name="action_close">Tutup</string>
+    <string name="action_done">Selesai</string>
+    <string name="action_ok">OK</string>
+    <string name="action_delete">Hapus</string>
+    <string name="action_undo">Urungkan</string>
+    <string name="action_change">Ganti</string>
+    <string name="action_default">Default</string>
+    <string name="action_turn_off">Matikan</string>
+    <string name="action_remove">Hapus</string>
+    <string name="value_off">Nonaktif</string>
+    <string name="value_not_set">Belum diatur</string>
+    <string name="deleted">Dihapus</string>
+    <string name="pro_feature">Fitur Pro</string>
+    <string name="pro_unlock">Buka Pro</string>
+
+    <!-- Nav bar -->
+    <string name="nav_home">Beranda</string>
+    <string name="nav_insights">Wawasan</string>
+    <string name="nav_envelopes">Amplop</string>
+    <string name="nav_settings">Setelan</string>
+    <string name="nav_plus">Tambah jumlah</string>
+
+    <!-- Home -->
+    <string name="home_switch_wallet">Ganti dompet</string>
+    <string name="home_today">Hari ini %1$s</string>
+    <string name="home_nothing_today">Belum ada pengeluaran hari ini</string>
+    <string name="home_left_today">Sisa %1$s hari ini</string>
+    <string name="home_over_by">Lebih %1$s</string>
+    <string name="home_custom">Kustom</string>
+    <string name="home_insight_empty">Catat pengeluaran beberapa kali untuk melihat berapa lama uangmu bertahan</string>
+    <string name="home_insight_rate">%1$s/hari</string>
+    <string name="home_insight_runway">%1$s/hari · cukup sampai sekitar %2$s</string>
+    <string name="feed_last_7_days">7 hari terakhir</string>
+    <string name="feed_cycles">Siklus ATM</string>
+    <string name="feed_empty">Belum ada apa-apa. Ketuk tombol di atas saat uang keluar dari dompetmu.</string>
+    <string name="feed_older">Catatan lama · riwayat lengkap dengan Pro</string>
+    <string name="feed_collapse">Ciutkan</string>
+    <string name="feed_expand">Luaskan</string>
+    <string name="day_today">Hari ini</string>
+    <string name="day_yesterday">Kemarin</string>
+    <string name="cycle_before_first_atm">Sebelum ATM pertama</string>
+    <string name="cycle_header_open">Siklus saat ini · sejak %1$s · %2$s · sudah %3$s hari</string>
+    <string name="cycle_header_closed">Siklus ATM · %1$s – %2$s · %3$s bertahan %4$s hari</string>
+
+    <!-- What a transaction is -->
+    <string name="kind_spent">Terpakai</string>
+    <string name="kind_in">Uang masuk</string>
+    <string name="kind_atm">Tarik tunai ATM</string>
+    <string name="kind_unrecorded">Pengeluaran tak tercatat</string>
+    <string name="kind_found">Uang temuan</string>
+    <string name="kind_moved_out">Dipindah keluar</string>
+    <string name="kind_moved_in">Dipindah masuk</string>
+    <string name="kind_transfer_to">Ke %1$s</string>
+    <string name="kind_transfer_from">Dari %1$s</string>
+    <string name="note_starting_cash">Uang awal</string>
+    <string name="added_spent">%1$s terpakai</string>
+    <string name="added_atm">%1$s dari ATM</string>
+    <string name="added_adjust">Saldo diperbarui · %1$s</string>
+    <string name="added_in">%1$s ditambahkan</string>
+
+    <!-- Categories (docs/spec.md section 6) -->
+    <string name="category_food">Makan &amp; minum</string>
+    <string name="category_transit">Transportasi</string>
+    <string name="category_parking">Parkir</string>
+    <string name="category_groceries">Belanja dapur</string>
+    <string name="category_errand">Keperluan</string>
+    <string name="category_tip">Tip</string>
+    <string name="category_bills">Tagihan</string>
+    <string name="category_fun">Hiburan</string>
+    <string name="category_other">Lainnya</string>
+    <string name="category_untagged">Tanpa kategori</string>
+    <string name="tag_add">Tambah kategori</string>
+
+    <!-- Keypad and change calculator -->
+    <string name="keypad_spend">− Keluar</string>
+    <string name="keypad_add">+ Tambah uang</string>
+    <string name="keypad_from_atm">Dari ATM</string>
+    <string name="keypad_from_atm_hint">Memulai siklus ATM baru</string>
+    <string name="keypad_note">Catatan (opsional)</string>
+    <string name="keypad_delete">Hapus angka</string>
+    <string name="change_button">Ada kembalian?</string>
+    <string name="change_paid">Bayar</string>
+    <string name="change_change">Kembalian</string>
+    <string name="change_paid_chip">Bayar %1$s</string>
+    <string name="change_equation">Bayar %1$s − Kembalian %2$s = %3$s</string>
+    <string name="change_hint">Ketik kembalian yang kamu terima</string>
+    <string name="change_too_big">Kembalian harus lebih kecil dari yang kamu bayar</string>
+
+    <!-- Count my cash -->
+    <string name="count_title">Berapa isi dompetmu?</string>
+    <string name="count_title_short">Hitung uangku</string>
+    <string name="count_type_total">Ketik total</string>
+    <string name="count_bills">Hitung per pecahan</string>
+    <string name="count_shows">PocketCash mencatat %1$s.</string>
+    <string name="count_spot_on">Pas. Saldomu sudah benar.</string>
+    <string name="count_less">Kurang %1$s dari catatan PocketCash. Disimpan sebagai pengeluaran tak tercatat.</string>
+    <string name="count_more">Lebih %1$s dari catatan PocketCash. Disimpan sebagai uang temuan.</string>
+    <string name="count_update">Perbarui saldo</string>
+    <string name="count_fewer">Kurangi</string>
+    <string name="count_more_one">Tambah</string>
+
+    <!-- Edit a transaction -->
+    <string name="edit_amount">Jumlah</string>
+    <string name="edit_note">Catatan</string>
+    <string name="edit_delete_both">Hapus kedua sisi pemindahan ini</string>
+
+    <!-- Insights -->
+    <string name="insights_locked_title">Lihat berapa lama uangmu bertahan</string>
+    <string name="insights_locked_text">Laju pengeluaran, perkiraan sisa hari, siklus ATM, dan pengeluaran per kategori tersedia dengan Pro.</string>
+    <string name="insights_burn_rate">Laju pengeluaran</string>
+    <string name="insights_not_enough">Belum cukup data pengeluaran</string>
+    <string name="insights_per_day">%1$s/hari</string>
+    <string name="insights_runway">Dengan laju ini, %1$s milikmu cukup untuk %2$s hari, sampai sekitar %3$s.</string>
+    <string name="insights_average">Rata-rata 14 hari terakhir.</string>
+    <string name="insights_no_cycles">Tarik tunai ATM pertamamu akan memulai siklus.</string>
+    <string name="insights_categories">30 hari terakhir per kategori</string>
+    <string name="insights_no_spending">Tidak ada pengeluaran dalam 30 hari terakhir.</string>
+    <string name="insights_cycle_open">Siklus saat ini · sejak %1$s</string>
+    <string name="insights_cycle_range">%1$s – %2$s</string>
+    <string name="insights_days_so_far">Sudah %1$s hari</string>
+    <string name="insights_lasted">Bertahan %1$s hari</string>
+    <string name="insights_withdrawn_so_far">%1$s · sudah %2$s hari</string>
+    <string name="insights_withdrawn_lasted">%1$s bertahan %2$s hari</string>
+    <string name="insights_spent">Terpakai</string>
+    <string name="insights_per_day_label">Per hari</string>
+    <string name="insights_top_amount">Paling menguras: %1$s × %2$d (%3$s)</string>
+    <string name="insights_top_tag">Kebanyakan untuk %1$s</string>
+
+    <!-- Envelopes -->
+    <string name="envelopes_locked_title">Amplop dan target tabungan</string>
+    <string name="envelopes_locked_text">Dengan Pro, beri dompet target, lihat isinya bertambah, dan bagi uang ke amplop dalam satu langkah.</string>
+    <string name="envelopes_intro">Bagi uang ke amplop seperti Sewa, Makan, dan Tabungan. Beri dompet target untuk memantau progresnya.</string>
+    <string name="envelopes_new">Amplop baru</string>
+    <string name="envelopes_of_target">%1$s dari %2$s</string>
+    <string name="envelopes_goal_reached">Target tercapai</string>
+    <string name="envelopes_no_targets">Belum ada target. Buka dompet di Setelan, lalu atur target amplop atau target tabungan.</string>
+    <string name="fill_title">Isi amplop</string>
+    <string name="fill_from">Dari</string>
+    <string name="fill_source_has">%1$s di dompet ini</string>
+    <string name="fill_none">Tidak ada dompet lain yang memakai %1$s.</string>
+    <string name="fill_no_target">Tanpa target</string>
+    <string name="fill_short_by">Kurang %1$s</string>
+    <string name="fill_footer">Memindahkan %1$s · %2$s tetap di %3$s</string>
+    <string name="fill_too_much">Hanya ada %1$s di %2$s</string>
+    <string name="fill_save">Pindahkan uang</string>
+    <string name="fill_done">Amplop terisi · %1$s dipindahkan</string>
+
+    <!-- Settings -->
+    <string name="settings_pro_thanks">Pro sudah aktif. Terima kasih sudah mendukung PocketCash!</string>
+    <string name="settings_pro_pitch">Amplop, wawasan, lebih banyak dompet, kalkulator kembalian, kunci aplikasi, dan lainnya. Sekali bayar, milikmu selamanya.</string>
+    <string name="settings_wallets">Dompet</string>
+    <string name="settings_buttons">Tombol</string>
+    <string name="settings_budget">Anggaran harian</string>
+    <string name="settings_budget_message">Berapa uang tunai yang ingin kamu keluarkan per hari dari %1$s.</string>
+    <string name="settings_threshold">Pengingat uang menipis di bawah</string>
+    <string name="settings_threshold_title">Pengingat uang menipis</string>
+    <string name="settings_threshold_message">Ingatkan aku saat %1$s turun di bawah jumlah ini. Nyalakan Pengingat uang menipis di bagian bawah.</string>
+    <string name="settings_quick_amount">Jumlah</string>
+    <string name="settings_quick_hint">Tombol di Setelan Cepat mencatat jumlah ini dengan sekali ketuk. Tambahkan tombolnya dari layar edit Setelan Cepat.</string>
+    <string name="settings_quick_title">Jumlah keluar cepat</string>
+    <string name="settings_quick_message">Pengeluaran tunai yang paling sering, seperti ongkos transportasi harian.</string>
+    <string name="settings_quick_wallet">Keluar cepat dari</string>
+    <string name="settings_options">Opsi</string>
+    <string name="settings_low_cash">Pengingat uang menipis</string>
+    <string name="settings_low_cash_hint">Notifikasi saat dompet turun di bawah jumlah pengingatnya</string>
+    <string name="settings_plus_atm">Anggap tombol + sebagai tarik tunai ATM</string>
+    <string name="settings_plus_atm_hint">Setiap ketuk + memulai siklus ATM baru</string>
+    <string name="settings_privacy">Mode privasi</string>
+    <string name="settings_privacy_hint">Sembunyikan jumlah di widget dan Setelan Cepat</string>
+    <string name="settings_haptics">Getaran</string>
+    <string name="settings_haptics_hint">Getar singkat saat tombol menyimpan</string>
+    <string name="settings_data">Datamu</string>
+    <string name="settings_language">Bahasa</string>
+    <string name="settings_language_hint">PocketCash mengikuti bahasa ponselmu kecuali kamu memilih bahasa lain</string>
+    <string name="settings_about">PocketCash %1$s\nSemuanya tetap di ponsel ini: tanpa akun, tanpa akses internet, tanpa pelacakan.</string>
+
+    <!-- App lock -->
+    <string name="lock_section">Kunci aplikasi</string>
+    <string name="lock_with_fingerprint">Kunci dengan sidik jari</string>
+    <string name="lock_with_face">Kunci dengan wajah</string>
+    <string name="lock_with_passcode">Kunci dengan kode sandi</string>
+    <string name="lock_hint">Minta buka kunci setiap kali PocketCash dibuka</string>
+    <string name="lock_unavailable">Atur kunci layar atau sidik jari di ponsel ini dulu</string>
+    <string name="lock_widgets_note">Widget tetap menampilkan saldomu. Aktifkan Mode privasi untuk menyembunyikannya.</string>
+    <string name="lock_title">PocketCash terkunci</string>
+    <string name="lock_unlock">Buka kunci</string>
+    <string name="lock_prompt_title">Buka kunci PocketCash</string>
+    <string name="lock_enable_prompt_title">Aktifkan kunci aplikasi</string>
+
+    <!-- Backup and restore (docs/spec.md section 11) -->
+    <string name="backup_export">Cadangkan ke file</string>
+    <string name="backup_export_hint">Semua dalam satu file yang bisa dipulihkan di iPhone atau ponsel Android mana pun</string>
+    <string name="backup_restore">Pulihkan dari file</string>
+    <string name="backup_restore_hint">Mengganti semua data di ponsel ini</string>
+    <string name="backup_saved">Cadangan disimpan</string>
+    <string name="backup_save_failed">Tidak bisa menyimpan cadangan. Coba tempat lain.</string>
+    <string name="backup_no_picker">Ponsel ini tidak punya aplikasi untuk memilih file</string>
+    <string name="restore_confirm_title">Pulihkan cadangan ini?</string>
+    <string name="restore_summary">Dompet: %1$s · Transaksi: %2$s · Dicadangkan %3$s</string>
+    <string name="restore_warning">Semua data di ponsel ini akan diganti dengan cadangan. Tindakan ini tidak bisa diurungkan.</string>
+    <string name="restore_replace">Ganti semua data di ponsel ini</string>
+    <string name="restore_done">Cadangan dipulihkan</string>
+    <string name="restore_failed_title">Tidak bisa memulihkan file ini</string>
+    <string name="restore_not_backup">File ini bukan cadangan PocketCash.</string>
+    <string name="restore_too_new">Cadangan ini dari versi PocketCash yang lebih baru. Perbarui aplikasinya, lalu coba lagi.</string>
+    <string name="restore_unreadable">Tidak bisa membuka file ini.</string>
+    <string name="restore_damaged">Cadangan ini rusak, jadi tidak ada yang diubah. %1$s</string>
+    <string name="restore_problem_malformed">Sebagian datanya hilang atau formatnya salah.</string>
+    <string name="restore_problem_no_wallets">Tidak ada dompet di dalamnya.</string>
+    <string name="restore_problem_amount">Ada jumlah yang bukan angka: %1$s</string>
+    <string name="restore_problem_date">Ada tanggal yang tidak terbaca: %1$s</string>
+    <string name="restore_problem_id">Ada ID yang tidak valid: %1$s</string>
+    <string name="restore_problem_kind">Jenis transaksi tidak dikenal: %1$s</string>
+    <string name="restore_problem_currency">Kode mata uang tidak dikenal: %1$s</string>
+    <string name="restore_problem_duplicate">Ada ID yang muncul dua kali: %1$s</string>
+    <string name="csv_export">Ekspor CSV</string>
+    <string name="csv_export_hint">Semua transaksi, untuk spreadsheet</string>
+    <string name="csv_subject">Ekspor PocketCash</string>
+
+    <!-- Wallets -->
+    <string name="wallet_main">Dompet Utama</string>
+    <string name="wallet_default_name">Dompet</string>
+    <string name="wallet_new">Dompet baru</string>
+    <string name="wallet_edit">Edit dompet</string>
+    <string name="wallet_add">Tambah dompet</string>
+    <string name="wallet_name">Nama</string>
+    <string name="wallet_name_hint">Dompet Koin, Sewa, Liburan ke Jepang…</string>
+    <string name="wallet_symbol">Simbol khusus (opsional)</string>
+    <string name="wallet_cash_now">Uang tunai di dalamnya sekarang</string>
+    <string name="wallet_target">Target</string>
+    <string name="wallet_target_hint">Target amplop atau target tabungan</string>
+    <string name="wallet_delete">Hapus dompet</string>
+    <string name="wallet_delete_title">Hapus %1$s?</string>
+    <string name="wallet_delete_text">Transaksinya juga akan dihapus. Tindakan ini tidak bisa diurungkan.</string>
+    <string name="currency_title">Mata uang</string>
+    <string name="currency_search">Cari</string>
+    <string name="transfer_title">Pindahkan uang</string>
+    <string name="transfer_title_long">Pindahkan uang antardompet</string>
+    <string name="transfer_from">Dari</string>
+    <string name="transfer_to">Ke</string>
+    <string name="transfer_amount">Jumlah (%1$s)</string>
+    <string name="transfer_arrives">Diterima sebagai (%1$s)</string>
+    <string name="transfer_move">Pindahkan</string>
+    <string name="presets_title">Tombol untuk %1$s</string>
+    <string name="presets_hint">Sesuaikan dengan uang kertas dan ongkos yang biasa kamu pakai. Kosongkan kotak untuk menghapus tombolnya.</string>
+    <string name="presets_cash_in">Uang masuk</string>
+    <string name="presets_spend">Keluar</string>
+    <string name="presets_reset">Kembalikan ke default %1$s</string>
+
+    <!-- Paywall: Pro's features in the order of docs/spec.md section 5 -->
+    <string name="paywall_subtitle">Sekali bayar. Milikmu selamanya. Tanpa langganan, tanpa akun.</string>
+    <string name="paywall_envelopes">Amplop dan target tabungan</string>
+    <string name="paywall_envelopes_text">Beri dompet mana pun target, pantau progresnya, dan bagi uang ke amplop dalam satu langkah.</string>
+    <string name="paywall_insights">Wawasan</string>
+    <string name="paywall_insights_text">Berapa lama setiap tarik tunai ATM bertahan, pengeluaran harianmu, kapan uang habis, dan ke mana perginya.</string>
+    <string name="paywall_wallets">Lebih banyak dompet</string>
+    <string name="paywall_wallets_text">Dompet koin, dana darurat, dompet liburan dengan mata uangnya sendiri, pindah uang antardompet, dan dompet berbeda per widget.</string>
+    <string name="paywall_quick">Keluar cepat di mana saja</string>
+    <string name="paywall_quick_text">Tombol di Setelan Cepat mencatat ongkos harianmu dengan sekali ketuk.</string>
+    <string name="paywall_change">Kalkulator kembalian</string>
+    <string name="paywall_change_text">Bayar 500, dapat kembalian 130? Simpan satu pengeluaran 370.</string>
+    <string name="paywall_budget">Anggaran harian</string>
+    <string name="paywall_budget_text">Lihat sisa untuk hari ini di aplikasi dan di widget.</string>
+    <string name="paywall_categories">Kategori</string>
+    <string name="paywall_categories_text">Beri kategori pada pengeluaran belakangan dengan sekali ketuk.</string>
+    <string name="paywall_buttons">Tombol pilihanmu</string>
+    <string name="paywall_buttons_text">Atur setiap tombol sesuai ongkos dan uang kertas yang kamu pakai.</string>
+    <string name="paywall_lock">Kunci aplikasi dan mode privasi</string>
+    <string name="paywall_lock_text">Kunci PocketCash dengan sidik jari atau kunci layar, dan sembunyikan jumlah di widget.</string>
+    <string name="paywall_low_cash">Pengingat uang menipis</string>
+    <string name="paywall_low_cash_text">Notifikasi saat uang di dompet menipis.</string>
+    <string name="paywall_history">Riwayat lengkap dan ekspor CSV</string>
+    <string name="paywall_history_text">Semua catatan lebih dari 7 hari, siap untuk spreadsheet.</string>
+    <string name="paywall_buy">Buka seharga %1$s</string>
+    <string name="paywall_connecting">Menghubungkan ke Google Play…</string>
+    <string name="paywall_restore">Pulihkan pembelian</string>
+    <string name="paywall_not_now">Nanti saja</string>
+    <string name="paywall_thanks">Kamu sudah Pro. Terima kasih!</string>
+    <string name="billing_unavailable">Google Play sedang tidak tersedia.</string>
+    <string name="billing_connecting">Masih menghubungkan ke Google Play. Coba lagi sebentar lagi.</string>
+    <string name="billing_failed">Pembelian tidak berhasil (%1$d).</string>
+    <string name="billing_pending">Pembelian tertunda. Pro akan aktif begitu Google Play mengonfirmasinya.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Uang tunaimu, di Layar utama</string>
+    <string name="onboarding_text">Aplikasi bank mencatat setiap transaksi kartu. Tak ada yang mencatat uang tunai. PocketCash menjaga saldo dompetmu tetap tepat dengan sekali ketuk.</string>
+    <string name="onboarding_point_tap">Ketuk %1$s di widget saat membayar. Selesai.</string>
+    <string name="onboarding_point_undo">Salah ketuk? Urungkan dalam beberapa detik.</string>
+    <string name="onboarding_point_count">Hitung uangmu kapan saja untuk membetulkan saldo.</string>
+    <string name="onboarding_start">Mulai</string>
+    <string name="onboarding_restore">Pulihkan dari file cadangan</string>
+    <string name="onboarding_private">Tanpa akun. Tidak ada data yang keluar dari ponselmu.</string>
+    <string name="onboarding_cash_title">Berapa uang tunai di dompetmu sekarang?</string>
+    <string name="onboarding_currency">Mata uang: %1$s</string>
+    <string name="onboarding_type_it">Ketik jumlahnya</string>
+    <string name="onboarding_start_empty">Mulai dengan dompet kosong</string>
+    <string name="onboarding_start_tracking">Mulai mencatat</string>
+    <string name="onboarding_widget_title">Taruh dompetmu di Layar utama</string>
+    <string name="onboarding_widget_text">Sentuh lama area kosong di Layar utama, ketuk Widget, lalu pilih PocketCash. Setiap tombol langsung menyimpan.</string>
+    <string name="onboarding_add_widget">Tambahkan widget</string>
+</resources>

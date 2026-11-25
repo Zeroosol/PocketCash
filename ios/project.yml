@@ -4,6 +4,9 @@
 name: PocketCash
 options:
   bundleIdPrefix: com.patternsystems
+  # English is the development language. The translations are classic Shared/Localization/<lang>.lproj/*.strings
+  # files; XcodeGen turns every .lproj folder into a localized variant group in both targets (Shared is a source of
+  # the app and the widget) and adds each language to the project's knownRegions on its own.
   developmentLanguage: en
   deploymentTarget:
     iOS: "18.0"
@@ -47,6 +50,10 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleDevelopmentRegion: en
+        # docs/spec.md section 13. Keep in step with Shared/Localization and xtool/PocketCash-Info.plist.
+        CFBundleLocalizations: [en, fil, es, id, pt, hi, vi]
+        # App lock (docs/spec.md section 12). Translated in Shared/Localization/<lang>.lproj/InfoPlist.strings.
+        NSFaceIDUsageDescription: PocketCash uses Face ID to unlock the app when App lock is on.
         UILaunchScreen:
           UIColorName: AccentColor
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
@@ -80,6 +87,7 @@ targets:
         CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleVersion: $(CURRENT_PROJECT_VERSION)
         CFBundleDevelopmentRegion: en
+        CFBundleLocalizations: [en, fil, es, id, pt, hi, vi]
         NSExtension:
           NSExtensionPointIdentifier: com.apple.widgetkit-extension
 

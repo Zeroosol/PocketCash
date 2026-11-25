@@ -19,8 +19,8 @@ enum Feed {
             let items = byDay[day] ?? []
             let spent = items.reduce(Decimal(0)) { $0 + Ledger.spending($1.ledgerItem) }
             let title: String
-            if calendar.isDateInToday(day) { title = "Today" }
-            else if calendar.isDateInYesterday(day) { title = "Yesterday" }
+            if calendar.isDateInToday(day) { title = String(localized: "Today") }
+            else if calendar.isDateInYesterday(day) { title = String(localized: "Yesterday") }
             else { title = day.formatted(.dateTime.weekday(.abbreviated).month(.abbreviated).day()) }
             return FeedGroup(id: "day-\(day.timeIntervalSince1970)", title: title,
                              detail: spent > 0 ? wallet.format(-spent) : nil, items: items)
@@ -29,7 +29,7 @@ enum Feed {
     }
 
     static func byCycle(_ wallet: Wallet, now: Date) -> (groups: [FeedGroup], hasOlder: Bool) {
-        let byID = Dictionary(uniqueKeysWithValues: wallet.transactions.map { ($0.id.uuidString, $0) })
+        let byID = Dictionary(wallet.transactions.map { ($0.id.uuidString, $0) }, uniquingKeysWith: { first, _ in first })
         let groups = Ledger.cycles(wallet.ledger, now: now).reversed().map { cycle -> FeedGroup in
             let items = cycle.itemIDs.compactMap { byID[$0] }.sorted { $0.timestamp > $1.timestamp }
             return FeedGroup(id: "cycle-\(cycle.id)", title: title(cycle, wallet: wallet), detail: nil, items: items)
@@ -37,20 +37,26 @@ enum Feed {
         return (groups, false)
     }
 
+    /// Days with one decimal in the phone's number format: "4.5", "4,5".
+    static func days(_ value: Double) -> String {
+        value.formatted(.number.precision(.fractionLength(1)))
+    }
+
     /// "ATM Cycle · Nov 20 – Nov 25 · ₱1,000 lasted 4.5 days"
     static func title(_ cycle: CashCycle, wallet: Wallet) -> String {
         let day: (Date) -> String = { $0.formatted(.dateTime.month(.abbreviated).day()) }
-        let days = String(format: "%.1f", cycle.days)
-        guard cycle.isATM else { return "Before first ATM" }
-        if let end = cycle.end {
-            return "ATM Cycle · \(day(cycle.start)) – \(day(end)) · \(wallet.format(cycle.withdrawn)) lasted \(days) days"
+        guard cycle.isATM else { return String(localized: "Before first ATM") }
+        let start = day(cycle.start), amount = wallet.format(cycle.withdrawn), length = days(cycle.days)
+        if let end = cycle.end.map(day) {
+            return String(localized: "ATM Cycle · \(start) – \(end) · \(amount) lasted \(length) days")
         }
-        return "Current cycle · since \(day(cycle.start)) · \(wallet.format(cycle.withdrawn)) · \(days) days so far"
+        return String(localized: "Current cycle · since \(start) · \(amount) · \(length) days so far")
     }
 }
 
 struct FeedHeader: View {
     let group: FeedGroup
+    let collapsible: Bool
     let collapsed: Bool
     let toggle: () -> Void
 
@@ -64,14 +70,17 @@ struct FeedHeader: View {
                 if let detail = group.detail {
                     Text(detail).monospacedDigit()
                 }
-                Image(systemName: collapsed ? "chevron.right" : "chevron.down")
-                    .font(.caption2.weight(.bold))
+                if collapsible {
+                    Image(systemName: collapsed ? "chevron.right" : "chevron.down")
+                        .font(.caption2.weight(.semibold))
+                }
             }
-            .font(.footnote.weight(.semibold))
+            .font(.footnote.weight(.medium))
             .foregroundStyle(.secondary)
             .textCase(nil)
         }
         .buttonStyle(.plain)
+        .disabled(!collapsible)
     }
 }
 
@@ -82,7 +91,7 @@ struct TransactionRow: View {
     let wallet: Wallet
 
     var body: some View {
-        HStack(spacing: 12) {
+        HStack(spacing: 14) {
             icon
             Button { model.route = .edit(tx.id) } label: {
                 HStack {
@@ -94,7 +103,7 @@ struct TransactionRow: View {
                     }
                     Spacer(minLength: 8)
                     Text(wallet.format(tx.amount, signed: true))
-                        .font(.body.weight(.semibold))
+                        .font(.body.weight(.medium))
                         .monospacedDigit()
                         .foregroundStyle(Theme.amountColor(tx.amount))
                 }
@@ -102,6 +111,7 @@ struct TransactionRow: View {
             }
             .buttonStyle(.plain)
         }
+        .padding(.vertical, 2)
         .swipeActions(edge: .trailing, allowsFullSwipe: true) {
             Button(role: .destructive) { model.delete(tx) } label: { Label("Delete", systemImage: "trash") }
         }
@@ -110,11 +120,10 @@ struct TransactionRow: View {
     /// 1-tap category icons after the fact (Pro). Free shows the kind's icon, and tapping it explains Pro.
     @ViewBuilder
     private var icon: some View {
-        let circle = Image(systemName: tx.symbol)
-            .font(.subheadline.weight(.semibold))
-            .foregroundStyle(tx.amount > 0 ? Theme.emerald : .primary)
-            .frame(width: 36, height: 36)
-            .background(Circle().fill(tx.amount > 0 ? Theme.emerald.opacity(0.15) : Color.primary.opacity(0.07)))
+        let glyph = Image(systemName: tx.symbol)
+            .font(.system(size: 17, weight: .regular))
+            .foregroundStyle(tx.amount > 0 ? Theme.emerald : Color.secondary)
+            .frame(width: 30, height: 30)
         if tx.kind == .spend || (tx.kind == .adjust && tx.amount < 0) {
             Menu {
                 if pro.isPro {
@@ -126,14 +135,15 @@ struct TransactionRow: View {
                         Button(role: .destructive) { model.setTag(nil, on: tx) } label: { Label("Remove category", systemImage: "xmark") }
                     }
                 } else {
-                    Button { model.route = .paywall } label: { Label("Categories are in Pro", systemImage: "lock.fill") }
+                    Button { model.route = .paywall } label: { Label("Categories are in Pro", systemImage: "lock") }
                 }
             } label: {
-                circle
+                glyph
             }
             .buttonStyle(.borderless)
+            .accessibilityLabel(Text("Category"))
         } else {
-            circle
+            glyph
         }
     }
 }

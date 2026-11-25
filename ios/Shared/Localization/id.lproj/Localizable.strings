@@ -1,0 +1,896 @@
+/* Indonesian (id). First draft: needs a native speaker's review before a store launch.
+   Keys are the English text; keep %@ placeholders (or %1$@, %2$@ to reorder) and ${…} tokens. */
+
+/* PocketCash/AppModel.swift:233 */
+"%@ added" = "%@ ditambahkan";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"%@ d" = "%@ hr";
+
+/* PocketCashWidget/QuickSpendWidget.swift:49 */
+"%@ in %@" = "%@ di %@";
+
+/* PocketCashWidget/WalletWidget.swift:132 */
+"%@ left" = "Sisa %@";
+
+/* PocketCash/Views/HomeView.swift:172 */
+"%@ left today" = "Sisa %@ hari ini";
+
+/* PocketCash/Views/CountCashSheet.swift:45 */
+"%@ more than PocketCash says" = "%@ lebih banyak dari catatan PocketCash";
+
+/* PocketCash/Views/EnvelopesView.swift:103 */
+"%@ of %@" = "%@ dari %@";
+
+/* PocketCash/AppModel.swift:230 */
+"%@ spent" = "%@ terpakai";
+
+/* PocketCashWidget/WalletWidget.swift:139 */
+"%@ today" = "%@ hari ini";
+
+/* PocketCash/Views/CountCashSheet.swift:42 */
+"%@ unrecorded spending" = "%@ pengeluaran tak tercatat";
+
+/* PocketCash/Views/HomeView.swift:333 */
+"%@/day" = "%@/hari";
+
+/* PocketCash/Views/HomeView.swift:329 */
+"%@/day · lasts until about %@" = "%@/hari · cukup sampai sekitar %@";
+
+/* PocketCash/Views/HomeView.swift:326 */
+"%@/day · runs out today" = "%@/hari · habis hari ini";
+
+/* PocketCash/Views/SettingsView.swift:216 */
+"A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone." = "File cadangan berisi semua dompet, transaksi, dan pengaturan, dan bisa dipulihkan di iPhone atau ponsel Android mana pun.";
+
+/* PocketCash/Views/WalletEditorView.swift:33 */
+"A custom symbol is handy for a travel wallet." = "Simbol kustom berguna untuk dompet perjalanan.";
+
+/* PocketCash/Views/PaywallView.swift:40 */
+"A nudge when a wallet drops below the amount you pick." = "Notifikasi saat isi dompet turun di bawah jumlah pilihanmu.";
+
+/* PocketCash/Views/SettingsView.swift:49 */
+"About" = "Tentang";
+
+/* Shared/Intents.swift:223 */
+"Add ${amount} to ${wallet}" = "Tambah ${amount} ke ${wallet}";
+
+/* PocketCash/Views/WalletEditorView.swift:224 */
+"Add a cash-in button" = "Tambah tombol uang masuk";
+
+/* PocketCash/Views/WalletEditorView.swift:236 */
+"Add a spend button" = "Tambah tombol keluar";
+
+/* PocketCash/Views/HomeView.swift:116 */
+"Add a wallet" = "Tambah dompet";
+
+/* PocketCash/Views/EnvelopesView.swift:67 */
+"Add an envelope" = "Tambah amplop";
+
+/* PocketCash/Views/TransactionEditor.swift:105 */
+"Add another wallet with the same currency in Settings." = "Tambahkan dompet lain dengan mata uang yang sama di Pengaturan.";
+
+/* PocketCash/Views/KeypadSheet.swift:35 */
+"Add cash" = "Tambah uang";
+
+/* PocketCash/AppShortcuts.swift:11 */
+"Add Cash" = "Tambah Uang";
+
+/* Shared/Intents.swift:232 */
+"Added %@. You have %@ in %@." = "%@ ditambahkan. Sekarang ada %@ di %@.";
+
+/* Shared/Intents.swift:216 */
+"Adds cash to a PocketCash wallet, like an ATM withdrawal." = "Menambah uang ke dompet PocketCash, seperti tarik tunai ATM.";
+
+/* Shared/Intents.swift:108 */
+"Adjust Cash" = "Sesuaikan Uang";
+
+/* PocketCash/Views/SettingsView.swift:144 */
+"Amount" = "Jumlah";
+
+/* PocketCash/Views/SettingsView.swift:186 */
+"App lock" = "Kunci aplikasi";
+
+/* PocketCash/Views/PaywallView.swift:37 */
+"App lock and privacy mode" = "Kunci aplikasi dan mode privasi";
+
+/* PocketCash/Views/Feed.swift:51 */
+"ATM Cycle · %@ – %@ · %@ lasted %@ days" = "Siklus ATM · %@ – %@ · %@ bertahan %@ hari";
+
+/* PocketCash/Views/InsightsView.swift:87 */
+"ATM cycles" = "Siklus ATM";
+
+/* Shared/Labels.swift:11 */
+"ATM withdrawal" = "Tarik tunai ATM";
+
+/* PocketCash/Views/SettingsView.swift:31 */
+"ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls." = "Tarik tunai ATM memulai siklus ATM baru. Mode privasi menyembunyikan jumlah di widget, Layar Terkunci, dan kontrol.";
+
+/* PocketCash/Views/EnvelopesView.swift:175 */
+"Available" = "Tersedia";
+
+/* PocketCash/Views/SettingsView.swift:202 */
+"Back up to a file" = "Cadangkan ke file";
+
+/* PocketCash/Views/SettingsView.swift:214 */
+"Backup" = "Cadangan";
+
+/* PocketCash/Views/OnboardingView.swift:40 */
+"Banking apps log your cards. PocketCash puts your physical wallet on your Home Screen: tap −50 when you pay, and you're done." = "Aplikasi bank mencatat kartumu. PocketCash menaruh dompet fisikmu di Layar Utama: ketuk −50 saat bayar, beres.";
+
+/* PocketCash/Views/Feed.swift:48 */
+"Before first ATM" = "Sebelum tarik tunai pertama";
+
+/* Shared/Intents.swift:44 */
+"Bills" = "Tagihan";
+
+/* PocketCash/Views/HomeView.swift:320 */
+"Burning %@ a day" = "Terpakai %@ per hari";
+
+/* PocketCash/Views/SettingsView.swift:117 */
+"Buttons" = "Tombol";
+
+/* PocketCash/Views/BackupUI.swift:83 */
+"Can't restore this file" = "Tidak bisa memulihkan file ini";
+
+/* PocketCash/Views/BackupUI.swift:79 */
+"Cancel" = "Batalkan";
+
+/* PocketCash/AppShortcuts.swift:17 */
+"Cash Balance" = "Saldo Uang Tunai";
+
+/* Shared/Labels.swift:12 */
+"Cash count" = "Hitung uang";
+
+/* PocketCash/Views/WalletEditorView.swift:226 */
+"Cash in" = "Uang masuk";
+
+/* PocketCash/Views/WalletEditorView.swift:44 */
+"Cash in it right now" = "Isi saat ini";
+
+/* PocketCashWidget/Controls.swift:37 */
+"Cash Keypad" = "Papan Angka Tunai";
+
+/* PocketCash/Views/HomeView.swift:328 */
+"Cash lasts until about %@" = "Uang cukup sampai sekitar %@";
+
+/* PocketCash/Views/HomeView.swift:325 */
+"Cash runs out today at this pace" = "Dengan laju ini, uang habis hari ini";
+
+/* PocketCashWidget/WalletWidget.swift:65 */
+"Cash Wallet" = "Dompet Tunai";
+
+/* PocketCash/Views/KeypadSheet.swift:296 */
+"Categories" = "Kategori";
+
+/* PocketCash/Views/Feed.swift:138 */
+"Categories are in Pro" = "Kategori ada di Pro";
+
+/* PocketCash/Views/Feed.swift:144 */
+"Category" = "Kategori";
+
+/* PocketCash/Views/KeypadSheet.swift:146 */
+"Change" = "Kembalian";
+
+/* PocketCash/Views/PaywallView.swift:29 */
+"Change calculator" = "Kalkulator kembalian";
+
+/* PocketCash/Views/KeypadSheet.swift:149 */
+"Change must be less than what you paid" = "Kembalian harus lebih kecil dari yang dibayar";
+
+/* PocketCashWidget/WalletWidget.swift:8 */
+"Choose the wallet this widget shows. Needs PocketCash Pro." = "Pilih dompet yang ditampilkan widget ini. Perlu PocketCash Pro.";
+
+/* PocketCash/Views/CountCashSheet.swift:100 */
+"Clear" = "Kosongkan";
+
+/* PocketCash/Views/EnvelopesView.swift:202 */
+"Clear all" = "Kosongkan semua";
+
+/* PocketCash/Views/PaywallView.swift:93 */
+"Close" = "Tutup";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Coin Pouch" = "Dompet Koin";
+
+/* PocketCash/Views/PaywallView.swift:26 */
+"Coin pouch, emergency stash, a travel wallet in any currency, with moves between them." = "Dompet koin, dana darurat, dompet perjalanan dalam mata uang apa pun, dan pindah uang antardompet.";
+
+/* PocketCash/Views/OnboardingView.swift:60 */
+"Continue" = "Lanjutkan";
+
+/* PocketCash/Views/SettingsView.swift:26 */
+"Count + buttons as ATM withdrawals" = "Catat tombol + sebagai tarik tunai ATM";
+
+/* PocketCash/Views/CountCashSheet.swift:55 */
+"Count bills & coins" = "Hitung uang kertas & koin";
+
+/* PocketCash/Views/OnboardingView.swift:79 */
+"Count it roughly. You can always fix it later by tapping the balance." = "Kira-kira saja. Kamu bisa membetulkannya nanti dengan mengetuk saldo.";
+
+/* PocketCash/Views/CountCashSheet.swift:95 */
+"Count my cash" = "Hitung uangku";
+
+/* PocketCash/Views/HomeView.swift:188 */
+"Count your cash" = "Hitung uangmu";
+
+/* PocketCash/Views/OnboardingView.swift:49 */
+"Currency" = "Mata uang";
+
+/* PocketCash/Views/InsightsView.swift:137 */
+"Current · since %@" = "Berjalan · sejak %@";
+
+/* PocketCash/Views/Feed.swift:53 */
+"Current cycle · since %@ · %@ · %@ days so far" = "Siklus berjalan · sejak %@ · %@ · sejauh ini %@ hari";
+
+/* PocketCash/Views/HomeView.swift:216 */
+"Custom" = "Kustom";
+
+/* PocketCash/Views/PaywallView.swift:35 */
+"Custom buttons" = "Tombol kustom";
+
+/* PocketCash/Views/WalletEditorView.swift:29 */
+"Custom symbol (optional)" = "Simbol kustom (opsional)";
+
+/* PocketCash/Views/WalletEditorView.swift:35 */
+"Custom symbols are part of Pro." = "Simbol kustom termasuk dalam Pro.";
+
+/* PocketCash/Views/InsightsView.swift:90 */
+"Cycles appear after your first ATM withdrawal." = "Siklus muncul setelah tarik tunai ATM pertamamu.";
+
+/* PocketCash/Views/PaywallView.swift:31 */
+"Daily budget" = "Anggaran harian";
+
+/* PocketCash/Views/Feed.swift:116 */
+"Delete" = "Hapus";
+
+/* PocketCash/Views/WalletEditorView.swift:108 */
+"Delete %@?" = "Hapus %@?";
+
+/* PocketCash/Views/WalletEditorView.swift:90 */
+"Delete wallet" = "Hapus dompet";
+
+/* PocketCash/Views/WalletEditorView.swift:109 */
+"Delete wallet and its history" = "Hapus dompet beserta riwayatnya";
+
+/* PocketCash/Views/SettingsView.swift:54 */
+"Developer" = "Pengembang";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Done" = "Selesai";
+
+/* PocketCash/Views/HomeView.swift:228 */
+"Edit buttons…" = "Edit tombol…";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"Edit wallet" = "Edit dompet";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Emergency Stash" = "Dana Darurat";
+
+/* PocketCash/Views/WalletEditorView.swift:61 */
+"Envelope target or savings goal. Its progress shows in Envelopes." = "Target amplop atau target tabungan. Progresnya tampil di Amplop.";
+
+/* PocketCash/Views/WalletEditorView.swift:63 */
+"Envelope targets and savings goals are part of Pro." = "Target amplop dan target tabungan termasuk dalam Pro.";
+
+/* PocketCash/AppModel.swift:18 */
+"Envelopes" = "Amplop";
+
+/* PocketCash/Views/PaywallView.swift:21 */
+"Envelopes and savings goals" = "Amplop dan target tabungan";
+
+/* PocketCash/Views/EnvelopesView.swift:16 */
+"Envelopes are part of Pro" = "Amplop termasuk dalam Pro";
+
+/* PocketCash/Views/SettingsView.swift:228 */
+"Envelopes, insights, more wallets, quick spend and more. One purchase." = "Amplop, wawasan, lebih banyak dompet, keluar cepat, dan lainnya. Sekali beli.";
+
+/* Shared/Intents.swift:42 */
+"Errands" = "Keperluan";
+
+/* PocketCash/Views/PaywallView.swift:42 */
+"Every cash move beyond 7 days, exportable to any spreadsheet." = "Semua transaksi lebih dari 7 hari, bisa diekspor ke spreadsheet apa pun.";
+
+/* PocketCash/Views/BackupUI.swift:81 */
+"Everything on this phone is replaced by the backup. This can't be undone." = "Semua data di ponsel ini akan diganti dengan cadangan. Tindakan ini tidak bisa diurungkan.";
+
+/* PocketCash/Views/SettingsView.swift:211 */
+"Export CSV" = "Ekspor CSV";
+
+/* PocketCash/Views/CountCashSheet.swift:130 */
+"Fewer" = "Kurangi";
+
+/* PocketCash/Views/EnvelopesView.swift:36 */
+"Fill envelopes" = "Isi amplop";
+
+/* PocketCash/Views/EnvelopesView.swift:137 */
+"Food" = "Makan";
+
+/* Shared/Intents.swift:38 */
+"Food & drinks" = "Makan & minum";
+
+/* Shared/ModelHelpers.swift:24 */
+"Found cash" = "Uang lebih";
+
+/* PocketCash/Views/EnvelopesView.swift:170 */
+"From" = "Dari";
+
+/* Shared/CashStore.swift:145 */
+"From %@" = "Dari %@";
+
+/* PocketCash/Views/TransactionEditor.swift:112 */
+"From %@ · %@ available" = "Dari %@ · %@ tersedia";
+
+/* PocketCash/Views/KeypadSheet.swift:71 */
+"From ATM" = "Dari ATM";
+
+/* PocketCash/Views/PaywallView.swift:41 */
+"Full history and CSV export" = "Riwayat lengkap dan ekspor CSV";
+
+/* Shared/Intents.swift:45 */
+"Fun" = "Hiburan";
+
+/* PocketCash/Views/EnvelopesView.swift:62 */
+"Give a wallet a target in Settings → Wallets to see its progress here." = "Beri dompet target di Pengaturan → Dompet untuk melihat progresnya di sini.";
+
+/* PocketCash/Views/EnvelopesView.swift:17 */
+"Give a wallet a target, watch it fill up, and split cash into envelopes in one step." = "Beri dompet target, lihat isinya bertambah, dan bagi uang ke amplop sekaligus.";
+
+/* PocketCash/Views/PaywallView.swift:22 */
+"Give any wallet a target, watch it fill, and split cash into envelopes in one step." = "Beri dompet mana pun target, lihat isinya bertambah, dan bagi uang ke amplop sekaligus.";
+
+/* PocketCash/Views/EnvelopesView.swift:265 */
+"Goal of %@ reached" = "Target %@ tercapai";
+
+/* PocketCash/Views/EnvelopesView.swift:97 */
+"Goal reached" = "Target tercapai";
+
+/* PocketCash/Views/KeypadSheet.swift:62 */
+"Got change?" = "Ada kembalian?";
+
+/* Shared/Intents.swift:41 */
+"Groceries" = "Belanja dapur";
+
+/* PocketCash/Views/SettingsView.swift:35 */
+"Haptics" = "Haptik";
+
+/* PocketCash/AppModel.swift:16 */
+"Home" = "Beranda";
+
+/* PocketCash/Views/PaywallView.swift:24 */
+"How long each ATM withdrawal lasts, your burn rate, when the cash runs out, and where it goes." = "Berapa lama tiap tarik tunai ATM bertahan, laju pengeluaran, kapan uang habis, dan ke mana perginya.";
+
+/* PocketCash/Views/OnboardingView.swift:75 */
+"How much cash is in your wallet right now?" = "Berapa uang tunai di dompetmu sekarang?";
+
+/* PocketCash/Views/CountCashSheet.swift:23 */
+"How much is in your wallet?" = "Berapa isi dompetmu?";
+
+/* PocketCash/Views/WalletEditorView.swift:73 */
+"Ideas" = "Ide";
+
+/* PocketCash/AppModel.swift:17 */
+"Insights" = "Wawasan";
+
+/* PocketCash/Views/InsightsView.swift:18 */
+"Insights are part of Pro" = "Wawasan termasuk dalam Pro";
+
+/* PocketCash/Views/SettingsView.swift:40 */
+"Language" = "Bahasa";
+
+/* PocketCash/Views/InsightsView.swift:69 */
+"Last 30 days by category" = "30 hari terakhir per kategori";
+
+/* PocketCash/Views/InsightsView.swift:153 */
+"Lasted" = "Bertahan";
+
+/* PocketCash/Views/PaywallView.swift:38 */
+"Lock PocketCash with Face ID or your passcode, and hide amounts on widgets." = "Kunci PocketCash dengan Face ID atau kode sandi, dan sembunyikan jumlah di widget.";
+
+/* PocketCash/Views/PaywallView.swift:28 */
+"Lock Screen widgets and Control Center buttons for the amount you spend most." = "Widget Layar Terkunci dan tombol Pusat Kontrol untuk jumlah yang paling sering keluar.";
+
+/* PocketCash/AppLock.swift:16 */
+"Lock with Face ID" = "Kunci dengan Face ID";
+
+/* PocketCash/AppLock.swift:18 */
+"Lock with Optic ID" = "Kunci dengan Optic ID";
+
+/* PocketCash/AppLock.swift:19 */
+"Lock with passcode" = "Kunci dengan kode sandi";
+
+/* PocketCash/AppLock.swift:17 */
+"Lock with Touch ID" = "Kunci dengan Touch ID";
+
+/* PocketCash/Views/PaywallView.swift:39 */
+"Low-cash reminder" = "Pengingat uang menipis";
+
+/* PocketCash/Views/OnboardingView.swift:87 */
+"Main Wallet" = "Dompet Utama";
+
+/* PocketCash/Views/WalletEditorView.swift:80 */
+"Make this the default wallet" = "Jadikan dompet default";
+
+/* PocketCash/Views/CountCashSheet.swift:38 */
+"Matches PocketCash exactly" = "Pas dengan catatan PocketCash";
+
+/* PocketCash/Views/CountCashSheet.swift:54 */
+"Method" = "Cara";
+
+/* PocketCash/Views/CountCashSheet.swift:139 */
+"More" = "Tambah";
+
+/* PocketCash/Views/InsightsView.swift:168 */
+"Most went to %@" = "Paling banyak untuk %@";
+
+/* PocketCash/Views/HomeView.swift:220 */
+"Move" = "Pindah";
+
+/* PocketCash/Views/TransactionEditor.swift:123 */
+"Move cash" = "Pindahkan uang";
+
+/* PocketCash/Views/EnvelopesView.swift:197 */
+"Moving %@ · %@ stays in %@" = "Dipindah %@ · %@ tetap di %@";
+
+/* PocketCash/Views/PaywallView.swift:25 */
+"Multiple wallets" = "Banyak dompet";
+
+/* PocketCash/Views/WalletEditorView.swift:23 */
+"Name" = "Nama";
+
+/* PocketCash/Views/MainShell.swift:184 */
+"New cash move" = "Transaksi baru";
+
+/* PocketCash/Views/WalletEditorView.swift:97 */
+"New wallet" = "Dompet baru";
+
+/* PocketCash/Views/HomeView.swift:35 */
+"No cash moves yet" = "Belum ada transaksi";
+
+/* PocketCash/Views/TransactionEditor.swift:103 */
+"No other %@ wallet" = "Tidak ada dompet %@ lain";
+
+/* PocketCash/Views/EnvelopesView.swift:180 */
+"No other %@ wallet to fill. Add one in Settings → Wallets." = "Tidak ada dompet %@ lain untuk diisi. Tambahkan di Pengaturan → Dompet.";
+
+/* PocketCash/ProStore.swift:90 */
+"No PocketCash Pro purchase found for this Apple Account." = "Tidak ada pembelian PocketCash Pro untuk Akun Apple ini.";
+
+/* PocketCash/Views/WalletEditorView.swift:51 */
+"No target" = "Tanpa target";
+
+/* PocketCash/Views/HomeView.swift:314 */
+"Not enough spending yet" = "Pengeluaran belum cukup";
+
+/* PocketCash/Views/TransactionEditor.swift:31 */
+"Note" = "Catatan";
+
+/* PocketCash/Views/KeypadSheet.swift:76 */
+"Note (optional)" = "Catatan (opsional)";
+
+/* PocketCashWidget/WalletWidget.swift:137 */
+"Nothing spent today" = "Belum ada pengeluaran hari ini";
+
+/* PocketCash/Views/SettingsView.swift:145 */
+"Off" = "Mati";
+
+/* PocketCash/PocketCashApp.swift:64 */
+"OK" = "OK";
+
+/* PocketCash/Views/HomeView.swift:60 */
+"Older history and ATM cycles are in Pro" = "Riwayat lama dan siklus ATM ada di Pro";
+
+/* PocketCash/Views/PaywallView.swift:15 */
+"One purchase. Yours forever. No subscription." = "Sekali beli. Milikmu selamanya. Tanpa langganan.";
+
+/* PocketCashWidget/QuickSpendWidget.swift:36 */
+"One tap subtracts your most common cash expense, like your commute fare." = "Sekali ketuk untuk mengurangi pengeluaran tunai tersering, seperti ongkos transport.";
+
+/* Shared/CashStore.swift:306 */
+"Only %@ left in %@." = "Tinggal %@ di %@.";
+
+/* Shared/Intents.swift:254 */
+"Open Cash Keypad" = "Buka Papan Angka Tunai";
+
+/* PocketCashWidget/WalletWidget.swift:361 */
+"Open PocketCash" = "Buka PocketCash";
+
+/* Shared/Intents.swift:57 */
+"Open PocketCash once to set up your wallet." = "Buka PocketCash sekali untuk menyiapkan dompetmu.";
+
+/* PocketCashWidget/WalletWidget.swift:363 */
+"Open PocketCash to set up your wallet" = "Buka PocketCash untuk menyiapkan dompetmu";
+
+/* PocketCashWidget/Controls.swift:44 */
+"Opens PocketCash on its keypad to log a custom amount." = "Membuka papan angka PocketCash untuk mencatat jumlah lain.";
+
+/* PocketCash/Views/MainShell.swift:185 */
+"Opens the keypad. Touch and hold to count your cash." = "Membuka papan angka. Sentuh dan tahan untuk menghitung uangmu.";
+
+/* PocketCash/Views/SettingsView.swift:43 */
+"Opens this app's page in the iPhone's Settings, where you can pick its language." = "Membuka halaman aplikasi ini di Pengaturan iPhone, tempat kamu bisa memilih bahasanya.";
+
+/* Shared/Intents.swift:46 */
+"Other" = "Lainnya";
+
+/* PocketCashWidget/WalletWidget.swift:135 */
+"Over by %@" = "Kelebihan %@";
+
+/* PocketCash/Views/KeypadSheet.swift:126 */
+"Paid" = "Dibayar";
+
+/* PocketCash/Views/KeypadSheet.swift:155 */
+"Paid %@ − Change %@ = %@" = "Dibayar %@ − Kembalian %@ = %@";
+
+/* PocketCash/Views/PaywallView.swift:30 */
+"Paid with a big bill? Enter what you got back and PocketCash saves the difference." = "Bayar pakai uang besar? Masukkan kembaliannya dan PocketCash mencatat selisihnya.";
+
+/* Shared/Intents.swift:40 */
+"Parking" = "Parkir";
+
+/* PocketCash/Views/InsightsView.swift:156 */
+"Per day" = "Per hari";
+
+/* PocketCash/AppModel.swift:126 */
+"PocketCash couldn't open its data: %@" = "PocketCash tidak bisa membuka datanya: %@";
+
+/* PocketCash/AppLock.swift:158 */
+"PocketCash is locked" = "PocketCash terkunci";
+
+/* PocketCash/Views/SettingsView.swift:51 */
+"PocketCash keeps everything on this iPhone. No account, no ads, no tracking." = "PocketCash menyimpan semuanya di iPhone ini. Tanpa akun, tanpa iklan, tanpa pelacakan.";
+
+/* PocketCashWidget/Controls.swift:13 */
+"PocketCash Pro" = "PocketCash Pro";
+
+/* PocketCash/Views/SettingsView.swift:223 */
+"PocketCash Pro is unlocked" = "PocketCash Pro sudah aktif";
+
+/* PocketCash/Views/CountCashSheet.swift:35 */
+"PocketCash says %@" = "Menurut PocketCash: %@";
+
+/* PocketCash/Views/SettingsView.swift:27 */
+"Privacy mode" = "Mode privasi";
+
+/* PocketCash/Views/SettingsView.swift:236 */
+"Pro" = "Pro";
+
+/* PocketCash/Views/PaywallView.swift:47 */
+"Pro is unlocked. Thank you!" = "Pro sudah aktif. Terima kasih!";
+
+/* PocketCash/ProStore.swift:90 */
+"Pro restored." = "Pro dipulihkan.";
+
+/* PocketCash/ProStore.swift:67 */
+"Pro unlocked. Thank you!" = "Pro sudah aktif. Terima kasih!";
+
+/* PocketCash/Views/OnboardingView.swift:109 */
+"Put your wallet on your Home Screen" = "Taruh dompetmu di Layar Utama";
+
+/* PocketCashWidget/QuickSpendWidget.swift:73 */
+"Quick spend" = "Keluar cepat";
+
+/* PocketCashWidget/Controls.swift:17 */
+"Quick Spend" = "Keluar Cepat";
+
+/* PocketCash/Views/SettingsView.swift:158 */
+"Quick spend amount" = "Jumlah keluar cepat";
+
+/* PocketCash/Views/PaywallView.swift:27 */
+"Quick spend everywhere" = "Keluar cepat di mana saja";
+
+/* Shared/Intents.swift:176 */
+"Quick spend is part of PocketCash Pro." = "Keluar cepat termasuk dalam PocketCash Pro.";
+
+/* Shared/Intents.swift:59 */
+"Quick spend is part of PocketCash Pro. Open PocketCash to unlock it." = "Keluar cepat termasuk dalam PocketCash Pro. Buka PocketCash untuk mengaktifkannya.";
+
+/* PocketCash/Views/SettingsView.swift:128 */
+"Remind me below" = "Ingatkan di bawah";
+
+/* PocketCash/Views/Feed.swift:135 */
+"Remove category" = "Hapus kategori";
+
+/* PocketCash/Views/KeypadSheet.swift:164 */
+"Remove change" = "Hapus kembalian";
+
+/* PocketCash/Views/EnvelopesView.swift:136 */
+"Rent" = "Sewa";
+
+/* PocketCash/Views/BackupUI.swift:78 */
+"Replace all data on this phone" = "Ganti semua data di ponsel ini";
+
+/* PocketCash/Views/WalletEditorView.swift:243 */
+"Reset to %@ defaults" = "Kembalikan ke default %@";
+
+/* PocketCash/Views/OnboardingView.swift:65 */
+"Restore from a backup file" = "Pulihkan dari file cadangan";
+
+/* PocketCash/Views/SettingsView.swift:205 */
+"Restore from a file" = "Pulihkan dari file";
+
+/* PocketCash/Views/PaywallView.swift:76 */
+"Restore purchase" = "Pulihkan pembelian";
+
+/* PocketCash/Views/BackupUI.swift:76 */
+"Restore this backup?" = "Pulihkan cadangan ini?";
+
+/* Shared/CashStore.swift:305 */
+"Running low on cash" = "Uang tunai menipis";
+
+/* PocketCash/Views/EnvelopesView.swift:213 */
+"Save" = "Simpan";
+
+/* PocketCash/Views/CountCashSheet.swift:83 */
+"Save count" = "Simpan hitungan";
+
+/* PocketCash/Views/EnvelopesView.swift:138 */
+"Savings" = "Tabungan";
+
+/* PocketCash/Views/WalletEditorView.swift:194 */
+"Search currencies" = "Cari mata uang";
+
+/* PocketCash/Views/OnboardingView.swift:116 */
+"Search PocketCash and pick the medium size." = "Cari PocketCash dan pilih ukuran sedang.";
+
+/* PocketCash/Views/InsightsView.swift:19 */
+"See how long each ATM withdrawal lasts, your daily burn rate, when the cash runs out, and where it goes." = "Lihat berapa lama tiap tarik tunai ATM bertahan, laju pengeluaran harian, kapan uang habis, dan ke mana perginya.";
+
+/* PocketCash/Views/PaywallView.swift:32 */
+"See what's left today in the app and on the medium widget." = "Lihat sisa hari ini di aplikasi dan di widget sedang.";
+
+/* PocketCash/Views/SettingsView.swift:189 */
+"Set up a passcode on this iPhone to use App lock." = "Atur kode sandi di iPhone ini untuk memakai Kunci aplikasi.";
+
+/* PocketCash/AppModel.swift:19 */
+"Settings" = "Pengaturan";
+
+/* PocketCash/Views/EnvelopesView.swift:262 */
+"Short by %@" = "Kurang %@";
+
+/* PocketCash/Views/MainShell.swift:110 */
+"Shows all destinations" = "Menampilkan semua halaman";
+
+/* PocketCash/Views/InsightsView.swift:151 */
+"So far" = "Sejauh ini";
+
+/* PocketCash/Views/InsightsView.swift:58 */
+"So far: %@ in %@ days" = "Sejauh ini: %@ dalam %@ hari";
+
+/* PocketCash/PocketCashApp.swift:63 */
+"Something went wrong" = "Terjadi kesalahan";
+
+/* PocketCash/Views/KeypadSheet.swift:34 */
+"Spend" = "Keluar";
+
+/* PocketCashWidget/Controls.swift:27 */
+"Spend %@" = "Keluar %@";
+
+/* Shared/Intents.swift:199 */
+"Spend ${amount} from ${wallet}" = "Keluar ${amount} dari ${wallet}";
+
+/* PocketCash/AppShortcuts.swift:8 */
+"Spend Cash" = "Uang Keluar";
+
+/* PocketCash/Views/InsightsView.swift:155 */
+"Spent" = "Terpakai";
+
+/* Shared/Intents.swift:185 */
+"Spent %@. %@ left in %@." = "Terpakai %@. Sisa %@ di %@.";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start at zero" = "Mulai dari nol";
+
+/* PocketCash/Views/OnboardingView.swift:92 */
+"Start tracking" = "Mulai mencatat";
+
+/* Shared/CashStore.swift:226 */
+"Starting cash" = "Uang awal";
+
+/* Shared/Intents.swift:191 */
+"Subtracts cash you spent from a PocketCash wallet." = "Mengurangi uang yang terpakai dari dompet PocketCash.";
+
+/* PocketCashWidget/Controls.swift:18 */
+"Subtracts your most common cash expense, like your commute fare." = "Mengurangi pengeluaran tunai tersering, seperti ongkos transport.";
+
+/* Shared/Intents.swift:164 */
+"Subtracts your quick-spend amount, like your daily commute fare, from your cash." = "Mengurangi uang tunaimu sebesar jumlah keluar cepat, seperti ongkos transport harian.";
+
+/* PocketCash/Views/EnvelopesView.swift:201 */
+"Suggested amounts" = "Jumlah saran";
+
+/* PocketCash/Views/PaywallView.swift:34 */
+"Tag spending after the fact with one tap, without slowing down the first tap." = "Beri kategori pengeluaran belakangan dengan sekali ketuk, tanpa memperlambat ketukan pertama.";
+
+/* PocketCash/Views/HomeView.swift:36 */
+"Tap a button above when you pay or withdraw cash." = "Ketuk tombol di atas saat membayar atau tarik tunai.";
+
+/* PocketCash/Views/OnboardingView.swift:115 */
+"Tap Edit, then Add Widget." = "Ketuk Edit, lalu Tambah Widget.";
+
+/* PocketCashWidget/WalletWidget.swift:335 */
+"Tap to unlock" = "Ketuk untuk membuka";
+
+/* PocketCash/Views/WalletEditorView.swift:58 */
+"Target" = "Target";
+
+/* Shared/Intents.swift:238 */
+"Tells you how much cash is in your wallet." = "Memberi tahu berapa uang tunai di dompetmu.";
+
+/* Shared/Intents.swift:58 */
+"That amount doesn't look right." = "Jumlah itu sepertinya salah.";
+
+/* PocketCash/Views/EnvelopesView.swift:195 */
+"That's more than %@ has." = "Itu lebih dari isi %@.";
+
+/* PocketCash/ProStore.swift:69 */
+"The App Store couldn't verify that purchase." = "App Store tidak bisa memverifikasi pembelian itu.";
+
+/* PocketCash/Views/PaywallView.swift:71 */
+"The App Store isn't reachable right now. Try again later." = "Tidak bisa terhubung ke App Store saat ini. Coba lagi nanti.";
+
+/* PocketCash/AppModel.swift:362 */
+"The backup couldn't be restored: %@" = "Cadangan tidak bisa dipulihkan: %@";
+
+/* PocketCash/Views/SettingsView.swift:135 */
+"The budget shows what's left today on the app and the medium widget." = "Anggaran menampilkan sisa hari ini di aplikasi dan widget sedang.";
+
+/* PocketCash/Views/WalletEditorView.swift:228 */
+"The first one is the widget's + button." = "Yang pertama jadi tombol + di widget.";
+
+/* PocketCash/Views/WalletEditorView.swift:240 */
+"The small widget shows the first two, the medium widget the first three." = "Widget kecil menampilkan dua yang pertama, widget sedang tiga yang pertama.";
+
+/* PocketCash/Views/InsightsView.swift:56 */
+"This ATM cycle: %@ in %@ days" = "Siklus ATM ini: %@ dalam %@ hari";
+
+/* PocketCash/Views/BackupUI.swift:38 */
+"This backup file is damaged, so nothing was changed." = "File cadangan ini rusak, jadi tidak ada yang diubah.";
+
+/* PocketCash/Views/BackupUI.swift:35 */
+"This backup is from a newer version of PocketCash. Update the app, then try again." = "Cadangan ini dari versi PocketCash yang lebih baru. Perbarui aplikasi, lalu coba lagi.";
+
+/* PocketCash/Views/WalletEditorView.swift:114 */
+"This can't be undone." = "Tindakan ini tidak bisa diurungkan.";
+
+/* PocketCash/Views/TransactionEditor.swift:68 */
+"This entry was deleted" = "Transaksi ini sudah dihapus";
+
+/* PocketCash/Views/BackupUI.swift:33 */
+"This file isn't a PocketCash backup." = "File ini bukan cadangan PocketCash.";
+
+/* PocketCash/Views/HomeView.swift:332 */
+"Time for an ATM run" = "Saatnya ke ATM";
+
+/* Shared/Intents.swift:43 */
+"Tips" = "Tip";
+
+/* PocketCash/Views/TransactionEditor.swift:107 */
+"To" = "Ke";
+
+/* Shared/CashStore.swift:143 */
+"To %@" = "Ke %@";
+
+/* PocketCash/Views/Feed.swift:22 */
+"Today" = "Hari ini";
+
+/* PocketCash/Views/HomeView.swift:165 */
+"Today %@" = "Hari ini %@";
+
+/* PocketCash/Views/InsightsView.swift:162 */
+"Top denomination: %@ × %@" = "Pecahan terbanyak: %@ × %@";
+
+/* PocketCash/Views/SettingsView.swift:109 */
+"Touch and hold a wallet to reorder. The first one is the default." = "Sentuh dan tahan dompet untuk mengubah urutan. Yang pertama jadi default.";
+
+/* PocketCash/Views/OnboardingView.swift:114 */
+"Touch and hold an empty spot on your Home Screen." = "Sentuh dan tahan area kosong di Layar Utama.";
+
+/* Shared/Intents.swift:136 */
+"Transaction" = "Transaksi";
+
+/* Shared/Labels.swift:13 */
+"Transfer" = "Transfer";
+
+/* Shared/Intents.swift:39 */
+"Transit" = "Transportasi";
+
+/* PocketCash/Views/WalletEditorView.swift:132 */
+"Travel Wallet" = "Dompet Perjalanan";
+
+/* PocketCash/AppLock.swift:70 */
+"Turn on app lock" = "Nyalakan kunci aplikasi";
+
+/* PocketCash/Views/KeypadSheet.swift:33 */
+"Type" = "Jenis";
+
+/* PocketCash/Views/CountCashSheet.swift:56 */
+"Type the total" = "Ketik totalnya";
+
+/* PocketCash/Views/HomeView.swift:349 */
+"Undo" = "Urungkan";
+
+/* PocketCashWidget/WalletWidget.swift:185 */
+"Undo %@" = "Urungkan %@";
+
+/* Shared/Intents.swift:133 */
+"Undo Cash Tap" = "Urungkan Ketukan";
+
+/* PocketCash/AppLock.swift:164 */
+"Unlock" = "Buka kunci";
+
+/* PocketCash/Views/PaywallView.swift:58 */
+"Unlock for %@" = "Beli seharga %@";
+
+/* PocketCash/AppLock.swift:80 */
+"Unlock PocketCash" = "Buka kunci PocketCash";
+
+/* PocketCash/Views/PaywallView.swift:60 */
+"Unlock Pro" = "Dapatkan Pro";
+
+/* PocketCash/Views/SettingsView.swift:55 */
+"Unlock Pro (debug build)" = "Buka Pro (build debug)";
+
+/* Shared/ModelHelpers.swift:24 */
+"Unrecorded spending" = "Pengeluaran tak tercatat";
+
+/* PocketCash/Views/InsightsView.swift:107 */
+"Untagged" = "Tanpa kategori";
+
+/* PocketCash/Views/SettingsView.swift:47 */
+"Version" = "Versi";
+
+/* PocketCashWidget/WalletWidget.swift:7 */
+"Wallet" = "Dompet";
+
+/* PocketCash/Views/SettingsView.swift:106 */
+"Wallets" = "Dompet";
+
+/* PocketCash/Views/BackupUI.swift:48 */
+"Wallets: %@ · Cash moves: %@" = "Dompet: %@ · Transaksi: %@";
+
+/* PocketCash/Views/BackupUI.swift:50 */
+"Wallets: %@ · Cash moves: %@ · Backed up %@" = "Dompet: %@ · Transaksi: %@ · Dicadangkan %@";
+
+/* PocketCash/Views/TransactionEditor.swift:29 */
+"When" = "Waktu";
+
+/* PocketCash/AppModel.swift:172 */
+"Widget: %@" = "Widget: %@";
+
+/* PocketCash/Views/SettingsView.swift:29 */
+"Widgets" = "Widget";
+
+/* PocketCash/Views/SettingsView.swift:191 */
+"Widgets still show your balance. Turn on Privacy mode to hide it." = "Widget tetap menampilkan saldomu. Nyalakan Mode privasi untuk menyembunyikannya.";
+
+/* PocketCash/Views/WalletEditorView.swift:85 */
+"Widgets, the free version and Siri use the default wallet unless you pick another." = "Widget, versi gratis, dan Siri memakai dompet default kecuali kamu memilih yang lain.";
+
+/* PocketCash/Views/OnboardingView.swift:117 */
+"With Pro, add the Quick Spend control to Control Center or your Lock Screen for your commute fare." = "Dengan Pro, tambahkan kontrol Keluar Cepat ke Pusat Kontrol atau Layar Terkunci untuk ongkos transport.";
+
+/* PocketCash/Views/Feed.swift:23 */
+"Yesterday" = "Kemarin";
+
+/* Shared/Intents.swift:248 */
+"You have %@ in %@." = "Kamu punya %@ di %@.";
+
+/* PocketCash/Views/HomeView.swift:315 */
+"Your burn rate shows up after a few cash moves." = "Laju pengeluaranmu muncul setelah beberapa transaksi.";
+
+/* PocketCashWidget/WalletWidget.swift:66 */
+"Your cash balance with 1-tap buttons. Tap −50 when you pay, no app needed." = "Saldo uang tunaimu dengan tombol sekali ketuk. Ketuk −50 saat bayar, tak perlu buka aplikasi.";
+
+/* PocketCash/Views/OnboardingView.swift:37 */
+"Your cash, finally tracked" = "Akhirnya, uang tunaimu tercatat";
+
+/* PocketCash/Views/PaywallView.swift:36 */
+"Your exact amounts, like −45 for your commute or −15 for parking." = "Jumlahmu sendiri, seperti −45 untuk transport atau −15 untuk parkir.";
+
+/* PocketCash/Views/SettingsView.swift:163 */
+"Your most common cash expense, like your commute fare. Add the Quick Spend control to Control Center or the Lock Screen, or say \"Quick spend in PocketCash\"." = "Pengeluaran tunai tersering, seperti ongkos transport. Tambahkan kontrol Keluar Cepat ke Pusat Kontrol atau Layar Terkunci, atau ucapkan \"Keluar cepat di PocketCash\".";
+
+/* PocketCash/ProStore.swift:72 */
+"Your purchase is waiting for approval." = "Pembelianmu sedang menunggu persetujuan.";

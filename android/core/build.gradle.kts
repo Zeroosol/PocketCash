@@ -23,11 +23,14 @@ dependencies {
     testRuntimeOnly(libs.junit.platform.launcher)
 }
 
-// The shared test vectors, also checked by the iPhone app's tests.
+// The shared test vectors and the example backup file, also checked by the iPhone app's tests.
 val vectors = rootDir.resolve("../spec/vectors")
+val backups = rootDir.resolve("../spec/backup")
 
 tasks.test {
     useJUnitPlatform()
     systemProperty("pocketcash.vectors", vectors.canonicalPath)
+    systemProperty("pocketcash.backup", backups.canonicalPath)
     inputs.dir(vectors).withPropertyName("vectors").withPathSensitivity(PathSensitivity.RELATIVE)
+    inputs.dir(backups).withPropertyName("backups").withPathSensitivity(PathSensitivity.RELATIVE)
 }

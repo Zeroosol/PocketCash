@@ -1,35 +1,48 @@
 import SwiftUI
 import UIKit
 
+/// The Settings destination (docs/spec.md section 7.4). Pro settings stay visible with a small lock and open the
+/// paywall when used.
 struct SettingsView: View {
     @EnvironmentObject private var model: AppModel
     @EnvironmentObject private var pro: ProStore
-    @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var lock: AppLock
     @AppStorage(AppSettings.Key.plusButtonsAreATM, store: AppSettings.defaults) private var plusATM = true
     @AppStorage(AppSettings.Key.privacyMode, store: AppSettings.defaults) private var privacy = false
     @AppStorage(AppSettings.Key.lowCashAlerts, store: AppSettings.defaults) private var lowCash = false
     @AppStorage(AppSettings.Key.haptics, store: AppSettings.defaults) private var haptics = true
     @State private var share: ShareItem?
+    @State private var exporting = false
+    @State private var backupDocument: BackupDocument?
+    @State private var restoring = false
 
     var body: some View {
         NavigationStack {
             Form {
-                proSection
-                if let wallet = model.wallet { walletSection(wallet) }
                 walletsSection
+                if let wallet = model.wallet { walletSection(wallet) }
                 quickSpendSection
                 Section {
                     Toggle("Count + buttons as ATM withdrawals", isOn: $plusATM)
-                    Toggle("Privacy mode", isOn: $privacy)
+                    Toggle(isOn: proBinding($privacy)) { ProLabel(title: Text("Privacy mode"), locked: !pro.isPro) }
                 } header: {
                     Text("Widgets")
                 } footer: {
                     Text("ATM withdrawals start a new ATM cycle. Privacy mode hides amounts on widgets, the Lock Screen and controls.")
                 }
+                appLockSection
                 Section {
                     Toggle("Haptics", isOn: $haptics)
                 }
                 dataSection
+                Section {
+                    Button { openSystemSettings() } label: {
+                        LabeledContent { Text(verbatim: currentLanguage) } label: { Text("Language").foregroundStyle(Color.primary) }
+                    }
+                } footer: {
+                    Text("Opens this app's page in the iPhone's Settings, where you can pick its language.")
+                }
+                proSection
                 Section {
                     LabeledContent("Version", value: Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "1.0")
                 } header: {
@@ -43,11 +56,11 @@ struct SettingsView: View {
                     }
                 }
             }
+            .scrollContentBackground(.hidden)
+            .background(Theme.background)
+            .tracksNavBar(.settings)
             .navigationTitle("Settings")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .confirmationAction) { Button("Done") { dismiss() } }
-            }
+            .navigationBarTitleDisplayMode(.large)
             .onChange(of: plusATM) { _, _ in model.settingsChanged() }
             .onChange(of: privacy) { _, _ in model.settingsChanged() }
             .onChange(of: lowCash) { _, enabled in
@@ -57,86 +70,92 @@ struct SettingsView: View {
                 }
             }
             .sheet(item: $share) { ActivityView(items: [$0.url]) }
+            .fileExporter(isPresented: $exporting, document: backupDocument, contentType: .json,
+                          defaultFilename: BackupDocument.defaultName()) { result in
+                if case .failure(let error) = result { model.errorMessage = error.localizedDescription }
+            }
+            .restoresBackup(isPresented: $restoring)
         }
     }
 
-    private var proSection: some View {
+    /// A Pro switch: off and locked without Pro, where turning it on opens the paywall.
+    private func proBinding(_ value: Binding<Bool>) -> Binding<Bool> {
+        Binding(get: { pro.isPro && value.wrappedValue }, set: { on in
+            if pro.isPro { value.wrappedValue = on } else if on { model.route = .paywall }
+        })
+    }
+
+    private var walletsSection: some View {
         Section {
-            if pro.isPro {
-                Label("PocketCash Pro is unlocked", systemImage: "checkmark.seal.fill")
-                    .foregroundStyle(Theme.emerald)
-            } else {
+            ForEach(model.wallets) { wallet in
                 NavigationLink {
-                    PaywallView()
+                    WalletEditorView(wallet: wallet)
                 } label: {
-                    Label {
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("PocketCash Pro").font(.headline)
-                            Text("Custom buttons, wallets, ATM cycles, categories").font(.caption).foregroundStyle(.secondary)
-                        }
-                    } icon: {
-                        Image(systemName: "star.circle.fill").foregroundStyle(Theme.emerald)
+                    LabeledContent {
+                        Text(verbatim: wallet.format(wallet.balance)).monospacedDigit()
+                    } label: {
+                        Text(verbatim: wallet.name)
                     }
                 }
-                Button("Restore purchase") { Task { await pro.restore() } }
+            }
+            .onMove { model.moveWallets(from: $0, to: $1) }
+            Button { model.route = pro.isPro ? .newWallet : .paywall } label: {
+                ProLabel(title: Text("Add a wallet"), locked: !pro.isPro)
+            }
+        } header: {
+            Text("Wallets")
+        } footer: {
+            if model.wallets.count > 1 {
+                Text("Touch and hold a wallet to reorder. The first one is the default.")
             }
         }
     }
 
     private func walletSection(_ wallet: Wallet) -> some View {
         Section {
-            AmountField(title: "Daily budget", wallet: wallet, value: Binding(
-                get: { wallet.dailyBudget },
-                set: { wallet.dailyBudget = $0; model.saveEdits() }))
-            Toggle("Low-cash reminder", isOn: $lowCash)
-            if lowCash {
+            Button { model.route = pro.isPro ? .editButtons : .paywall } label: {
+                ProLabel(title: Text("Buttons"), locked: !pro.isPro, chevron: true)
+            }
+            if pro.isPro {
+                AmountField(title: "Daily budget", wallet: wallet, value: Binding(
+                    get: { wallet.dailyBudget },
+                    set: { wallet.dailyBudget = $0; model.saveEdits() }))
+            } else {
+                Button { model.route = .paywall } label: { ProLabel(title: Text("Daily budget"), locked: true) }
+            }
+            Toggle(isOn: proBinding($lowCash)) { ProLabel(title: Text("Low-cash reminder"), locked: !pro.isPro) }
+            if lowCash && pro.isPro {
                 AmountField(title: "Remind me below", wallet: wallet, value: Binding(
                     get: { wallet.lowCashThreshold },
                     set: { wallet.lowCashThreshold = $0; model.saveEdits() }))
             }
-            if pro.isPro {
-                NavigationLink("Buttons") { PresetEditorView(wallet: wallet) }
-            } else {
-                NavigationLink { PaywallView() } label: { LockedLabel(title: "Buttons", detail: "Pick your own amounts") }
-            }
         } header: {
-            Text(wallet.name)
+            Text(verbatim: wallet.name)
         } footer: {
             Text("The budget shows what's left today on the app and the medium widget.")
-        }
-    }
-
-    private var walletsSection: some View {
-        Section("Wallets") {
-            ForEach(model.wallets) { wallet in
-                NavigationLink {
-                    WalletEditorView(wallet: wallet)
-                } label: {
-                    LabeledContent(wallet.name, value: wallet.format(wallet.balance))
-                }
-            }
-            if pro.isPro {
-                NavigationLink { WalletEditorView(wallet: nil) } label: { Label("Add a wallet", systemImage: "plus") }
-            } else {
-                NavigationLink { PaywallView() } label: { LockedLabel(title: "Add a wallet", detail: "Coin pouch, stash, travel") }
-            }
         }
     }
 
     private var quickSpendSection: some View {
         let smallest = model.wallet.flatMap { $0.spendButtons(isPro: pro.isPro).min() }
         return Section {
-            if let wallet = quickWallet {
-                AmountField(title: "Amount", wallet: wallet, placeholder: smallest.map { wallet.format($0) } ?? "Off", value: Binding(
-                    get: { AppSettings.quickSpendAmount },
-                    set: { AppSettings.quickSpendAmount = $0; model.settingsChanged() }))
-            }
-            if pro.isPro && model.wallets.count > 1 {
-                Picker("Wallet", selection: Binding(
-                    get: { AppSettings.quickSpendWalletID ?? model.wallets.first?.id },
-                    set: { AppSettings.quickSpendWalletID = $0; model.settingsChanged() })) {
-                    ForEach(model.wallets) { Text($0.name).tag(Optional($0.id)) }
+            if pro.isPro {
+                if let wallet = quickWallet {
+                    AmountField(title: "Amount", wallet: wallet,
+                                placeholder: smallest.map { wallet.format($0) } ?? String(localized: "Off"),
+                                value: Binding(
+                                    get: { AppSettings.quickSpendAmount },
+                                    set: { AppSettings.quickSpendAmount = $0; model.settingsChanged() }))
                 }
+                if model.wallets.count > 1 {
+                    Picker("Wallet", selection: Binding(
+                        get: { AppSettings.quickSpendWalletID ?? model.wallets.first?.id },
+                        set: { AppSettings.quickSpendWalletID = $0; model.settingsChanged() })) {
+                        ForEach(model.wallets) { Text(verbatim: $0.name).tag(Optional($0.id)) }
+                    }
+                }
+            } else {
+                Button { model.route = .paywall } label: { ProLabel(title: Text("Quick spend amount"), locked: true) }
             }
         } header: {
             Text("Quick spend")
@@ -150,43 +169,114 @@ struct SettingsView: View {
         return model.wallets.first
     }
 
-    private var dataSection: some View {
-        Section("Data") {
-            if pro.isPro {
-                Button { model.route = .insights } label: { Label("Insights", systemImage: "chart.bar.xaxis") }
-                Button {
-                    if let url = model.exportCSV() { share = ShareItem(url: url) }
-                } label: {
-                    Label("Export CSV", systemImage: "square.and.arrow.up")
+    private var appLockSection: some View {
+        let method = AppLock.method
+        return Section {
+            Toggle(isOn: Binding(get: { lock.isEnabled }, set: { on in
+                guard pro.isPro else {
+                    if on { model.route = .paywall }
+                    return
                 }
+                Task { await lock.setEnabled(on) }
+            })) {
+                ProLabel(title: Text(method.title), locked: !pro.isPro)
+            }
+            .disabled(pro.isPro && method == .unavailable)
+        } header: {
+            Text("App lock")
+        } footer: {
+            if pro.isPro && method == .unavailable {
+                Text("Set up a passcode on this iPhone to use App lock.")
             } else {
-                NavigationLink { PaywallView() } label: { LockedLabel(title: "Insights & CSV export", detail: "ATM cycles, categories, every entry") }
+                Text("Widgets still show your balance. Turn on Privacy mode to hide it.")
             }
         }
     }
+
+    private var dataSection: some View {
+        Section {
+            Button {
+                backupDocument = BackupDocument(data: BackupCodec.encode(model.makeBackup()))
+                exporting = true
+            } label: {
+                Label("Back up to a file", systemImage: "square.and.arrow.down")
+            }
+            Button { restoring = true } label: {
+                Label("Restore from a file", systemImage: "arrow.counterclockwise")
+            }
+            Button {
+                guard pro.isPro else { model.route = .paywall; return }
+                if let url = model.exportCSV() { share = ShareItem(url: url) }
+            } label: {
+                ProLabel(title: Text("Export CSV"), systemImage: "tablecells", locked: !pro.isPro)
+            }
+        } header: {
+            Text("Backup")
+        } footer: {
+            Text("A backup file holds every wallet, cash move and setting, and restores on any iPhone or Android phone.")
+        }
+    }
+
+    private var proSection: some View {
+        Section {
+            if pro.isPro {
+                Label("PocketCash Pro is unlocked", systemImage: "checkmark.seal")
+            } else {
+                Button { model.route = .paywall } label: {
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("PocketCash Pro").font(.headline).foregroundStyle(Color.primary)
+                        Text("Envelopes, insights, more wallets, quick spend and more. One purchase.")
+                            .font(.caption)
+                            .foregroundStyle(.secondary)
+                    }
+                }
+                Button("Restore purchase") { Task { await pro.restore() } }
+            }
+        } header: {
+            Text("Pro")
+        } footer: {
+            if let message = pro.message, !pro.isPro { Text(verbatim: message) }
+        }
+    }
+
+    private var currentLanguage: String {
+        let code = Bundle.main.preferredLocalizations.first ?? "en"
+        return Locale.current.localizedString(forIdentifier: code) ?? code
+    }
+
+    private func openSystemSettings() {
+        if let url = URL(string: UIApplication.openSettingsURLString) { UIApplication.shared.open(url) }
+    }
 }
 
-struct LockedLabel: View {
-    let title: String
-    let detail: String
+/// A row title with a small lock when the feature needs Pro.
+struct ProLabel: View {
+    let title: Text
+    var systemImage: String?
+    var locked: Bool
+    var chevron = false
 
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 2) {
-                Text(title)
-                Text(detail).font(.caption).foregroundStyle(.secondary)
+        HStack(spacing: 8) {
+            if let systemImage {
+                Image(systemName: systemImage).foregroundStyle(Color.primary).frame(width: 24)
             }
-            Spacer()
-            ProBadge()
+            title.foregroundStyle(Color.primary)
+            Spacer(minLength: 4)
+            if locked {
+                Image(systemName: "lock").font(.footnote).foregroundStyle(.secondary).accessibilityLabel(Text("Pro"))
+            } else if chevron {
+                Image(systemName: "chevron.right").font(.footnote.weight(.semibold)).foregroundStyle(.tertiary)
+            }
         }
     }
 }
 
 /// A decimal field that saves when it loses focus. Empty or zero means "off".
 struct AmountField: View {
-    let title: String
+    let title: LocalizedStringKey
     let wallet: Wallet
-    var placeholder = "Off"
+    var placeholder = String(localized: "Off")
     @Binding var value: Decimal?
     @State private var text = ""
     @FocusState private var focused: Bool
@@ -195,7 +285,7 @@ struct AmountField: View {
         HStack {
             Text(title)
             Spacer()
-            Text(Money.symbol(for: wallet.currencyCode, custom: wallet.symbol)).foregroundStyle(.secondary)
+            Text(verbatim: Money.symbol(for: wallet.currencyCode, custom: wallet.symbol)).foregroundStyle(.secondary)
             TextField(placeholder, text: $text)
                 .keyboardType(wallet.allowsFractions ? .decimalPad : .numberPad)
                 .multilineTextAlignment(.trailing)

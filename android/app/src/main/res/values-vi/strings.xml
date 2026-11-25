@@ -1,0 +1,333 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Vietnamese (vi). First draft: needs a native speaker's review before launch (docs/spec.md section 13). -->
+<resources>
+    <!-- Launcher, widget picker, Quick Settings, notifications -->
+    <string name="widget_medium_name">PocketCash Rộng</string>
+    <string name="widget_small_description">Số dư tiền mặt và hai nút chi 1 chạm</string>
+    <string name="widget_medium_description">Số dư, khoản chi hôm nay và bốn nút 1 chạm</string>
+    <string name="tile_label">Chi nhanh</string>
+    <string name="tile_spend">Chi %1$s</string>
+    <string name="tile_left">Còn %1$s</string>
+    <string name="tile_open_app">Hãy mở PocketCash trước</string>
+    <string name="shortcut_spend_short">Chi</string>
+    <string name="shortcut_spend_long">Chi tiền mặt</string>
+    <string name="shortcut_add_short">Thêm tiền</string>
+    <string name="shortcut_add_long">Thêm tiền hoặc rút tiền ATM</string>
+    <string name="shortcut_count_short">Đếm tiền của tôi</string>
+    <string name="shortcut_count_long">Đếm tiền mặt trong ví của tôi</string>
+    <string name="channel_low_cash">Tiền mặt sắp hết</string>
+    <string name="channel_low_cash_description">Nhắc bạn khi ví xuống dưới mức bạn đã đặt</string>
+    <string name="low_cash_title">%2$s chỉ còn %1$s</string>
+    <string name="low_cash_text">Đã dưới mức nhắc %1$s của bạn. Đến lúc ghé ATM rồi?</string>
+
+    <!-- Widgets -->
+    <string name="widget_setup">Mở PocketCash để thiết lập ví</string>
+    <string name="widget_undo">Hoàn tác %1$s</string>
+    <string name="widget_today">Hôm nay %1$s</string>
+    <string name="widget_left">Còn %1$s</string>
+    <string name="widget_pick_wallet">Tiện ích này nên hiển thị ví nào?</string>
+
+    <!-- Common actions -->
+    <string name="action_save">Lưu</string>
+    <string name="action_cancel">Hủy</string>
+    <string name="action_close">Đóng</string>
+    <string name="action_done">Xong</string>
+    <string name="action_ok">OK</string>
+    <string name="action_delete">Xóa</string>
+    <string name="action_undo">Hoàn tác</string>
+    <string name="action_change">Đổi</string>
+    <string name="action_default">Mặc định</string>
+    <string name="action_turn_off">Tắt</string>
+    <string name="action_remove">Gỡ bỏ</string>
+    <string name="value_off">Tắt</string>
+    <string name="value_not_set">Chưa đặt</string>
+    <string name="deleted">Đã xóa</string>
+    <string name="pro_feature">Tính năng Pro</string>
+    <string name="pro_unlock">Mở khóa Pro</string>
+
+    <!-- Nav bar -->
+    <string name="nav_home">Trang chủ</string>
+    <string name="nav_insights">Thống kê</string>
+    <string name="nav_envelopes">Phong bì</string>
+    <string name="nav_settings">Cài đặt</string>
+    <string name="nav_plus">Thêm số tiền</string>
+
+    <!-- Home -->
+    <string name="home_switch_wallet">Đổi ví</string>
+    <string name="home_today">Hôm nay %1$s</string>
+    <string name="home_nothing_today">Hôm nay chưa chi gì</string>
+    <string name="home_left_today">Hôm nay còn %1$s</string>
+    <string name="home_over_by">Vượt %1$s</string>
+    <string name="home_custom">Tùy chỉnh</string>
+    <string name="home_insight_empty">Chi vài lần để xem tiền mặt của bạn dùng được bao lâu</string>
+    <string name="home_insight_rate">%1$s/ngày</string>
+    <string name="home_insight_runway">%1$s/ngày · đủ dùng đến khoảng %2$s</string>
+    <string name="feed_last_7_days">7 ngày qua</string>
+    <string name="feed_cycles">Chu kỳ ATM</string>
+    <string name="feed_empty">Chưa có gì. Chạm một nút ở trên khi tiền mặt rời khỏi ví.</string>
+    <string name="feed_older">Mục cũ hơn · toàn bộ lịch sử với Pro</string>
+    <string name="feed_collapse">Thu gọn</string>
+    <string name="feed_expand">Mở rộng</string>
+    <string name="day_today">Hôm nay</string>
+    <string name="day_yesterday">Hôm qua</string>
+    <string name="cycle_before_first_atm">Trước lần rút ATM đầu tiên</string>
+    <string name="cycle_header_open">Chu kỳ hiện tại · từ %1$s · %2$s · đã %3$s ngày</string>
+    <string name="cycle_header_closed">Chu kỳ ATM · %1$s – %2$s · %3$s dùng được %4$s ngày</string>
+
+    <!-- What a transaction is -->
+    <string name="kind_spent">Đã chi</string>
+    <string name="kind_in">Tiền vào</string>
+    <string name="kind_atm">Rút tiền ATM</string>
+    <string name="kind_unrecorded">Khoản chi chưa ghi</string>
+    <string name="kind_found">Tiền dư ra</string>
+    <string name="kind_moved_out">Chuyển đi</string>
+    <string name="kind_moved_in">Chuyển đến</string>
+    <string name="kind_transfer_to">Đến %1$s</string>
+    <string name="kind_transfer_from">Từ %1$s</string>
+    <string name="note_starting_cash">Tiền mặt ban đầu</string>
+    <string name="added_spent">Đã chi %1$s</string>
+    <string name="added_atm">%1$s từ ATM</string>
+    <string name="added_adjust">Đã cập nhật số dư · %1$s</string>
+    <string name="added_in">Đã thêm %1$s</string>
+
+    <!-- Categories (docs/spec.md section 6) -->
+    <string name="category_food">Ăn uống</string>
+    <string name="category_transit">Đi lại</string>
+    <string name="category_parking">Gửi xe</string>
+    <string name="category_groceries">Đi chợ</string>
+    <string name="category_errand">Việc vặt</string>
+    <string name="category_tip">Tiền boa</string>
+    <string name="category_bills">Hóa đơn</string>
+    <string name="category_fun">Giải trí</string>
+    <string name="category_other">Khác</string>
+    <string name="category_untagged">Chưa phân loại</string>
+    <string name="tag_add">Thêm danh mục</string>
+
+    <!-- Keypad and change calculator -->
+    <string name="keypad_spend">− Chi</string>
+    <string name="keypad_add">+ Thêm tiền</string>
+    <string name="keypad_from_atm">Từ ATM</string>
+    <string name="keypad_from_atm_hint">Bắt đầu chu kỳ ATM mới</string>
+    <string name="keypad_note">Ghi chú (không bắt buộc)</string>
+    <string name="keypad_delete">Xóa chữ số</string>
+    <string name="change_button">Nhận tiền thừa?</string>
+    <string name="change_paid">Đã trả</string>
+    <string name="change_change">Tiền thừa</string>
+    <string name="change_paid_chip">Trả %1$s</string>
+    <string name="change_equation">Trả %1$s − Tiền thừa %2$s = %3$s</string>
+    <string name="change_hint">Nhập số tiền được trả lại</string>
+    <string name="change_too_big">Tiền thừa phải ít hơn số tiền đã trả</string>
+
+    <!-- Count my cash -->
+    <string name="count_title">Trong ví bạn có bao nhiêu?</string>
+    <string name="count_title_short">Đếm tiền của tôi</string>
+    <string name="count_type_total">Nhập tổng</string>
+    <string name="count_bills">Đếm tờ tiền</string>
+    <string name="count_shows">PocketCash đang hiển thị %1$s.</string>
+    <string name="count_spot_on">Chính xác. Số dư của bạn đúng rồi.</string>
+    <string name="count_less">Ít hơn %1$s so với PocketCash. Đã lưu thành khoản chi chưa ghi.</string>
+    <string name="count_more">Nhiều hơn %1$s so với PocketCash. Đã lưu thành tiền dư ra.</string>
+    <string name="count_update">Cập nhật số dư</string>
+    <string name="count_fewer">Bớt</string>
+    <string name="count_more_one">Thêm</string>
+
+    <!-- Edit a transaction -->
+    <string name="edit_amount">Số tiền</string>
+    <string name="edit_note">Ghi chú</string>
+    <string name="edit_delete_both">Xóa cả hai phía của lần chuyển này</string>
+
+    <!-- Insights -->
+    <string name="insights_locked_title">Xem tiền mặt của bạn dùng được bao lâu</string>
+    <string name="insights_locked_text">Tốc độ chi tiêu, số ngày tiền còn đủ dùng, chu kỳ ATM và chi tiêu theo danh mục có trong Pro.</string>
+    <string name="insights_burn_rate">Tốc độ chi tiêu</string>
+    <string name="insights_not_enough">Chưa đủ dữ liệu chi tiêu</string>
+    <string name="insights_per_day">%1$s/ngày</string>
+    <string name="insights_runway">Với tốc độ này, %1$s của bạn đủ dùng %2$s ngày, đến khoảng %3$s.</string>
+    <string name="insights_average">Trung bình 14 ngày qua.</string>
+    <string name="insights_no_cycles">Lần rút tiền ATM đầu tiên sẽ bắt đầu một chu kỳ.</string>
+    <string name="insights_categories">30 ngày qua theo danh mục</string>
+    <string name="insights_no_spending">Không có khoản chi nào trong 30 ngày qua.</string>
+    <string name="insights_cycle_open">Chu kỳ hiện tại · từ %1$s</string>
+    <string name="insights_cycle_range">%1$s – %2$s</string>
+    <string name="insights_days_so_far">Đã %1$s ngày</string>
+    <string name="insights_lasted">Dùng được %1$s ngày</string>
+    <string name="insights_withdrawn_so_far">%1$s · đã %2$s ngày</string>
+    <string name="insights_withdrawn_lasted">%1$s dùng được %2$s ngày</string>
+    <string name="insights_spent">Đã chi</string>
+    <string name="insights_per_day_label">Mỗi ngày</string>
+    <string name="insights_top_amount">Tốn nhiều nhất: %1$s × %2$d (%3$s)</string>
+    <string name="insights_top_tag">Chủ yếu là %1$s</string>
+
+    <!-- Envelopes -->
+    <string name="envelopes_locked_title">Phong bì và mục tiêu tiết kiệm</string>
+    <string name="envelopes_locked_text">Với Pro, đặt mục tiêu cho ví, xem ví đầy dần và chia tiền mặt vào các phong bì chỉ trong một bước.</string>
+    <string name="envelopes_intro">Chia tiền mặt vào các phong bì như Tiền nhà, Ăn uống và Tiết kiệm. Đặt mục tiêu cho ví để theo dõi tiến độ.</string>
+    <string name="envelopes_new">Phong bì mới</string>
+    <string name="envelopes_of_target">%1$s / %2$s</string>
+    <string name="envelopes_goal_reached">Đã đạt mục tiêu</string>
+    <string name="envelopes_no_targets">Chưa có mục tiêu nào. Mở một ví trong Cài đặt và đặt mục tiêu phong bì hoặc mục tiêu tiết kiệm.</string>
+    <string name="fill_title">Chia vào phong bì</string>
+    <string name="fill_from">Từ</string>
+    <string name="fill_source_has">Ví này có %1$s</string>
+    <string name="fill_none">Không có ví nào khác dùng %1$s.</string>
+    <string name="fill_no_target">Không có mục tiêu</string>
+    <string name="fill_short_by">Còn thiếu %1$s</string>
+    <string name="fill_footer">Chuyển %1$s · %2$s ở lại %3$s</string>
+    <string name="fill_too_much">%2$s chỉ có %1$s</string>
+    <string name="fill_save">Chuyển tiền</string>
+    <string name="fill_done">Đã chia vào phong bì · đã chuyển %1$s</string>
+
+    <!-- Settings -->
+    <string name="settings_pro_thanks">Đã mở khóa. Cảm ơn bạn đã ủng hộ PocketCash!</string>
+    <string name="settings_pro_pitch">Phong bì, thống kê, thêm ví, máy tính tiền thừa, khóa ứng dụng và hơn thế nữa. Trả một lần, dùng mãi mãi.</string>
+    <string name="settings_wallets">Ví</string>
+    <string name="settings_buttons">Nút</string>
+    <string name="settings_budget">Ngân sách mỗi ngày</string>
+    <string name="settings_budget_message">Số tiền mặt bạn định chi mỗi ngày từ %1$s.</string>
+    <string name="settings_threshold">Nhắc khi tiền mặt dưới</string>
+    <string name="settings_threshold_title">Nhắc sắp hết tiền mặt</string>
+    <string name="settings_threshold_message">Nhắc tôi khi %1$s xuống dưới số tiền này. Bật Nhắc sắp hết tiền mặt ở bên dưới.</string>
+    <string name="settings_quick_amount">Số tiền</string>
+    <string name="settings_quick_hint">Ô Cài đặt nhanh chi số tiền này chỉ với một chạm. Thêm ô này từ màn hình chỉnh sửa Cài đặt nhanh.</string>
+    <string name="settings_quick_title">Số tiền chi nhanh</string>
+    <string name="settings_quick_message">Khoản chi tiền mặt thường gặp nhất của bạn, như tiền xe đi làm mỗi ngày.</string>
+    <string name="settings_quick_wallet">Chi nhanh từ</string>
+    <string name="settings_options">Tùy chọn</string>
+    <string name="settings_low_cash">Nhắc sắp hết tiền mặt</string>
+    <string name="settings_low_cash_hint">Thông báo khi ví xuống dưới mức nhắc đã đặt</string>
+    <string name="settings_plus_atm">Tính nút + là rút tiền ATM</string>
+    <string name="settings_plus_atm_hint">Mỗi lần chạm + bắt đầu chu kỳ ATM mới</string>
+    <string name="settings_privacy">Chế độ riêng tư</string>
+    <string name="settings_privacy_hint">Ẩn số tiền trên tiện ích và Cài đặt nhanh</string>
+    <string name="settings_haptics">Rung phản hồi</string>
+    <string name="settings_haptics_hint">Rung nhẹ khi một nút lưu xong</string>
+    <string name="settings_data">Dữ liệu của bạn</string>
+    <string name="settings_language">Ngôn ngữ</string>
+    <string name="settings_language_hint">PocketCash dùng ngôn ngữ của điện thoại, trừ khi bạn chọn ngôn ngữ khác</string>
+    <string name="settings_about">PocketCash %1$s\nMọi thứ chỉ nằm trên điện thoại này: không tài khoản, không truy cập internet, không theo dõi.</string>
+
+    <!-- App lock -->
+    <string name="lock_section">Khóa ứng dụng</string>
+    <string name="lock_with_fingerprint">Khóa bằng vân tay</string>
+    <string name="lock_with_face">Khóa bằng khuôn mặt</string>
+    <string name="lock_with_passcode">Khóa bằng mật mã</string>
+    <string name="lock_hint">Yêu cầu mở khóa mỗi lần mở PocketCash</string>
+    <string name="lock_unavailable">Hãy thiết lập khóa màn hình hoặc vân tay trên điện thoại này trước</string>
+    <string name="lock_widgets_note">Tiện ích vẫn hiển thị số dư. Bật Chế độ riêng tư để ẩn.</string>
+    <string name="lock_title">PocketCash đang khóa</string>
+    <string name="lock_unlock">Mở khóa</string>
+    <string name="lock_prompt_title">Mở khóa PocketCash</string>
+    <string name="lock_enable_prompt_title">Bật khóa ứng dụng</string>
+
+    <!-- Backup and restore (docs/spec.md section 11) -->
+    <string name="backup_export">Sao lưu ra tệp</string>
+    <string name="backup_export_hint">Mọi thứ trong một tệp, khôi phục được trên mọi iPhone hoặc điện thoại Android</string>
+    <string name="backup_restore">Khôi phục từ tệp</string>
+    <string name="backup_restore_hint">Thay thế toàn bộ dữ liệu trên điện thoại này</string>
+    <string name="backup_saved">Đã lưu bản sao lưu</string>
+    <string name="backup_save_failed">Không lưu được bản sao lưu. Hãy thử nơi khác.</string>
+    <string name="backup_no_picker">Điện thoại này không có ứng dụng để chọn tệp</string>
+    <string name="restore_confirm_title">Khôi phục bản sao lưu này?</string>
+    <string name="restore_summary">Ví: %1$s · Giao dịch tiền mặt: %2$s · Sao lưu ngày %3$s</string>
+    <string name="restore_warning">Mọi thứ trên điện thoại này sẽ bị thay bằng bản sao lưu. Không thể hoàn tác.</string>
+    <string name="restore_replace">Thay toàn bộ dữ liệu trên điện thoại này</string>
+    <string name="restore_done">Đã khôi phục bản sao lưu</string>
+    <string name="restore_failed_title">Không thể khôi phục tệp này</string>
+    <string name="restore_not_backup">Tệp này không phải bản sao lưu PocketCash.</string>
+    <string name="restore_too_new">Bản sao lưu này từ phiên bản PocketCash mới hơn. Hãy cập nhật ứng dụng rồi thử lại.</string>
+    <string name="restore_unreadable">Không mở được tệp này.</string>
+    <string name="restore_damaged">Bản sao lưu này bị hỏng nên không có gì thay đổi. %1$s</string>
+    <string name="restore_problem_malformed">Một số dữ liệu bị thiếu hoặc sai định dạng.</string>
+    <string name="restore_problem_no_wallets">Không có ví nào.</string>
+    <string name="restore_problem_amount">Một số tiền không phải là số: %1$s</string>
+    <string name="restore_problem_date">Không đọc được một ngày: %1$s</string>
+    <string name="restore_problem_id">Một ID không hợp lệ: %1$s</string>
+    <string name="restore_problem_kind">Loại giao dịch tiền mặt không xác định: %1$s</string>
+    <string name="restore_problem_currency">Mã tiền tệ không xác định: %1$s</string>
+    <string name="restore_problem_duplicate">Một ID xuất hiện hai lần: %1$s</string>
+    <string name="csv_export">Xuất CSV</string>
+    <string name="csv_export_hint">Mọi giao dịch, dùng cho bảng tính</string>
+    <string name="csv_subject">Dữ liệu xuất từ PocketCash</string>
+
+    <!-- Wallets -->
+    <string name="wallet_main">Ví chính</string>
+    <string name="wallet_default_name">Ví</string>
+    <string name="wallet_new">Ví mới</string>
+    <string name="wallet_edit">Sửa ví</string>
+    <string name="wallet_add">Thêm ví</string>
+    <string name="wallet_name">Tên</string>
+    <string name="wallet_name_hint">Ví tiền xu, Tiền nhà, Du lịch Nhật…</string>
+    <string name="wallet_symbol">Ký hiệu tùy chỉnh (không bắt buộc)</string>
+    <string name="wallet_cash_now">Tiền mặt hiện có</string>
+    <string name="wallet_target">Mục tiêu</string>
+    <string name="wallet_target_hint">Mục tiêu phong bì hoặc mục tiêu tiết kiệm</string>
+    <string name="wallet_delete">Xóa ví</string>
+    <string name="wallet_delete_title">Xóa %1$s?</string>
+    <string name="wallet_delete_text">Các giao dịch của ví cũng bị xóa. Không thể hoàn tác.</string>
+    <string name="currency_title">Tiền tệ</string>
+    <string name="currency_search">Tìm kiếm</string>
+    <string name="transfer_title">Chuyển tiền</string>
+    <string name="transfer_title_long">Chuyển tiền giữa các ví</string>
+    <string name="transfer_from">Từ</string>
+    <string name="transfer_to">Đến</string>
+    <string name="transfer_amount">Số tiền (%1$s)</string>
+    <string name="transfer_arrives">Số tiền nhận được (%1$s)</string>
+    <string name="transfer_move">Chuyển</string>
+    <string name="presets_title">Nút cho %1$s</string>
+    <string name="presets_hint">Đặt theo tờ tiền và giá vé thật của bạn. Để trống một ô để bỏ nút đó.</string>
+    <string name="presets_cash_in">Tiền vào</string>
+    <string name="presets_spend">Chi</string>
+    <string name="presets_reset">Đặt lại mặc định của %1$s</string>
+
+    <!-- Paywall: Pro's features in the order of docs/spec.md section 5 -->
+    <string name="paywall_subtitle">Trả một lần. Dùng mãi mãi. Không thuê bao, không tài khoản.</string>
+    <string name="paywall_envelopes">Phong bì và mục tiêu tiết kiệm</string>
+    <string name="paywall_envelopes_text">Đặt mục tiêu cho bất kỳ ví nào, xem tiến độ và chia tiền mặt vào các phong bì chỉ trong một bước.</string>
+    <string name="paywall_insights">Thống kê</string>
+    <string name="paywall_insights_text">Mỗi lần rút tiền ATM dùng được bao lâu, mức chi mỗi ngày, khi nào hết tiền và tiền đi đâu.</string>
+    <string name="paywall_wallets">Thêm ví</string>
+    <string name="paywall_wallets_text">Ví tiền xu, quỹ khẩn cấp, ví du lịch với tiền tệ riêng, chuyển tiền giữa các ví và mỗi tiện ích một ví.</string>
+    <string name="paywall_quick">Chi nhanh ở mọi nơi</string>
+    <string name="paywall_quick_text">Ô Cài đặt nhanh chi tiền xe mỗi ngày của bạn chỉ với một chạm.</string>
+    <string name="paywall_change">Máy tính tiền thừa</string>
+    <string name="paywall_change_text">Trả 500, nhận lại 130? Lưu một khoản chi 370.</string>
+    <string name="paywall_budget">Ngân sách mỗi ngày</string>
+    <string name="paywall_budget_text">Xem hôm nay còn bao nhiêu ngay trong ứng dụng và trên tiện ích.</string>
+    <string name="paywall_categories">Danh mục</string>
+    <string name="paywall_categories_text">Gắn danh mục cho khoản chi sau đó chỉ với một chạm.</string>
+    <string name="paywall_buttons">Nút của riêng bạn</string>
+    <string name="paywall_buttons_text">Đặt từng nút theo giá vé và hóa đơn thật của bạn.</string>
+    <string name="paywall_lock">Khóa ứng dụng và chế độ riêng tư</string>
+    <string name="paywall_lock_text">Khóa PocketCash bằng vân tay hoặc khóa màn hình, và ẩn số tiền trên tiện ích.</string>
+    <string name="paywall_low_cash">Nhắc sắp hết tiền mặt</string>
+    <string name="paywall_low_cash_text">Thông báo khi ví sắp hết tiền.</string>
+    <string name="paywall_history">Toàn bộ lịch sử và xuất CSV</string>
+    <string name="paywall_history_text">Mọi thứ cũ hơn 7 ngày, sẵn sàng cho bảng tính.</string>
+    <string name="paywall_buy">Mở khóa với giá %1$s</string>
+    <string name="paywall_connecting">Đang kết nối với Google Play…</string>
+    <string name="paywall_restore">Khôi phục giao dịch mua</string>
+    <string name="paywall_not_now">Để sau</string>
+    <string name="paywall_thanks">Bạn đã có Pro. Cảm ơn bạn!</string>
+    <string name="billing_unavailable">Google Play hiện không khả dụng.</string>
+    <string name="billing_connecting">Vẫn đang kết nối với Google Play. Hãy thử lại sau giây lát.</string>
+    <string name="billing_failed">Giao dịch mua không thành công (%1$d).</string>
+    <string name="billing_pending">Giao dịch mua đang chờ xử lý. Pro sẽ mở khóa ngay khi Google Play xác nhận.</string>
+
+    <!-- Onboarding -->
+    <string name="onboarding_title">Tiền mặt của bạn, ngay trên Màn hình chính</string>
+    <string name="onboarding_text">Ứng dụng ngân hàng ghi lại mọi lần quẹt thẻ. Không ai theo dõi tiền mặt. PocketCash giữ số dư trong ví của bạn luôn đúng chỉ với một chạm.</string>
+    <string name="onboarding_point_tap">Chạm %1$s trên tiện ích khi bạn trả tiền. Xong.</string>
+    <string name="onboarding_point_undo">Chạm nhầm? Bạn có vài giây để hoàn tác.</string>
+    <string name="onboarding_point_count">Đếm tiền mặt bất cứ lúc nào để sửa số dư.</string>
+    <string name="onboarding_start">Bắt đầu</string>
+    <string name="onboarding_restore">Khôi phục từ tệp sao lưu</string>
+    <string name="onboarding_private">Không tài khoản. Không có gì rời khỏi điện thoại của bạn.</string>
+    <string name="onboarding_cash_title">Hiện trong ví bạn có bao nhiêu tiền mặt?</string>
+    <string name="onboarding_currency">Tiền tệ: %1$s</string>
+    <string name="onboarding_type_it">Nhập số</string>
+    <string name="onboarding_start_empty">Bắt đầu với ví trống</string>
+    <string name="onboarding_start_tracking">Bắt đầu theo dõi</string>
+    <string name="onboarding_widget_title">Đặt ví lên Màn hình chính</string>
+    <string name="onboarding_widget_text">Chạm và giữ một chỗ trống trên Màn hình chính, chạm Tiện ích, rồi chọn PocketCash. Mỗi nút đều lưu ngay lập tức.</string>
+    <string name="onboarding_add_widget">Thêm tiện ích</string>
+</resources>

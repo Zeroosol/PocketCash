@@ -35,6 +35,7 @@ enum AppSettings {
         static let privacyMode = "privacyMode"
         static let lowCashAlerts = "lowCashAlerts"
         static let haptics = "haptics"
+        static let appLock = "appLock"
         static let onboarded = "onboarded"
         static let isProCached = "isProCached"
         static let debugPro = "debugPro"
@@ -65,6 +66,11 @@ enum AppSettings {
         get { bool(Key.haptics, default: true) }
         set { defaults.set(newValue, forKey: Key.haptics) }
     }
+    /// Lock the app with Face ID / Touch ID / the passcode (Pro, docs/spec.md section 12).
+    static var appLock: Bool {
+        get { bool(Key.appLock, default: false) }
+        set { defaults.set(newValue, forKey: Key.appLock) }
+    }
     static var onboarded: Bool {
         get { bool(Key.onboarded, default: false) }
         set { defaults.set(newValue, forKey: Key.onboarded) }
@@ -89,6 +95,16 @@ enum AppSettings {
     }
 
     static var isPro: Bool { isProCached || (debugProAvailable && debugPro) }
+
+    /// Privacy mode and the low-cash reminder are Pro: a Free install keeps the stored choice but ignores it.
+    static var privacyModeActive: Bool { privacyMode && isPro }
+    static var lowCashAlertsActive: Bool { lowCashAlerts && isPro }
+
+    /// When Pro is lost (a refund), app lock and privacy mode switch off (docs/spec.md section 5).
+    static func proWasLost() {
+        appLock = false
+        privacyMode = false
+    }
 
     static var quickSpendAmount: Decimal? {
         get { defaults.string(forKey: Key.quickSpendAmount).flatMap(Money.decimal) }

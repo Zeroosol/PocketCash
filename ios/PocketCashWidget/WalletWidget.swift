@@ -74,9 +74,17 @@ struct WalletWidgetView: View {
     @Environment(\.widgetFamily) private var family
     let entry: WalletEntry
 
+    /// Lock Screen widgets are Pro (docs/spec.md section 5); Free shows "PocketCash Pro" and opens the paywall.
+    private var lockedForFree: Bool {
+        guard let snapshot = entry.snapshot, !snapshot.isPro else { return false }
+        return [.accessoryCircular, .accessoryRectangular, .accessoryInline].contains(family)
+    }
+
     var body: some View {
         Group {
-            if let snapshot = entry.snapshot, let wallet = entry.wallet {
+            if lockedForFree {
+                ProLockedView(family: family)
+            } else if let snapshot = entry.snapshot, let wallet = entry.wallet {
                 let model = WidgetModel(snapshot: snapshot, wallet: wallet, date: entry.date, showUndo: entry.showUndo)
                 switch family {
                 case .systemMedium: MediumWalletView(model: model)
@@ -90,7 +98,8 @@ struct WalletWidgetView: View {
             }
         }
         .containerBackground(for: .widget) { Color(uiColor: .systemBackground) }
-        .widgetURL(URL(string: "pocketcash://wallet" + (entry.wallet.map { "?id=\($0.id.uuidString)" } ?? "")))
+        .widgetURL(lockedForFree ? URL(string: "pocketcash://pro")
+                   : URL(string: "pocketcash://wallet" + (entry.wallet.map { "?id=\($0.id.uuidString)" } ?? "")))
     }
 }
 
@@ -113,14 +122,21 @@ struct WidgetModel {
         return balance < 0 ? Money.minus + text : text
     }
 
-    /// "−₱170 today", or with a budget "₱230 left" / "Over by ₱30".
+    /// "−₱170 today", or with a budget (Pro) "₱230 left" / "Over by ₱30".
     var statusText: String {
         if hidden { return "••••" }
         if let budget = wallet.budgetValue {
             let left = budget - today
-            return left >= 0 ? "\(wallet.format(left)) left" : "Over by \(wallet.format(-left))"
+            if left >= 0 {
+                let text = wallet.format(left)
+                return String(localized: "\(text) left")
+            }
+            let text = wallet.format(-left)
+            return String(localized: "Over by \(text)")
         }
-        return today == 0 ? "Nothing spent today" : "\(wallet.format(-today)) today"
+        if today == 0 { return String(localized: "Nothing spent today") }
+        let text = wallet.format(-today)
+        return String(localized: "\(text) today")
     }
 
     var statusIsWarning: Bool {
@@ -165,7 +181,8 @@ private struct UndoChip: View {
 
     var body: some View {
         Button(intent: UndoCashIntent(transactionID: action.transactionID)) {
-            Label("Undo \(wallet.format(action.value, signed: true))", systemImage: "arrow.uturn.backward")
+            let amount = wallet.format(action.value, signed: true)
+            Label("Undo \(amount)", systemImage: "arrow.uturn.backward")
                 .font(.caption.weight(.semibold))
                 .lineLimit(1)
                 .minimumScaleFactor(0.7)
@@ -293,6 +310,40 @@ private struct RectangularWalletView: View {
                 .lineLimit(1)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
+    }
+}
+
+/// What a Pro-only widget shows on a Free install: "PocketCash Pro" with a lock. Tapping opens the paywall.
+struct ProLockedView: View {
+    let family: WidgetFamily
+
+    var body: some View {
+        switch family {
+        case .accessoryCircular:
+            ZStack {
+                AccessoryWidgetBackground()
+                VStack(spacing: 1) {
+                    Image(systemName: "lock.fill").font(.caption)
+                    Text(verbatim: "Pro").font(.caption2.weight(.semibold))
+                }
+            }
+        case .accessoryInline:
+            Label("PocketCash Pro", systemImage: "lock.fill")
+        case .accessoryRectangular:
+            VStack(alignment: .leading, spacing: 1) {
+                Label("PocketCash Pro", systemImage: "lock.fill").font(.caption.weight(.semibold))
+                Text("Tap to unlock").font(.caption2)
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+        default:
+            VStack(alignment: .leading, spacing: 6) {
+                Image(systemName: "lock.fill").font(.title3)
+                Spacer(minLength: 0)
+                Text("PocketCash Pro").font(.footnote.weight(.semibold))
+                Text("Tap to unlock").font(.caption2).foregroundStyle(.secondary)
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .leading)
+        }
     }
 }
 

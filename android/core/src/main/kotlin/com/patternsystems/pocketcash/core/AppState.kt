@@ -142,24 +142,62 @@ object Ledger {
         return next to tx
     }
 
-    /** Moves cash between wallets (Pro). [received] differs from [sent] when the currencies differ. */
+    /**
+     * Moves cash between wallets (Pro). [received] differs from [sent] when the currencies differ. The halves carry no
+     * note: the app shows "To Rent" / "From Main Wallet" in the phone's language from the other half's wallet.
+     */
     fun transfer(data: AppData, fromId: String, toId: String, sent: BigDecimal, received: BigDecimal, now: Long): AppData {
         val from = data.wallet(fromId) ?: return data
         val to = data.wallet(toId) ?: return data
         if (from.id == to.id || sent.signum() <= 0 || received.signum() <= 0) return data
-        val link = newId()
-        val out = CashTransaction(walletId = from.id, amount = sent.negate(), timestamp = now, kind = Kind.TRANSFER, note = "To ${to.name}", transferId = link)
-        val inn = CashTransaction(walletId = to.id, amount = received, timestamp = now, kind = Kind.TRANSFER, note = "From ${from.name}", transferId = link)
-        return data.copy(transactions = data.transactions + out + inn)
+        return data.copy(transactions = data.transactions + transferPair(from.id, to.id, sent, received, now))
     }
 
-    /** A new wallet with the currency's default buttons, and its starting cash as an adjustment. */
-    fun createWallet(data: AppData, name: String, currencyCode: String, symbol: String?, startingCash: BigDecimal, now: Long): Pair<AppData, Wallet> {
+    private fun transferPair(fromId: String, toId: String, sent: BigDecimal, received: BigDecimal, now: Long): List<CashTransaction> {
+        val link = newId()
+        return listOf(
+            CashTransaction(walletId = fromId, amount = sent.negate(), timestamp = now, kind = Kind.TRANSFER, transferId = link),
+            CashTransaction(walletId = toId, amount = received, timestamp = now, kind = Kind.TRANSFER, transferId = link),
+        )
+    }
+
+    /**
+     * "Fill envelopes" (docs/spec.md section 10): one transfer pair per envelope with a non-zero amount, all with the
+     * same timestamp, in one change. Returns [data] unchanged when the amounts don't fit (nothing to move, more than
+     * the source holds, another currency, or an unknown wallet).
+     */
+    fun fill(data: AppData, sourceId: String, amounts: Map<String, BigDecimal>, now: Long): AppData {
+        val source = data.wallet(sourceId) ?: return data
+        val moves = amounts.filterValues { it.signum() != 0 }
+        if (moves.isEmpty() || moves.values.any { it.signum() < 0 }) return data
+        val total = moves.values.fold(BigDecimal.ZERO, BigDecimal::add)
+        if (total > data.balanceOf(source.id)) return data
+        val targets = data.sortedWallets.filter { it.id in moves }
+        if (targets.size != moves.size || targets.any { it.id == source.id || it.currencyCode != source.currencyCode }) return data
+        val pairs = targets.flatMap { transferPair(source.id, it.id, moves.getValue(it.id), moves.getValue(it.id), now) }
+        return data.copy(transactions = data.transactions + pairs)
+    }
+
+    /**
+     * A new wallet with the currency's default buttons, and its starting cash as an adjustment noted [startingNote]
+     * (the app passes it in the phone's language).
+     */
+    fun createWallet(
+        data: AppData,
+        name: String,
+        currencyCode: String,
+        symbol: String?,
+        startingCash: BigDecimal,
+        now: Long,
+        startingNote: String? = "Starting cash",
+        target: BigDecimal? = null,
+    ): Pair<AppData, Wallet> {
         val order = (data.wallets.maxOfOrNull { it.sortOrder } ?: -1) + 1
-        val wallet = Wallet.create(name.trim().ifEmpty { "Wallet" }, currencyCode, order, symbol).copy(createdAt = now)
+        val wallet = Wallet.create(name.trim().ifEmpty { "Wallet" }, currencyCode, order, symbol)
+            .copy(createdAt = now, target = target?.takeIf { it.signum() > 0 })
         var next = data.copy(wallets = data.wallets + wallet)
         if (startingCash.signum() != 0) {
-            next = add(next, wallet.id, startingCash, Kind.ADJUST, now, note = "Starting cash")?.first ?: next
+            next = add(next, wallet.id, startingCash, Kind.ADJUST, now, note = startingNote)?.first ?: next
         }
         return next to wallet
     }

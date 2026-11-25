@@ -1,0 +1,1832 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>PocketCash Preview</title>
+<meta name="description" content="PocketCash keeps your physical wallet's balance on your Home Screen. Try the working preview of the iPhone and Android app.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=Figtree:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root {
+  /* Layout: a banknote-tinted top band where the live phone is the thesis; then the surfaces you can tap on each
+     platform, a strip of real currency buttons, the Free and Pro ledgers, and the privacy promise.
+     The phone itself follows the app's minimal style: one emerald accent, flat surfaces, a floating nav bar. */
+  --paper: #F1F5F2;
+  --ink: #0F1D18;
+  --muted: #55665E;
+  --line: #D2DCD6;
+  --surface: #FFFFFF;
+  --tint: #E2EEE7;
+  --accent: #0E9F6E;
+  --accent-ink: #047857;
+  --accent-soft: rgba(14, 159, 110, 0.13);
+  --on-accent: #FFFFFF;
+  --danger: #CC3333;
+  --guilloche: rgba(4, 120, 87, 0.17);
+
+  /* Inside the phone */
+  --app-bg: #FBFCFB;
+  --app-ink: #0F1D18;
+  --app-muted: #6B7A73;
+  --app-faint: #A3B0AA;
+  --app-sep: rgba(15, 29, 24, 0.08);
+  --app-fill: rgba(15, 29, 24, 0.05);
+  --sheet-bg: #FFFFFF;
+  --seg-on: #FFFFFF;
+  --scrim: rgba(8, 16, 13, 0.3);
+  --nav-bg: rgba(255, 255, 255, 0.8);
+  --nav-edge: rgba(15, 29, 24, 0.09);
+  --snack-bg: #16231E;
+  --snack-ink: #EEF4F1;
+  --snack-act: #6EE7B7;
+  --w-bg: rgba(255, 255, 255, 0.93);
+  --w-ink: #0F1D18;
+  --w-muted: #5D6D66;
+  --w-fill: rgba(15, 29, 24, 0.07);
+  --wall-a: #18A87A;
+  --wall-b: #0E5566;
+  --wall-ink: #FFFFFF;
+  --glass: rgba(255, 255, 255, 0.22);
+  --bezel: #0B1411;
+  --bezel-edge: #33443D;
+
+  --font-display: "Bricolage Grotesque", "Figtree", system-ui, sans-serif;
+  --font-body: "Figtree", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0B1512; --ink: #E4EEE9; --muted: #8FA39A; --line: #20302A; --surface: #12201B; --tint: #0F241C;
+    --accent: #34D399; --accent-ink: #6EE7B7; --accent-soft: rgba(52, 211, 153, 0.15); --on-accent: #062A1E;
+    --danger: #F87171; --guilloche: rgba(52, 211, 153, 0.13);
+    --app-bg: #090D0B; --app-ink: #E8F1EC; --app-muted: #8E9E97; --app-faint: #56655E;
+    --app-sep: rgba(255, 255, 255, 0.08); --app-fill: rgba(255, 255, 255, 0.07); --sheet-bg: #121A17; --seg-on: #26332E;
+    --scrim: rgba(0, 0, 0, 0.55); --nav-bg: rgba(30, 40, 36, 0.78); --nav-edge: rgba(255, 255, 255, 0.08);
+    --snack-bg: #E2ECE7; --snack-ink: #10201A; --snack-act: #047857;
+    --w-bg: rgba(28, 38, 34, 0.92); --w-ink: #ECF3EF; --w-muted: #93A39C; --w-fill: rgba(255, 255, 255, 0.1);
+    --wall-a: #0B5E47; --wall-b: #0A2230; --bezel: #020504; --bezel-edge: #26352F;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0B1512; --ink: #E4EEE9; --muted: #8FA39A; --line: #20302A; --surface: #12201B; --tint: #0F241C;
+  --accent: #34D399; --accent-ink: #6EE7B7; --accent-soft: rgba(52, 211, 153, 0.15); --on-accent: #062A1E;
+  --danger: #F87171; --guilloche: rgba(52, 211, 153, 0.13);
+  --app-bg: #090D0B; --app-ink: #E8F1EC; --app-muted: #8E9E97; --app-faint: #56655E;
+  --app-sep: rgba(255, 255, 255, 0.08); --app-fill: rgba(255, 255, 255, 0.07); --sheet-bg: #121A17; --seg-on: #26332E;
+  --scrim: rgba(0, 0, 0, 0.55); --nav-bg: rgba(30, 40, 36, 0.78); --nav-edge: rgba(255, 255, 255, 0.08);
+  --snack-bg: #E2ECE7; --snack-ink: #10201A; --snack-act: #047857;
+  --w-bg: rgba(28, 38, 34, 0.92); --w-ink: #ECF3EF; --w-muted: #93A39C; --w-fill: rgba(255, 255, 255, 0.1);
+  --wall-a: #0B5E47; --wall-b: #0A2230; --bezel: #020504; --bezel-edge: #26352F;
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+a { color: var(--accent-ink); }
+button { font: inherit; color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.wrap {
+  max-width: 1160px;
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+.mono { font-family: var(--font-mono); font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; font-size: 12px; }
+
+/* ---------- Top band: header + hero ---------- */
+.top-band {
+  background: linear-gradient(180deg, var(--tint), var(--paper) 92%);
+  border-bottom: 1px solid var(--line);
+  margin-top: calc(-1 * env(safe-area-inset-top, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  overflow: clip;
+  position: relative;
+}
+.top { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 16px; }
+.brand { display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 800; font-size: 21px; letter-spacing: -0.01em; color: var(--ink); text-decoration: none; }
+.nav { display: flex; gap: 24px; }
+.nav a { color: var(--ink); text-decoration: none; font-weight: 600; font-size: 15px; }
+.nav a:hover { color: var(--accent-ink); }
+.source { font-weight: 600; font-size: 15px; text-decoration: none; }
+@media (max-width: 760px) { .nav { display: none; } }
+
+.hero { padding-block: 24px 64px; }
+.hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 520px); gap: 48px; align-items: center; }
+@media (max-width: 960px) { .hero-grid { grid-template-columns: minmax(0, 1fr); gap: 36px; } }
+.hero-copy { display: grid; gap: 22px; align-content: center; min-width: 0; }
+.eyebrow { color: var(--accent-ink); margin: 0; }
+h1 {
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: clamp(2.7rem, 6.4vw, 4.9rem);
+  line-height: 0.98;
+  letter-spacing: -0.025em;
+  margin: 0;
+  text-wrap: balance;
+}
+.amt-chip {
+  display: inline-block;
+  padding: 0 0.16em 0.04em;
+  border-radius: 0.2em;
+  background: var(--accent-soft);
+  color: var(--accent-ink);
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+.lede { font-size: 1.16rem; color: var(--muted); margin: 0; max-width: 34rem; }
+.facts { display: flex; flex-wrap: wrap; gap: 8px 10px; margin: 0; padding: 0; list-style: none; }
+.facts li { display: flex; align-items: center; gap: 7px; padding: 6px 12px 6px 9px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 14px; font-weight: 600; }
+.facts svg { color: var(--accent-ink); flex: none; }
+.try { margin: 0; font-size: 15px; color: var(--muted); max-width: 32rem; padding-left: 14px; border-left: 2px solid var(--accent); }
+.try b { color: var(--ink); }
+.status-line { margin: 0; color: var(--muted); }
+
+/* Demo column */
+.demo { display: grid; gap: 14px; justify-items: center; min-width: 0; }
+.demo-controls { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; align-items: center; }
+.seg { display: inline-flex; padding: 3px; border-radius: 12px; background: var(--surface); border: 1px solid var(--line); }
+.seg button { border: 0; background: none; padding: 7px 13px; border-radius: 9px; font-weight: 600; font-size: 14px; cursor: pointer; color: var(--muted); }
+.seg button[aria-pressed="true"], .seg button[aria-selected="true"] { background: var(--accent-ink); color: var(--on-accent); }
+.cur-pick { display: inline-flex; align-items: center; gap: 8px; font-size: 14px; font-weight: 600; }
+.cur-pick select { font: inherit; font-weight: 600; padding: 7px 10px; border-radius: 10px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); max-width: 210px; }
+.stage { position: relative; width: 100%; display: grid; place-items: center; padding-block: 8px; }
+.stage canvas { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; }
+.hint { margin: 0; text-align: center; font-size: 14px; color: var(--muted); max-width: 25rem; min-height: 2.6em; }
+.microprint {
+  font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.32em; color: var(--muted); opacity: 0.55;
+  white-space: nowrap; overflow: hidden; padding-block: 6px; border-top: 1px solid var(--line); user-select: none;
+}
+
+/* ---------- Phone ---------- */
+.phone {
+  position: relative; z-index: 1; width: 312px; height: 648px; padding: 10px; border-radius: 52px;
+  background: var(--bezel);
+  box-shadow: 0 0 0 1.5px var(--bezel-edge), 0 34px 60px -24px rgba(4, 50, 36, 0.5), 0 14px 26px -14px rgba(0, 0, 0, 0.35);
+}
+.phone.android { border-radius: 40px; }
+@media (max-width: 359px) { .phone { zoom: 0.88; } }
+.screen {
+  position: relative; width: 100%; height: 100%; border-radius: 42px; overflow: hidden;
+  background: var(--app-bg); color: var(--app-ink); font-size: 14px; line-height: 1.35;
+  font-variant-numeric: tabular-nums; isolation: isolate;
+}
+.android .screen { border-radius: 31px; }
+.island { position: absolute; top: 20px; left: 50%; transform: translateX(-50%); width: 92px; height: 27px; border-radius: 20px; background: var(--bezel); z-index: 60; }
+.android .island { width: 13px; height: 13px; top: 21px; }
+.status { position: relative; z-index: 20; height: 46px; display: flex; align-items: center; justify-content: space-between; padding: 4px 28px 0 34px; font-weight: 600; font-size: 14.5px; flex: none; }
+.android .status { height: 34px; padding: 2px 20px 0; font-size: 12.5px; }
+.st-icons { display: flex; align-items: center; gap: 5px; }
+.on-wall .status { color: var(--wall-ink); }
+.screen button { cursor: pointer; }
+
+/* App shell */
+.app { position: absolute; inset: 0; display: flex; flex-direction: column; }
+.topbar { flex: none; height: 42px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; padding: 0 16px; position: relative; z-index: 5; transition: box-shadow 0.2s ease; }
+.topbar.lined { box-shadow: 0 1px 0 var(--app-sep); }
+.tb-mid { font-weight: 700; font-size: 14.5px; opacity: 0; transform: translateY(6px); transition: opacity 0.2s ease, transform 0.2s ease; white-space: nowrap; }
+.tb-mid.show { opacity: 1; transform: none; }
+.wallet-btn { justify-self: start; display: flex; align-items: center; gap: 5px; border: 0; background: none; font-weight: 700; font-size: 15px; padding: 4px 0; max-width: 100%; }
+.wallet-btn > span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.wallet-btn svg { color: var(--app-muted); flex: none; }
+.pro-badge { font-size: 9.5px; font-weight: 800; letter-spacing: 0.05em; padding: 2px 5px; border-radius: 5px; background: var(--app-ink); color: var(--app-bg); flex: none; }
+.app-scroll { flex: 1; overflow-y: auto; padding: 0 18px 110px; scrollbar-width: none; overscroll-behavior: contain; }
+.app-scroll::-webkit-scrollbar { display: none; }
+.big-title { font-size: 30px; font-weight: 800; letter-spacing: -0.025em; margin: 2px 0 6px; }
+.lead { color: var(--app-muted); font-size: 13px; margin: 0 0 18px; }
+
+/* Home */
+.hero-bal { display: block; width: 100%; border: 0; background: none; text-align: center; padding: 18px 0 6px; }
+.hero-bal .amt { display: block; font-size: 52px; font-weight: 700; letter-spacing: -0.03em; line-height: 1.04; white-space: nowrap; }
+.hero-bal .amt.neg { color: var(--danger); }
+.hero-bal .sub { display: flex; justify-content: center; flex-wrap: wrap; gap: 0 6px; margin-top: 8px; font-size: 13px; font-weight: 500; color: var(--app-muted); }
+.hero-bal .ok { color: var(--accent-ink); }
+.hero-bal .over { color: var(--danger); }
+.bump { animation: bump 0.32s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes bump { 0% { transform: translateY(6px); opacity: 0.4; } 100% { transform: none; opacity: 1; } }
+.pad { display: grid; gap: 8px; margin: 20px 0 6px; }
+.pad-row { display: flex; gap: 8px; }
+.pad-row > * { flex: 1 1 0; min-width: 0; }
+.pbtn {
+  height: 54px; border: 0; border-radius: 14px; background: var(--app-fill); color: var(--app-ink);
+  font-size: 18px; font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap;
+  transition: transform 0.12s ease, background-color 0.12s ease;
+}
+.pbtn:active { transform: scale(0.94); }
+.pbtn.in { background: var(--accent-soft); color: var(--accent-ink); }
+.android .pbtn { border-radius: 999px; }
+.text-btn { display: block; margin: 4px auto 0; border: 0; background: none; color: var(--app-muted); font-size: 13px; font-weight: 600; padding: 8px 12px; }
+.ins-line { display: flex; align-items: center; gap: 8px; width: 100%; margin-top: 10px; padding: 12px 0; border: 0; border-top: 1px solid var(--app-sep); border-bottom: 1px solid var(--app-sep); background: none; text-align: left; font-size: 13px; color: var(--app-muted); }
+.ins-line b { color: var(--app-ink); font-weight: 600; }
+.ins-line > span { flex: 1; min-width: 0; }
+.day-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; padding: 22px 0 4px; font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--app-muted); width: 100%; border: 0; background: none; text-align: left; }
+.day-head .l { display: grid; gap: 2px; min-width: 0; }
+.day-head .l span { text-transform: none; letter-spacing: 0; font-weight: 500; font-size: 12px; }
+.day-head svg { transition: transform 0.15s ease; flex: none; align-self: center; }
+.day-head.folded svg { transform: rotate(-90deg); }
+.row { display: flex; align-items: center; gap: 12px; width: 100%; padding: 11px 0; border: 0; border-bottom: 1px solid var(--app-sep); background: none; text-align: left; }
+.row .ic { width: 20px; display: grid; place-items: center; color: var(--app-muted); flex: none; }
+.row .ic.in { color: var(--accent-ink); }
+.row .t { flex: 1; min-width: 0; display: grid; }
+.row .t b { font-weight: 600; font-size: 14px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.row .t span { font-size: 12px; color: var(--app-muted); }
+.row .a { font-weight: 600; white-space: nowrap; }
+.row .a.pos { color: var(--accent-ink); }
+.lock-row { display: flex; align-items: center; justify-content: center; gap: 8px; width: 100%; margin-top: 16px; padding: 12px; border: 0; background: none; color: var(--app-muted); font-weight: 600; font-size: 13px; }
+.empty { text-align: center; color: var(--app-muted); padding: 28px 10px; font-size: 13px; }
+
+/* Dynamic nav bar */
+.nav-wrap { position: absolute; left: 10px; right: 10px; bottom: 16px; z-index: 35; display: flex; align-items: center; justify-content: space-between; gap: 8px; pointer-events: none; transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease; }
+.nav-wrap.hidden { transform: translateY(96px); opacity: 0; }
+.navbar { pointer-events: auto; display: flex; align-items: center; padding: 4px; border-radius: 999px; background: var(--nav-bg); -webkit-backdrop-filter: blur(20px) saturate(1.6); backdrop-filter: blur(20px) saturate(1.6); box-shadow: inset 0 0 0 1px var(--nav-edge), 0 10px 30px -12px rgba(0, 0, 0, 0.28); }
+.android .navbar { border-radius: 24px; padding: 5px; }
+.nav-item { display: flex; align-items: center; height: 40px; padding: 0 8px; border: 0; border-radius: 999px; background: none; color: var(--app-muted); overflow: hidden; white-space: nowrap; max-width: 34px; transition: max-width 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), padding 0.32s ease, background-color 0.25s ease, color 0.25s ease, opacity 0.2s ease; }
+.android .nav-item { border-radius: 20px; }
+.nav-item svg { flex: none; }
+.nav-item .nl { max-width: 0; opacity: 0; overflow: hidden; margin-left: 0; font-weight: 700; font-size: 12px; transition: max-width 0.32s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.2s ease, margin 0.32s ease; }
+.nav-item.on { background: var(--app-ink); color: var(--app-bg); max-width: 130px; padding: 0 12px 0 10px; }
+.nav-item.on .nl { max-width: 80px; opacity: 1; margin-left: 5px; }
+.navbar.collapsed .nav-item:not(.on) { max-width: 0; padding: 0; opacity: 0; }
+.navbar.collapsed .nav-item.on { max-width: 40px; padding: 0 11px; }
+.navbar.collapsed .nav-item.on .nl { max-width: 0; opacity: 0; margin-left: 0; }
+.nav-plus { pointer-events: auto; flex: none; width: 46px; height: 46px; border-radius: 50%; border: 0; background: var(--accent-ink); color: var(--on-accent); display: grid; place-items: center; box-shadow: 0 10px 24px -10px rgba(4, 80, 55, 0.65); transition: transform 0.12s ease; }
+.android .nav-plus { border-radius: 18px; }
+.nav-plus:active { transform: scale(0.92); }
+
+.undo {
+  position: absolute; left: 14px; right: 14px; bottom: 84px; z-index: 34;
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  padding: 11px 8px 11px 18px; border-radius: 999px; background: var(--snack-bg); color: var(--snack-ink);
+  font-weight: 600; animation: rise 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.undo button { border: 0; background: none; color: var(--snack-act); font-weight: 800; padding: 4px 12px; }
+.android .undo { border-radius: 10px; }
+@keyframes rise { from { transform: translateY(16px); opacity: 0; } to { transform: none; opacity: 1; } }
+.menu {
+  position: absolute; top: 88px; left: 12px; z-index: 45; width: 216px; padding: 6px; border-radius: 14px;
+  background: var(--sheet-bg); box-shadow: 0 16px 40px -10px rgba(0, 0, 0, 0.35), inset 0 0 0 1px var(--app-sep);
+}
+.menu button { display: flex; align-items: center; gap: 8px; width: 100%; padding: 9px 10px; border: 0; background: none; border-radius: 9px; text-align: left; font-weight: 600; }
+.menu button:hover { background: var(--app-fill); }
+.menu .ck { width: 15px; display: inline-grid; }
+.menu .val { margin-left: auto; color: var(--app-muted); font-weight: 500; font-size: 12.5px; }
+.menu hr { border: 0; border-top: 1px solid var(--app-sep); margin: 4px 0; }
+
+/* Pro preview overlay */
+.pro-wrap { position: relative; }
+.pro-wrap .blurred { filter: blur(5px); opacity: 0.5; pointer-events: none; user-select: none; }
+.pro-gate { position: absolute; left: 0; right: 0; top: 70px; display: grid; justify-items: center; gap: 8px; text-align: center; padding: 18px; }
+.pro-gate b { font-size: 17px; }
+.pro-gate span { color: var(--app-muted); font-size: 13px; max-width: 220px; }
+.primary { height: 46px; padding: 0 22px; border: 0; border-radius: 999px; background: var(--accent-ink); color: var(--on-accent); font-weight: 700; font-size: 14.5px; }
+.primary.full { width: 100%; }
+.primary[disabled] { opacity: 0.4; cursor: default; }
+
+/* Insights */
+.ins-hero { display: grid; gap: 2px; padding: 8px 0 18px; border-bottom: 1px solid var(--app-sep); }
+.ins-hero b { font-size: 34px; letter-spacing: -0.02em; }
+.ins-hero span { color: var(--app-muted); font-size: 13px; }
+.sec { font-size: 11.5px; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; color: var(--app-muted); margin: 22px 0 4px; }
+.cyc { padding: 11px 0; display: grid; gap: 2px; border-bottom: 1px solid var(--app-sep); }
+.cyc b { font-size: 14px; }
+.cyc span { font-size: 12px; color: var(--app-muted); }
+.bar { display: grid; grid-template-columns: 90px 1fr auto; align-items: center; gap: 10px; font-size: 12.5px; padding: 6px 0; }
+.bar i { display: block; height: 6px; border-radius: 3px; background: var(--accent); min-width: 4px; }
+.bar b { font-weight: 600; }
+
+/* Envelopes */
+.env { display: grid; gap: 7px; width: 100%; padding: 14px 0; border: 0; border-bottom: 1px solid var(--app-sep); background: none; text-align: left; }
+.env-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.env-top b { font-size: 15px; }
+.env-top span { font-weight: 700; }
+.track { height: 6px; border-radius: 3px; background: var(--app-fill); overflow: hidden; }
+.track i { display: block; height: 100%; border-radius: 3px; background: var(--accent); transition: width 0.4s cubic-bezier(0.2, 0.8, 0.2, 1); }
+.env small { font-size: 12px; color: var(--app-muted); }
+.env small.done { color: var(--accent-ink); font-weight: 600; }
+
+/* Settings */
+.srow { display: flex; align-items: center; justify-content: space-between; gap: 12px; width: 100%; padding: 12px 0; border: 0; border-bottom: 1px solid var(--app-sep); background: none; text-align: left; }
+.srow .lab { display: grid; min-width: 0; }
+.srow .lab b { font-weight: 600; font-size: 14px; }
+.srow .lab span { font-size: 12px; color: var(--app-muted); }
+.srow .val { color: var(--app-muted); font-weight: 600; white-space: nowrap; display: flex; align-items: center; gap: 4px; }
+.sw { position: relative; width: 46px; height: 28px; border-radius: 14px; border: 0; background: var(--app-sep); flex: none; transition: background-color 0.15s ease; }
+.sw span { position: absolute; top: 3px; left: 3px; width: 22px; height: 22px; border-radius: 50%; background: #FFFFFF; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); transition: transform 0.15s ease; }
+.sw[aria-checked="true"] { background: var(--accent); }
+.sw[aria-checked="true"] span { transform: translateX(18px); }
+
+/* App lock */
+.locked { position: absolute; inset: 0; z-index: 50; background: var(--app-bg); display: grid; place-items: center; align-content: center; gap: 12px; text-align: center; padding: 24px; animation: fade 0.2s ease; }
+.locked b { font-size: 18px; }
+.locked span { color: var(--app-muted); font-size: 13px; }
+
+/* Sheets */
+.scrim { position: absolute; inset: 0; z-index: 40; background: var(--scrim); border: 0; animation: fade 0.2s ease; }
+.sheet {
+  position: absolute; left: 0; right: 0; bottom: 0; z-index: 41; max-height: 91%; overflow-y: auto; scrollbar-width: none;
+  background: var(--sheet-bg); border-radius: 26px 26px 0 0; padding: 8px 18px 20px;
+  animation: up 0.3s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.sheet::-webkit-scrollbar { display: none; }
+.still, .still .sheet { animation: none !important; }
+@keyframes up { from { transform: translateY(40%); opacity: 0; } to { transform: none; opacity: 1; } }
+@keyframes fade { from { opacity: 0; } to { opacity: 1; } }
+.grab { width: 36px; height: 5px; border-radius: 3px; background: var(--app-sep); margin: 2px auto 10px; }
+.sheet-h { display: flex; align-items: center; justify-content: space-between; gap: 8px; margin-bottom: 12px; }
+.sheet-h b { font-size: 17px; }
+.x { width: 30px; height: 30px; border-radius: 50%; border: 0; background: var(--app-fill); display: grid; place-items: center; }
+.sheet .muted { color: var(--app-muted); font-size: 13px; margin: 0 0 12px; }
+.pseg { display: flex; padding: 2px; border-radius: 10px; background: var(--app-fill); margin-bottom: 6px; }
+.pseg button { flex: 1; height: 32px; border: 0; border-radius: 8px; background: none; font-weight: 600; }
+.pseg button[aria-pressed="true"] { background: var(--seg-on); box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12); }
+.android .pseg button[aria-pressed="true"] { background: var(--app-ink); color: var(--app-bg); box-shadow: none; }
+.kp-amt { text-align: center; font-size: 40px; font-weight: 700; letter-spacing: -0.02em; padding: 8px 0 4px; white-space: nowrap; overflow: hidden; }
+.kp-amt.add { color: var(--accent-ink); }
+.kp-amt.zero { color: var(--app-faint); }
+.change-btn { display: flex; align-items: center; gap: 6px; margin: 0 auto 8px; height: 30px; padding: 0 12px; border: 0; border-radius: 15px; background: var(--app-fill); font-size: 12.5px; font-weight: 600; }
+.fields { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin: 4px 0 6px; }
+.field { display: grid; gap: 1px; padding: 8px 10px; border: 0; border-radius: 12px; background: var(--app-fill); text-align: left; box-shadow: inset 0 0 0 1.5px transparent; }
+.field.sel { box-shadow: inset 0 0 0 1.5px var(--app-ink); }
+.field span { font-size: 11.5px; color: var(--app-muted); font-weight: 600; }
+.field b { font-size: 19px; white-space: nowrap; overflow: hidden; }
+.calc { text-align: center; font-size: 13px; color: var(--app-muted); margin-bottom: 4px; min-height: 18px; }
+.calc b { color: var(--app-ink); font-size: 15px; }
+.calc.err { color: var(--danger); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 10px; }
+.chips.center { justify-content: center; }
+.chip { display: inline-flex; align-items: center; gap: 5px; height: 30px; padding: 0 11px; border: 0; border-radius: 15px; background: var(--app-fill); font-size: 12.5px; font-weight: 600; }
+.chip[aria-pressed="true"] { background: var(--app-ink); color: var(--app-bg); }
+.chip.locked-chip { color: var(--app-muted); }
+.note { width: 100%; height: 38px; border-radius: 10px; border: 0; padding: 0 12px; background: var(--app-fill); color: var(--app-ink); font: inherit; margin-bottom: 10px; }
+.note::placeholder { color: var(--app-muted); }
+.keys { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; margin-bottom: 10px; }
+.key { height: 44px; border: 0; border-radius: 12px; background: var(--app-fill); font-size: 20px; font-weight: 600; display: grid; place-items: center; }
+.key:active { background: var(--app-sep); }
+.key[disabled] { opacity: 0.3; cursor: default; }
+.save { width: 100%; height: 48px; border: 0; border-radius: 14px; background: var(--accent-ink); color: var(--on-accent); font-weight: 700; font-size: 15px; }
+.save[disabled] { opacity: 0.4; cursor: default; }
+.android .save { border-radius: 999px; }
+.save.sticky { position: sticky; bottom: 0; box-shadow: 0 -10px 16px 4px var(--sheet-bg); }
+.ghost { width: 100%; height: 44px; border: 0; border-radius: 12px; background: var(--app-fill); font-weight: 600; margin-top: 10px; }
+.danger-btn { width: 100%; height: 44px; border: 0; border-radius: 12px; background: var(--app-fill); color: var(--danger); font-weight: 700; margin-top: 14px; }
+.set-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 8px 0; margin-bottom: 6px; }
+.set-row .lab { display: grid; min-width: 0; }
+.set-row .lab span { font-size: 12px; color: var(--app-muted); }
+.cnt-sum { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-bottom: 8px; }
+.cnt-sum div { background: var(--app-fill); border-radius: 12px; padding: 8px 10px; display: grid; }
+.cnt-sum span { font-size: 11.5px; color: var(--app-muted); font-weight: 600; }
+.cnt-sum b { font-size: 17px; }
+.cnt-diff { font-size: 13px; font-weight: 600; padding: 8px 0; margin-bottom: 2px; }
+.cnt-diff.minus { color: var(--danger); }
+.cnt-diff.plus { color: var(--accent-ink); }
+.den { display: flex; align-items: center; justify-content: space-between; padding: 6px 0; }
+.den + .den { border-top: 1px solid var(--app-sep); }
+.den > span { font-weight: 600; }
+.step { display: flex; align-items: center; gap: 4px; }
+.step button { width: 32px; height: 32px; border: 0; border-radius: 10px; background: var(--app-fill); font-size: 18px; font-weight: 600; }
+.step b { min-width: 30px; text-align: center; }
+.step b.wide { min-width: 72px; }
+.dens { margin-bottom: 10px; }
+.fill-foot { font-size: 12.5px; color: var(--app-muted); text-align: center; margin: 8px 0 10px; }
+.fill-foot.err { color: var(--danger); }
+.pw-top { display: grid; justify-items: center; text-align: center; gap: 4px; padding: 6px 0 14px; }
+.pw-top b { font-size: 20px; }
+.pw-top span { color: var(--app-muted); font-size: 13px; }
+.pw-list { list-style: none; margin: 0 0 14px; padding: 0; display: grid; gap: 10px; }
+.pw-list li { display: flex; gap: 10px; align-items: flex-start; font-size: 13.5px; }
+.pw-list svg { color: var(--accent-ink); flex: none; margin-top: 1px; }
+.fine { font-size: 11.5px; color: var(--app-muted); text-align: center; margin: 10px 0 0; }
+.ed-amt { font-size: 34px; font-weight: 700; text-align: center; }
+.ed-amt.pos { color: var(--accent-ink); }
+.ed-meta { text-align: center; color: var(--app-muted); font-size: 13px; margin-bottom: 14px; }
+.lbl { font-size: 12px; font-weight: 700; color: var(--app-muted); margin: 0 0 6px; display: flex; gap: 6px; align-items: center; }
+
+/* Home Screen */
+.wall { position: absolute; inset: 0; z-index: -1; background: radial-gradient(140% 70% at 15% 0%, var(--wall-a), transparent 70%), linear-gradient(165deg, var(--wall-a), var(--wall-b) 75%); }
+.wall.lock { background: radial-gradient(120% 60% at 80% 10%, var(--wall-a), transparent 70%), linear-gradient(180deg, var(--wall-b), var(--wall-a) 140%); }
+.home { position: absolute; inset: 52px 0 0; padding: 4px 16px; display: grid; gap: 16px; align-content: start; }
+.android .home { inset: 40px 0 0; }
+.home-row { display: flex; gap: 14px; }
+.wgt { border-radius: 22px; background: var(--w-bg); color: var(--w-ink); padding: 12px 13px; display: flex; flex-direction: column; -webkit-backdrop-filter: blur(18px); backdrop-filter: blur(18px); }
+.android .wgt { border-radius: 26px; }
+.wgt-m { height: 140px; }
+.wgt-s { width: 132px; height: 132px; flex: none; }
+.w-top { display: flex; justify-content: space-between; align-items: center; gap: 6px; font-size: 11.5px; font-weight: 600; color: var(--w-muted); height: 22px; }
+.w-top span:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.w-stat { white-space: nowrap; }
+.w-stat.ok { color: var(--accent-ink); }
+.w-stat.over { color: var(--danger); }
+.w-undo { align-self: flex-start; display: inline-flex; align-items: center; gap: 4px; height: 22px; padding: 0 9px; border: 0; border-radius: 11px; background: var(--w-ink); color: var(--w-bg); font-size: 11.5px; font-weight: 700; white-space: nowrap; animation: fade 0.2s ease; }
+.w-bal { flex: 1; border: 0; background: none; padding: 0; text-align: left; font-weight: 700; letter-spacing: -0.02em; color: var(--w-ink); white-space: nowrap; overflow: hidden; }
+.wgt-m .w-bal { font-size: 30px; }
+.wgt-s .w-bal { font-size: 23px; }
+.w-btns { display: flex; gap: 6px; }
+.w-btns button { flex: 1 1 0; min-width: 0; height: 34px; border: 0; border-radius: 11px; background: var(--w-fill); color: var(--w-ink); font-weight: 700; font-size: 14.5px; font-variant-numeric: tabular-nums; white-space: nowrap; transition: transform 0.12s ease; }
+.w-btns button:active { transform: scale(0.92); }
+.w-btns button.in { background: var(--accent-soft); color: var(--accent-ink); }
+.android .w-btns button { border-radius: 999px; }
+.icons { display: grid; grid-template-columns: repeat(2, 56px); gap: 6px 20px; align-content: start; }
+.app-ic { display: grid; justify-items: center; gap: 4px; border: 0; background: none; padding: 0; color: var(--wall-ink); font-size: 10.5px; font-weight: 500; }
+.app-ic .sq { width: 56px; height: 56px; border-radius: 14px; display: grid; place-items: center; background: var(--glass); color: var(--wall-ink); -webkit-backdrop-filter: blur(10px); backdrop-filter: blur(10px); }
+.android .app-ic .sq { border-radius: 50%; }
+.app-ic .sq.pc { background: linear-gradient(150deg, #22C58E, #047857); }
+.dock { position: absolute; left: 10px; right: 10px; bottom: 10px; height: 82px; border-radius: 30px; background: var(--glass); -webkit-backdrop-filter: blur(16px); backdrop-filter: blur(16px); display: flex; justify-content: space-around; align-items: center; }
+.dock .sq { width: 54px; height: 54px; border-radius: 14px; background: var(--glass); display: grid; place-items: center; color: var(--wall-ink); }
+.a-dock { position: absolute; left: 16px; right: 16px; bottom: 18px; display: grid; gap: 14px; }
+.a-dock .icons-row { display: flex; justify-content: space-around; }
+.a-dock .sq { width: 52px; height: 52px; border-radius: 50%; background: var(--glass); display: grid; place-items: center; color: var(--wall-ink); }
+.search { height: 46px; border-radius: 23px; background: var(--glass); display: flex; align-items: center; gap: 10px; padding: 0 16px; color: var(--wall-ink); font-size: 13px; opacity: 0.95; }
+
+/* Lock Screen */
+.lock-ui { position: absolute; inset: 46px 0 0; display: grid; justify-items: center; align-content: start; color: var(--wall-ink); text-align: center; }
+.lk-date { font-size: 15px; font-weight: 600; margin-top: 18px; opacity: 0.95; }
+.lk-time { font-family: var(--font-display); font-size: 86px; font-weight: 600; line-height: 1; letter-spacing: -0.03em; }
+.lk-widgets { display: flex; gap: 8px; margin-top: 14px; }
+.acc-rect { width: 150px; height: 64px; border: 0; border-radius: 16px; background: var(--glass); color: var(--wall-ink); display: grid; align-content: center; justify-items: start; padding: 0 12px; text-align: left; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.acc-rect .ar-name { display: flex; align-items: center; gap: 4px; font-size: 11px; font-weight: 600; opacity: 0.9; }
+.acc-rect b { font-size: 18px; line-height: 1.15; }
+.acc-rect span:last-child { font-size: 11px; opacity: 0.9; }
+.acc-circ { width: 64px; height: 64px; border-radius: 50%; border: 0; background: var(--glass); color: var(--wall-ink); display: grid; place-items: center; align-content: center; gap: 1px; font-size: 13px; font-weight: 700; -webkit-backdrop-filter: blur(12px); backdrop-filter: blur(12px); }
+.acc-circ small { font-size: 9.5px; font-weight: 600; opacity: 0.85; }
+.acc-circ.quick { box-shadow: inset 0 0 0 2px var(--wall-ink); }
+.acc-circ.quick:active { transform: scale(0.92); }
+.lk-bottom { position: absolute; left: 0; right: 0; bottom: 34px; display: flex; justify-content: space-between; padding: 0 44px; }
+.lk-btn { width: 48px; height: 48px; border-radius: 50%; background: var(--glass); display: grid; place-items: center; color: var(--wall-ink); }
+
+/* Android Quick Settings */
+.shade { position: absolute; inset: 0; z-index: -1; background: var(--scrim); }
+.qs { position: absolute; inset: 34px 10px auto; padding: 14px 14px 16px; border-radius: 28px; background: var(--sheet-bg); color: var(--app-ink); display: grid; gap: 12px; }
+.qs-time { display: flex; align-items: baseline; justify-content: space-between; font-size: 30px; font-weight: 600; padding: 0 4px; }
+.qs-time span { font-size: 13px; color: var(--app-muted); font-weight: 600; }
+.qs-bright { height: 38px; border-radius: 19px; background: var(--app-fill); overflow: hidden; }
+.qs-bright span { display: block; height: 100%; background: var(--accent-soft); border-radius: 19px; }
+.qs-tiles { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+.tile { display: flex; align-items: center; gap: 9px; height: 64px; padding: 0 12px; border: 0; border-radius: 22px; background: var(--app-fill); color: var(--app-ink); text-align: left; }
+.tile .ti { width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center; flex: none; }
+.tile b { display: block; font-size: 12.5px; font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tile small { display: block; font-size: 11px; color: var(--app-muted); white-space: nowrap; }
+.tile.on { background: var(--accent-ink); color: var(--on-accent); }
+.tile.on small { color: var(--on-accent); opacity: 0.85; }
+.tile.dim { cursor: default; }
+.tile.on:active { transform: scale(0.96); }
+.qs-note { font-size: 11.5px; color: var(--app-muted); text-align: center; margin: 0; }
+
+.toast { position: absolute; top: 54px; left: 14px; right: 14px; z-index: 55; padding: 9px 14px; border-radius: 16px; background: var(--snack-bg); color: var(--snack-ink); font-size: 12.5px; font-weight: 600; text-align: center; box-shadow: 0 10px 24px -8px rgba(0, 0, 0, 0.35); animation: fade 0.2s ease; }
+.android .toast { top: auto; bottom: 84px; border-radius: 10px; }
+
+/* ---------- Sections ---------- */
+section.block { padding-block: 72px; }
+section.block + section.block { border-top: 1px solid var(--line); }
+.section-head { display: grid; gap: 12px; margin-bottom: 32px; max-width: 46rem; }
+.section-head .mono { color: var(--accent-ink); margin: 0; }
+h2 { font-family: var(--font-display); font-weight: 800; font-size: clamp(1.9rem, 3.8vw, 2.75rem); line-height: 1.06; letter-spacing: -0.018em; margin: 0; text-wrap: balance; }
+.section-head p:last-child { color: var(--muted); margin: 0; max-width: 62ch; font-size: 1.05rem; }
+h3 { font-family: var(--font-display); font-weight: 800; font-size: 1.3rem; margin: 0 0 12px; letter-spacing: -0.01em; }
+
+.surfaces { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 20px 48px; }
+.surfaces ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 14px; }
+.surfaces li { display: grid; grid-template-columns: 34px minmax(0, 1fr); gap: 12px; align-items: start; }
+.surfaces li .gl { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; background: var(--accent-soft); color: var(--accent-ink); }
+.surfaces li b { display: block; }
+.surfaces li span { color: var(--muted); font-size: 15px; }
+
+.cur-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 248px), 1fr)); gap: 14px; }
+.cur { display: grid; gap: 12px; padding: 16px; border-radius: 16px; background: var(--surface); border: 1px solid var(--line); text-align: left; cursor: pointer; transition: border-color 0.15s ease; }
+.cur:hover { border-color: var(--accent); }
+.cur[aria-pressed="true"] { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent); }
+.cur-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.cur-top b { font-weight: 700; min-width: 0; }
+.cur-top .mono { color: var(--accent-ink); flex: none; }
+.cur-btns { display: flex; gap: 6px; }
+.cur-btns span { flex: 1 1 0; min-width: 0; text-align: center; padding: 8px 0; border-radius: 10px; background: var(--tint); font-weight: 700; font-variant-numeric: tabular-nums; white-space: nowrap; font-size: 15px; }
+.cur-btns span.in { background: var(--accent-soft); color: var(--accent-ink); }
+.cur-dens { font-family: var(--font-mono); font-size: 11.5px; color: var(--muted); line-height: 1.6; }
+
+.plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 18px; align-items: start; }
+.plan { padding: 26px; border-radius: 20px; border: 1px solid var(--line); background: var(--surface); }
+.plan.pro { background: var(--tint); border-color: var(--accent); }
+.plan-h { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; margin-bottom: 4px; }
+.plan-h h3 { margin: 0; font-size: 1.6rem; }
+.price { font-family: var(--font-display); font-weight: 800; font-size: 1.6rem; color: var(--accent-ink); white-space: nowrap; }
+.plan > p { margin: 0 0 18px; color: var(--muted); }
+.plan ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 11px; }
+.plan li { display: grid; grid-template-columns: 20px minmax(0, 1fr); gap: 10px; }
+.plan li svg { color: var(--accent-ink); margin-top: 3px; }
+.plan li b { font-weight: 700; }
+
+.langs { display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; list-style: none; }
+.langs li { padding: 8px 14px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-weight: 600; }
+.langs li span { color: var(--muted); font-weight: 500; margin-left: 6px; font-size: 14px; }
+
+.promise { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 230px), 1fr)); gap: 28px; }
+.promise div { display: grid; gap: 8px; align-content: start; padding-top: 14px; border-top: 2px solid var(--accent); }
+.promise b { font-family: var(--font-display); font-size: 1.25rem; font-weight: 800; }
+.promise span { color: var(--muted); }
+
+footer { border-top: 1px solid var(--line); padding-block: 28px 40px; color: var(--muted); font-size: 14px; }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; scroll-behavior: auto !important; }
+}
+</style>
+</head>
+<body>
+
+<div class="top-band">
+  <header class="wrap top">
+    <a class="brand" href="#demo" aria-label="PocketCash">
+      <svg width="32" height="32" viewBox="0 0 32 32" aria-hidden="true">
+        <defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#22C58E"/><stop offset="1" stop-color="#047857"/></linearGradient></defs>
+        <rect width="32" height="32" rx="8" fill="url(#bg)"/>
+        <rect x="9" y="7" width="13" height="8" rx="1.5" fill="#BBF7D0" transform="rotate(-8 15 11)"/>
+        <rect x="6" y="11" width="20" height="14" rx="3" fill="#FFFFFF"/>
+        <rect x="19" y="16" width="7" height="4.5" rx="2.2" fill="#0E9F6E"/>
+      </svg>
+      PocketCash
+    </a>
+    <nav class="nav" aria-label="Sections">
+      <a href="#demo">Try it</a>
+      <a href="#currencies">Currencies</a>
+      <a href="#plans">Free and Pro</a>
+      <a href="#privacy">Privacy</a>
+    </nav>
+    <a class="source" href="https://github.com/Zeroosol/PocketCash">Source</a>
+  </header>
+
+  <section class="hero" id="demo" aria-label="PocketCash and a working preview">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow mono">Cash wallet tracker for iPhone and Android</p>
+        <h1>Tap <span class="amt-chip" id="h1amt">−₱50</span> when you pay.</h1>
+        <p class="lede">PocketCash keeps the balance of your physical wallet on your Home Screen. One tap on the widget when cash leaves your hand, and the number is right again. No account, no bank login, and nothing leaves your phone.</p>
+        <ul class="facts">
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Widgets work without opening the app</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Undo on every tap</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>In 7 languages</li>
+          <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12l5 5L20 7"/></svg>Free, with Pro for $3.99 once</li>
+        </ul>
+        <p class="try"><b>The phone here is a working preview</b> with a sample wallet. Tap the buttons and scroll to watch the nav bar shrink. Then turn on Pro in Settings to try envelopes, insights, the change calculator and the Lock Screen buttons.</p>
+        <p class="status-line mono">In testing · iOS 18+ · Android 8+</p>
+      </div>
+
+      <div class="demo">
+        <div class="demo-controls">
+          <div class="seg" role="group" aria-label="Platform">
+            <button type="button" data-plat="ios" aria-pressed="true">iPhone</button>
+            <button type="button" data-plat="android" aria-pressed="false">Android</button>
+          </div>
+          <label class="cur-pick" for="currency">Currency
+            <select id="currency"></select>
+          </label>
+        </div>
+        <div class="seg" role="tablist" aria-label="Screen">
+          <button type="button" role="tab" data-screen="app" aria-selected="true">App</button>
+          <button type="button" role="tab" data-screen="home" aria-selected="false">Home Screen</button>
+          <button type="button" role="tab" data-screen="lock" aria-selected="false" id="tab-lock">Lock Screen</button>
+        </div>
+        <div class="stage" id="stage">
+          <canvas id="guilloche" aria-hidden="true"></canvas>
+          <div class="phone ios" id="phone" role="region" aria-label="PocketCash preview phone"></div>
+        </div>
+        <p class="hint" id="hint" aria-live="polite"></p>
+      </div>
+    </div>
+  </section>
+  <div class="microprint" aria-hidden="true" id="microprint"></div>
+</div>
+
+<main>
+  <section class="block" id="surfaces">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Where you tap</p>
+        <h2>Log cash at the counter, before the moment passes</h2>
+        <p>Opening an app to type an amount is why cash tracking usually fails. PocketCash puts the buttons where your thumb already is.</p>
+      </div>
+      <div class="surfaces">
+        <div>
+          <h3>On iPhone</h3>
+          <ul>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg></span><span><b>Home Screen widgets</b><span>Small and medium, with live balance, 1-tap buttons and Undo right on the widget.</span></span></li>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="6" y="2" width="12" height="20" rx="3"/><path d="M10 6h4"/></svg></span><span><b>Lock Screen and Control Center</b><span>Balance at a glance, and a Quick spend button for your most common payment.</span></span></li>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a3 3 0 0 1 3 3v6a3 3 0 0 1-6 0V6a3 3 0 0 1 3-3z"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/></svg></span><span><b>Siri and Shortcuts</b><span>"Spend cash in PocketCash", "Cash balance in PocketCash".</span></span></li>
+          </ul>
+        </div>
+        <div>
+          <h3>On Android</h3>
+          <ul>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="8" height="8" rx="2"/><rect x="13" y="3" width="8" height="8" rx="2"/><rect x="3" y="13" width="18" height="8" rx="2"/></svg></span><span><b>Home screen widgets</b><span>2×2 and 4×2 sizes with the same buttons, a short vibration and Undo.</span></span></li>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="8" height="6" rx="3"/><rect x="13" y="4" width="8" height="6" rx="3"/><rect x="3" y="14" width="8" height="6" rx="3"/><rect x="13" y="14" width="8" height="6" rx="3"/></svg></span><span><b>Quick Settings tile</b><span>Pull down, tap Quick spend. The tile shows your balance.</span></span></li>
+            <li><span class="gl"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span><span><b>Launcher shortcuts and reminders</b><span>Long-press the icon for Spend, Add cash or Count my cash. Get a notification when cash runs low.</span></span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="currencies">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">30 currencies tuned by hand</p>
+        <h2>Buttons sized to the cash you carry</h2>
+        <p>Pesos get +1k and −100. Dollars get +100 and −20. Each currency comes with buttons and countable bills and coins that match what people actually hand over, and any other currency gets sensible defaults. Pick one to load it into the preview.</p>
+      </div>
+      <div class="cur-grid" id="cur-grid"></div>
+    </div>
+  </section>
+
+  <section class="block" id="plans">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Free and Pro</p>
+        <h2>Free covers the basics. Pro has the best of PocketCash.</h2>
+        <p>The free app keeps one wallet accurate, with no limits on taps or time. Pro adds envelopes, insights, more wallets and quick spend everywhere, for one purchase.</p>
+      </div>
+      <div class="plans">
+        <div class="plan">
+          <div class="plan-h"><h3>Free</h3><span class="price">$0</span></div>
+          <p>The basics for keeping one wallet accurate.</p>
+          <ul id="free-list"></ul>
+        </div>
+        <div class="plan pro">
+          <div class="plan-h"><h3>Pro</h3><span class="price">$3.99 once</span></div>
+          <p>No subscription. Buy once on the App Store or Google Play.</p>
+          <ul id="pro-list"></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="languages">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Languages</p>
+        <h2>Speaks the language of the places that still pay in cash</h2>
+        <p>The whole app, widgets included, in seven languages. Amounts and dates follow your phone's region, and you can pick a different language just for PocketCash in your phone's settings.</p>
+      </div>
+      <ul class="langs">
+        <li>English</li><li>Filipino</li><li>Español</li><li>Bahasa Indonesia</li><li>Português</li><li>हिन्दी<span>Hindi</span></li><li>Tiếng Việt</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="privacy">
+    <div class="wrap">
+      <div class="section-head">
+        <p class="mono">Privacy</p>
+        <h2>Your wallet stays in your pocket</h2>
+        <p>PocketCash only knows what you tap into it, and it keeps that on your phone.</p>
+      </div>
+      <div class="promise">
+        <div><b>No account</b><span>Open it and start. There is nothing to sign up for and no bank to connect.</span></div>
+        <div><b>Stays on your phone</b><span>The Android app doesn't even ask for internet access. A backup file only goes where you save it, and it restores on iPhone or Android.</span></div>
+        <div><b>Locks with your face</b><span>With Pro, App lock opens PocketCash only with Face ID, Touch ID, your fingerprint or your passcode.</span></div>
+        <div><b>No trackers</b><span>No ads, no analytics and no third-party code. Only the Pro purchase goes through the store.</span></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>PocketCash preview. The phone above uses a sample wallet and saves nothing.</span>
+    <a href="https://github.com/Zeroosol/PocketCash">Source on GitHub</a>
+  </div>
+</footer>
+
+<script src="presets.js"></script>
+<script src="ledger.js"></script>
+<script>
+(function () {
+  'use strict';
+
+  const PRESETS = window.POCKETCASH_PRESETS;
+  const L = window.PocketLedger;
+  const DAY = 86400000;
+  const MINUS = '−';
+  const $ = (sel, el) => (el || document).querySelector(sel);
+  const esc = s => String(s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // ---------- Icons (24px stroke) ----------
+  const P = {
+    food: '<path d="M7 3v8M5 3v5a2 2 0 0 0 4 0V3M7 11v10M17 3c-2.2 1.6-2.2 6.4 0 8v10"/>',
+    transit: '<rect x="5" y="3" width="14" height="14" rx="3"/><path d="M5 11h14M8 21l1-4M16 21l-1-4"/>',
+    parking: '<rect x="4" y="3" width="16" height="18" rx="4"/><path d="M10 16V8h3a2.5 2.5 0 0 1 0 5h-3"/>',
+    groceries: '<path d="M3 4h2l2.2 11h10.6L20 7H6.2"/><circle cx="9" cy="19" r="1.3"/><circle cx="17" cy="19" r="1.3"/>',
+    errand: '<path d="M5 8h14l-1 13H6L5 8z"/><path d="M9 8V6a3 3 0 0 1 6 0v2"/>',
+    tip: '<path d="M7 11v9H4v-9h3zM7 11l4-7a2 2 0 0 1 3 2l-1 4h6a2 2 0 0 1 2 2.3l-1.2 6A2 2 0 0 1 17.8 20H7"/>',
+    bills: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5M9 12h7M9 16h7"/>',
+    fun: '<path d="M12 3l1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8z"/>',
+    other: '<circle cx="6" cy="12" r="1"/><circle cx="12" cy="12" r="1"/><circle cx="18" cy="12" r="1"/>',
+    spend: '<rect x="3" y="6" width="18" height="12" rx="2"/><circle cx="12" cy="12" r="2.5"/>',
+    in: '<path d="M12 4v11M7 10l5 5 5-5M5 20h14"/>',
+    atm: '<rect x="3" y="4" width="18" height="10" rx="2"/><path d="M7 14v6h10v-6M10 17h4"/>',
+    adjust: '<path d="M12 4v16M5 7h14M7 7l-3 6a3 3 0 0 0 6 0zM17 7l-3 6a3 3 0 0 0 6 0zM9 20h6"/>',
+    transfer: '<path d="M4 8h15l-3-3M20 16H5l3 3"/>',
+    home: '<path d="M4 11l8-7 8 7v9a1 1 0 0 1-1 1h-4v-6h-6v6H5a1 1 0 0 1-1-1z"/>',
+    insights: '<path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/>',
+    envelope: '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>',
+    gear: '<circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .3 1.8l.1.1a2 2 0 1 1-2.8 2.8l-.1-.1a1.7 1.7 0 0 0-1.8-.3 1.7 1.7 0 0 0-1 1.5V21a2 2 0 1 1-4 0v-.1a1.7 1.7 0 0 0-1.1-1.5 1.7 1.7 0 0 0-1.8.3l-.1.1a2 2 0 1 1-2.8-2.8l.1-.1a1.7 1.7 0 0 0 .3-1.8 1.7 1.7 0 0 0-1.5-1H3a2 2 0 1 1 0-4h.1a1.7 1.7 0 0 0 1.5-1.1 1.7 1.7 0 0 0-.3-1.8l-.1-.1a2 2 0 1 1 2.8-2.8l.1.1a1.7 1.7 0 0 0 1.8.3H9a1.7 1.7 0 0 0 1-1.5V3a2 2 0 1 1 4 0v.1a1.7 1.7 0 0 0 1 1.5 1.7 1.7 0 0 0 1.8-.3l.1-.1a2 2 0 1 1 2.8 2.8l-.1.1a1.7 1.7 0 0 0-.3 1.8V9a1.7 1.7 0 0 0 1.5 1H21a2 2 0 1 1 0 4h-.1a1.7 1.7 0 0 0-1.5 1z"/>',
+    down: '<path d="M6 9l6 6 6-6"/>',
+    right: '<path d="M9 6l6 6-6 6"/>',
+    flame: '<path d="M12 3c1 3.5 5 5.5 5 10a5 5 0 0 1-10 0c0-2.2 1.2-3.6 2.2-4.6.3 1.6 1 2.6 1.8 3.1C11 9 11 6 12 3z"/>',
+    lock: '<rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+    face: '<path d="M4 8V6a2 2 0 0 1 2-2h2M16 4h2a2 2 0 0 1 2 2v2M20 16v2a2 2 0 0 1-2 2h-2M8 20H6a2 2 0 0 1-2-2v-2"/><path d="M9 9v1M15 9v1M12 9v4h-1M9.5 15.5a3.5 3.5 0 0 0 5 0"/>',
+    undo: '<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 0 12h-3"/>',
+    close: '<path d="M6 6l12 12M18 6L6 18"/>',
+    check: '<path d="M5 12l5 5L20 7"/>',
+    plus: '<path d="M12 5v14M5 12h14"/>',
+    swap: '<path d="M7 4L3 8l4 4M3 8h13M17 20l4-4-4-4M21 16H8"/>',
+    wallet: '<path d="M4 7a2 2 0 0 1 2-2h11v4"/><rect x="3" y="7" width="18" height="13" rx="2.5"/><path d="M16 13.5h2"/>',
+    del: '<path d="M9 5h11v14H9l-6-7z"/><path d="M12.5 9.5l5 5M17.5 9.5l-5 5"/>',
+    note: '<path d="M6 3h12v18H6z"/><path d="M9 8h6M9 12h6M9 16h3"/>',
+    clock: '<circle cx="12" cy="12" r="8"/><path d="M12 8v4l3 2"/>',
+    camera: '<path d="M4 8h3l2-3h6l2 3h3v11H4z"/><circle cx="12" cy="13" r="3.5"/>',
+    phone: '<path d="M6 3h3l2 5-2.5 1.5a11 11 0 0 0 6 6L16 13l5 2v3a2 2 0 0 1-2 2A16 16 0 0 1 4 5a2 2 0 0 1 2-2"/>',
+    chat: '<path d="M4 5h16v11H9l-5 4z"/>',
+    globe: '<circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 2.5 15.3 0 18M12 3c-2.5 2.7-2.5 15.3 0 18"/>',
+    music: '<path d="M9 18V5l11-2v13"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="17.5" cy="16" r="2.5"/>',
+    flash: '<path d="M9 2h6l-1 6h4l-8 14 2-10H8z"/>',
+    wifi: '<path d="M2 9a15 15 0 0 1 20 0M5.5 12.5a10 10 0 0 1 13 0M9 16a5 5 0 0 1 6 0"/><circle cx="12" cy="19.5" r=".8"/>',
+    bt: '<path d="M7 7l10 10-5 4V3l5 4L7 17"/>',
+    moon: '<path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/>',
+    battery: '<rect x="3" y="7" width="16" height="10" rx="2"/><path d="M21 10v4"/>',
+    search: '<circle cx="11" cy="11" r="6"/><path d="M20 20l-4.5-4.5"/>',
+    layers: '<path d="M12 3l9 5-9 5-9-5z"/><path d="M3 13l9 5 9-5"/>',
+    tag: '<path d="M3 12V4h8l10 10-8 8z"/><circle cx="7.5" cy="8.5" r="1.3"/>',
+    file: '<path d="M6 3h9l4 4v14H6z"/><path d="M14 3v5h5"/>',
+    sliders: '<path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/>',
+  };
+  const ico = (name, size, sw) => `<svg width="${size || 16}" height="${size || 16}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="${sw || 2}" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${P[name]}</svg>`;
+
+  const STATUS_ICONS =
+    '<svg width="17" height="11" viewBox="0 0 17 11" fill="currentColor" aria-hidden="true"><rect x="0" y="7" width="3" height="4" rx=".7"/><rect x="4.5" y="5" width="3" height="6" rx=".7"/><rect x="9" y="2.5" width="3" height="8.5" rx=".7"/><rect x="13.5" y="0" width="3" height="11" rx=".7"/></svg>' +
+    '<svg width="15" height="11" viewBox="0 0 15 11" fill="currentColor" aria-hidden="true"><path d="M7.5 2.2c2.2 0 4.2.8 5.7 2.2l1.1-1.1A9.6 9.6 0 0 0 7.5.6 9.6 9.6 0 0 0 .7 3.3l1.1 1.1a8 8 0 0 1 5.7-2.2zm0 3.1c1.3 0 2.5.5 3.5 1.3l1.1-1.1a6.6 6.6 0 0 0-9.2 0L4 6.6c1-.8 2.2-1.3 3.5-1.3zm0 3.1c.5 0 1 .2 1.3.5L7.5 10.2 6.2 8.9c.3-.3.8-.5 1.3-.5z"/></svg>' +
+    '<svg width="25" height="12" viewBox="0 0 25 12" fill="none" aria-hidden="true"><rect x=".5" y=".5" width="21" height="11" rx="3.2" stroke="currentColor" opacity=".45"/><rect x="2" y="2" width="15" height="8" rx="2" fill="currentColor"/><path d="M23 4v4c.8-.3 1.3-1.1 1.3-2S23.8 4.3 23 4z" fill="currentColor" opacity=".45"/></svg>';
+
+  const CATS = [
+    ['food', 'Food & drinks'], ['transit', 'Transit'], ['parking', 'Parking'], ['groceries', 'Groceries'],
+    ['errand', 'Errands'], ['tip', 'Tips'], ['bills', 'Bills'], ['fun', 'Fun'], ['other', 'Other'],
+  ];
+  const CAT_LABEL = Object.fromEntries(CATS);
+  const TABS = [['home', 'Home', 'home'], ['insights', 'Insights', 'insights'], ['envelopes', 'Envelopes', 'envelope'], ['settings', 'Settings', 'gear']];
+
+  // ---------- Money formatting (docs/spec.md section 3) ----------
+  const nfCache = new Map();
+  function nf(code, digits) {
+    const key = code + '|' + digits;
+    if (!nfCache.has(key)) {
+      nfCache.set(key, new Intl.NumberFormat('en-US', {
+        style: 'currency', currency: code, currencyDisplay: 'narrowSymbol',
+        minimumFractionDigits: digits, maximumFractionDigits: digits,
+      }));
+    }
+    return nfCache.get(key);
+  }
+  const fdCache = {};
+  const fd = code => (code in fdCache) ? fdCache[code]
+    : (fdCache[code] = new Intl.NumberFormat('en-US', { style: 'currency', currency: code }).resolvedOptions().maximumFractionDigits);
+  /** Full amount: fraction digits only when the amount isn't whole; U+2212 for negatives. */
+  function money(cents, signed, code) {
+    code = code || S.code;
+    const whole = cents % 100 === 0;
+    const text = nf(code, whole ? 0 : Math.max(fd(code), 2)).format(Math.abs(cents) / 100);
+    if (cents < 0) return MINUS + text;
+    return signed && cents > 0 ? '+' + text : text;
+  }
+  function symbol(code) {
+    const part = nf(code || S.code, 0).formatToParts(1).find(p => p.type === 'currency');
+    return part ? part.value : '';
+  }
+  const oneDecimal = x => { const r = Math.round(x * 10) / 10; return Number.isInteger(r) ? String(r) : r.toFixed(1); };
+  function shortNumber(v) {
+    if (v >= 1e6) return oneDecimal(v / 1e6) + 'M';
+    if (v >= 1000) return oneDecimal(v / 1000) + 'k';
+    return String(+v.toFixed(2));
+  }
+  const label = (cents, cashIn) => (cashIn ? '+' : MINUS) + shortNumber(Math.abs(cents) / 100);
+  const compact = cents => (cents < 0 ? MINUS : '') + symbol() + shortNumber(Math.abs(cents) / 100);
+  const fmtTime = ms => new Date(ms).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit' });
+  const fmtMonthDay = ms => new Date(ms).toLocaleDateString('en-US', { month: 'short', day: 'numeric' });
+  const fmtDay = ms => new Date(ms).toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+  const clockText = () => { const d = new Date(); return (d.getHours() % 12 || 12) + ':' + String(d.getMinutes()).padStart(2, '0'); };
+  const isoDate = () => { const d = new Date(); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+
+  // ---------- Presets and the sample wallets ----------
+  const toCents = v => Math.round(v * 100);
+  function presetsFor(code) {
+    const p = PRESETS.currencies[code] || PRESETS.default;
+    const spend = p.spend.map(toCents);
+    while (spend.length < 4) spend.push(spend[spend.length - 1]);
+    return { add: p.add.map(toCents), spend, denominations: p.denominations.map(toCents) };
+  }
+
+  let seq = 0;
+  const newId = () => 'u' + (++seq);
+
+  function sampleWallets(code, now) {
+    const p = presetsFor(code);
+    const A = p.add[0];
+    const A2 = p.add[1] || p.add[0];
+    const [s0, s1, s2, s3] = p.spend;
+    const at = (daysAgo, h, m) => { const d = new Date(now); d.setDate(d.getDate() - daysAgo); d.setHours(h, m, 0, 0); return d.getTime(); };
+    const ago = minutes => now - minutes * 60000;
+    const tx = (amount, kind, time, tag, note) => ({ id: newId(), amount, kind, at: time, tag: tag || null, note: note || null, transferID: null });
+    const main = [
+      tx(A2, 'adjust', at(6, 8, 5), null, 'Starting cash'),
+      tx(-s2, 'spend', at(6, 8, 40), 'transit'),
+      tx(2 * A, 'atm', at(6, 9, 10)),
+      tx(-s1, 'spend', at(6, 12, 40), 'food', 'Lunch'),
+      tx(-s2, 'spend', at(5, 8, 15), 'transit'),
+      tx(-s0, 'spend', at(5, 18, 5), 'groceries', 'Market'),
+      tx(-s0, 'spend', at(4, 13, 0), 'food', 'Dinner out'),
+      tx(-s1, 'spend', at(3, 17, 30), 'errand', 'Laundry'),
+      tx(-s3, 'spend', at(3, 19, 45), 'tip'),
+      tx(-s2, 'adjust', at(2, 8, 0)),
+      tx(A, 'atm', at(2, 9, 30)),
+      tx(-s1, 'spend', at(2, 12, 20), 'food', 'Lunch'),
+      tx(-s2, 'spend', at(1, 8, 10), 'transit'),
+      tx(-s0, 'spend', at(1, 18, 40), 'groceries', 'Market'),
+      tx(A2, 'in', at(1, 20, 0), null, 'Paid back'),
+      tx(-s2, 'spend', ago(190), 'transit', 'Bus fare'),
+      tx(-s1, 'spend', ago(50), 'food', 'Coffee'),
+    ].filter(t => t.at <= now);
+    const envelope = (name, target, start) => ({ id: newId(), name, target, txs: [tx(start, 'adjust', at(6, 8, 0), null, 'Starting cash')] });
+    return [
+      { id: 'main', name: 'Main Wallet', target: null, txs: main },
+      envelope('Rent', 5 * A, Math.round(1.9 * A)),
+      envelope('Food', 15 * s0, 6 * s0),
+      envelope('Savings', 20 * A, Math.round(6.5 * A)),
+    ];
+  }
+
+  function guessCurrency() {
+    const tag = (navigator.languages && navigator.languages[0]) || navigator.language || '';
+    const region = (tag.split('-')[1] || '').toUpperCase();
+    const euro = ['AT', 'BE', 'CY', 'DE', 'EE', 'ES', 'FI', 'FR', 'GR', 'HR', 'IE', 'IT', 'LT', 'LU', 'LV', 'MT', 'NL', 'PT', 'SI', 'SK'];
+    const map = {
+      AE: 'AED', AU: 'AUD', BD: 'BDT', BR: 'BRL', CA: 'CAD', CH: 'CHF', CN: 'CNY', EG: 'EGP', GB: 'GBP', HK: 'HKD',
+      ID: 'IDR', IN: 'INR', JP: 'JPY', KE: 'KES', KR: 'KRW', MX: 'MXN', MY: 'MYR', NG: 'NGN', PH: 'PHP', PK: 'PKR',
+      PL: 'PLN', SA: 'SAR', SG: 'SGD', TH: 'THB', TR: 'TRY', TW: 'TWD', US: 'USD', VN: 'VND', ZA: 'ZAR',
+    };
+    const code = euro.includes(region) ? 'EUR' : map[region];
+    return code && PRESETS.currencies[code] ? code : 'PHP';
+  }
+
+  // ---------- State ----------
+  const S = {
+    code: guessCurrency(),
+    platform: /Android/i.test(navigator.userAgent) ? 'android' : 'ios',
+    screen: 'app',
+    tab: 'home',
+    navCollapsed: false,
+    isPro: false,
+    privacy: false,
+    budgetOn: true,
+    plusIsATM: true,
+    appLock: false,
+    locked: false,
+    wallets: [],
+    cur: 'main',
+    undo: null,     // app banner: { id, until, text }
+    wundo: null,    // widget chip: { id, until, amount }
+    toast: null,    // { text, until }
+    sheet: null,    // keypad | count | paywall | edit | fill
+    menu: false,
+    kp: null,
+    count: null,
+    fill: null,
+    editId: null,
+    collapsed: new Set(),
+  };
+  let renderedSheet = null;
+  let renderedTab = null;
+  let lastBalance = null;
+  let lastMinute = '';
+
+  const presets = () => presetsFor(S.code);
+  const walletById = id => S.wallets.find(w => w.id === id);
+  const main = () => S.wallets[0];
+  const cur = () => walletById(S.cur) || main();
+  const balanceOf = w => L.balance(w.txs);
+  const spentToday = w => L.todaySpent(w.txs, Date.now());
+  const budget = () => (S.isPro && S.budgetOn ? presets().spend[0] * 3 : 0);
+  const quickAmount = () => presets().spend[3];
+
+  function resetWallets() {
+    S.wallets = sampleWallets(S.code, Date.now());
+    S.cur = 'main';
+    S.undo = S.wundo = S.toast = null;
+    S.sheet = null;
+    S.menu = false;
+    S.locked = false;
+    S.collapsed.clear();
+    lastBalance = null;
+  }
+
+  function counterpart(t) {
+    if (!t.transferID) return null;
+    for (const w of S.wallets) {
+      const other = w.txs.find(x => x.transferID === t.transferID && x.id !== t.id);
+      if (other) return w;
+    }
+    return null;
+  }
+
+  function kindInfo(t) {
+    switch (t.kind) {
+      case 'spend': return { label: 'Spent', icon: 'spend' };
+      case 'in': return { label: 'Cash in', icon: 'in' };
+      case 'atm': return { label: 'ATM withdrawal', icon: 'atm' };
+      case 'adjust': return { label: t.amount < 0 ? 'Unrecorded spending' : 'Found cash', icon: 'adjust' };
+      default: {
+        const w = counterpart(t);
+        return { label: w ? (t.amount < 0 ? `To ${w.name}` : `From ${w.name}`) : 'Transfer', icon: 'transfer' };
+      }
+    }
+  }
+
+  // ---------- Actions ----------
+  function buzz(ms) {
+    const tapped = !navigator.userActivation || navigator.userActivation.hasBeenActive;
+    if (navigator.vibrate && tapped) { try { navigator.vibrate(ms); } catch (e) { /* not allowed here */ } }
+  }
+
+  function addTx(amount, kind, opts) {
+    opts = opts || {};
+    const w = opts.wallet || cur();
+    const t = { id: newId(), amount, kind, at: Date.now(), tag: opts.tag || null, note: opts.note || null, transferID: null };
+    w.txs.push(t);
+    const now = Date.now();
+    S.undo = { id: t.id, until: now + 5000, text: amount < 0 ? `${money(amount)} spent` : `${money(amount, true)} added` };
+    if (opts.from === 'widget') S.wundo = { id: t.id, until: now + 8000, amount };
+    buzz(12);
+    return t;
+  }
+
+  function removeTx(id) {
+    for (const w of S.wallets) {
+      const t = w.txs.find(x => x.id === id);
+      if (!t) continue;
+      const pair = t.transferID;
+      for (const w2 of S.wallets) w2.txs = w2.txs.filter(x => x.id !== id && !(pair && x.transferID === pair));
+    }
+    if (S.undo && S.undo.id === id) S.undo = null;
+    if (S.wundo && S.wundo.id === id) S.wundo = null;
+  }
+
+  function toast(text, ms) { S.toast = { text, until: Date.now() + (ms || 2600) }; }
+
+  // Keypad and the change calculator (docs/spec.md 7.2)
+  function openKeypad(mode) {
+    S.kp = { mode, paid: '', change: '', field: 'paid', changeOn: false, atm: S.plusIsATM, tag: null, note: '' };
+    S.sheet = 'keypad';
+    S.menu = false;
+  }
+  const entryCents = s => { const v = parseFloat(s || '0'); return Number.isFinite(v) ? Math.round(v * 100) : 0; };
+  function keypadTotals() {
+    const paid = entryCents(S.kp.paid);
+    const change = S.kp.changeOn ? entryCents(S.kp.change) : 0;
+    const spend = paid - change;
+    const valid = paid > 0 && (!S.kp.changeOn || change < paid);
+    return { paid, change, amount: valid ? spend : 0, error: S.kp.changeOn && change > 0 && change >= paid };
+  }
+  function keypadKey(k) {
+    const kp = S.kp;
+    const field = kp.changeOn && kp.field === 'change' ? 'change' : 'paid';
+    let entry = kp[field];
+    if (k === 'del') entry = entry.slice(0, -1);
+    else if (k === '.') {
+      if (!fd(S.code) || entry.includes('.')) return;
+      entry = (entry || '0') + '.';
+    } else {
+      const [whole, frac] = entry.split('.');
+      if (frac !== undefined && frac.length >= fd(S.code)) return;
+      if (frac === undefined && whole.length >= 9) return;
+      if (entry === '0') entry = '';
+      entry += k;
+    }
+    kp[field] = entry;
+  }
+  function billChips() {
+    const p = presets();
+    return p.denominations.filter(d => d >= p.spend[0]).sort((a, b) => b - a).slice(0, 4);
+  }
+  function saveKeypad() {
+    const { amount } = keypadTotals();
+    if (!amount) return;
+    const spend = S.kp.mode === 'spend';
+    addTx(spend ? -amount : amount, spend ? 'spend' : (S.kp.atm ? 'atm' : 'in'), { tag: S.isPro ? S.kp.tag : null, note: S.kp.note.trim() });
+    S.sheet = null;
+  }
+
+  function openCount() {
+    const p = presets();
+    const target = Math.max(balanceOf(cur()) - p.spend[3], 0);
+    const counts = {};
+    let rest = target;
+    for (const d of p.denominations) { counts[d] = Math.floor(rest / d); rest -= counts[d] * d; }
+    S.count = { counts };
+    S.sheet = 'count';
+    S.menu = false;
+  }
+  const counted = () => Object.entries(S.count.counts).reduce((s, [d, n]) => s + Number(d) * n, 0);
+
+  // Envelopes (docs/spec.md section 10)
+  const progress = w => (w.target > 0 ? Math.min(Math.max(balanceOf(w) / w.target, 0), 1) : null);
+  const shortBy = w => (w.target > 0 ? Math.max(w.target - balanceOf(w), 0) : 0);
+  function openFill() {
+    const source = main();
+    let left = Math.max(balanceOf(source), 0);
+    const amounts = {};
+    for (const w of S.wallets.slice(1)) {
+      const give = w.target ? Math.min(shortBy(w), left) : 0;
+      amounts[w.id] = give;
+      left -= give;
+    }
+    S.fill = { amounts };
+    S.sheet = 'fill';
+  }
+  function saveFill() {
+    const source = main();
+    const at = Date.now();
+    let moved = 0;
+    for (const [id, amount] of Object.entries(S.fill.amounts)) {
+      if (!amount) continue;
+      const pair = newId();
+      source.txs.push({ id: newId(), amount: -amount, kind: 'transfer', at, tag: null, note: null, transferID: pair });
+      walletById(id).txs.push({ id: newId(), amount, kind: 'transfer', at, tag: null, note: null, transferID: pair });
+      moved += amount;
+    }
+    S.sheet = null;
+    toast(`Moved ${money(moved)} into envelopes`);
+  }
+
+  function selectTab(tab) {
+    if (tab === S.tab) {
+      if (S.navCollapsed) S.navCollapsed = false;
+      else { const sc = $('#phone .app-scroll'); if (sc) sc.scrollTo({ top: 0, behavior: reducedMotion ? 'auto' : 'smooth' }); }
+      return;
+    }
+    S.tab = tab;
+    S.navCollapsed = false;
+    S.menu = false;
+    buzz(6);
+  }
+
+  const actions = {
+    'pad-in': v => addTx(+v, S.plusIsATM ? 'atm' : 'in'),
+    'pad-out': v => addTx(-v, 'spend'),
+    'w-in': v => addTx(+v, S.plusIsATM ? 'atm' : 'in', { from: 'widget', wallet: main() }),
+    'w-out': v => addTx(-v, 'spend', { from: 'widget', wallet: main() }),
+    'w-undo': v => removeTx(v),
+    undo: v => removeTx(v),
+    'open-app': () => { S.screen = 'app'; },
+    tab: v => selectTab(v),
+    plus: () => openKeypad('spend'),
+    custom: () => openKeypad('spend'),
+    count: () => openCount(),
+    paywall: () => { S.sheet = 'paywall'; S.menu = false; },
+    'wallet-menu': () => { S.menu = !S.menu; },
+    'pick-wallet': v => {
+      S.menu = false;
+      if (v === 'main' || S.isPro) { S.cur = v; S.tab = 'home'; lastBalance = null; } else S.sheet = 'paywall';
+    },
+    'add-wallet': () => {
+      S.menu = false;
+      if (S.isPro) toast('In the app: name it, pick a currency, set a target');
+      else S.sheet = 'paywall';
+    },
+    row: v => { S.editId = v; S.sheet = 'edit'; },
+    close: () => { S.sheet = null; S.menu = false; },
+    'kp-mode': v => { S.kp.mode = v; S.kp.changeOn = false; S.kp.field = 'paid'; },
+    'kp-key': v => keypadKey(v),
+    'kp-change': () => { if (!S.isPro) { S.sheet = 'paywall'; return; } S.kp.changeOn = true; S.kp.field = 'change'; },
+    'kp-field': v => { S.kp.field = v; },
+    'kp-bill': v => { S.kp.paid = String(+v / 100); S.kp.changeOn = true; S.kp.field = 'change'; },
+    'kp-nochange': () => { S.kp.changeOn = false; S.kp.change = ''; S.kp.field = 'paid'; },
+    'kp-atm': () => { S.kp.atm = !S.kp.atm; },
+    'kp-tag': v => { S.kp.tag = S.kp.tag === v ? null : v; },
+    'kp-save': () => saveKeypad(),
+    'cnt-step': v => {
+      const [d, step] = v.split(':');
+      S.count.counts[d] = Math.max(0, (S.count.counts[d] || 0) + Number(step));
+    },
+    'cnt-save': () => {
+      const diff = counted() - balanceOf(cur());
+      if (diff) addTx(diff, 'adjust');
+      else toast('Your wallet matches');
+      S.sheet = null;
+    },
+    tag: v => {
+      for (const w of S.wallets) { const t = w.txs.find(x => x.id === S.editId); if (t) t.tag = t.tag === v ? null : v; }
+    },
+    del: v => { removeTx(v); S.sheet = null; toast('Deleted'); },
+    toggle: v => {
+      S[v] = !S[v];
+      if (v === 'isPro') {
+        toast(S.isPro ? 'Pro unlocked in this preview' : 'Back to Free');
+        if (!S.isPro) { S.cur = 'main'; S.appLock = false; S.privacy = false; }
+      }
+      if (v === 'appLock' && S.appLock) toast(`In the app, ${S.platform === 'ios' ? 'Face ID' : 'your fingerprint'} confirms this first. Switch to the Home Screen and back to see the lock.`, 4200);
+    },
+    reset: () => { resetWallets(); toast('Sample wallets reset'); },
+    unlock: () => { S.isPro = true; S.sheet = null; toast('Pro unlocked in this preview'); },
+    'app-unlock': () => { S.locked = false; buzz(10); },
+    fold: v => { if (S.collapsed.has(v)) S.collapsed.delete(v); else S.collapsed.add(v); },
+    'open-env': v => { S.cur = v; S.tab = 'home'; lastBalance = null; },
+    fill: () => openFill(),
+    'fill-step': v => {
+      const [id, dir] = v.split(':');
+      const step = presets().add[1] || presets().add[0];
+      S.fill.amounts[id] = Math.max(0, (S.fill.amounts[id] || 0) + Number(dir) * step);
+    },
+    'fill-save': () => saveFill(),
+    backup: () => toast(`The app saves PocketCash-backup-${isoDate()}.json wherever you choose. It restores on iPhone or Android.`, 4200),
+    restore: () => toast('The app opens a backup file, shows what it holds, and asks before replacing your data.', 4200),
+    language: () => toast('English, Filipino, Español, Indonesia, Português, हिन्दी, Tiếng Việt. Pick one in your phone settings.', 4200),
+    'pro-surface': () => { S.screen = 'app'; S.sheet = 'paywall'; },
+    quick: () => {
+      if (!S.isPro) { S.screen = 'app'; S.sheet = 'paywall'; return; }
+      const q = quickAmount();
+      addTx(-q, 'spend', { from: 'widget', wallet: main() });
+      toast(`${money(-q)} spent · Main Wallet`);
+    },
+  };
+
+  // ---------- Rendering: app ----------
+  function statusBar(onLock) {
+    return `<div class="status"><span>${onLock && S.platform === 'ios' ? '' : clockText()}</span><span class="st-icons">${STATUS_ICONS}</span></div>`;
+  }
+
+  function burnSummary(w, now) {
+    const rate = L.burnRatePerDay(w.txs, now);
+    if (!rate) return { perDay: null, detail: 'Your burn rate shows up after a few cash moves.' };
+    const perDay = fd(S.code) ? Math.round(rate) : Math.round(rate / 100) * 100;
+    const days = L.runwayDays(balanceOf(w), rate);
+    let detail;
+    if (days == null) detail = 'Time for an ATM run';
+    else if (days < 1) detail = 'Cash runs out today at this pace';
+    else detail = 'Cash lasts until about ' + fmtDay(now + days * DAY);
+    return { perDay, detail };
+  }
+
+  function row(t, withDate) {
+    const k = kindInfo(t);
+    const cat = S.isPro && t.tag ? t.tag : null;
+    const title = t.note || (cat ? CAT_LABEL[cat] : k.label);
+    const pos = t.amount > 0;
+    const when = withDate ? fmtDay(t.at).replace(/,.*/, '') + ' ' + fmtTime(t.at) : fmtTime(t.at);
+    return `<button class="row" data-a="row" data-v="${t.id}">` +
+      `<span class="ic ${pos ? 'in' : ''}">${ico(cat || k.icon, 17, 1.8)}</span>` +
+      `<span class="t"><b>${esc(title)}</b><span>${when}${cat && t.note ? ' · ' + CAT_LABEL[cat] : ''}</span></span>` +
+      `<span class="a ${pos ? 'pos' : ''}">${money(t.amount, true)}</span></button>`;
+  }
+
+  function feed(w, now) {
+    const out = [];
+    if (S.isPro) {
+      for (const c of L.cycles(w.txs, now).reverse()) {
+        const id = w.id + c.start;
+        const folded = S.collapsed.has(id);
+        let top, sub;
+        if (!c.isATM) { top = 'Before first ATM'; sub = c.spent ? `${money(-c.spent)} spent` : ''; }
+        else if (c.isOpen) { top = `Current cycle · since ${fmtMonthDay(c.start)}`; sub = `${money(c.withdrawn)} · ${c.days.toFixed(1)} days so far`; }
+        else { top = `ATM cycle · ${fmtMonthDay(c.start)} – ${fmtMonthDay(c.end)}`; sub = `${money(c.withdrawn)} lasted ${c.days.toFixed(1)} days`; }
+        out.push(`<button class="day-head ${folded ? 'folded' : ''}" data-a="fold" data-v="${id}" aria-expanded="${!folded}"><span class="l">${top}<span>${sub}</span></span>${ico('down', 14)}</button>`);
+        if (!folded) out.push(c.items.slice().reverse().map(t => row(t, true)).join(''));
+      }
+    } else {
+      const todayStart = L.startOfDay(now);
+      const windowStart = L.startOfDay(todayStart - 6 * DAY + 3 * 3600000);
+      const days = new Map();
+      for (const t of L.sorted(w.txs).reverse().filter(t => t.at >= windowStart)) {
+        const key = L.startOfDay(t.at);
+        if (!days.has(key)) days.set(key, []);
+        days.get(key).push(t);
+      }
+      const yesterday = L.startOfDay(todayStart - 12 * 3600000);
+      for (const [key, items] of days) {
+        const title = key === todayStart ? 'Today' : key === yesterday ? 'Yesterday' : fmtDay(key);
+        const spent = items.reduce((s, t) => s + L.spending(t), 0);
+        out.push(`<div class="day-head"><span class="l">${title}</span><span>${spent ? money(-spent) : ''}</span></div>`);
+        out.push(items.map(t => row(t, false)).join(''));
+      }
+      if (w.txs.some(t => t.at < windowStart)) {
+        out.push(`<button class="lock-row" data-a="paywall">${ico('lock', 14)} Older history and ATM cycles are in Pro</button>`);
+      }
+    }
+    if (!w.txs.length) out.push('<div class="empty">No cash moves yet. Tap a button above when you pay or withdraw cash.</div>');
+    return out.join('');
+  }
+
+  function homeTab() {
+    const w = cur();
+    const p = presets();
+    const now = Date.now();
+    const bal = balanceOf(w);
+    const td = spentToday(w);
+    const bud = w.id === 'main' ? budget() : 0;
+    const sub = [`<span>${td ? 'Today ' + money(-td) : 'Nothing spent today'}</span>`];
+    if (bud) {
+      const left = bud - td;
+      sub.push('<span aria-hidden="true">·</span>');
+      sub.push(left >= 0 ? `<span class="ok">${money(left)} left today</span>` : `<span class="over">Over by ${money(-left)}</span>`);
+    }
+    if (w.target) sub.push('<span aria-hidden="true">·</span>', `<span>${Math.round(progress(w) * 100)}% of ${money(w.target)}</span>`);
+    const bump = lastBalance !== null && lastBalance !== bal ? ' bump' : '';
+    lastBalance = bal;
+    let insight = '';
+    if (S.isPro) {
+      const b = burnSummary(w, now);
+      insight = `<button class="ins-line" data-a="tab" data-v="insights">${ico('flame', 15)}<span>${b.perDay ? `<b>${money(b.perDay)}/day</b> · ${b.detail}` : b.detail}</span>${ico('right', 14)}</button>`;
+    }
+    return `<button class="hero-bal" data-a="count" aria-label="Balance ${money(bal)}. Count your cash">
+        <span class="amt${bal < 0 ? ' neg' : ''}${bump}">${money(bal)}</span>
+        <span class="sub">${sub.join('')}</span>
+      </button>
+      <div class="pad">
+        <div class="pad-row">${p.add.map(v => `<button class="pbtn in" data-a="pad-in" data-v="${v}" aria-label="Add ${money(v)}">${label(v, true)}</button>`).join('')}</div>
+        <div class="pad-row">${p.spend.map(v => `<button class="pbtn" data-a="pad-out" data-v="${v}" aria-label="Spend ${money(v)}">${label(v, false)}</button>`).join('')}</div>
+      </div>
+      <button class="text-btn" data-a="custom">Custom amount</button>
+      ${insight}
+      ${feed(w, now)}`;
+  }
+
+  function proGate(title, text, inner) {
+    if (S.isPro) return inner;
+    return `<div class="pro-wrap"><div class="blurred" aria-hidden="true">${inner}</div>
+      <div class="pro-gate">${ico('lock', 20)}<b>${title}</b><span>${text}</span><button class="primary" data-a="paywall">Unlock Pro</button></div></div>`;
+  }
+
+  function insightsTab() {
+    const w = cur();
+    const now = Date.now();
+    const b = burnSummary(w, now);
+    const cycles = L.cycles(w.txs, now).filter(c => c.isATM).reverse();
+    const byTag = [...L.spendingByTag(w.txs.filter(t => t.at > now - 30 * DAY))].sort((x, y) => y[1] - x[1]);
+    const max = byTag.length ? byTag[0][1] : 1;
+    const inner = `<div class="ins-hero"><span>Burn rate · ${esc(w.name)}</span><b>${b.perDay ? money(b.perDay) + '/day' : '—'}</b><span>${b.detail}</span></div>
+      <p class="sec">ATM cycles</p>
+      ${cycles.length ? cycles.map(c => {
+        const head = c.isOpen ? `${money(c.withdrawn)} · ${c.days.toFixed(1)} days so far` : `${money(c.withdrawn)} lasted ${c.days.toFixed(1)} days`;
+        const meta = [`avg ${money(Math.round(c.avgDaily))}/day`];
+        if (c.topAmount) meta.push(`top ${money(-c.topAmount)} ×${c.topAmountCount}`);
+        if (c.topTag) meta.push(CAT_LABEL[c.topTag]);
+        return `<div class="cyc"><b>${head}</b><span>${fmtMonthDay(c.start)}${c.end ? ' – ' + fmtMonthDay(c.end) : ''} · ${meta.join(' · ')}</span></div>`;
+      }).join('') : '<p class="lead">Log an ATM withdrawal to start a cycle.</p>'}
+      <p class="sec">By category · 30 days</p>
+      ${byTag.length ? byTag.map(([tag, amount]) => `<div class="bar"><span>${CAT_LABEL[tag]}</span><i style="width:${Math.max(4, Math.round(amount / max * 100))}%"></i><b>${money(amount)}</b></div>`).join('') : '<p class="lead">Tag a few payments to see this.</p>'}`;
+    return `<div class="big-title">Insights</div>${proGate('Insights are in Pro', 'ATM cycles, burn rate, runway and spending by category.', inner)}`;
+  }
+
+  function envelopesTab() {
+    const inner = `<button class="primary full" data-a="fill">Fill envelopes</button><div style="height:6px"></div>${S.wallets.map(w => {
+      const bal = balanceOf(w);
+      const pr = progress(w);
+      let caption = 'Plain wallet';
+      if (pr !== null) caption = bal >= w.target ? '<small class="done">Goal reached</small>' : `<small>${money(bal)} of ${money(w.target)} · short by ${money(shortBy(w))}</small>`;
+      else caption = `<small>${caption}</small>`;
+      return `<button class="env" data-a="open-env" data-v="${w.id}"><span class="env-top"><b>${esc(w.name)}</b><span>${money(bal)}</span></span>
+        ${pr !== null ? `<span class="track"><i style="width:${Math.round(pr * 100)}%"></i></span>` : ''}${caption}</button>`;
+    }).join('')}`;
+    return `<div class="big-title">Envelopes</div><p class="lead">Split cash into envelopes and fill them in one step.</p>
+      ${proGate('Envelopes are in Pro', 'Give wallets a target and split cash between them.', inner)}`;
+  }
+
+  function settingsTab() {
+    const p = presets();
+    const sw = (key, on, name) => `<button class="sw" role="switch" aria-checked="${on}" data-a="toggle" data-v="${key}" aria-label="${esc(name)}"><span></span></button>`;
+    const srow = (title, sub, right, action) => action
+      ? `<button class="srow" data-a="${action}"><span class="lab"><b>${title}</b>${sub ? `<span>${sub}</span>` : ''}</span><span class="val">${right}</span></button>`
+      : `<div class="srow"><span class="lab"><b>${title}</b>${sub ? `<span>${sub}</span>` : ''}</span>${right}</div>`;
+    const locked = `<span class="pro-badge">PRO</span>${ico('lock', 14)}`;
+    // Pro settings: a working control with Pro, a lock that opens the paywall without it.
+    const proRow = (title, sub, control) => S.isPro ? srow(title, sub, control) : srow(title, sub, locked, 'paywall');
+    return `<div class="big-title">Settings</div>
+      <p class="sec">PocketCash Pro</p>
+      ${srow('Unlock Pro', 'In this preview, flip it to try Pro', sw('isPro', S.isPro, 'PocketCash Pro'))}
+      <p class="sec">Cash</p>
+      ${srow('+ buttons are ATM withdrawals', 'Each one starts a new cycle', sw('plusIsATM', S.plusIsATM, '+ buttons are ATM withdrawals'))}
+      ${proRow('Daily budget', `${money(p.spend[0] * 3)} a day`, sw('budgetOn', S.budgetOn, 'Daily budget'))}
+      ${proRow('Quick spend amount', 'Lock Screen, Control Center, Quick Settings', `<span class="val">${money(quickAmount())}</span>`)}
+      ${proRow('Low-cash reminder', 'A notification when cash drops below', `<span class="val">${money(p.spend[0] * 5)}</span>`)}
+      <p class="sec">Privacy and security</p>
+      ${proRow(S.platform === 'ios' ? 'Lock with Face ID' : 'Lock with fingerprint', 'Widgets still show your balance. Turn on Privacy mode to hide it.', sw('appLock', S.appLock, 'App lock'))}
+      ${proRow('Privacy mode', 'Hide amounts on widgets and the lock screen', sw('privacy', S.privacy, 'Privacy mode'))}
+      <p class="sec">Your data</p>
+      ${srow('Back up to a file', 'Restores on any iPhone or Android phone', ico('right', 14), 'backup')}
+      ${srow('Restore from a file', 'Replaces the data on this phone', ico('right', 14), 'restore')}
+      ${srow('Export CSV', 'For spreadsheets (Pro)', S.isPro ? ico('right', 14) : ico('lock', 14), S.isPro ? 'backup' : 'paywall')}
+      <p class="sec">App</p>
+      ${srow('Language', '7 languages', `Phone setting ${ico('right', 14)}`, 'language')}
+      ${srow('Reset the sample wallets', 'Only in this preview', ico('right', 14), 'reset')}`;
+  }
+
+  function topbar() {
+    const w = cur();
+    const mid = S.tab === 'home' ? money(balanceOf(w)) : TABS.find(t => t[0] === S.tab)[1];
+    return `<div class="topbar">
+      <button class="wallet-btn" data-a="wallet-menu" aria-haspopup="menu" aria-expanded="${S.menu}"><span>${esc(w.name)}</span>${ico('down', 13, 2.6)}${S.isPro ? '<span class="pro-badge">PRO</span>' : ''}</button>
+      <span class="tb-mid" aria-hidden="true">${mid}</span><span></span>
+    </div>`;
+  }
+
+  function navbar() {
+    const hidden = S.sheet ? ' hidden' : '';
+    return `<div class="nav-wrap${hidden}">
+      <nav class="navbar${S.navCollapsed ? ' collapsed' : ''}" aria-label="PocketCash">
+        ${TABS.map(([key, name, icon]) => `<button class="nav-item${S.tab === key ? ' on' : ''}" data-a="tab" data-v="${key}" aria-label="${name}" ${S.tab === key ? 'aria-current="page"' : ''}>${ico(icon, 18, 1.9)}<span class="nl">${name}</span></button>`).join('')}
+      </nav>
+      <button class="nav-plus" data-a="plus" aria-label="New cash move (hold to count your cash)">${ico('plus', 22, 2.4)}</button>
+    </div>`;
+  }
+
+  function walletMenu() {
+    return `<div class="menu" role="menu">
+      ${S.wallets.map(w => `<button role="menuitem" data-a="pick-wallet" data-v="${w.id}"><span class="ck">${w.id === S.cur ? ico('check', 15) : ''}</span>${esc(w.name)}<span class="val">${w.id !== 'main' && !S.isPro ? ico('lock', 13) : money(balanceOf(w))}</span></button>`).join('')}
+      <hr>
+      <button role="menuitem" data-a="add-wallet"><span class="ck">${ico('plus', 15)}</span>Add a wallet ${S.isPro ? '' : `<span class="val">${ico('lock', 13)}</span>`}</button>
+    </div>`;
+  }
+
+  function appScreen() {
+    if (S.locked) {
+      return `${statusBar(false)}<div class="locked"><span class="sq-icon">${brandSquare}</span><b>PocketCash is locked</b><span>${S.platform === 'ios' ? 'Use Face ID or your passcode' : 'Use your fingerprint or PIN'}</span><button class="primary" data-a="app-unlock">${ico(S.platform === 'ios' ? 'face' : 'lock', 16)} Unlock</button></div>`;
+    }
+    const body = { home: homeTab, insights: insightsTab, envelopes: envelopesTab, settings: settingsTab }[S.tab]();
+    return `<div class="app">${statusBar(false)}${topbar()}
+      <div class="app-scroll">${body}</div>
+      ${S.undo && !S.sheet ? `<div class="undo" role="status"><span>${esc(S.undo.text)}</span><button data-a="undo" data-v="${S.undo.id}">Undo</button></div>` : ''}
+      ${navbar()}
+      ${S.menu ? walletMenu() : ''}
+    </div>`;
+  }
+
+  const sheetHead = title => `<div class="grab"></div><div class="sheet-h"><b>${title}</b><button class="x" data-a="close" aria-label="Close">${ico('close', 14, 2.6)}</button></div>`;
+  const shownEntry = s => { const [whole, frac] = (s || '').split('.'); return Number(whole || '0').toLocaleString('en-US') + ((s || '').includes('.') ? '.' + (frac || '') : ''); };
+
+  function keypadSheet() {
+    const kp = S.kp;
+    const spend = kp.mode === 'spend';
+    const tot = keypadTotals();
+    const sym = esc(symbol());
+    const keys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0', 'del'];
+    const chips = S.isPro
+      ? `<div class="chips">${CATS.map(([k, l]) => `<button class="chip" data-a="kp-tag" data-v="${k}" aria-pressed="${kp.tag === k}">${ico(k, 13)} ${l}</button>`).join('')}</div>`
+      : `<div class="chips"><button class="chip locked-chip" data-a="paywall">${ico('lock', 12)} Categories are in Pro</button></div>`;
+    let amountBlock;
+    if (spend && kp.changeOn) {
+      const err = tot.error;
+      amountBlock = `<div class="fields">
+          <button class="field ${kp.field === 'paid' ? 'sel' : ''}" data-a="kp-field" data-v="paid"><span>Paid</span><b>${sym}${shownEntry(kp.paid)}</b></button>
+          <button class="field ${kp.field === 'change' ? 'sel' : ''}" data-a="kp-field" data-v="change"><span>Change</span><b>${sym}${shownEntry(kp.change)}</b></button>
+        </div>
+        <div class="calc ${err ? 'err' : ''}" aria-live="polite">${err ? 'Change must be less than what you paid'
+          : tot.amount ? `${money(tot.paid)} ${MINUS} ${money(tot.change)} = <b>${money(tot.amount)} spent</b>` : 'Enter what you handed over and the change'}</div>
+        <div class="chips center">${billChips().map(d => `<button class="chip" data-a="kp-bill" data-v="${d}" aria-pressed="${tot.paid === d}">Paid ${money(d)}</button>`).join('')}<button class="chip" data-a="kp-nochange">No change</button></div>`;
+    } else {
+      amountBlock = `<div class="kp-amt ${spend ? '' : 'add'} ${tot.paid ? '' : 'zero'}" aria-live="polite">${spend ? MINUS : '+'}${sym}${shownEntry(kp.paid)}</div>
+        ${spend ? `<button class="change-btn" data-a="kp-change">${ico(S.isPro ? 'swap' : 'lock', 14)} Got change?${S.isPro ? '' : ' <span class="pro-badge">PRO</span>'}</button>` : ''}`;
+    }
+    return `${sheetHead(spend ? 'Spend cash' : 'Add cash')}
+      <div class="pseg" role="group" aria-label="Spend or add cash">
+        <button data-a="kp-mode" data-v="spend" aria-pressed="${spend}">Spend</button>
+        <button data-a="kp-mode" data-v="add" aria-pressed="${!spend}">Add cash</button>
+      </div>
+      ${amountBlock}
+      ${spend ? '' : `<div class="set-row"><span class="lab"><b>From ATM</b><span>Starts a new ATM cycle</span></span><button class="sw" role="switch" aria-checked="${kp.atm}" data-a="kp-atm" aria-label="From ATM"><span></span></button></div>`}
+      ${chips}
+      <input class="note" id="kp-note" placeholder="Note (optional)" maxlength="40" value="${esc(kp.note)}" aria-label="Note">
+      <div class="keys">${keys.map(k => {
+        if (k === 'del') return `<button class="key" data-a="kp-key" data-v="del" aria-label="Delete">${ico('del', 20)}</button>`;
+        if (k === '.') return `<button class="key" data-a="kp-key" data-v="." ${fd(S.code) ? '' : 'disabled'} aria-label="Decimal point">.</button>`;
+        return `<button class="key" data-a="kp-key" data-v="${k}">${k}</button>`;
+      }).join('')}</div>
+      <button class="save" data-a="kp-save" ${tot.amount ? '' : 'disabled'}>${tot.amount ? 'Save ' + money(spend ? -tot.amount : tot.amount, true) : 'Save'}</button>`;
+  }
+
+  function countSheet() {
+    const p = presets();
+    const bal = balanceOf(cur());
+    const total = counted();
+    const diff = total - bal;
+    const diffText = diff < 0 ? `${money(diff)} · saved as unrecorded spending`
+      : diff > 0 ? `${money(diff, true)} · saved as found cash` : 'Matches what PocketCash says';
+    return `${sheetHead('Count my cash')}
+      <p class="muted">How much is in your wallet? Count each bill and coin. The preview starts you a little short.</p>
+      <div class="cnt-sum"><div><span>Counted</span><b>${money(total)}</b></div><div><span>PocketCash says</span><b>${money(bal)}</b></div></div>
+      <div class="cnt-diff ${diff < 0 ? 'minus' : diff > 0 ? 'plus' : ''}" aria-live="polite">${diffText}</div>
+      <div class="dens">${p.denominations.map(d => {
+        const n = S.count.counts[d] || 0;
+        return `<div class="den"><span>${money(d)}</span><div class="step">
+          <button data-a="cnt-step" data-v="${d}:-1" aria-label="One less ${money(d)}">${MINUS}</button>
+          <b>${n}</b>
+          <button data-a="cnt-step" data-v="${d}:1" aria-label="One more ${money(d)}">+</button></div></div>`;
+      }).join('')}</div>
+      <button class="save sticky" data-a="cnt-save">${diff ? 'Save difference ' + money(diff, true) : 'Done, it matches'}</button>`;
+  }
+
+  function fillSheet() {
+    const source = main();
+    const available = balanceOf(source);
+    const total = Object.values(S.fill.amounts).reduce((s, v) => s + v, 0);
+    const over = total > available;
+    return `${sheetHead('Fill envelopes')}
+      <p class="muted">From ${esc(source.name)} · ${money(available)} available. Amounts start with what each envelope is short.</p>
+      <div class="dens">${S.wallets.slice(1).map(w => `<div class="den"><span>${esc(w.name)}${w.target ? `<br><small style="color:var(--app-muted);font-weight:500">short by ${money(shortBy(w))}</small>` : ''}</span><div class="step">
+          <button data-a="fill-step" data-v="${w.id}:-1" aria-label="Less into ${esc(w.name)}">${MINUS}</button>
+          <b class="wide">${money(S.fill.amounts[w.id] || 0)}</b>
+          <button data-a="fill-step" data-v="${w.id}:1" aria-label="More into ${esc(w.name)}">+</button></div></div>`).join('')}</div>
+      <p class="fill-foot ${over ? 'err' : ''}">${over ? `Only ${money(available)} in ${esc(source.name)}` : `Moving ${money(total)} · ${money(available - total)} stays in ${esc(source.name)}`}</p>
+      <button class="save" data-a="fill-save" ${total && !over ? '' : 'disabled'}>${total ? 'Move ' + money(total) : 'Move'}</button>`;
+  }
+
+  function paywallSheet() {
+    const items = [
+      ['layers', 'Envelopes and savings goals, filled in one step'],
+      ['insights', 'Insights: ATM cycles, burn rate and when your cash runs out'],
+      ['wallet', 'More wallets, including a travel wallet in another currency'],
+      ['flash', 'Quick spend from the Lock Screen, Control Center or Quick Settings'],
+      ['swap', 'Change calculator: paid minus change in one step'],
+      ['clock', 'Daily budget with what is left today'],
+      ['tag', 'Categories with one tap, and spending by category'],
+      ['sliders', 'Your own button amounts'],
+      ['face', 'App lock and privacy mode'],
+      ['file', 'Low-cash reminder, full history and CSV export'],
+    ];
+    return `<div class="grab"></div>
+      <div class="pw-top"><span class="pro-badge">PRO</span><b>PocketCash Pro</b><span>$3.99 once. No subscription.</span></div>
+      <ul class="pw-list">${items.map(([i, t]) => `<li>${ico(i, 18)}<span>${t}</span></li>`).join('')}</ul>
+      <button class="save" data-a="unlock">Unlock Pro in this preview</button>
+      <button class="ghost" data-a="close">Not now</button>
+      <p class="fine">In the apps, Pro is a one-time purchase through the App Store or Google Play.</p>`;
+  }
+
+  function editSheet() {
+    let t = null;
+    for (const w of S.wallets) { t = w.txs.find(x => x.id === S.editId) || t; }
+    if (!t) return '';
+    const k = kindInfo(t);
+    return `${sheetHead(esc(t.note || k.label))}
+      <div class="ed-amt ${t.amount > 0 ? 'pos' : ''}">${money(t.amount, true)}</div>
+      <div class="ed-meta">${new Date(t.at).toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })} · ${fmtTime(t.at)} · ${esc(k.label)}</div>
+      <p class="lbl">Category ${S.isPro ? '' : `${ico('lock', 12)} Pro`}</p>
+      <div class="chips">${CATS.map(([key, l]) => `<button class="chip" data-a="${S.isPro ? 'tag' : 'paywall'}" data-v="${key}" aria-pressed="${S.isPro && t.tag === key}">${ico(key, 13)} ${l}</button>`).join('')}</div>
+      <button class="danger-btn" data-a="del" data-v="${t.id}">Delete</button>`;
+  }
+
+  function sheet() {
+    if (!S.sheet || S.locked) return '';
+    const body = { keypad: keypadSheet, count: countSheet, paywall: paywallSheet, edit: editSheet, fill: fillSheet }[S.sheet]();
+    const still = renderedSheet === S.sheet ? 'still' : '';
+    return `<div class="${still}"><button class="scrim" data-a="close" aria-label="Close" tabindex="-1"></button><div class="sheet" role="dialog" aria-modal="true">${body}</div></div>`;
+  }
+
+  // ---------- Rendering: widgets, Home Screen, Lock Screen, Quick Settings ----------
+  function widgetStatus() {
+    const td = spentToday(main());
+    const bud = budget();
+    if (bud) {
+      const left = bud - td;
+      return left >= 0 ? `<span class="w-stat ok">${money(left)} left</span>` : `<span class="w-stat over">Over by ${money(-left)}</span>`;
+    }
+    return `<span class="w-stat">${td ? money(-td) + ' today' : 'Nothing spent'}</span>`;
+  }
+  function widgetTop() {
+    if (S.wundo) return `<button class="w-undo" data-a="w-undo" data-v="${S.wundo.id}">${ico('undo', 12, 2.6)} Undo ${money(S.wundo.amount, true)}</button>`;
+    return `<div class="w-top"><span>Main Wallet</span>${S.privacy ? '' : widgetStatus()}</div>`;
+  }
+  function widgetButtons(list) {
+    return `<div class="w-btns">${list.map(([v, cashIn]) => `<button data-a="${cashIn ? 'w-in' : 'w-out'}" data-v="${v}" class="${cashIn ? 'in' : ''}" aria-label="${cashIn ? 'Add' : 'Spend'} ${money(v)}">${label(v, cashIn)}</button>`).join('')}</div>`;
+  }
+  function widgets() {
+    const p = presets();
+    const bal = S.privacy ? '••••' : money(balanceOf(main()));
+    return {
+      medium: `<div class="wgt wgt-m" aria-label="PocketCash medium widget">${widgetTop()}
+        <button class="w-bal" data-a="open-app" aria-label="Open PocketCash">${bal}</button>
+        ${widgetButtons([[p.add[0], true], [p.spend[0], false], [p.spend[1], false], [p.spend[2], false]])}</div>`,
+      small: `<div class="wgt wgt-s" aria-label="PocketCash small widget">${widgetTop()}
+        <button class="w-bal" data-a="open-app" aria-label="Open PocketCash">${bal}</button>
+        ${widgetButtons([[p.spend[0], false], [p.spend[1], false]])}</div>`,
+    };
+  }
+
+  const brandSquare = '<span class="app-ic"><span class="sq pc"><svg width="30" height="30" viewBox="0 0 32 32" aria-hidden="true"><rect x="9" y="7" width="13" height="8" rx="1.5" fill="#BBF7D0" transform="rotate(-8 15 11)"/><rect x="6" y="11" width="20" height="14" rx="3" fill="#FFFFFF"/><rect x="19" y="16" width="7" height="4.5" rx="2.2" fill="#0E9F6E"/></svg></span></span>';
+
+  function homeScreen() {
+    const w = widgets();
+    const icon = (name, glyph) => `<span class="app-ic" aria-hidden="true"><span class="sq">${ico(glyph, 24, 1.8)}</span>${name}</span>`;
+    const dock = S.platform === 'ios'
+      ? `<div class="dock" aria-hidden="true">${['phone', 'chat', 'globe', 'music'].map(g => `<span class="sq">${ico(g, 24, 1.8)}</span>`).join('')}</div>`
+      : `<div class="a-dock" aria-hidden="true"><div class="icons-row">${['phone', 'chat', 'globe', 'camera'].map(g => `<span class="sq">${ico(g, 22, 1.8)}</span>`).join('')}</div><div class="search">${ico('search', 16)} Search</div></div>`;
+    return `<div class="wall"></div>${statusBar(false)}
+      <div class="home">${w.medium}
+        <div class="home-row">${w.small}
+          <div class="icons">
+            <button class="app-ic" data-a="open-app" aria-label="Open PocketCash">${brandSquare.replace('<span class="app-ic">', '').replace(/<\/span>$/, '')}PocketCash</button>
+            ${icon('Notes', 'note')}${icon('Clock', 'clock')}${icon('Camera', 'camera')}
+          </div>
+        </div>
+      </div>${dock}`;
+  }
+
+  function lockScreen() {
+    const bal = balanceOf(main());
+    const td = spentToday(main());
+    const q = quickAmount();
+    const now = new Date();
+    const head = `<div class="wall lock"></div>${statusBar(true)}
+      <div class="lock-ui">
+        <div class="lk-date">${now.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric' })}</div>
+        <div class="lk-time">${clockText()}</div>`;
+    const foot = `<div class="lk-bottom" aria-hidden="true"><span class="lk-btn">${ico('flash', 20)}</span><span class="lk-btn">${ico('camera', 20)}</span></div>`;
+    if (!S.isPro) {
+      return `${head}<div class="lk-widgets">
+          <button class="acc-rect" data-a="pro-surface" aria-label="Lock Screen widgets are in PocketCash Pro">
+            <span class="ar-name">${ico('lock', 12)} PocketCash Pro</span><b>Lock Screen</b><span>Tap to unlock</span>
+          </button>
+          <button class="acc-circ" data-a="pro-surface" aria-label="Quick spend is in PocketCash Pro">${ico('lock', 16)}<small>Pro</small></button>
+        </div></div>${foot}`;
+    }
+    return `${head}
+        <div class="lk-widgets">
+          <button class="acc-rect" data-a="open-app" aria-label="Open PocketCash">
+            <span class="ar-name">${ico('wallet', 12)} Main Wallet</span>
+            <b>${S.privacy ? '••••' : money(bal)}</b>
+            <span>${S.privacy ? 'Tap to open' : (td ? money(-td) + ' today' : 'Nothing spent today')}</span>
+          </button>
+          <div class="acc-circ" aria-label="Balance">${S.privacy ? '••' : compact(bal)}<small>cash</small></div>
+          <button class="acc-circ quick" data-a="quick" aria-label="Quick spend ${money(q)}">${label(q, false)}<small>quick</small></button>
+        </div>
+      </div>${foot}`;
+  }
+
+  function quickSettings() {
+    const bal = balanceOf(main());
+    const tile = (glyph, name, sub) => `<div class="tile dim" aria-hidden="true"><span class="ti">${ico(glyph, 18)}</span><span><b>${name}</b><small>${sub}</small></span></div>`;
+    const now = new Date();
+    return `<div class="wall"></div><div class="shade"></div>${statusBar(false)}
+      <div class="qs">
+        <div class="qs-time">${clockText()}<span>${now.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span></div>
+        <div class="qs-bright" aria-hidden="true"><span style="width:62%"></span></div>
+        <div class="qs-tiles">
+          ${tile('wifi', 'Internet', 'Home Wi-Fi')}${tile('bt', 'Bluetooth', 'Off')}
+          ${S.isPro
+            ? `<button class="tile on" data-a="quick" aria-label="Quick spend ${money(quickAmount())}"><span class="ti">${ico('spend', 18)}</span><span><b>Quick spend ${label(quickAmount(), false)}</b><small>${S.privacy ? '••••' : money(bal)}</small></span></button>`
+            : `<button class="tile" data-a="pro-surface" aria-label="Quick spend is in PocketCash Pro"><span class="ti">${ico('lock', 18)}</span><span><b>Quick spend</b><small>PocketCash Pro</small></span></button>`}
+          ${tile('flash', 'Flashlight', 'Off')}${tile('moon', 'Do Not Disturb', 'Off')}${tile('battery', 'Battery Saver', 'Off')}
+        </div>
+        <p class="qs-note">${S.isPro ? `Tap Quick spend to take ${money(quickAmount())} from your wallet.` : 'The Quick spend tile is part of Pro.'}</p>
+      </div>`;
+  }
+
+  const HINTS = {
+    home: 'Tap a button to spend or add cash, then Undo. Scroll the list and watch the nav bar shrink. Tap the balance to count your cash.',
+    insights: 'Burn rate, runway and ATM cycles for the selected wallet. Free users see this preview with an Unlock button.',
+    envelopes: 'Envelopes are wallets with a target. Fill envelopes moves cash from Main Wallet in one step.',
+    settings: 'Turn on Pro, App lock or Privacy mode here. Backup files restore on iPhone or Android.',
+    keypad: 'With Pro, tap "Got change?" or a "Paid" chip: PocketCash saves what you paid minus the change.',
+    widgets: 'Widget buttons work without opening the app. After a tap, Undo appears on the widget for a few seconds.',
+    lock: 'With Pro, the round Quick spend button takes your most common amount with one tap. Control Center has the same button.',
+    qs: 'With Pro, the Quick spend tile takes your most common amount with one tap and shows the balance.',
+    locked: 'App lock is on. In the app, Face ID or your fingerprint unlocks it; here, tap Unlock.',
+  };
+  function hintKey() {
+    if (S.screen === 'home') return 'widgets';
+    if (S.screen === 'lock') return S.platform === 'android' ? 'qs' : 'lock';
+    if (S.locked) return 'locked';
+    if (S.sheet === 'keypad') return 'keypad';
+    return S.tab;
+  }
+
+  // ---------- Render ----------
+  function render() {
+    const phone = $('#phone');
+    const scroller = phone.querySelector('.app-scroll');
+    const scrollTop = scroller && renderedTab === S.tab ? scroller.scrollTop : 0;
+    const sheetEl = phone.querySelector('.sheet');
+    const sheetTop = sheetEl ? sheetEl.scrollTop : 0;
+    const sameSheet = renderedSheet === S.sheet;
+
+    phone.className = 'phone ' + S.platform;
+    let body;
+    if (S.screen === 'app') body = appScreen() + sheet();
+    else if (S.screen === 'home') body = homeScreen();
+    else body = S.platform === 'ios' ? lockScreen() : quickSettings();
+    const onWall = S.screen !== 'app';
+    phone.innerHTML = `<div class="screen${onWall ? ' on-wall' : ''}">${body}${S.toast ? `<div class="toast" role="status">${esc(S.toast.text)}</div>` : ''}</div><span class="island" aria-hidden="true"></span>`;
+    renderedSheet = S.screen === 'app' ? S.sheet : null;
+    renderedTab = S.screen === 'app' && !S.locked ? S.tab : null;
+
+    const sc = phone.querySelector('.app-scroll');
+    if (sc) { sc.scrollTop = scrollTop; bindScroll(sc); }
+    const newSheet = phone.querySelector('.sheet');
+    if (newSheet && sameSheet) newSheet.scrollTop = sheetTop;
+    const plus = phone.querySelector('.nav-plus');
+    if (plus) bindLongPress(plus);
+
+    document.querySelectorAll('[data-plat]').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.plat === S.platform)));
+    document.querySelectorAll('[data-screen]').forEach(b => b.setAttribute('aria-selected', String(b.dataset.screen === S.screen)));
+    $('#tab-lock').textContent = S.platform === 'ios' ? 'Lock Screen' : 'Quick Settings';
+    $('#currency').value = S.code;
+    $('#h1amt').textContent = money(-presets().spend[1]);
+    $('#hint').textContent = HINTS[hintKey()];
+    document.querySelectorAll('.cur').forEach(c => c.setAttribute('aria-pressed', String(c.dataset.code === S.code)));
+  }
+
+  // The dynamic nav bar: collapse while scrolling down, expand when scrolling up or at the top.
+  function bindScroll(sc) {
+    let last = sc.scrollTop;
+    const update = () => {
+      const y = sc.scrollTop;
+      const d = y - last;
+      if (y < 12) setCollapsed(false);
+      else if (d > 5) setCollapsed(true);
+      else if (d < -5) setCollapsed(false);
+      last = y;
+      const mid = $('#phone .tb-mid');
+      if (mid) mid.classList.toggle('show', y > (S.tab === 'home' ? 92 : 34));
+      const bar = $('#phone .topbar');
+      if (bar) bar.classList.toggle('lined', y > 4);
+    };
+    sc.addEventListener('scroll', update, { passive: true });
+    const mid = $('#phone .tb-mid');
+    if (mid) mid.classList.toggle('show', sc.scrollTop > (S.tab === 'home' ? 92 : 34));
+  }
+  function setCollapsed(v) {
+    if (S.navCollapsed === v) return;
+    S.navCollapsed = v;
+    const bar = $('#phone .navbar');
+    if (bar) bar.classList.toggle('collapsed', v);
+  }
+  // Hold + to count your cash.
+  let pressTimer = null;
+  let longPressed = false;
+  function bindLongPress(el) {
+    const start = () => { longPressed = false; pressTimer = setTimeout(() => { longPressed = true; openCount(); buzz(15); render(); }, 480); };
+    const cancel = () => clearTimeout(pressTimer);
+    el.addEventListener('pointerdown', start);
+    ['pointerup', 'pointerleave', 'pointercancel'].forEach(t => el.addEventListener(t, cancel));
+    el.addEventListener('contextmenu', e => e.preventDefault());
+  }
+
+  // ---------- Events ----------
+  $('#phone').addEventListener('click', e => {
+    const el = e.target.closest('[data-a]');
+    if (!el || el.disabled) return;
+    if (el.dataset.a === 'plus' && longPressed) { longPressed = false; return; }
+    const fn = actions[el.dataset.a];
+    if (!fn) return;
+    fn(el.dataset.v, el);
+    render();
+  });
+  $('#phone').addEventListener('input', e => {
+    if (e.target.id === 'kp-note' && S.kp) S.kp.note = e.target.value;
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && (S.sheet || S.menu)) { S.sheet = null; S.menu = false; render(); return; }
+    if (S.screen !== 'app' || S.sheet !== 'keypad' || (document.activeElement && document.activeElement.id === 'kp-note')) return;
+    if (e.ctrlKey || e.metaKey || e.altKey) return;
+    if (/^[0-9]$/.test(e.key)) keypadKey(e.key);
+    else if (e.key === '.' || e.key === ',') keypadKey('.');
+    else if (e.key === 'Backspace') keypadKey('del');
+    else if (e.key === 'Enter') saveKeypad();
+    else return;
+    e.preventDefault();
+    render();
+  });
+  document.querySelectorAll('[data-plat]').forEach(b => b.addEventListener('click', () => { S.platform = b.dataset.plat; render(); }));
+  document.querySelectorAll('[data-screen]').forEach(b => b.addEventListener('click', () => {
+    const next = b.dataset.screen;
+    if (S.screen === 'app' && next !== 'app' && S.appLock) S.locked = true;
+    S.screen = next;
+    S.menu = false;
+    render();
+  }));
+
+  function setCurrency(code) {
+    S.code = code;
+    resetWallets();
+    render();
+  }
+  const select = $('#currency');
+  const names = typeof Intl.DisplayNames === 'function' ? new Intl.DisplayNames(['en'], { type: 'currency' }) : null;
+  const currencyName = code => { try { return names ? names.of(code) : code; } catch (e) { return code; } };
+  Object.keys(PRESETS.currencies).sort().forEach(code => {
+    const o = document.createElement('option');
+    o.value = code;
+    o.textContent = `${code} · ${currencyName(code)}`;
+    select.appendChild(o);
+  });
+  select.addEventListener('change', () => setCurrency(select.value));
+
+  const FEATURED = ['PHP', 'USD', 'EUR', 'JPY', 'INR', 'IDR', 'NGN', 'MXN', 'GBP', 'KES', 'VND', 'BRL'];
+  $('#cur-grid').innerHTML = FEATURED.filter(c => PRESETS.currencies[c]).map(code => {
+    const p = presetsFor(code);
+    const btns = [[p.add[0], true], [p.spend[0], false], [p.spend[1], false], [p.spend[2], false]];
+    return `<button type="button" class="cur" data-code="${code}" aria-pressed="false">
+      <span class="cur-top"><b>${esc(currencyName(code))}</b><span class="mono">${code}</span></span>
+      <span class="cur-btns">${btns.map(([v, i]) => `<span class="${i ? 'in' : ''}">${label(v, i)}</span>`).join('')}</span>
+      <span class="cur-dens">Count: ${p.denominations.map(d => money(d, false, code)).join('  ')}</span>
+    </button>`;
+  }).join('');
+  document.querySelectorAll('.cur').forEach(c => c.addEventListener('click', () => {
+    setCurrency(c.dataset.code);
+    $('#demo').scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
+  }));
+
+  const checkIcon = ico('check', 16, 2.6);
+  $('#free-list').innerHTML = [
+    'One wallet in your currency',
+    'Home Screen widgets with 1-tap buttons',
+    'Undo after every tap, in the app and on the widget',
+    'Custom amount keypad and a 7-day cash feed',
+    'Count my cash: count bills and coins, save the difference',
+    'Backup file that restores on iPhone or Android',
+    'The whole app in 7 languages',
+  ].map(t => `<li>${checkIcon}<span>${t}</span></li>`).join('');
+  $('#pro-list').innerHTML = [
+    '<b>Envelopes and savings goals</b>: give wallets a target and fill them in one step',
+    '<b>Insights</b>: ATM cycles ("₱1,000 lasted 4.5 days"), burn rate and when your cash runs out',
+    '<b>More wallets</b>, including a travel wallet in its own currency, with transfers',
+    '<b>Quick spend everywhere</b>: Lock Screen, Control Center and the Quick Settings tile',
+    '<b>Change calculator</b>: "paid ₱500, got ₱130 back" saves one ₱370 spend',
+    '<b>Daily budget</b> with what is left today, on the app and the widget',
+    '<b>Categories</b> with one tap, and spending by category',
+    '<b>Custom buttons</b> with your own amounts',
+    '<b>App lock</b> with Face ID or fingerprint, and privacy mode for widgets',
+    '<b>Low-cash reminder</b>, full history and CSV export',
+  ].map(t => `<li>${checkIcon}<span>${t}</span></li>`).join('');
+
+  $('#microprint').textContent = ('POCKETCASH ✦ ' + ['PHP', 'USD', 'EUR', 'JPY', 'INR', 'NGN', 'MXN', 'IDR'].join(' ✦ ') + ' ✦ ').repeat(12);
+
+  // ---------- Guilloche rosette behind the phone ----------
+  function drawGuilloche() {
+    const canvas = $('#guilloche');
+    const rect = canvas.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    canvas.width = Math.round(rect.width * dpr);
+    canvas.height = Math.round(rect.height * dpr);
+    const g = canvas.getContext('2d');
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    g.clearRect(0, 0, rect.width, rect.height);
+    g.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--guilloche').trim() || 'rgba(4,120,87,.17)';
+    g.lineWidth = 0.7;
+    const cx = rect.width / 2;
+    const cy = rect.height / 2;
+    const R = Math.min(rect.width * 0.5, rect.height * 0.46);
+    for (const [k, scale, base] of [[13, 1, 0.8], [19, 0.8, 0.76], [29, 0.6, 0.72]]) {
+      for (let c = 0; c < 14; c++) {
+        const phase = (c / 14) * (2 * Math.PI / k);
+        g.beginPath();
+        for (let i = 0; i <= 900; i++) {
+          const t = (i / 900) * 2 * Math.PI;
+          const r = R * scale * (base + (1 - base) * Math.cos(k * (t + phase)));
+          const x = cx + r * Math.cos(t);
+          const y = cy + r * Math.sin(t);
+          if (i) g.lineTo(x, y); else g.moveTo(x, y);
+        }
+        g.stroke();
+      }
+    }
+  }
+  if (typeof ResizeObserver === 'function') new ResizeObserver(drawGuilloche).observe($('#stage'));
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', drawGuilloche);
+  new MutationObserver(drawGuilloche).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+
+  // ---------- Timers: undo windows, toasts, the clock ----------
+  let pending = false;
+  setInterval(() => {
+    const now = Date.now();
+    if (S.undo && now > S.undo.until) { S.undo = null; pending = true; }
+    if (S.wundo && now > S.wundo.until) { S.wundo = null; pending = true; }
+    if (S.toast && now > S.toast.until) { S.toast = null; pending = true; }
+    const minute = clockText();
+    if (minute !== lastMinute) { lastMinute = minute; pending = true; }
+    const typing = document.activeElement && document.activeElement.id === 'kp-note';
+    if (pending && !typing) { pending = false; render(); }
+  }, 250);
+
+  resetWallets();
+  render();
+  drawGuilloche();
+})();
+</script>
+</body>
+</html>

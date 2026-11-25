@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <!-- The window behind Compose. Compose's own theme is ui/theme/Theme.kt. -->
-    <style name="Theme.PocketCash" parent="android:Theme.Material.Light.NoActionBar">
+    <!-- The window behind Compose. Compose's own theme is ui/theme/Theme.kt.
+         An AppCompat parent because BiometricPrompt (app lock) draws its fingerprint dialog with AppCompat on
+         Android 8.x; DayNight follows the phone's dark mode, and values-night/colors.xml darkens the background. -->
+    <style name="Theme.PocketCash" parent="Theme.AppCompat.DayNight.NoActionBar">
         <item name="android:windowBackground">@color/window_background</item>
+        <item name="colorPrimary">@color/accent</item>
+        <item name="colorAccent">@color/accent</item>
     </style>
 </resources>
